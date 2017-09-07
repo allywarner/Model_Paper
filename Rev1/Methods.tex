@@ -1,5 +1,5 @@
 % Filename: ForwardInverseToolkit.tex
-% Last update: Sat Apr 1 2015 by Brett Burton
+% Last update: Thursday, September 7, 2017 by Ally Warner
 %    - created
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -12,35 +12,110 @@
 
 %%% Types of Images, Acquisition, and conversion
 
-\subsection{Registration}
-\label{sec:Reg}
+\begin{itemize}
 
-%%% Registering to MRI images - need to add fMRI
+\item Images were acquired using.... on a healthy volunteer (self, 24 years of age, female), MRI sequence (MPRAGE), -- OSIRIX documentation
 
-\subsection{Segmentation}
+\end{itemize}
+
+\subsection{Preprocessing of Images}
+\label{sec:preprocess}
+
+\subsubsection{MRI Correction}
+
+\begin{itemize}
+
+\item T1 and T2 images were preprocessed using FSL for bias field correction 
+
+\end{itemize}
+
+\subsubsection{DTI}
+
+\begin{itemize}
+
+\item DWI was preprocessed using DTIPrep which corrects for movement, badly acquired images, etc. 
+
+\item DWI was converted to DTI using Slicer - (module) after registration.
+
+\end{itemize}
+
+\subsubsection{Registration}
+
+\begin{itemize}
+
+\item Images were all registered to T1 MRI image
+
+\item T2 was already registered because the patient did not move in between scans
+
+\item DWI was registered by first stripping out the skull using FSL, the skull stripped image was cleaned up using Seg3D, then using an affine registration using Slicer.  
+
+\end{itemize}
+
+\subsection{fMRI}
+
+\begin{itemize}
+
+\item fMRI was preprocessed using the fcon\_1000 pipeline. (specific to the University of Utah), includes registration
+
+\end{itemize}
+
+\subsection{MRI Segmentation of Tissues}
 \label{sec:Seg}
 
 %%% Preparation for segmentation, trials, manual work 
 
-\subsection{Diffusion Weighted Images}
-\label{sec:DWI}
+(HOW MUCH MANUAL TIME???) - manual clean up requires to step through each slice in each direction (axial, sagittal, coronal), white matter took longest, then skull, then grey matter
 
-%%%
+\begin{itemize}
 
-\subsection{Functional MRI}
-\label{sec:fMRI}
+\item Volume was segmented into air, skin, skull, eyes, sinus, white matter, grey matter, and CSF.
 
-%%%
+\item Brain was segmented using FSL fast after skull stripped using BET2 (part of FSL), this was superior to freesurfer, gave segmentations for white matter, grey matter, and CSF.
 
-\subsection{Meshing}
+\item Manual clean up of white matter was required after using FSL fast to add more accurate detail, remove grey matter and CSF regions.
+
+\item Manual clean up of grey matter was required after using FSL fast to fill any holes between the new white matter, thicken the back side of the brain, and to add grey matter nuclei that FSL fast could not differentiate. (figure??)
+
+\item After grey and white matter were segmented, a complete brain segmentation was made. White and grey matter were removed giving the CSF layer.
+
+\item Skin was segmented by thresholding the entire volume using Seg3D and removing the other layers afterwards. 
+
+\item Skull segmentations are difficult when using an MRI scan because bone appears black, and the volunteer did not have a CT-scan. A pseudo-CT scan was provided by Angel Torrado-Carvajal et al. (REFERENCE HERE) which was made from an all female database (!!). Manual clean up was required using Seg3D. The pseduo-CT scan also provided a segmentation of the sinuses and esophagus. Sinuses are hard to segment due to the lack of CT-scan as well.
+
+\item Eyes were segmented using T2 image and thersholding.
+
+\item Air was segmented as anything left over.
+
+\item Checked and filled for holes.
+
+\end{itemize}
+
+\subsection{Finite Element Mesh Generation}
 \label{sec:mesh}
 
-%%%
+%%% Settings for mesh generation, issues 
 
-\subsection{Simulations}
-\label{sec:Sims}
+\begin{itemize}
 
-%%%
+\item Tetrahedral mesh was generated using Cleaver.
+
+\item Due to the complexity of the segmentation, with a sizing field of 0.7, a mesh was generated with no holes but with 80M elements. 
+
+\item To reduce the size of the mesh, a mesh was made with a sizing field of 1.0. The sizing field was then manipulated using SCIRun to change the scaling of the data (by 27?), and then input back into Cleaver and cleaved a new mesh. This mesh is 15.6M elements with no holes. This mesh contains one flat tetrahedra. 
+
+\item Mesh simplification?
+
+\end{itemize}
+
+\section{Conductivity Preparation}
+
+\begin{itemize}
+
+\item Homogeneous conductivities 
+
+\item White matter inhomogeneous tensor conductivities - scaling, ratios
+
+\end{itemize}
 
 \subsection{Mathematical Modeling}
 \label{sec:math}
@@ -49,6 +124,23 @@
 
 \subsection{Numerical Methods}
 \label{sec:numerical}
+
+%%%
+
+\subsection{Simulations}
+\label{sec:Sims}
+
+%%%SCIRun networks
+
+\begin{itemize}
+
+\item Forward problem 
+
+\item Include figures of SCIRun networks - how much detail??
+
+\end{itemize}
+
+END OF ALLY'S TEXT
 
 \subsubsection{Experimental Methods}
 \label{sec:ExpMethods}
