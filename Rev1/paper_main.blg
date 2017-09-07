@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2011)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper_main.aux
+The style file: unsrt.bst
+Database file #1: /Users/brettburton/Documents/Research/svn/sci-bibtex/strings.bib
+Database file #2: /Users/brettburton/Documents/Research/svn/sci-bibtex/biglit.bib
+Database file #3: /Users/brettburton/Documents/Research/svn/sci-bibtex/sci.bib
+Database file #4: /Users/brettburton/Documents/Research/svn/sci-bibtex/bmb.bib
+Repeated entry---line 5565 of file /Users/brettburton/Documents/Research/svn/sci-bibtex/bmb.bib
+ : @article{BMB:Joh2003
+ :                     ,
+I'm skipping whatever remains of this entry
+Database file #5: /Users/brettburton/Documents/Research/svn/sci-bibtex/kka.bib
+Warning--there's a number but no volume in SCI:Swe2010a
+You've used 34 entries,
+            1791 wiz_defined-function locations,
+            1498 strings with 32852 characters,
+and the built_in function-call counts, 8701 in all, are:
+= -- 775
+> -- 439
+< -- 3
++ -- 159
+- -- 125
+* -- 692
+:= -- 1407
+add.period$ -- 101
+call.type$ -- 34
+change.case$ -- 33
+chr.to.int$ -- 0
+cite$ -- 35
+duplicate$ -- 326
+empty$ -- 795
+format.name$ -- 125
+if$ -- 1880
+int.to.chr$ -- 0
+int.to.str$ -- 34
+missing$ -- 32
+newline$ -- 172
+num.names$ -- 34
+pop$ -- 55
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 135
+stack$ -- 0
+substring$ -- 749
+swap$ -- 60
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 89
+width$ -- 36
+write$ -- 371
+(There was 1 error message)

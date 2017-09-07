@@ -1,0 +1,83 @@
+% -*-latex-*-
+% Document name: Papers-svn/LaTeX/paper.tex
+% Creator: Rob MacLeod
+% Last update: July 18, 2017 by Ally Warner
+%    - created for distribution to students
+% A sample paper as a starting point for many real ones!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Select one of these two for the final or draft form
+%\documentclass{rspublic}
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[super]{cite}
+\usepackage{xcolor}
+\usepackage{amsmath}
+% This next package is optional and is one I (Rob) wrote so see me for
+% details of where to find it.  See the intro.tex file for an example of
+% its use.
+\usepackage{spacing}
+
+\textheight 8.6in
+\textwidth 6.5in
+\topmargin -.5in
+\oddsidemargin -.4in
+\setlength{\parskip}{\smallskipamount} 
+% Set up some stuff for the header and footer
+\headsep .08in
+\headsep .24in
+\footskip 25pt
+\headheight 15pt
+\lhead{\sf SCIRun Forward/Inverse Toolkit}
+\rhead{\sf Warner \etal{}}
+\lfoot{}
+\cfoot{{\footnotesize \sf Page  \underline{\hspace{1em}\thepage\hspace{1em}}}}
+\rfoot{}
+\renewcommand{\footrulewidth}{.8pt}
+\renewcommand{\headrulewidth}{0pt}
+
+% Change the footnotes from numbers to a series of symbols
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+% Creates numbering for equation calls without numbering options
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+% Allows forced line breaks in tabular by using the command \specialcell{ top text \\ bottom text}
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+% Some standard definitions that all files should have.
+\newcommand{\etal}{{\em et al.}}
+\newcommand{\etc}{{\em etc.,}}
+\newcommand{\eg}{{\em e.g.,}}
+\newcommand{\ie}{{\em i.e.,}}
+\newcommand{\ohm}{$\Omega$}
+\newcommand{\degrees}{{$^{\circ}$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Setting to control figure placement
+% These determine the rules used to place floating objects like figures 
+% They are only guides, but read the manual to see the effect of each.
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\bottomfraction}{1.0}
+\renewcommand{\textfraction}{0}
+\renewcommand{\baselinestretch}{1.0}
+
+\begin{document}
+
+\title{A Complete Brain Model (fix)}
+\author{$^1$Alexandra Warner, $^1$Chris Johnson\\ \\
+$^{1}$University of Utah, Salt Lake City UT; $^{2}$Placeholder in case we need to put more refs}
+%$^{+}$ Another Department }
+\maketitle
+
+%\input{abstract}
+%\newpage
+\input{Abstract}
+\input{Intro}
+\input{Methods}
+\input{Results}
+\input{Discussion}
+\input{Conclusion}
+\input{Acknowledgements}
+
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{/Users/ally_warner/Documents/SCI/AllyWarnerData/Paper/Rev1/aw}
+\end{document}
+
