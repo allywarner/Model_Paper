@@ -39,6 +39,15 @@
 
 \end{itemize}
 
+\subsubsection{fMRI}
+
+\begin{itemize}
+
+\item fMRI was preprocessed using the fcon\_1000 pipeline. (specific to the University of Utah), includes registration
+
+\end{itemize}
+
+
 \subsubsection{Registration}
 
 \begin{itemize}
@@ -48,14 +57,6 @@
 \item T2 was already registered because the patient did not move in between scans
 
 \item DWI was registered by first stripping out the skull using FSL, the skull stripped image was cleaned up using Seg3D, then using an affine registration using Slicer.  
-
-\end{itemize}
-
-\subsection{fMRI}
-
-\begin{itemize}
-
-\item fMRI was preprocessed using the fcon\_1000 pipeline. (specific to the University of Utah), includes registration
 
 \end{itemize}
 
