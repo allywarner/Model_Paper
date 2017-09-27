@@ -12,6 +12,8 @@
 
 %%% Types of Images, Acquisition, and conversion
 
+To construct a high-resolution, personalized, anisotropic volume conductor whole-head model, $T_1$-, $T_2$- weighted, diffusion weighted, and functional MR scans were acquired on a healthy volunteer who is female and 23 years of age on a Skyra 3T full-body scanner (Siemens Medical Solutions). The $T_1$- weighted... 
+
 \begin{itemize}
 
 \item Images were acquired using.... on a healthy volunteer (self, 24 years of age, female), MRI sequence (MPRAGE), -- OSIRIX documentation
@@ -50,46 +52,34 @@
 
 \subsubsection{Registration}
 
-\begin{itemize}
+All scans were registered to the $T_1$ MRI. Since the subject did not move between the $T_1$ and $T_2$ MRIs, they did not need to be registered. However, the subject did move for the DWI. The cage (find proper name) was upgraded to the a higher resolution option. The subject did not move again for the fMRI. 
 
-\item Images were all registered to T1 MRI image
+To register the DWI to the $T_1$ MRI, both scans must first be skull stripped which is to remove all tissues save for the brain. This was done using Brain Extraction Tool (BET2) in FMRIB Software Library (FSL). After the DWI was skull stripped, there was tissue remaining that was not part of the brain which was making the registration difficult. Both the $T_1$ MRI and the DWI were manually fixed using Seg3D by generating thresholding masks and erasing non-brain tissue. The DWI was registered to the $T_1$ MRI using 3D Slicer (ref) (www.slicer.org) with the skull stripped images with a rigid transform with six degrees of freedom. The 3D Slicer's linear registration transform output from registering the two brains was then applied to the full DWI image to register to the $T_1$ MRI. The fMRI was registered as described in a later section using the f\_con1000 pipeline. 
 
-\item T2 was already registered because the patient did not move in between scans
+FIGURES
 
-\item DWI was registered by first stripping out the skull using FSL, the skull stripped image was cleaned up using Seg3D, then using an affine registration using Slicer.  
-
-\end{itemize}
+Give each software a small definition?
 
 \subsection{MRI Segmentation of Tissues}
 \label{sec:Seg}
 
 %%% Preparation for segmentation, trials, manual work 
 
-(HOW MUCH MANUAL TIME???) - manual clean up requires to step through each slice in each direction (axial, sagittal, coronal), white matter took longest, then skull, then grey matter
+Segmentation of the head tissues proved to be the most time consuming section of the pipeline. The head volume was segmented into air, cerebral spinal fluid (CSF), white matter, grey matter, skull, sinus, eyes, and scalp. Segmentation of the brain can be difficult due to the similar intensities of the different tissues, making merely applying a median filter and thresholding the image not enough. (show a figure of this happening?)
 
-\begin{itemize}
+The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FSL FAST Segmentation. This outputs CSF, white matter, and grey matter layers as well as a bias-corrected $T_1$ MRI. This method, compared with Freesurfer, Statistical Parametric Mapping through Matlab (SPM), Atlas Based Classification through 3D Slicer, and Seg3D methods alone, produced the best initial brain segmentation results for this data due to how well it filled in each tissue. (??) (three panel figure of FSL FAST results)
 
-\item Volume was segmented into air, skin, skull, eyes, sinus, white matter, grey matter, and CSF.
+Although the FSL Fast results were a great improvement compared to the other segmentation trials, manual segmentation still needed to be done on those layers to add more detail and take out any cross over between the layers. Since white matter is the innermost layer, it was worked on first. All manual editing was done using Seg3D software. (ref) First a threshold layer was created from the FSL Fast output. Every slice in every direction was inspected and manually edited whether that was adding more detail that could be seen with the naked eye or cleaning up noise from FSL Fast. This manual editing of the white matter took roughly 40 hours of work. (Figure of before and after editing -- hook detail!) 
 
-\item Brain was segmented using FSL fast after skull stripped using BET2 (part of FSL), this was superior to freesurfer, gave segmentations for white matter, grey matter, and CSF.
+After the white matter was completed, a threshold layer for grey matter was created from the FSL Fast output. Each slice in every direction of the grey matter was inspected as well. The white matter layer was removed from the grey matter using a boolean remove mask filter. Any holes between the two layers were decided manually. More detail was added to the grey matter folds to add to the CSF layer as well. The last part of editing the grey matter was decided to add a grey matter nucleus to the layer. The thresholding algorithms generated a lot of noise around these nuclei so they were segmented by hand, using the paintbrush tool, and added to the grey matter layer with a boolean or mask filter. The nuclei were also removed from the white matter layer using a boolean remove mask filter. The manual editing of the grey matter took roughly 20 hours of work. (figures of grey matter and nuclei)
 
-\item Manual clean up of white matter was required after using FSL fast to add more accurate detail, remove grey matter and CSF regions.
+After the grey and white matter layers were completed, the CSF layer was made by creating a solid threshold layer for the entire brain and removing the white and grey matter layers using a boolean remove mask filter. The white matter, grey matter, and CSF layers were then checked for holes, whether on the surface or the inside of the segmentation. Also a quality check on the layers was performed to ensure that the layers were at least two pixels wide. This is an important note for creating a hole-less tetrahedral mesh. The creation of the CSF layer and the manual editing and hole checking took roughly 4 hours of work. (??) (Figures of CSF? Figures of all three brain layers together?)
 
-\item Manual clean up of grey matter was required after using FSL fast to fill any holes between the new white matter, thicken the back side of the brain, and to add grey matter nuclei that FSL fast could not differentiate. (figure??)
+The skull and the sinus layers are the most difficult to segment using only an MRI because they both appear black in the image, and the volunteer did not have a CT scan. (define CT-scan) The first attempt to create a bone layer was first to use FSL's skull stripping using the BET2 tool to create a skull. Then to threshold the remainder of the bones in Seg3D from the $T_1$ MRI and connect it to the skull from FSL. (figure and compare the two skull layers) Although this gave a decent skull for only having an MRI layer, the method to segment sinus layer was still to be determined. As a second method, the skull was estimated from an MR-based synthetic pseudo-CT. An improved iterative version of the patch-based method was used described by Torrado-Carvajal et al. [ref] that takes the $T_1$ and $T_2$ images as input, and synthesize the pseudo-CT based on both images providing more refined and accurate bone boundaries. MR input images were preprocessed to correct for MRI bias inhomogeneities (N4 bias correction tool in the Insight Toolkit)(ref?) prior to computing the pseudo-CT. (figure of the pseudo-CT output) This method gave a good starting place for skull segmentation, but still needed manual editing. After using a median filter (pixel radius?) and thresholding, each slice in each direction was manually edited by hand. (figure of segmentation) Since the volunteer has a permanent retainer in their mouth, the mouth was segmented as solid bone for now. This is not concerning because the EEG cap used did not cover the volunteer's mouth. (picture? explain EEG caps) The pseduo-CT image also provided a segmentation of the sinuses and esophagus by thresholding the black pixels. After the thresholding, the sinus layer was also manually edited. Quality checks were done on both layers to ensure that there were no holes and that the layers were at least two pixels thick. (figure) Manually editing the second skull and the sinuses took roughly 30-40 hours of work. 
 
-\item After grey and white matter were segmented, a complete brain segmentation was made. White and grey matter were removed giving the CSF layer.
+The eyes, skin, and air layers were simple, in comparison, to segment. The eyes were easily segmented by thresholding the $T_2$ MRI. (figure of T2 axially) The skin layer was segmented by thresholding the entire volume and removing all of the previous layers using a boolean remove mask filter. A quality check was performed on the skin layer to ensure that it was at least two pixels thick. The important places to check for this is at the bridge of the nose and the bottom of the chin. (sagittal figure) Last, the air was segmented by thresholding the entire image and removing the solid skin layer. (how much time?) There was a check to ensure that the segmentation did not contain any holes between layers after they were removed. (should I explain this procedure?) To create these three layers took roughly 8 hours of work, most of which was ensuring there were no holes in the segmentation. This is imperative to creating a quality mesh.
 
-\item Skin was segmented by thresholding the entire volume using Seg3D and removing the other layers afterwards. 
-
-\item Skull segmentations are difficult when using an MRI scan because bone appears black, and the volunteer did not have a CT-scan. A pseudo-CT scan was provided by Angel Torrado-Carvajal et al. (REFERENCE HERE) which was made from an all female database (!!). Manual clean up was required using Seg3D. The pseduo-CT scan also provided a segmentation of the sinuses and esophagus. Sinuses are hard to segment due to the lack of CT-scan as well.
-
-\item Eyes were segmented using T2 image and thersholding.
-
-\item Air was segmented as anything left over.
-
-\item Checked and filled for holes.
-
-\end{itemize}
+(Should I make a table instead for the amount of work?)
 
 \subsection{Finite Element Mesh Generation}
 \label{sec:mesh}
