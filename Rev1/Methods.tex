@@ -7,16 +7,30 @@
 \section{Methods}
 \label{sec:Methods}
 
+ADD PIPELINE FIGURE HERE
+
 \subsection{Data Acquisition}
 \label{sec:Data}
 
 %%% Types of Images, Acquisition, and conversion
 
-To construct a high-resolution, personalized, anisotropic volume conductor whole-head model, $T_1$-, $T_2$- weighted, diffusion weighted, and functional MR scans were acquired on a healthy volunteer who is female and 23 years of age on a Skyra 3T full-body scanner (Siemens Medical Solutions). The $T_1$- weighted... 
+To construct a high-resolution, personalized, anisotropic volume conductor whole-head model, $T_1$-, $T_2$- weighted, diffusion weighted, and functional MR scans were acquired on a healthy, female volunteer who is 23 years of age on a Skyra 3T full-body scanner (Siemens Medical Solutions). The $T_1$-weighted scan was performed with a 3D magnetization prepared rapid gradient echo (MPRAGE) sequence (Mugler and Brookman, 1990) -- get this reference. The parameters used were as follows: echo time: 3.41ms, repetition time: 2500ms, flip angle: 7 $^{\circ}$, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 10:42 minutes. The $T_2$-weighted scan was performed with a sampling perfection with application-optimized contrast using different flip angle evolutions (check ref) (SPACE) sequence (Lichy et. al., 2005; Mugler et al., 2000). The parameters used were as follows: echo time: 406ms, repetition time: 3200ms, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 5:34 minutes. The subject did not move in between the two scans so the scans should not need to be registered. 
 
 \begin{itemize}
 
-\item Images were acquired using.... on a healthy volunteer (self, 24 years of age, female), MRI sequence (MPRAGE), -- OSIRIX documentation
+\item Diffusion images - Clement
+
+The following parameters were used:  echo time: 76.8ms, repetition time: 4070ms, flip angle: 90 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 208mm, 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes.
+
+\item fMRI images 
+
+The following parameters were used:  echo time: 76.8ms, repetition time: 780ms, flip angle: 55 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 210mm, 72 slices with 2mm slice thickness. Acquisition time was 10:32 minutes.
+
+\item EEG
+
+A continuous electroencephalogram (EEG) was recorded using a 256-channel HydroCel Geodesic Sensor Net that was connected to a NetAmps 400 amplifier and referenced online to a single vertex electrode. Channel impedances were kept at or below 50 kOhms and signals were sampled at 250Hz. The EEG was recorded while the subject sat quietly in a chair, alternating two minute epochs of eyes open and eyes closed for a total of 12 minutes. 
+
+Add my picture?
 
 \end{itemize}
 
@@ -86,17 +100,7 @@ The eyes, skin, and air layers were simple, in comparison, to segment. The eyes 
 
 %%% Settings for mesh generation, issues 
 
-\begin{itemize}
-
-\item Tetrahedral mesh was generated using Cleaver.
-
-\item Due to the complexity of the segmentation, with a sizing field of 0.7, a mesh was generated with no holes but with 80M elements. 
-
-\item To reduce the size of the mesh, a mesh was made with a sizing field of 1.0. The sizing field was then manipulated using SCIRun to change the scaling of the data (by 27?), and then input back into Cleaver and cleaved a new mesh. This mesh is 15.6M elements with no holes. This mesh contains one flat tetrahedra. 
-
-\item Mesh simplification?
-
-\end{itemize}
+The tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. To make a very high resolution mesh with no holes the following parameters were used: scaling factor: 0.6, size multiplier: 1.0, lipschitz: 0.2, padding: 0, element sizing method: apdative. This produced a mesh with 60.2 million elements and 10.3 million nodes. (figure[s]) This mesh was so large due to the complexity of the segmentation. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by.... changing the scaling by 27??...The changed sizing field was then input into Cleaver and cleaved a new mesh. This produced a mesh with 15.7 million elements and 2.7 million nodes with no holes. However, this mesh does contain one flat tetrahedra. It is later removed in a SCIRun network, and is currently being investigated by Cleaver software developers. To reduce the size of the mesh even further, to be able to use on smaller machines, mesh simplification was considered via MeshLab (ref and figure). FIGURE THIS OUT. 
 
 \section{Conductivity Preparation}
 
