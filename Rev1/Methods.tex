@@ -39,11 +39,9 @@ Add my picture?
 
 \subsubsection{MRI Correction}
 
-\begin{itemize}
+Bias field signal is a low-frequency, smooth signal that corrupts MRI images due to inhomogeneities in the magnetic fields of the MRI machine by blurring images reducing the high frequencies of the images such as edges and contours. It changes the intensity values of image pixels so that the same tissue has a different distribution of grayscale intensities across the image. (ref) An estimated bias field correction on the $T_1$ and $T_2$ MRI's was done using FSL FAST.
 
-\item T1 and T2 images were preprocessed using FSL for bias field correction 
-
-\end{itemize}
+(figure of the settings)
 
 \subsubsection{DTI}
 
@@ -104,13 +102,11 @@ The tetrahedral finite element mesh was generated using Cleaver software (ref an
 
 \section{Conductivity Preparation}
 
-\begin{itemize}
+All conductivities were homogeneous with the exception of white matter when using DTI tensor data. These conductivities are as follows: ADD HERE (ref). When DTI tensor data is added, there are two approaches to converting the tensor data to conductivities. The first is scaling the data, and the second is giving the white matter a fixed ratio of conductivity. 
 
-\item Homogeneous conductivities 
+SCALING MATH (ref)
 
-\item White matter inhomogeneous tensor conductivities - scaling, ratios
-
-\end{itemize}
+RATIO MATH (ref)
 
 \subsection{Mathematical Modeling}
 \label{sec:math}
