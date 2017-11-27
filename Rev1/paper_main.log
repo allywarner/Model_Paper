@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  7 SEP 2017 14:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  24 NOV 2017 21:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -151,18 +151,18 @@ LaTeX Info: Redefining \] on input line 2666.
 (./spacing.sty) (./paper_main.aux)
 \openout1 = `paper_main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
-LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -226,29 +226,35 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 (./Abstract.tex) (./Intro.tex) (./Methods.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 17.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 21.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 17.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 21.
  [1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (9.54898pt too wide) in paragraph at lines 31--32
+[]\OT1/cmr/m/n/10.95 A con-tin-u-ous elec-troen-cephalo-gram (EEG) was recorded
+ us-ing a 256-channel Hy-dro-Cel Geodesic
+ []
 
-<Figures/Simulation_Pipeline_Flat.pdf, id=19, 1589.04665pt x 544.34065pt>
+[2] [3] [4] [5]
+<Figures/Simulation_Pipeline_Flat.pdf, id=27, 1589.04665pt x 544.34065pt>
 File: Figures/Simulation_Pipeline_Flat.pdf Graphic file (type pdf)
 
 <use Figures/Simulation_Pipeline_Flat.pdf>
 Package pdftex.def Info: Figures/Simulation_Pipeline_Flat.pdf used on input lin
-e 203.
+e 195.
 (pdftex.def)             Requested size: 469.75499pt x 160.91133pt.
+ [6 <./Figures/Simulation_Pipeline_Flat.pdf>]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 221.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 213.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 221.
- [4 <./Figures/Simulation_Pipeline_Flat.pdf>] [5]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 213.
+ [7]
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
@@ -257,62 +263,59 @@ Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
- <Figures/HeartRegions.jpg, id=1432, 881.2925pt x 687.56876pt>
+ <Figures/HeartRegions.jpg, id=1440, 881.2925pt x 687.56876pt>
 File: Figures/HeartRegions.jpg Graphic file (type jpg)
 
 <use Figures/HeartRegions.jpg>
-Package pdftex.def Info: Figures/HeartRegions.jpg used on input line 308.
+Package pdftex.def Info: Figures/HeartRegions.jpg used on input line 300.
 (pdftex.def)             Requested size: 256.0748pt x 199.77802pt.
- [6]
+ [8]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7 <./Figures/HeartRegions.jpg>]) (./Results.tex) (./Discussion.tex)
-(./Conclusion.tex [8]) (./Acknowledgements.tex) [9] (./paper_main.bbl
+[9 <./Figures/HeartRegions.jpg>]) (./Results.tex) (./Discussion.tex)
+(./Conclusion.tex [10]) (./Acknowledgements.tex) [11] (./paper_main.bbl
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¸ in font cmr10!
 Missing character: There is no â in font cmti10!
 Missing character: There is no € in font cmti10!
 Missing character: There is no ¦ in font cmti10!
- [10]
+
+[12]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¸ in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¶ in font cmr10!
-
-[11]) [12] (./paper_main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+ [13]) [14] (./paper_main.aux) ) 
 Here is how much of TeX's memory you used:
  2932 strings out of 493089
  38284 string characters out of 6134842
- 110517 words of memory out of 5000000
+ 110525 words of memory out of 5000000
  6357 multiletter control sequences out of 15000+600000
  11419 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,14n,43p,1290b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on paper_main.pdf (12 pages, 6421389 bytes).
+ 38i,14n,43p,2015b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
+fb>
+Output written on paper_main.pdf (14 pages, 6431858 bytes).
 PDF statistics:
- 1512 PDF objects out of 1728 (max. 8388607)
- 220 compressed objects within 3 object streams
+ 1519 PDF objects out of 1728 (max. 8388607)
+ 225 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

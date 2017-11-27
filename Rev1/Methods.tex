@@ -7,14 +7,30 @@
 \section{Methods}
 \label{sec:Methods}
 
+ADD PIPELINE FIGURE HERE
+
 \subsection{Data Acquisition}
 \label{sec:Data}
 
 %%% Types of Images, Acquisition, and conversion
 
+To construct a high-resolution, personalized, anisotropic volume conductor whole-head model, $T_1$-, $T_2$- weighted, diffusion weighted, and functional MR scans were acquired on a healthy, female volunteer who is 23 years of age on a Skyra 3T full-body scanner (Siemens Medical Solutions). The $T_1$-weighted scan was performed with a 3D magnetization prepared rapid gradient echo (MPRAGE) sequence (Mugler and Brookman, 1990) -- get this reference. The parameters used were as follows: echo time: 3.41ms, repetition time: 2500ms, flip angle: 7 $^{\circ}$, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 10:42 minutes. The $T_2$-weighted scan was performed with a sampling perfection with application-optimized contrast using different flip angle evolutions (check ref) (SPACE) sequence (Lichy et. al., 2005; Mugler et al., 2000). The parameters used were as follows: echo time: 406ms, repetition time: 3200ms, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 5:34 minutes. The subject did not move in between the two scans so the scans did not need to be registered. 
+
 \begin{itemize}
 
-\item Images were acquired using.... on a healthy volunteer (self, 24 years of age, female), MRI sequence (MPRAGE), -- OSIRIX documentation
+\item Diffusion images
+
+Diffusion scan multiband x2 , Grappa x2, 64 diffusion directions, anterior to posterior phase encoding direction. The following parameters were used:  echo time: 76.8ms, repetition time: 4070ms, flip angle: 90 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 208mm, 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes. 
+
+\item fMRI images 
+
+The following parameters were used:  echo time: 76.8ms, repetition time: 780ms, flip angle: 55 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 210mm, 72 slices with 2mm slice thickness. Acquisition time was 10:32 minutes.
+
+\item EEG
+
+A continuous electroencephalogram (EEG) was recorded using a 256-channel HydroCel Geodesic Sensor Net that was connected to a NetAmps 400 amplifier and referenced online to a single vertex electrode. Channel impedances were kept at or below 50 kOhms and signals were sampled at 250Hz. The EEG was recorded while the subject sat quietly in a chair, alternating two minute epochs of eyes open and eyes closed for a total of 12 minutes. 
+
+Add my picture?
 
 \end{itemize}
 
@@ -23,11 +39,9 @@
 
 \subsubsection{MRI Correction}
 
-\begin{itemize}
+Bias field signal is a low-frequency, smooth signal that corrupts MRI images due to inhomogeneities in the magnetic fields of the MRI machine by blurring images reducing the high frequencies of the images such as edges and contours. It changes the intensity values of image pixels so that the same tissue has a different distribution of grayscale intensities across the image. (ref) An estimated bias field correction on the $T_1$ and $T_2$ MRI's was done using FSL FAST.
 
-\item T1 and T2 images were preprocessed using FSL for bias field correction 
-
-\end{itemize}
+(figure of the settings)
 
 \subsubsection{DTI}
 
@@ -43,80 +57,58 @@
 
 \begin{itemize}
 
-\item fMRI was preprocessed using the fcon\_1000 pipeline. (specific to the University of Utah), includes registration
+\item fMRI was preprocessed using the fcon\_1000 pipeline. (specific to the University of Utah), includes registration to MRI
 
 \end{itemize}
 
 
 \subsubsection{Registration}
 
-\begin{itemize}
+All scans were registered to the $T_1$ MRI. Since the subject did not move between the $T_1$ and $T_2$ MRIs, they did not need to be registered. However, the subject did move for the DWI. The cage (find proper name) was upgraded to the a higher resolution option. The subject did not move again for the fMRI. 
 
-\item Images were all registered to T1 MRI image
+DWI and fMRI - manual registration using SCIRun
 
-\item T2 was already registered because the patient did not move in between scans
+To register the DWI to the $T_1$ MRI, both scans must first be skull stripped which is to remove all tissues save for the brain. This was done using Brain Extraction Tool (BET2) in FMRIB Software Library (FSL). After the DWI was skull stripped, there was tissue remaining that was not part of the brain which was making the registration difficult. Both the $T_1$ MRI and the DWI were manually fixed using Seg3D by generating thresholding masks and erasing non-brain tissue. The DWI was registered to the $T_1$ MRI using 3D Slicer (ref) (www.slicer.org) with the skull stripped images with a rigid transform with six degrees of freedom. The 3D Slicer's linear registration transform output from registering the two brains was then applied to the full DWI image to register to the $T_1$ MRI. The fMRI was registered as described in a later section using the f\_con1000 pipeline. 
 
-\item DWI was registered by first stripping out the skull using FSL, the skull stripped image was cleaned up using Seg3D, then using an affine registration using Slicer.  
+FIGURES
 
-\end{itemize}
+Give each software a small definition?
 
 \subsection{MRI Segmentation of Tissues}
 \label{sec:Seg}
 
 %%% Preparation for segmentation, trials, manual work 
 
-(HOW MUCH MANUAL TIME???) - manual clean up requires to step through each slice in each direction (axial, sagittal, coronal), white matter took longest, then skull, then grey matter
+Segmentation of the head tissues proved to be the most time consuming section of the pipeline. The head volume was segmented into air, cerebral spinal fluid (CSF), white matter, grey matter, skull, sinus, eyes, and scalp. Segmentation of the brain can be difficult due to the similar intensities of the different tissues, making merely applying a median filter and thresholding the image not enough. (show a figure of this happening?)
 
-\begin{itemize}
+The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FSL FAST Segmentation. This outputs CSF, white matter, and grey matter layers as well as a bias-corrected $T_1$ MRI. This method, compared with Freesurfer, Statistical Parametric Mapping through Matlab (SPM), Atlas Based Classification through 3D Slicer, and Seg3D methods alone, produced the best initial brain segmentation results for this data due to how well it filled in each tissue. (??) (three panel figure of FSL FAST results)
 
-\item Volume was segmented into air, skin, skull, eyes, sinus, white matter, grey matter, and CSF.
+Although the FSL Fast results were a great improvement compared to the other segmentation trials, manual segmentation still needed to be done on those layers to add more detail and take out any cross over between the layers. Since white matter is the innermost layer, it was worked on first. All manual editing was done using Seg3D software. (ref) First a threshold layer was created from the FSL Fast output. Every slice in every direction was inspected and manually edited whether that was adding more detail that could be seen with the naked eye or cleaning up noise from FSL Fast. This manual editing of the white matter took roughly 40 hours of work. (Figure of before and after editing -- hook detail!) 
 
-\item Brain was segmented using FSL fast after skull stripped using BET2 (part of FSL), this was superior to freesurfer, gave segmentations for white matter, grey matter, and CSF.
+After the white matter was completed, a threshold layer for grey matter was created from the FSL Fast output. Each slice in every direction of the grey matter was inspected as well. The white matter layer was removed from the grey matter using a boolean remove mask filter. Any holes between the two layers were decided manually. More detail was added to the grey matter folds to add to the CSF layer as well. The last part of editing the grey matter was decided to add a grey matter nucleus to the layer. The thresholding algorithms generated a lot of noise around these nuclei so they were segmented by hand, using the paintbrush tool, and added to the grey matter layer with a boolean or mask filter. The nuclei were also removed from the white matter layer using a boolean remove mask filter. The manual editing of the grey matter took roughly 20 hours of work. (figures of grey matter and nuclei)
 
-\item Manual clean up of white matter was required after using FSL fast to add more accurate detail, remove grey matter and CSF regions.
+After the grey and white matter layers were completed, the CSF layer was made by creating a solid threshold layer for the entire brain and removing the white and grey matter layers using a boolean remove mask filter. The white matter, grey matter, and CSF layers were then checked for holes, whether on the surface or the inside of the segmentation. Also a quality check on the layers was performed to ensure that the layers were at least two pixels wide. This is an important note for creating a hole-less tetrahedral mesh. The creation of the CSF layer and the manual editing and hole checking took roughly 4 hours of work. (??) (Figures of CSF? Figures of all three brain layers together?)
 
-\item Manual clean up of grey matter was required after using FSL fast to fill any holes between the new white matter, thicken the back side of the brain, and to add grey matter nuclei that FSL fast could not differentiate. (figure??)
+The skull and the sinus layers are the most difficult to segment using only an MRI because they both appear black in the image, and the volunteer did not have a CT scan. (define CT-scan) The first attempt to create a bone layer was first to use FSL's skull stripping using the BET2 tool to create a skull. Then to threshold the remainder of the bones in Seg3D from the $T_1$ MRI and connect it to the skull from FSL. (figure and compare the two skull layers) Although this gave a decent skull for only having an MRI layer, the method to segment sinus layer was still to be determined. As a second method, the skull was estimated from an MR-based synthetic pseudo-CT. An improved iterative version of the patch-based method was used described by Torrado-Carvajal et al. [ref] that takes the $T_1$ and $T_2$ images as input, and synthesize the pseudo-CT based on both images providing more refined and accurate bone boundaries. MR input images were preprocessed to correct for MRI bias inhomogeneities (N4 bias correction tool in the Insight Toolkit)(ref?) prior to computing the pseudo-CT. (figure of the pseudo-CT output) This method gave a good starting place for skull segmentation, but still needed manual editing. After using a median filter (pixel radius?) and thresholding, each slice in each direction was manually edited by hand. (figure of segmentation) Since the volunteer has a permanent retainer in their mouth, the mouth was segmented as solid bone for now. This is not concerning because the EEG cap used did not cover the volunteer's mouth. (picture? explain EEG caps) The pseduo-CT image also provided a segmentation of the sinuses and esophagus by thresholding the black pixels. After the thresholding, the sinus layer was also manually edited. Quality checks were done on both layers to ensure that there were no holes and that the layers were at least two pixels thick. (figure) Manually editing the second skull and the sinuses took roughly 30-40 hours of work. 
 
-\item After grey and white matter were segmented, a complete brain segmentation was made. White and grey matter were removed giving the CSF layer.
+The eyes, skin, and air layers were simple, in comparison, to segment. The eyes were easily segmented by thresholding the $T_2$ MRI. (figure of T2 axially) The skin layer was segmented by thresholding the entire volume and removing all of the previous layers using a boolean remove mask filter. A quality check was performed on the skin layer to ensure that it was at least two pixels thick. The important places to check for this is at the bridge of the nose and the bottom of the chin. (sagittal figure) Last, the air was segmented by thresholding the entire image and removing the solid skin layer. (how much time?) There was a check to ensure that the segmentation did not contain any holes between layers after they were removed. (should I explain this procedure?) To create these three layers took roughly 8 hours of work, most of which was ensuring there were no holes in the segmentation. This is imperative to creating a quality mesh.
 
-\item Skin was segmented by thresholding the entire volume using Seg3D and removing the other layers afterwards. 
-
-\item Skull segmentations are difficult when using an MRI scan because bone appears black, and the volunteer did not have a CT-scan. A pseudo-CT scan was provided by Angel Torrado-Carvajal et al. (REFERENCE HERE) which was made from an all female database (!!). Manual clean up was required using Seg3D. The pseduo-CT scan also provided a segmentation of the sinuses and esophagus. Sinuses are hard to segment due to the lack of CT-scan as well.
-
-\item Eyes were segmented using T2 image and thersholding.
-
-\item Air was segmented as anything left over.
-
-\item Checked and filled for holes.
-
-\end{itemize}
+(Should I make a table instead for the amount of work?)
 
 \subsection{Finite Element Mesh Generation}
 \label{sec:mesh}
 
 %%% Settings for mesh generation, issues 
 
-\begin{itemize}
-
-\item Tetrahedral mesh was generated using Cleaver.
-
-\item Due to the complexity of the segmentation, with a sizing field of 0.7, a mesh was generated with no holes but with 80M elements. 
-
-\item To reduce the size of the mesh, a mesh was made with a sizing field of 1.0. The sizing field was then manipulated using SCIRun to change the scaling of the data (by 27?), and then input back into Cleaver and cleaved a new mesh. This mesh is 15.6M elements with no holes. This mesh contains one flat tetrahedra. 
-
-\item Mesh simplification?
-
-\end{itemize}
+The tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. To make a very high resolution mesh with no holes the following parameters were used: scaling factor: 0.6, size multiplier: 1.0, lipschitz: 0.2, padding: 0, element sizing method: apdative. This produced a mesh with 60.2 million elements and 10.3 million nodes. (figure[s]) This mesh was so large due to the complexity of the segmentation. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by.... changing the scaling by 27??...The changed sizing field was then input into Cleaver and cleaved a new mesh. This produced a mesh with 15.7 million elements and 2.7 million nodes with no holes. However, this mesh does contain one flat tetrahedra. It is later removed in a SCIRun network, and is currently being investigated by Cleaver software developers. To reduce the size of the mesh even further, to be able to use on smaller machines, mesh simplification was considered via MeshLab (ref and figure). FIGURE THIS OUT. 
 
 \section{Conductivity Preparation}
 
-\begin{itemize}
+All conductivities were homogeneous with the exception of white matter when using DTI tensor data. These conductivities are as follows: ADD HERE (ref). When DTI tensor data is added, there are two approaches to converting the tensor data to conductivities. The first is scaling the data, and the second is giving the white matter a fixed ratio of conductivity. 
 
-\item Homogeneous conductivities 
+SCALING MATH (ref)
 
-\item White matter inhomogeneous tensor conductivities - scaling, ratios
-
-\end{itemize}
+RATIO MATH (ref)
 
 \subsection{Mathematical Modeling}
 \label{sec:math}
