@@ -14,13 +14,13 @@ ADD PIPELINE FIGURE HERE
 
 %%% Types of Images, Acquisition, and conversion
 
-To construct a high-resolution, personalized, anisotropic volume conductor whole-head model, $T_1$-, $T_2$- weighted, diffusion weighted, and functional MR scans were acquired on a healthy, female volunteer who is 23 years of age on a Skyra 3T full-body scanner (Siemens Medical Solutions). The $T_1$-weighted scan was performed with a 3D magnetization prepared rapid gradient echo (MPRAGE) sequence (Mugler and Brookman, 1990) -- get this reference. The parameters used were as follows: echo time: 3.41ms, repetition time: 2500ms, flip angle: 7 $^{\circ}$, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 10:42 minutes. The $T_2$-weighted scan was performed with a sampling perfection with application-optimized contrast using different flip angle evolutions (check ref) (SPACE) sequence (Lichy et. al., 2005; Mugler et al., 2000). The parameters used were as follows: echo time: 406ms, repetition time: 3200ms, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 5:34 minutes. The subject did not move in between the two scans so the scans should not need to be registered. 
+To construct a high-resolution, personalized, anisotropic volume conductor whole-head model, $T_1$-, $T_2$- weighted, diffusion weighted, and functional MR scans were acquired on a healthy, female volunteer who is 23 years of age on a Skyra 3T full-body scanner (Siemens Medical Solutions). The $T_1$-weighted scan was performed with a 3D magnetization prepared rapid gradient echo (MPRAGE) sequence (Mugler and Brookman, 1990) -- get this reference. The parameters used were as follows: echo time: 3.41ms, repetition time: 2500ms, flip angle: 7 $^{\circ}$, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 10:42 minutes. The $T_2$-weighted scan was performed with a sampling perfection with application-optimized contrast using different flip angle evolutions (check ref) (SPACE) sequence (Lichy et. al., 2005; Mugler et al., 2000). The parameters used were as follows: echo time: 406ms, repetition time: 3200ms, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 5:34 minutes. The subject did not move in between the two scans so the scans did not need to be registered. 
 
 \begin{itemize}
 
-\item Diffusion images - Clement
+\item Diffusion images
 
-The following parameters were used:  echo time: 76.8ms, repetition time: 4070ms, flip angle: 90 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 208mm, 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes.
+Diffusion scan multiband x2 , Grappa x2, 64 diffusion directions, anterior to posterior phase encoding direction. The following parameters were used:  echo time: 76.8ms, repetition time: 4070ms, flip angle: 90 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 208mm, 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes. 
 
 \item fMRI images 
 
@@ -57,7 +57,7 @@ Bias field signal is a low-frequency, smooth signal that corrupts MRI images due
 
 \begin{itemize}
 
-\item fMRI was preprocessed using the fcon\_1000 pipeline. (specific to the University of Utah), includes registration
+\item fMRI was preprocessed using the fcon\_1000 pipeline. (specific to the University of Utah), includes registration to MRI
 
 \end{itemize}
 
@@ -65,6 +65,8 @@ Bias field signal is a low-frequency, smooth signal that corrupts MRI images due
 \subsubsection{Registration}
 
 All scans were registered to the $T_1$ MRI. Since the subject did not move between the $T_1$ and $T_2$ MRIs, they did not need to be registered. However, the subject did move for the DWI. The cage (find proper name) was upgraded to the a higher resolution option. The subject did not move again for the fMRI. 
+
+DWI and fMRI - manual registration using SCIRun
 
 To register the DWI to the $T_1$ MRI, both scans must first be skull stripped which is to remove all tissues save for the brain. This was done using Brain Extraction Tool (BET2) in FMRIB Software Library (FSL). After the DWI was skull stripped, there was tissue remaining that was not part of the brain which was making the registration difficult. Both the $T_1$ MRI and the DWI were manually fixed using Seg3D by generating thresholding masks and erasing non-brain tissue. The DWI was registered to the $T_1$ MRI using 3D Slicer (ref) (www.slicer.org) with the skull stripped images with a rigid transform with six degrees of freedom. The 3D Slicer's linear registration transform output from registering the two brains was then applied to the full DWI image to register to the $T_1$ MRI. The fMRI was registered as described in a later section using the f\_con1000 pipeline. 
 
