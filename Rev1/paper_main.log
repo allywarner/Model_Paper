@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  27 NOV 2017 12:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  27 NOV 2017 15:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -234,33 +234,29 @@ e
 File: Figures/EEG_setup.png Graphic file (type png)
 
 <use Figures/EEG_setup.png>
-Package pdftex.def Info: Figures/EEG_setup.png used on input line 30.
+Package pdftex.def Info: Figures/EEG_setup.png used on input line 34.
 (pdftex.def)             Requested size: 199.16928pt x 248.55519pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 48.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 52.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 48.
- [2 <./Figures/EEG_setup.png>] [3] [4] [5]
-<Figures/Simulation_Pipeline_Flat.pdf, id=30, 1589.04665pt x 544.34065pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 52.
+ [2 <./Figures/EEG_setup.png>] [3] [4] [5] [6] [7]
+<Figures/Simulation_Pipeline_Flat.pdf, id=37, 1589.04665pt x 544.34065pt>
 File: Figures/Simulation_Pipeline_Flat.pdf Graphic file (type pdf)
 
 <use Figures/Simulation_Pipeline_Flat.pdf>
 Package pdftex.def Info: Figures/Simulation_Pipeline_Flat.pdf used on input lin
-e 193.
+e 234.
 (pdftex.def)             Requested size: 469.75499pt x 160.91133pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[6]
+ [8 <./Figures/Simulation_Pipeline_Flat.pdf>]
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 211.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 252.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 211.
- [7 <./Figures/Simulation_Pipeline_Flat.pdf>]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 252.
+ [9]
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
@@ -269,27 +265,30 @@ Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
- [8]
-<Figures/HeartRegions.jpg, id=1448, 881.2925pt x 687.56876pt>
+ <Figures/HeartRegions.jpg, id=1449, 881.2925pt x 687.56876pt>
 File: Figures/HeartRegions.jpg Graphic file (type jpg)
 
 <use Figures/HeartRegions.jpg>
-Package pdftex.def Info: Figures/HeartRegions.jpg used on input line 298.
+Package pdftex.def Info: Figures/HeartRegions.jpg used on input line 339.
 (pdftex.def)             Requested size: 256.0748pt x 199.77802pt.
- [9 <./Figures/HeartRegions.jpg>] [10])
-(./Results.tex) (./Discussion.tex) (./Conclusion.tex) (./Acknowledgements.tex)
-[11] (./paper_main.bbl
+ [10]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11 <./Figures/HeartRegions.jpg>]) (./Results.tex) (./Discussion.tex)
+(./Conclusion.tex [12]) (./Acknowledgements.tex) [13] (./paper_main.bbl
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¸ in font cmr10!
 Missing character: There is no â in font cmti10!
 Missing character: There is no € in font cmti10!
 Missing character: There is no ¦ in font cmti10!
- [12]
+
+[14]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¸ in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¶ in font cmr10!
- [13]) [14] (./paper_main.aux)
+ [15]) [16] (./paper_main.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -297,7 +296,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Here is how much of TeX's memory you used:
  2960 strings out of 492995
  38796 string characters out of 6132704
- 109786 words of memory out of 5000000
+ 111787 words of memory out of 5000000
  6450 multiletter control sequences out of 15000+600000
  11419 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -318,10 +317,10 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2
 17/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on paper_main.pdf (14 pages, 17239845 bytes).
+Output written on paper_main.pdf (16 pages, 17244972 bytes).
 PDF statistics:
- 1522 PDF objects out of 1728 (max. 8388607)
- 226 compressed objects within 3 object streams
+ 1528 PDF objects out of 1728 (max. 8388607)
+ 230 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
