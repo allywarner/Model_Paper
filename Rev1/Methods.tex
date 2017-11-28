@@ -20,7 +20,7 @@ The $T_1$-weighted scan was performed with a 3D magnetization prepared rapid gra
 
 The $T_2$-weighted scan was performed with a sampling perfection with application-optimized contrast using different flip angle evolutions (check ref) (SPACE) sequence (Lichy et. al., 2005; Mugler et al., 2000). The parameters used were as follows: echo time: 406ms, repetition time: 3200ms, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 5:34 minutes. The subject did not move in between the two scans so the scans did not need to be registered. 
 
-The diffusion weighted images (DWI) were acquired with multiband two-dimensional echo-planar imaging (EPI). Both phase encoding directions were performed (anterior to posterior and posterior to anterior) with 64 diffusion directions each. Further sequence parameters for each scan was as follows: echo time: 76.8ms, repetition time: 4070ms, flip angle: 90 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 208mm, 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes. 
+The diffusion weighted images (DWI) were acquired with multiband two-dimensional echo-planar imaging (EPI). Both phase encoding directions were performed (anterior to posterior and posterior to anterior) with 64 diffusion directions each. Further sequence parameters for each scan was as follows: echo time: 76.8ms, repetition time: 4070ms, flip angle: 90 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 208mm, 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes each. 
 
 The function MRI (fMRI) scans were acquired with blood oxygenation level dependent contrast (BOLD). The following parameters were used:  echo time: 76.8ms, repetition time: 780ms, flip angle: 55 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 210mm, 72 slices with 2mm slice thickness. Acquisition time was 10:32 minutes.
 
@@ -32,7 +32,7 @@ All acquisition reports will be included with the dataset.
 \begin{figure}[!th]
     \centering
     \includegraphics[width=7cm]{Figures/EEG_setup}
-    \caption{256-channel HydroCel Geodesic Sensor Net on Patient}
+    \caption{256-channel HydroCel Geodesic Sensor Net on Subject}
     \label{fig:eegsetup}
 \end{figure}
 
@@ -41,30 +41,43 @@ All acquisition reports will be included with the dataset.
 
 \subsubsection{MRI Correction}
 
-Bias field signal is a low-frequency, smooth signal that corrupts MRI images due to inhomogeneities in the magnetic fields of the MRI machine by blurring images reducing the high frequencies of the images such as edges and contours. It changes the intensity values of image pixels so that the same tissue has a different distribution of grayscale intensities across the image. (ref) An estimated bias field correction on the $T_1$ and $T_2$ MRI's was done using FMRIB Software Library (FSL) FAST.
+Bias field signal is a low-frequency, smooth signal that corrupts MRI images due to inhomogeneities in the magnetic fields of the MRI machine by blurring images reducing the high frequencies of the images such as edges and contours. It changes the intensity values of image pixels so that the same tissue has a different distribution of grayscale intensities across the image. (ref) An estimated bias field correction on the $T_1$ and $T_2$ MRI's was done using FMRIB Software Library (FSL) FAST, and will be further described in the Segmentation section.
 
-(figure of the settings)
+\subsubsection{DWI Distortion Correction}
 
-\subsubsection{DWI}
+Diffusion weighted images performed with EPI sequences are prone to distortions from rapid switching of diffusion weighting gradients, movement from the scanning table, and movement from the subject. The diffusion data was collected with reversed phase-encode blips (anterior to posterior (AP) and posterior to anterior(PA)), resulting in pairs of images with distortions going in opposite directions. From these pairs the susceptibility-induced off-resonance field was estimated using a method similar to that described in [Andersson 2003] as implemented in FSL [Smith 2004] and the two images were combined into a single corrected one. This was accounted for using FSL's topup and eddy command line tools.
+
+Before running these tools, an acquisition parameters text file needs to be created with the FSL-defined total readout time. There are two parameters that are frequently needed when calculating and applying field maps: the effective echo spacing and the total readout time for an EPI sequence. "Effective" echo spacing was used, rather than the actual echo spacing, in order to include the effects of parallel imaging, phase oversampling, etc. Multiplying this by the size of the reconstructed image in the phase direction will give you the reciprocal of the effective echo spacing:
+\[
+\text{Effective Echo Spacing (s) = 1/(BandwidthPerPixelPhaseEncode * MatrixSizePhase)}
+\]
+
+The total readout time (FSL definition) is:
+\[
+\text{Total readout time (FSL) = (MatrixSizePhase - 1) * EffectiveEchoSpacing}
+\]
+
+MRIConvert (ref) is a software package that provides all of the acquisition information about a dicom series, as well as converts to a NiFTI format, including effective echo spacing and total readout time. To obtain this information, first load in the dicom series for either DWI acquisition. Choose "Options" to ensure that the DWI will be saved as a NiFTI, and click "Convert All." This will save all the files into the output directory specified upon opening MRIConvert. The text file will include the FSL-defined total readout time which should be contained in the acquisition parameter file in seconds. The other input file needed 
+
+(MRIConvert, Options, and text file figures) (acquisition parameters file)
+
+
+
+%fslroi DWI\_up b0\_up 0 1
+%fslroi DWI\_down b0\_down 0 1
+
+%fslmerge -t both\_b0 b0\_up b0\_down
+
+%topup --imain=both_b0 --datain=acq_params.txt --config=mine.cnf --out=topup_results
+%applytopup --imain=b0_up,b0_down --inindex=1,2 --datain=acq_params.txt --topup=topup_results --out=b0_hifi
+
+%bet b0\_hifi b0\_hifi\_brain -m -f 0.2
+%eddy --imain=DWI\_up --mask=b0_hifi_brain_mask --index=index.txt --acqp=acq_params.txt --bvecs=dwi.bvec --bvals=dwi.bval --fwhm=0 --topup=topup_results --flm=quadratic --out=eddy_unwarped
+
+%0 1 0 0.066992
+%0 -1 0 0.066992
 
 \begin{itemize}
-
-\item MRIConvert - total readout time (explain what this is)There are two parameters you will frequently need when calculating and applying field maps: the effective echo spacing and the total readout time for an EPI sequence. We use the "effective" echo spacing, rather than the actual echo spacing, in order to include the effects of parallel imaging, phase oversampling, etc. Siemens has helpfully included this information in the DICOM file with the parameter "Bandwidth Per Pixel Phase Encode", stored in DICOM tag (0019, 1028). Multiplying this by the size of the reconstructed image in the phase direction (aka the number of reconstructed phase lines) will give you the reciprocal of the effective echo spacing:Effective Echo Spacing (s) = 1/(BandwidthPerPixelPhaseEncode * MatrixSizePhase)The size of the image in the phase direction is *usually* the first number in the field (0051, 100b), AcquisitionMatrixText. This is, however, not always the case, so it is better to determine the actual size (rows or columns) of your reconstructed image in the phase encode direction. You can also just read the effective echo spacing from the Series Info screen in MRIConvert if you are running the latest version.The total readout time (FSL definition) is the time from the center of the first echo to the center of the last:Total readout time (FSL) = (number of echoes - 1) * echo spacingIn the case of a simple EPI sequence, with no parallel imaging, no partial fourier, no phase oversampling, etc, this is straightforward enough. For the general case, it's appropriate to consider this an "effective" readout time, calculated using the effective echo spacing and the number of reconstructed phase lines:Total readout time (FSL) = (MatrixSizePhase - 1) * EffectiveEchoSpacingFor the majority of scans the length of a single echo is so short compared to the readout time that you can use the SPM definition of total readout time. SPM defines it to be from the beginning of the first echo to the end of the last echo. This is just the reciprocal of the Bandwidth Per Pixel Phase Encode:Total Readout Time (SPM) = 1/(BandwidthPerPixelPhaseEncode)Since the Bandwidth Per Pixel Phase Encode is in Hz, this will give the readout time in seconds. MRIConvert reports both definitions, and you should find them to be within 2\% of each other for most sequence.
-
-MRIConvert provides all of the acquisition information about a dicom series, as well as converts to a NiFTI format, including total readout time. Total readout time  To use the FSL's DWI preprocessing tool, FSL topup, total readout time is a necessary parameter. 
-
-\item FSL topup
-
-Data was collected with reversed phase-encode blips, resulting in pairs of images with distortions going in opposite directions. From these pairs the susceptibility-induced off-resonance field was estimated using a method similar to that described in [Andersson 2003] as implemented in FSL [Smith 2004] and the two images were combined into a single corrected one.
-
-Diffusion imaging is typically performed using diffusion weighted spin-echo EPI images. These images will be very sensitive to non-zero off-resonance fields. Such fields will be caused by the susceptibility distribution of the subjects head (known as a susceptibility-induced off-resonance field) and by eddy currents (EC) from the rapid switching of the diffusion weighting gradients (known as an eddy current-induced off-resonance field). In addition to that a diffusion protocol can be quite long, making it almost inevitable that the subject will move.
-
-The susceptibility induced field will be (to a first approximation) constant for all the acquired images, which means that the set of images will be internally consistent. It is a problem mainly because it will cause a geometric mismatch between the structural images (which are typically unaffected by distortions) and the diffusion image. topup is a tool for estimating the susceptibility induced field. In order to estimate and correct also for EC-induced distortions one will either need to run a tool like e.g. eddy\_correct prior to running applytopup. Or one can feed the output from topup into the eddy tool.
-
-The method that topup uses to find the susceptibility off-resonance field is to use two, or more, acquisitions where the acquisition parameters are different so that the mapping field->distortions are different. A typical example of this is two acquisitions with opposing polarities of the phase-encode blips which means that the same field leads to distortion going in opposing directions in the two acquisitions.
-
-Given the two images and knowledge of the acquisition parameters topup will then attempt to estimate the field by finding the field that when applied to the two volumes will maximise the similarity of the unwarped volumes. The similarity is gauged by the sum-of-squared differences between the unwarped images. This measure allows us to use Gauss-Newton for jointly finding the field and any movement that may have occurred between the two acquisitions.
-
 
 \item Make DTI - DTIFIT and SCIRun
 

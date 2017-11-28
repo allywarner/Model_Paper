@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  27 NOV 2017 15:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 NOV 2017 15:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -236,27 +236,31 @@ File: Figures/EEG_setup.png Graphic file (type png)
 <use Figures/EEG_setup.png>
 Package pdftex.def Info: Figures/EEG_setup.png used on input line 34.
 (pdftex.def)             Requested size: 199.16928pt x 248.55519pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 52.
+ [2 <./Figures/EEG_setup.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 82.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 52.
- [2 <./Figures/EEG_setup.png>] [3] [4] [5] [6] [7]
-<Figures/Simulation_Pipeline_Flat.pdf, id=37, 1589.04665pt x 544.34065pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 82.
+ [3] [4] [5]
+[6] <Figures/Simulation_Pipeline_Flat.pdf, id=33, 1589.04665pt x 544.34065pt>
 File: Figures/Simulation_Pipeline_Flat.pdf Graphic file (type pdf)
 
 <use Figures/Simulation_Pipeline_Flat.pdf>
 Package pdftex.def Info: Figures/Simulation_Pipeline_Flat.pdf used on input lin
-e 234.
+e 227.
 (pdftex.def)             Requested size: 469.75499pt x 160.91133pt.
- [8 <./Figures/Simulation_Pipeline_Flat.pdf>]
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 252.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 245.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 252.
- [9]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 245.
+[7] [8 <./Figures/Simulation_Pipeline_Flat.pdf>]
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
@@ -265,34 +269,27 @@ Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
 Missing character: There is no Ê in font cmr10!
- <Figures/HeartRegions.jpg, id=1449, 881.2925pt x 687.56876pt>
+
+<Figures/HeartRegions.jpg, id=1446, 881.2925pt x 687.56876pt>
 File: Figures/HeartRegions.jpg Graphic file (type jpg)
 
 <use Figures/HeartRegions.jpg>
-Package pdftex.def Info: Figures/HeartRegions.jpg used on input line 339.
+Package pdftex.def Info: Figures/HeartRegions.jpg used on input line 332.
 (pdftex.def)             Requested size: 256.0748pt x 199.77802pt.
- [10]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[11 <./Figures/HeartRegions.jpg>]) (./Results.tex) (./Discussion.tex)
-(./Conclusion.tex [12]) (./Acknowledgements.tex) [13] (./paper_main.bbl
+ [9] [10 <./Figures/HeartRegions.jpg>] [11])
+(./Results.tex) (./Discussion.tex) (./Conclusion.tex) (./Acknowledgements.tex)
+[12] (./paper_main.bbl
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¸ in font cmr10!
 Missing character: There is no â in font cmti10!
 Missing character: There is no € in font cmti10!
 Missing character: There is no ¦ in font cmti10!
-
-[14]
+ [13]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¸ in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ¶ in font cmr10!
- [15]) [16] (./paper_main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+ [14]) [15] (./paper_main.aux) ) 
 Here is how much of TeX's memory you used:
  2960 strings out of 492995
  38796 string characters out of 6132704
@@ -301,26 +298,27 @@ Here is how much of TeX's memory you used:
  11419 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,14n,43p,2015b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
-r/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
-local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
-cal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loca
-l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/
-texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/tex
-live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
-e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2
-017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
-17/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on paper_main.pdf (16 pages, 17244972 bytes).
+</usr/local/texlive/2017/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr9.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.p
+fb>
+Output written on paper_main.pdf (15 pages, 17242559 bytes).
 PDF statistics:
- 1528 PDF objects out of 1728 (max. 8388607)
- 230 compressed objects within 3 object streams
+ 1525 PDF objects out of 1728 (max. 8388607)
+ 228 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
