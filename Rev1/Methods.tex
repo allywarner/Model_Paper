@@ -57,25 +57,26 @@ The total readout time (FSL definition) is:
 \text{Total readout time (FSL) = (MatrixSizePhase - 1) * EffectiveEchoSpacing}
 \]
 
-MRIConvert (ref) is a software package that provides all of the acquisition information about a dicom series, as well as converts to a NiFTI format, including effective echo spacing and total readout time. To obtain this information, first load in the dicom series for either DWI acquisition. Choose "Options" to ensure that the DWI will be saved as a NiFTI, and click "Convert All." This will save all the files into the output directory specified upon opening MRIConvert. The text file will include the FSL-defined total readout time which should be contained in the acquisition parameter file in seconds. The other input file needed 
+MRIConvert (ref) is a software package that provides all of the acquisition information about a dicom series, as well as converts to a NiFTI format, including effective echo spacing and total readout time. To obtain this information, first load in the dicom series for either DWI acquisition. Choose "Options" to ensure that the DWI will be saved as a NiFTI, and click "Convert All." This will save all the files into the output directory specified upon opening MRIConvert. The text file will include the FSL-defined total readout time which should be contained in the acquisition parameter file in seconds. MRIConvert also outputs the b-values and b-vectors files, and they should be the same for both the DWI AP and DWI PA scans. The last input file needed is an "index.txt" file. This text file contains one column with 65 rows (for 64 directions plus the b0 image) of 1's.
 
-(MRIConvert, Options, and text file figures) (acquisition parameters file)
+(MRIConvert, Options, and text file figures) (acquisition parameters file and index file)(maybe a figure out the outputs in finder)
 
+Create a separate folder for topup results and include the following files: the acquisition parameters file, the index file, b-values, b-vectors, and the DWI AP and DWI PA files. In the following instructions, DWI AP was renamed as DWI\_up and DWIAP was renamed to DWI\_down. The b-values and b-vectors were renamed to dwi.bval and dwi.bvec, respectively. After all of these files are in place, run the following command line commands.
 
+COMMAND LINE ARUGEMNTS
 
-%fslroi DWI\_up b0\_up 0 1
-%fslroi DWI\_down b0\_down 0 1
+\texttt{fslroi DWI\_up b0\_up 0 1
+fslroi DWI\_down b0\_down 0 1}
 
-%fslmerge -t both\_b0 b0\_up b0\_down
+\texttt{fslmerge -t both\_b0 b0\_up b0\_down}
 
-%topup --imain=both_b0 --datain=acq_params.txt --config=mine.cnf --out=topup_results
-%applytopup --imain=b0_up,b0_down --inindex=1,2 --datain=acq_params.txt --topup=topup_results --out=b0_hifi
+\texttt{topup --imain=both\_b0 --datain=acq_params.txt --config=mine.cnf --out=topup\_results
+applytopup --imain=b0\_up,b0\_down --inindex=1,2 --datain=acq_params.txt --topup=topup\_results --out=b0\_hifi}
 
-%bet b0\_hifi b0\_hifi\_brain -m -f 0.2
-%eddy --imain=DWI\_up --mask=b0_hifi_brain_mask --index=index.txt --acqp=acq_params.txt --bvecs=dwi.bvec --bvals=dwi.bval --fwhm=0 --topup=topup_results --flm=quadratic --out=eddy_unwarped
+\texttt{bet b0\_hifi b0\_hifi\_brain -m -f 0.2
+eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_params.txt --bvecs=dwi.bvec --bvals=dwi.bval --fwhm=0 --topup=topup\_results --flm=quadratic --out=eddy\_unwarped}
 
-%0 1 0 0.066992
-%0 -1 0 0.066992
+These commands . The distortion corrected file is named "eddy\_unwarped.nii."
 
 \begin{itemize}
 
