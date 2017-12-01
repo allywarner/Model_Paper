@@ -63,20 +63,27 @@ MRIConvert (ref) is a software package that provides all of the acquisition info
 
 Create a separate folder for topup results and include the following files: the acquisition parameters file, the index file, b-values, b-vectors, and the DWI AP and DWI PA files. In the following instructions, DWI AP was renamed as DWI\_up and DWIAP was renamed to DWI\_down. The b-values and b-vectors were renamed to dwi.bval and dwi.bvec, respectively. After all of these files are in place, run the following command line commands.
 
-COMMAND LINE ARUGEMNTS
+\lstdefinestyle{DOS}
+{
+    backgroundcolor=\color{white},
+    basicstyle=\scriptsize\color{black}\ttfamily
+}
 
-\texttt{fslroi DWI\_up b0\_up 0 1
-fslroi DWI\_down b0\_down 0 1}
+\begin{lstlisting}[style=DOS]
+fslroi DWI\_up b0\_up 0 1
+fslroi DWI\_down b0\_down 0 1
 
-\texttt{fslmerge -t both\_b0 b0\_up b0\_down}
+fslmerge -t both\_b0 b0\_up b0\_down
 
-\texttt{topup --imain=both\_b0 --datain=acq_params.txt --config=mine.cnf --out=topup\_results
-applytopup --imain=b0\_up,b0\_down --inindex=1,2 --datain=acq_params.txt --topup=topup\_results --out=b0\_hifi}
+topup --imain=both\_b0 --datain=acq_params.txt --config=mine.cnf --out=topup\_results
+applytopup --imain=b0\_up,b0\_down --inindex=1,2 --datain=acq_params.txt --topup=topup\_results --out=b0\_hifi
 
-\texttt{bet b0\_hifi b0\_hifi\_brain -m -f 0.2
-eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_params.txt --bvecs=dwi.bvec --bvals=dwi.bval --fwhm=0 --topup=topup\_results --flm=quadratic --out=eddy\_unwarped}
+bet b0\_hifi b0\_hifi\_brain -m -f 0.2
+eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_params.txt --bvecs=dwi.bvec --bvals=dwi.bval --fwhm=0 --topup=topup\_results --flm=quadratic --out=eddy\_unwarped
 
-These commands . The distortion corrected file is named "eddy\_unwarped.nii."
+\end{lstlisting}
+
+These commands first obtain the b0 image, which is the baseline image used for calculating field maps, for both encoding directions. Then the two b0's are merged together into one file. Topup and eddy are applied for distortion correction. Bet is applied for brain extraction. The distortion corrected file is named "eddy\_unwarped.nii."
 
 \begin{itemize}
 
