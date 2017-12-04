@@ -85,13 +85,9 @@ eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_p
 
 These commands first obtain the b0 image, which is the baseline image used for calculating field maps, for both encoding directions. Then the two b0's are merged together into one file. Topup and eddy are applied for distortion correction. Bet is applied for brain extraction. The distortion corrected file is named "eddy\_unwarped.nii."
 
-\begin{itemize}
+\subsubsection{Diffusion Tensor Images}
 
-\item Make DTI - DTIFIT and SCIRun
-
-After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT. 
-
-\end{itemize}
+After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT. Upon opening FSL choose "FDT Diffusion." Then choose "DTIFIT Reconstruct diffusion tensors" in the drop down menu and select to input files manually. 
 
 \subsubsection{fMRI}
 
@@ -103,6 +99,8 @@ After the DWI images have been corrected, diffusion tensor images (DTI) are calc
 
 
 \subsubsection{Registration}
+
+Since the subject did not move in between 
 
 All scans were registered to the $T_1$ MRI. Since the subject did not move between the $T_1$ and $T_2$ MRIs, they did not need to be registered. However, the subject did move for the DWI. The cage (find proper name) was upgraded to the a higher resolution option. The subject did not move again for the fMRI. 
 
