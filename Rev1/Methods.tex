@@ -76,7 +76,9 @@ fslroi DWI\_down b0\_down 0 1
 fslmerge -t both\_b0 b0\_up b0\_down
 
 topup --imain=both\_b0 --datain=acq_params.txt --config=mine.cnf --out=topup\_results
-applytopup --imain=b0\_up,b0\_down --inindex=1,2 --datain=acq_params.txt --topup=topup\_results --out=b0\_hifi
+applytopup --imain=b0\_up,b0\_down --inindex=1,2 --datain=acq_params.txt --topup=topup\_results 
+
+ß--out=b0\_hifi
 
 bet b0\_hifi b0\_hifi\_brain -m -f 0.2
 eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_params.txt --bvecs=dwi.bvec --bvals=dwi.bval --fwhm=0 --topup=topup\_results --flm=quadratic --out=eddy\_unwarped
@@ -87,7 +89,29 @@ These commands first obtain the b0 image, which is the baseline image used for c
 
 \subsubsection{Diffusion Tensor Images}
 
-After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT. Upon opening FSL choose "FDT Diffusion." Then choose "DTIFIT Reconstruct diffusion tensors" in the drop down menu and select to input files manually. 
+After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT. Upon opening FSL choose "FDT Diffusion." Then choose "DTIFIT Reconstruct diffusion tensors" in the drop down menu, select to input files manually, and put in the following files. (reference and figure of DTIFIT) 
+
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ Diffusion weighted data: & eddy\_unwarped.nii \\ 
+ \hline
+ BET binary brain mask: & b0\_hifi\_brain\_mask.nii \\ 
+ \hline
+ Output basename: & desired output location \\ 
+ \hline
+ Gradient directions: & dwi.bvec\\
+ \hline
+ b values: & dwi.bval\\
+ \hline
+\end{tabular}
+\end{center}
+
+DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (named V1, V2, and V3) for the diffusion tensor field. The files were converted from NiFTI format to nrrd format using ITK-SNAP (reference and figure) although there is a loss of precision. The files were then input into SCIRun to build the tensor field using the eigenvalue and eigenvectors. The SCIRun CalculateFieldData module only requires two eigenvectors as input because it calculates the third eigenvector automatically since it should be orthogonal to the first two. This process can be done in either SCIRun 4 or SCIRun 5 and the same results are produced. 
+
+(SCIRun figures of building DTI) 
+
+The tensor field was built in SCIRun rather than in 3D Slicer (reference if haven't seen yet) or FSL DTIFIT because the output data would be "backwards" and couldn't be registered with the mesh. 
 
 \subsubsection{fMRI}
 
