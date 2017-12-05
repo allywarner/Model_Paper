@@ -115,26 +115,17 @@ The tensor field was built in SCIRun rather than in 3D Slicer (reference if have
 
 \subsubsection{fMRI}
 
-\begin{itemize}
+fMRI data was preprocessed using the 1000 Functional Connectomes Project pipeline scripts (reference) which do anatomical preprocessing, functional preprocessing, registration to the $T_1$ MRI, segmentation, and nuisance signal regress. The outline pipeline used on this fMRI dataset, specific to the University of Utah, can be found at https://bitbucket.org/UtahBrainNetworks/base\_prep and includes specific instructions for installation, compilation, and usage.  
 
-\item fMRI was preprocessed using the fcon\_1000 pipeline. (specific to the University of Utah), includes registration to MRI
+After running fMRI data through the pipeline ``rest.nii", the preprocessed fMRI file, was opened in Matlab using the ``load\_nii(`rest.nii')" function within the NiFTI toolbox. The 4D "img" variable (x, y, z, t) is then resized to a 2D variable (x*y*z,t) and saved to use in SCIRun. (reference for NiFTI toolbox?)
 
-\end{itemize}
+\subsubsection{EEG}
 
+The filetype of the EEG recordings in an .edf file. The EEG signal matrix was obtained using a Matlab script called ``edfRead.m." To run this script use the following command ``[hdr, record] = edfread(fname)." The variable `record' will contain the signals. The last two rows of the matrix were removed because they did not correspond to EEG electrodes. Also the beginning and end of the experiment were cut out of the matrix when the EEG net is being put on and taken off. 
 
 \subsubsection{Registration}
 
-Since the subject did not move in between 
-
-All scans were registered to the $T_1$ MRI. Since the subject did not move between the $T_1$ and $T_2$ MRIs, they did not need to be registered. However, the subject did move for the DWI. The cage (find proper name) was upgraded to the a higher resolution option. The subject did not move again for the fMRI. 
-
-DWI and fMRI - manual registration using SCIRun
-
-To register the DWI to the $T_1$ MRI, both scans must first be skull stripped which is to remove all tissues save for the brain. This was done using Brain Extraction Tool (BET2) in FMRIB Software Library (FSL). After the DWI was skull stripped, there was tissue remaining that was not part of the brain which was making the registration difficult. Both the $T_1$ MRI and the DWI were manually fixed using Seg3D by generating thresholding masks and erasing non-brain tissue. The DWI was registered to the $T_1$ MRI using 3D Slicer (ref) (www.slicer.org) with the skull stripped images with a rigid transform with six degrees of freedom. The 3D Slicer's linear registration transform output from registering the two brains was then applied to the full DWI image to register to the $T_1$ MRI. The fMRI was registered as described in a later section using the f\_con1000 pipeline. 
-
-FIGURES
-
-Give each software a small definition?
+Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registration was necessary before segmentation and meshing. The tetrahedral mesh was generated in its own coordinate space from the segmentation, and was registered to the DTI coordinate space with a rigid registration using SCIRun. (figure of registration network -- explain more?) The fMRI data was registered to the mesh coordinate space with a rigid registration using SCIRun. (figure registration network -- explain more?) The fMRI data can use same transform to register to DTI later if desired. 
 
 \subsection{MRI Segmentation of Tissues}
 \label{sec:Seg}
@@ -162,9 +153,9 @@ The eyes, skin, and air layers were simple, in comparison, to segment. The eyes 
 
 %%% Settings for mesh generation, issues 
 
-The tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. To make a very high resolution mesh with no holes the following parameters were used: scaling factor: 0.6, size multiplier: 1.0, lipschitz: 0.2, padding: 0, element sizing method: apdative. This produced a mesh with 60.2 million elements and 10.3 million nodes. (figure[s]) This mesh was so large due to the complexity of the segmentation. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by.... changing the scaling by 27??...The changed sizing field was then input into Cleaver and cleaved a new mesh. This produced a mesh with 15.7 million elements and 2.7 million nodes with no holes. However, this mesh does contain one flat tetrahedra. It is later removed in a SCIRun network, and is currently being investigated by Cleaver software developers. To reduce the size of the mesh even further, to be able to use on smaller machines, mesh simplification was considered via MeshLab (ref and figure). FIGURE THIS OUT. 
+The tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. To make a very high resolution mesh with no holes the following parameters were used: scaling factor: 0.6, size multiplier: 1.0, lipschitz: 0.2, padding: 0, element sizing method: apdative. This produced a mesh with 60.2 million elements and 10.3 million nodes. (figure[s]) This mesh was so large due to the complexity of the segmentation. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by.... changing the scaling by 27??...The changed sizing field was then input into Cleaver and cleaved a new mesh. This produced a mesh with 15.7 million elements and 2.7 million nodes with no holes. However, this mesh does contain one flat tetrahedra. It is later removed in a SCIRun network, and is currently being investigated by Cleaver software developers. 
 
-\section{Conductivity Preparation}
+\subsection{Conductivity Preparation}
 
 All conductivities were homogeneous with the exception of white matter when using DTI tensor data. These conductivities are as follows: ADD HERE (ref). When DTI tensor data is added, there are two approaches to converting the tensor data to conductivities. The first is scaling the data, and the second is giving the white matter a fixed ratio of conductivity. 
 
