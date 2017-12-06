@@ -155,23 +155,12 @@ The eyes, skin, and air layers were simple, in comparison, to segment. The eyes 
 
 The tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. To make a very high resolution mesh with no holes the following parameters were used: scaling factor: 0.6, size multiplier: 1.0, lipschitz: 0.2, padding: 0, element sizing method: apdative. This produced a mesh with 60.2 million elements and 10.3 million nodes. (figure[s]) This mesh was so large due to the complexity of the segmentation. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by changing how quickly the elements increase in size. This was done by multiplying the scaling by 27. The changed sizing field was then input into Cleaver and cleaved a new mesh. This produced a mesh with 15.7 million elements and 2.7 million nodes with no holes. However, this mesh does contain one flat tetrahedra. It is later removed in a SCIRun network, and is currently being investigated by Cleaver software developers. 
 
-\subsection{Conductivity Preparation}
-
-All conductivities were homogeneous with the exception of white matter when using tensor data. These conductivities are as follows: ADD HERE (ref). When DTI tensor data is added, there are two approaches to converting the tensor data to conductivities. The first is scaling the data, and the second is giving the white matter a fixed ratio of conductivity. 
-
-SCALING MATH (ref)
-
-RATIO MATH (ref)
-
 \subsection{Mathematical Modeling}
 \label{sec:math}
 
 %%%
 
-\subsection{Numerical Methods}
-\label{sec:numerical}
-
-%%%
+\subsubsection{Conductivity Preparation}
 
 A {\em typical} bioelectric volume conductor can be posed as the following
 boundary value problem:
@@ -208,18 +197,18 @@ assumes a description of the bioelectric current source within the
 brain (this usually takes the form of dipoles or multipoles) and
 calculates the field within the brain and on the surface of the scalp.
 
-\subsection{Simulations}
-\label{sec:Sims}
+All conductivities were homogeneous with the exception of white matter when using tensor data. These conductivities are as follows: ADD HERE (ref). When DTI tensor data is added, there are two approaches to converting the tensor data to conductivities. The first is scaling the data, and the second is giving the white matter a fixed ratio of conductivity. 
 
-%%%SCIRun networks
+SCALING MATH (ref)
 
-\begin{itemize}
+RATIO MATH (ref)
 
-\item Forward problem 
+\subsection{Numerical Methods}
+\label{sec:numerical}
 
-\item Include figures of SCIRun networks - how much detail??
+%%%FEM
 
-\end{itemize}
+Finite element math
 
 END OF ALLY'S TEXT
 
@@ -484,33 +473,3 @@ to solve Equation  \ref{eq:ReducedFormula} numerically.  Within the SCIRun envir
 and conductivity tensors were applied to the  mesh, initial and boundary conditions were defined, and 
 border regions were generated in order to compute extracellular potentials by way of a conjugate gradient 
 method with a Jacobi preconditioner.
-
-\subsubsection{Comparison Approaches}
-Epicardial potentials compared using CC, RMS Error, and DICE correlation...Do it first, then explain it.
-
-\subsubsection{Validation}
-%%% This paragraph addresses sock registration and data mapping to the mesh 
-In order to validate solutions of the ischemic condition, experimental data was compared to simulated 
-solutions.  Experimental data were mapped to the mesh by digitizing and later registering sock electrodes to points identified on the surface of the cardiac mesh.  Potential data from sock electrodes were interpolated onto the ventricular surfaces and compared to simulated potentials on a node-to-node correspondence.  RMS error and the correlation coefficient between simulated epicardial potentials and experimental sock data were generated to assess accuracy of simulation results.
-
-
-
-%\subsubsection{Comparison models}
-%%% This paragraph highlights other ischemic zone representations (lots of refs)
-% rough writing
-%Similar to the us of FISP and FLASH MRI modalities to derive subject-specific cardiac geome
-%%% This paragraph outlines the system for comparing current vs. subject specific zones
-% rough writing
-%Similar to the us of FISP and FLASH MRI modalities to derive subject-specific cardiac geome
-
-%\subsection{Methods subsection}
-%\label{sec:methodssub}
-%
-%A methods  subsection, Section~\ref{sec:methodssub}
-%
-%\subsubsection{A methods subsubsection}
-%\label{sec:methodssubsub}
-%
-%And a subsubsection, Section~\ref{sec:methodssubsub}.
-
-
