@@ -1,19 +1,17 @@
 % Filename: ForwardInverseToolkit.tex
 % Last update: Thursday, September 7, 2017 by Ally Warner
-%    - created
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Methods}
 \label{sec:Methods}
 
 %%Pipeline figure
-\begin{figure}[!th]
-    \centering
-    \includegraphics[width=17cm]{Figures/pipeline}
-    \caption{Head/Brain Model Pipeline}
-    \label{fig:pipeline}
-\end{figure}
+%\begin{figure}[!th]
+%    \centering
+%    \includegraphics[width=19cm]{Figures/pipeline}
+%    \caption{Head/Brain Model Pipeline}
+%    \label{fig:pipeline}
+%\end{figure}
 
 \subsection{Data Acquisition}
 \label{sec:Data}
@@ -35,19 +33,19 @@ A continuous electroencephalogram (EEG) was recorded using a 256-channel HydroCe
 All acquisition reports will be included with the dataset. 
 
 %%EEG figure
-\begin{figure}[!th]
-    \centering
-    \includegraphics[width=7cm]{Figures/EEG_setup}
-    \caption{256-channel HydroCel Geodesic Sensor Net on Subject}
-    \label{fig:eegsetup}
-\end{figure}
+%\begin{figure}[!th]
+%    \centering
+%    \includegraphics[width=7cm]{Figures/EEG_setup}
+%    \caption{256-channel HydroCel Geodesic Sensor Net on Subject}
+%    \label{fig:eegsetup}
+%\end{figure}
 
 \subsection{Preprocessing of Images}
 \label{sec:preprocess}
 
 \subsubsection{MRI Correction}
 
-Bias field signal is a low-frequency, smooth signal that corrupts MRI images due to inhomogeneities in the magnetic fields of the MRI machine by blurring images reducing the high frequencies of the images such as edges and contours. It changes the intensity values of image pixels so that the same tissue has a different distribution of grayscale intensities across the image. (ref) An estimated bias field correction on the $T_1$ and $T_2$ MRI's was done using FMRIB Software Library (FSL) FAST, and will be further described in the Segmentation section.
+Bias field signal is a low-frequency, smooth signal that corrupts MRI images due to inhomogeneities in the magnetic fields of the MRI machine by blurring images reducing the high frequencies of the images such as edges and contours. It changes the intensity values of image pixels so that the same tissue has a different distribution of grayscale intensities across the image. (ref) An estimated bias field correction on the $T_1$ and $T_2$ MRI's was done using FMRIB Software Library (FSL) FAST, and will be further described in the Section \ref{sec:Seg}.
 
 \subsubsection{DWI Distortion Correction}
 
@@ -176,7 +174,32 @@ Grey Matter & 20 \\
 
 %%% Settings for mesh generation, issues 
 
-Segmentations were used to generate realistic 3D geometries for use in subsequent finite element simulations. A smooth, linear, subject-specific, boundary-conforming, tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. Cleaver is a multimaterial meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources.  To make a very high resolution mesh with no holes the following parameters were used: scaling factor: 0.6, size multiplier: 1.0, lipschitz: 0.2, padding: 0, element sizing method: apdative. Along with these parameters, indicator functions must be input to Cleaver. These are made by creating distance maps in Seg3D. Ensure the map is inverted before making the distance map. This produced a mesh with 60.2 million elements and 10.3 million nodes. (figure[s]) This mesh was so large due to the complexity of the segmentation. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by changing how quickly the elements increase in size. This was done by multiplying the scaling by a factor of 27. The changed sizing field was then input into Cleaver with the same indicator functions and cleaved a new mesh. This produced a mesh with 15.7 million elements and 2.7 million nodes with no holes. However, this mesh does contain one flat tetrahedra. It is later removed in a SCIRun network, and is currently being investigated by Cleaver software developers. 
+Segmentations were used to generate realistic 3D geometries for use in subsequent finite element simulations. A smooth, linear, subject-specific, boundary-conforming, tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. Cleaver is a multimaterial meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources. To make a very high resolution mesh with no holes the following parameters were used: 
+\begin{center}
+\begin{tabular}{|c|}
+\hline
+Cleaver Settings (high resolution)\\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|c|c}
+\hline
+scaling factor: & 0.6\\
+\hline
+size multiplier: & 1.0\\
+\hline
+lipschitz: & 0.2\\
+\hline
+padding: &0\\ 
+\hline
+element sizing method: & apdative\\
+ \hline
+\end{tabular}
+\end{center}
+
+ Along with these parameters, indicator functions must be input to Cleaver. These are made by creating distance maps in Seg3D. Ensure the map is inverted before making the distance map. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by changing how quickly the elements increase in size. This was done by multiplying the scaling by a factor of 27. The changed sizing field was then input into Cleaver with the same indicator functions and cleaved a new mesh.
 
 \subsection{Mathematical Modeling}
 \label{sec:math}

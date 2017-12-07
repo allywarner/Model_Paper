@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 DEC 2017 21:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  7 DEC 2017 12:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -269,41 +269,24 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 11.
 ) (./Methods.tex
-<Figures/pipeline.pdf, id=1, 1158.89456pt x 251.46617pt>
-File: Figures/pipeline.pdf Graphic file (type pdf)
-
-<use Figures/pipeline.pdf>
-Package pdftex.def Info: Figures/pipeline.pdf used on input line 13.
-(pdftex.def)             Requested size: 483.69684pt x 104.9551pt.
-
-Overfull \hbox (13.94185pt too wide) in paragraph at lines 13--14
- [][] 
- []
-
 [1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Figur
-es/pipeline.pdf>] <Figures/EEG_setup.png, id=33, 2350.7825pt x 2933.96124pt>
-File: Figures/EEG_setup.png Graphic file (type png)
-
-<use Figures/EEG_setup.png>
-Package pdftex.def Info: Figures/EEG_setup.png used on input line 40.
-(pdftex.def)             Requested size: 199.16928pt x 248.55519pt.
- [2] [3 <./Figures/EEG_setup.png>]
-Overfull \hbox (14.75574pt too wide) in paragraph at lines 85--87
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2]
+Overfull \hbox (14.75574pt too wide) in paragraph at lines 83--85
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (40.2563pt too wide) in paragraph at lines 91--93
+Overfull \hbox (40.2563pt too wide) in paragraph at lines 89--91
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[4] [5] [6] [7] [8]
+[3] [4] [5] [6] [7]
 
-LaTeX Warning: Citation `BMB:Wan2013' on page 9 undefined on input line 270.
+LaTeX Warning: Citation `BMB:Wan2013' on page 8 undefined on input line 293.
 
-) (./Results.tex [9]) (./Conclusion.tex) (./Acknowledgements.tex) [10]
+) (./Results.tex [8]) (./Conclusion.tex [9]) (./Acknowledgements.tex) [10]
 (./paper_main.bbl) [11] (./paper_main.aux)
 
 LaTeX Warning: There were undefined references.
@@ -313,10 +296,10 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 4105 strings out of 493089
- 55569 string characters out of 6134842
- 137035 words of memory out of 5000000
- 7519 multiletter control sequences out of 15000+600000
+ 4092 strings out of 493089
+ 55324 string characters out of 6134842
+ 137036 words of memory out of 5000000
+ 7510 multiletter control sequences out of 15000+600000
  10844 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,43p,2015b,900s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -336,10 +319,10 @@ ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
 015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/201
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on paper_main.pdf (11 pages, 11130080 bytes).
+Output written on paper_main.pdf (11 pages, 206623 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 104 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

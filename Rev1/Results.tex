@@ -9,23 +9,15 @@
 
 \subsection{Segmentation}
 
-\begin{itemize}
+In this project a full, detailed head is segmented into different tissue layers to be able to make an inhomogeneous 3D mesh. Since there was no computed tomography (CT) scan with this data set, the task of segmenting the skull and especially the sinus layers seemed daunting. A basic skull and bone layer was created using FSL skull stripping feature in the brain extraction tool (ref?) and then concatenated it with a rough bone segmentation using thresholding in Seg3D of black pixels and manually correcting the segmentation. (figure of iso surface) Although a skull and bone segmentation was pieced together, the sinus segmentation seemed extremely difficult and time consuming. After obtaining the pseudo-CT scan, this did not seem like such a large feat anymore. The skull/bone and sinus segmentations made from it fit the brain segmentation extremely well and had no artifacts from combining two different layers together. (figure of isosurface - front and back) Although, the bone appears bumpy and the teeth are missing from the subject's permanent retainer.
 
-\item Full, detailed head segmentation
-
-\item Skull could be optimized further
-
-\end{itemize}
+When imaging, the subject is laying on their back which shifts the brain to the back of the head resulting in thin segmented layers in the back of the head. There were also thin layers on the side of the subjects head, the bridge of the nose and the bottom of the chin. These thin layers were made to be at least two pixels thick manually to ensure that a mesh could be made without holes. (pictures of thin layers)
 
 \subsection{Finite Element Meshes}
 
-\begin{itemize}
+The highest resolution mesh, which was made with settings in Section \ref{sec:mesh}, has 60.2 million elements and 10.3 million nodes. (figure[s]) This mesh was so large due to the complexity of the segmentation. Simulations run very slow when using this mesh due to its size, and require at least 32GB of RAM in order to not crash SCIRun. 
 
-\item BIG MESH
-
-\item Smaller mesh
-
-\end{itemize}
+The goal to make smaller meshes was made in order to be able to run simulations more efficiently. After manually changing the sizing field as described in Section \ref{sec:mesh}, a mesh was produced with 15.7 million elements and 2.7 million nodes with no holes. However, this mesh does contain one flat tetrahedra. It is later removed in a SCIRun network, and is currently being investigated by Cleaver software developers. (figures)
 
 \subsection{Forward Problem}
 
