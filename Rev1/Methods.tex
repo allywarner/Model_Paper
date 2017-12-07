@@ -7,7 +7,13 @@
 \section{Methods}
 \label{sec:Methods}
 
-ADD PIPELINE FIGURE HERE
+%%Pipeline figure
+\begin{figure}[!th]
+    \centering
+    \includegraphics[width=17cm]{Figures/pipeline}
+    \caption{Head/Brain Model Pipeline}
+    \label{fig:pipeline}
+\end{figure}
 
 \subsection{Data Acquisition}
 \label{sec:Data}
@@ -78,10 +84,11 @@ fslmerge -t both\_b0 b0\_up b0\_down
 topup --imain=both\_b0 --datain=acq_params.txt --config=mine.cnf --out=topup\_results
 applytopup --imain=b0\_up,b0\_down --inindex=1,2 --datain=acq_params.txt --topup=topup\_results 
 
-ﬂ--out=b0\_hifi
+--out=b0\_hifi
 
 bet b0\_hifi b0\_hifi\_brain -m -f 0.2
-eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_params.txt --bvecs=dwi.bvec --bvals=dwi.bval --fwhm=0 --topup=topup\_results --flm=quadratic --out=eddy\_unwarped
+eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_params.txt --
+bvecs=dwi.bvec --bvals=dwi.bval --fwhm=0 --topup=topup\_results --flm=quadratic --out=eddy\_unwarped
 
 \end{lstlisting}
 
@@ -121,7 +128,7 @@ After running fMRI data through the pipeline ``rest.nii", the preprocessed fMRI 
 
 \subsubsection{EEG}
 
-The filetype of the EEG recordings in an .edf file. The EEG signal matrix was obtained using a Matlab script called ``edfRead.m." To run this script use the following command ``[hdr, record] = edfread(fname)." The variable `record' will contain the signals. The last two rows of the matrix were removed because they did not correspond to EEG electrodes. Also the beginning and end of the experiment were cut out of the matrix when the EEG net is being put on and taken off. 
+The filetype of the EEG recordings in an .edf file after it had a 60Hz notch filter and its harmonics. The EEG signal matrix was obtained using a Matlab script called ``edfRead.m." To run this script use the following command ``[hdr, record] = edfread(fname)." The variable `record' will contain the signals. The last two rows of the matrix were removed because they did not correspond to EEG electrodes. Also the beginning and end of the experiment were cut out of the matrix when the EEG net is being put on and taken off. 
 
 \subsubsection{Registration}
 
@@ -146,318 +153,113 @@ The skull and the sinus layers are the most difficult to segment using only an M
 
 The eyes, skin, and air layers were simple, in comparison, to segment. The eyes were easily segmented by thresholding the $T_2$ MRI. (figure of T2 axially) The skin layer was segmented by thresholding the entire volume and removing all of the previous layers using a boolean remove mask filter. A quality check was performed on the skin layer to ensure that it was at least two pixels thick. The important places to check for this is at the bridge of the nose and the bottom of the chin. (sagittal figure) Last, the air was segmented by thresholding the entire image and removing the solid skin layer. (how much time?) There was a check to ensure that the segmentation did not contain any holes between layers after they were removed. (should I explain this procedure?) To create these three layers took roughly 8 hours of work, most of which was ensuring there were no holes in the segmentation. This is imperative to creating a quality mesh.
 
-(Should I make a table instead for the amount of work?)
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ Segmented Tissue & Amount of Work (hrs) \\ 
+ \hline \hline
+ White Matter & 40 \\ 
+ \hline
+Grey Matter & 20 \\ 
+ \hline
+ CSF & 4\\
+ \hline
+ Skull \& Sinus & 35\\
+ \hline
+ Eyes, Scalp, \& Air & 8\\
+ \hline
+\end{tabular}
+\end{center}
 
 \subsection{Finite Element Mesh Generation}
 \label{sec:mesh}
 
 %%% Settings for mesh generation, issues 
 
-The tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. To make a very high resolution mesh with no holes the following parameters were used: scaling factor: 0.6, size multiplier: 1.0, lipschitz: 0.2, padding: 0, element sizing method: apdative. This produced a mesh with 60.2 million elements and 10.3 million nodes. (figure[s]) This mesh was so large due to the complexity of the segmentation. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by changing how quickly the elements increase in size. This was done by multiplying the scaling by 27. The changed sizing field was then input into Cleaver and cleaved a new mesh. This produced a mesh with 15.7 million elements and 2.7 million nodes with no holes. However, this mesh does contain one flat tetrahedra. It is later removed in a SCIRun network, and is currently being investigated by Cleaver software developers. 
+Segmentations were used to generate realistic 3D geometries for use in subsequent finite element simulations. A smooth, linear, subject-specific, boundary-conforming, tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. Cleaver is a multimaterial meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources.  To make a very high resolution mesh with no holes the following parameters were used: scaling factor: 0.6, size multiplier: 1.0, lipschitz: 0.2, padding: 0, element sizing method: apdative. Along with these parameters, indicator functions must be input to Cleaver. These are made by creating distance maps in Seg3D. Ensure the map is inverted before making the distance map. This produced a mesh with 60.2 million elements and 10.3 million nodes. (figure[s]) This mesh was so large due to the complexity of the segmentation. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by changing how quickly the elements increase in size. This was done by multiplying the scaling by a factor of 27. The changed sizing field was then input into Cleaver with the same indicator functions and cleaved a new mesh. This produced a mesh with 15.7 million elements and 2.7 million nodes with no holes. However, this mesh does contain one flat tetrahedra. It is later removed in a SCIRun network, and is currently being investigated by Cleaver software developers. 
 
 \subsection{Mathematical Modeling}
 \label{sec:math}
 
-%%%
+%%%MATH
 
-\subsubsection{Conductivity Preparation}
-
-A {\em typical} bioelectric volume conductor can be posed as the following
-boundary value problem:
+The head mesh, with associated inhomogeneous and anisotropic regions, was used as a volume conductor to solve the following boundary value problem:
 %
 \begin{equation}
-\label{eq:3} \nabla\cdot\sigma\nabla\Phi = -I_{V} \;\;\;\;\mbox{ in
+\label{eq:1} \nabla\cdot\sigma\nabla\Phi = -I_{V} \;\;\;\;\mbox{ in
 }\Omega,
 \end{equation} 
 %
-where $\Phi$ is the electrostatic potential, $\sigma$ is the
-electrical conductivity tensor, and $I_{V}$ is the current per unit
-volume defined within the solution domain, $\Omega$.  The associated
-boundary conditions depend on what type of problem one wishes to
-solve.  There are generally considered to be two different types of
-direct and inverse volume conductor problems.
-
-One type of problem deals with the interplay between the description
-of the bioelectric volume source currents and the resulting volume
-currents and volume and surface voltages.  Here, the problem statement
-would be to solve (\ref{eq:3}) for $\Phi$ with a known description of
-$I_{V}$ and the Neumann boundary condition:
+where $\Phi$ is the electrostatic potential, $\sigma$ is the electrical conductivity tensor, and $I_{V}$ is the current per unit volume defined within the solution domain, $\Omega$. Equation (\ref{eq:1}) is solved for $\Phi$ with a known description of $I_{V}$ and the Neumann boundary condition:
 %
 \begin{equation} \sigma\nabla\Phi\cdot{\bf
 n} = 0\;\;\;\;\;\mbox{ on }\Gamma_{T}, 
 \end{equation} 
 %
-which says that the normal component of the electric field is zero on
-the surface interfacing with air (here denoted by $\Gamma_{T}$). This
-problem can be used to solve two well known problems in medicine, the
-direct EEG (electroencephioliography) and ECG (electrocardiography)
-volume conductor problems.  In the direct EEG problem, one usually
-discretizes the brain and surrounding tissue and skull.  One then
-assumes a description of the bioelectric current source within the
-brain (this usually takes the form of dipoles or multipoles) and
-calculates the field within the brain and on the surface of the scalp.
+which says that the normal component of the electric field is zero on the surface interfacing with air (here denoted by $\Gamma_{T}$). The brain and surrounding tissue and skull were discretized, and using dipoles for current source the electrical field was calculated within the brain and then projected onto the surface of the scalp.
 
-All conductivities were homogeneous with the exception of white matter when using tensor data. These conductivities are as follows: ADD HERE (ref). When DTI tensor data is added, there are two approaches to converting the tensor data to conductivities. The first is scaling the data, and the second is giving the white matter a fixed ratio of conductivity. 
+\subsubsection{Electrical Conductivity Preparation} 
 
-SCALING MATH (ref)
+All electrical conductivities were homogeneous for each tissue with the exception of white matter when using tensor data. The isotropic conductivities are as follows (Rullman): 
 
-RATIO MATH (ref)
-
-\subsection{Numerical Methods}
-\label{sec:numerical}
-
-%%%FEM
-
-Finite element math
-
-END OF ALLY'S TEXT
-
-\subsubsection{Experimental Methods}
-\label{sec:ExpMethods}
-
-%%% This paragraph addresses the Experimental Preparation
-We induced episodes of acute, transient ischemia  in anesthetized, open-chest swine (n = ??) and 
-canine (n = ??) preparations. In each experiment, the heart was exposed and suspended in a 
-pericardial cradle.  A portion of the LAD was minimally dissected and fitted with  a hydraulic occluder, 
-which could be compressed to restrict coronary blood flow, thereby creating the transient ischemic 
-condition, and then released to restore normal cardiac perfusion.  Experimental protocols consisted of 
-measuring extracellular potentials, both on the epicardial surface and within the myocardium, while 
-applying stepwise increases of ischemic load \cite{RSM:Ara2014}.  To this end, two basic protocols 
-were used to induce ischemia: 1) LAD blood flow was incrementally reduced by the occluder while 
-maintaining a constant, often elevated, heart rate (supply ischemia) or 2) increases in the heart rate 
-were applied while maintaining a constant, often restricted, LAD blood flow (demand ischemia).  For 
-purposes of this study, we do not consider the differences between supply and demand ischemia but 
-rather focus on the size, shape, and location of the zones within the heart that show an electrical 
-response to the ischemic condition.    All studies were performed in accordance with the Guide for the 
-Care and Use of Laboratory Animals (NIH Pub. No 85-23, Revised 1996).
-
-%%% This paragraph addresses the data acquisition
-Customized sock and needle electrodes were used to acquire electrical recordings of both epicardial 
-and intramural electrical potentials.  A 247-electrode, flexible sock array,\cite{RSM:Ari92} with recording electrodes 
-evenly distributed across the ventricles, acquired epicardial electrogram recordings. Twenty-five (25) 
-flexible fiberglass plunge needles\cite{RSM:Rog2002} were used to record intramural electrical activity. Plunge needles 
-were constructed with 10 evenly spaced electrodes at 1.6 mm intervals along the shaft.  Needles 
-were placed in and around the perfusion bed of the occluded LAD.  Sock and needle recordings were 
-made periodically at a 1KHz sampling rate, the combination of which provided a \emph{3-dimensional} 
-electrical representation of the induced ischemic condition.
-
-%%% This paragraph addresses geometric set-up to be more fully covered later
-In addition to the acquisition of electrical recordings, digitized locations of sock electrodes and needle 
-locations were extracted for postexperiment validation studies. After digitization, needle electrodes 
-were removed and replaced with radio-opaque spacers prior to cardiac imaging in order to provide a 
-registration reference.
-
-%%% This paragraph addresses Post-experiment Data Processing
-Electrograms were calibrated, gain adjusted, and baseline corrected against control recordings, which 
-had been taken immediately before each intervention. Poor quality electrograms, caused by broken lead 
-connections or bad contacts, as well as electrograms without positive Q-wave deflections (identified as 
-cavity electrodes) were discarded. The global root mean squared signal was computed from data 
-recordings of both sock and needle electrodes.  These signals were used to identify a point that lay at 
-40\% of the distance between the J point and T wave peak (ST40\%).  Potential difference maps were 
-generated at ST40\%, which compared baseline recordings to those obtained during an ischemic 
-episode.  Potential differences, taken at ST40\% during baseline conditions, were used to generate a threshold by which ischemic regions were identified as values exceeding two standard deviations.
-Sock recordings were used to validate simulation findings and will be addressed later.  Needle 
-electrodes were used to generate subject-specific ischemic zone geometries by identifying regions
-within a spatial neighborhood that met the above-mentioned ischemic thresholding criteria.\cite{RSM:Ara2009}
-
-\subsection{Simulation Pipeline}
-\label{sec:Pipeline}
-
-%%%%%%%%%%%%%%%%
-% Fix this figure with the text and images that Rob wanted to see in previous email
-%%%%%%%%%%%%%%%%
-\begin{figure}[h!]
-\centering
-%    \includegraphics[width=\textwidth]{Figures/Simulation_Pipeline.pdf}
-    \includegraphics[width=\textwidth]{Figures/Simulation_Pipeline_Flat.pdf}    
-    \caption{\label{fig:pipeline} Ischemia Simulation Pipeline. Both image and time signals were extracted from experimental protocols of acute, induced ischemic preparations.  Image data was used to generate geometries through segmentation and meshing.  Intramural electrical data, recorded from plunge needles, were mapped to these meshes to define ischemic zone location.  New meshes were generated with ischemic geometries imposed on which ischemic simulations were generated and validated against the original experimental data recorded from epicardial sock data.}
-\end{figure}
-%% Replace pipeline with a more linear representation (Josh's suggestion)
-
-%%%Move Imaging to the center, flatten other sections of pipeline
-A simulation pipeline was implemented in order to produce in silico models that were representative of 
-experimental findings. Electrical data acquired during the experimental process, as well as imaging 
-information acquired post experiment, were used to construct subject-specific, finite element, bioelectric simulations by way of the steps illustrated in Figure \ref{fig:pipeline}.
-
-\subsubsection{Imaging and Segmentation}
-%%% This paragraph addresses imaging and segmentation -- The beginning of the sim pipeline image
-After completion of the experimental protocol, each heart was excised and scanned with a 7 tesla MRI 
-scanner using FISP and FLASH MRI sequences.  Diffusion tensor images (DTI) were also acquired to 
-determine fiber direction.  FISP scans rendered consistent, albeit low, contrast throughout the tissue - 
-preserving edges near the field of view boundaries.  FLASH scans, in comparison, provided images of 
-high contrast within the center of the volume, which diminished steeply near the field of view 
-boundaries.  The advantages of both FISP and FLASH were combined in order to produce realistic, 
-geometric segmentations of blood, cardiac tissue, and needles,  using the Seg3D\footnote{http://sci.utah.edu/software.html} open-source
-software package. Needle locations were readily identified within the scans as  dark regions 
-occupied by the radio-opaque spacers that were inserted at the end of the experimental phase.  
-Diffusion-weighted MRI (DW-MRI) images were also obtained from which fiber orientation was derived.  
-
-
-\subsubsection{Geometric Processing and Data Mapping}
-\label{ssec:geom}
-
-%%% This paragraph addresses meshing
-Segmentations were used to generate realistic \emph{3-dimensional} geometries for use in subsequent finite element simulations (See Section \ref{ssec:FEM}).  By using two open-source meshing 
-packages, we were able to generate smooth, linear, subject-specific, boundary-conforming, tetrahedral 
-meshes for use in simulations. First, segmentations were ported into the BioMesh3D\footnotemark[1] software package 
-% This may need to be altered if either BioMesh or Cleaver is removed from the pipeline
-to generate smoothed/tightened surface representations.  BioMesh3D surface representations were 
-used as input indicator functions to a second meshing package, Cleaver\footnotemark[1], from which the final mesh was 
-derived.  Cleaver is a multimaterial meshing package that produces structured meshes of tetrahedral 
-elements with guaranteed minimum element angles,\cite{SCI:Bro2014a} resulting in quality meshes that require fewer computational resources.  Cleaver, however, does not offer the surface-tightening features of 
-BioMesh3D.  As a result, meshes produced by Cleaver from standard MRI segmentations (with no 
-surface tightening) would propagate the stair-stepped surfaces inherent in rasterized, volumetric data.  
-By combining packages, we were able to produce smooth, structured meshes of guaranteed element 
-quality.
-
-%%% This paragraph addresses needle registration and data mapping to the mesh
-Correspondence points derived from known sock and needle locations were used to register needle and sock electrode geometries within the cardiac mesh using the SCIRun problem-solving environment
-\footnotemark.  Processed data values were mapped to corresponding node locations within the cardiac 
-mesh. Linear interpolation to local nodes was applied but restricted to the geometric convex hull of the 
-needle locations.  Extrapolation to outlying regions, not within the scope of needle locations, was not 
-included. % DOUBLECHECK Double check the linear interpolation step...If radial basis is used, this statement is incorrect
-
-%%% This paragraph addresses ischemic zone identification within the mesh
-To identify ischemic zones, potential difference maps were generated that removed baseline potentials from those observed during ischemic interventions.  Difference map values within the specified needle region that exceeded a value greater than two standard deviations from baseline 
-recordings were identified and labeled as ischemic.  These new label masks 
-were used to create a final mesh that contained three defined tissues (blood, healthy cardiac tissue, 
-and ischemic cardiac tissue) that shared conforming surfaces - an important feature in static forward 
-simulations when considering areas in proximity to potential sources.\cite{SCI:Swe2010a}
-
-%%% This paragraph addresses fiber mapping
-Finally, subject-specific fiber orientation was applied within the mesh. A vector 
-field was defined by the principle eigenvector from DW-MRI images with all other cross-sectional fiber 
-components regarded as isotropic. This vector field was normalized, aligned, and mapped to the cardiac 
-mesh using weighted-average interpolation to provide a basis for anisotropic conductivity. 
-
-\subsubsection{Mathematical Modeling}
-%%% This paragraph addresses the Bidomain (should I mention Laplace’s, or more accurately Poisson’s, equation here)
-The cardiac mesh, with associated fiber structure and ischemic region, was used to solve the 
-bidomain passive current flow equation:
-\begin{equation}
-\nabla \cdot (\bar{\sigma}_e + \bar{\sigma}_i)\nabla \phi_e = - \nabla \cdot \bar{\sigma}_i \nabla V_m
-\label{eq:bidomain}
-\end{equation}
-where $\sigma_e$ and $\sigma_i$ represent the extracellular and intracellular conductivity tensors, 
-respectively.  $\phi_e$ is the extracellular potentials, and $V_m$ represents the transmembrane 
-potential. 
-
-%%% These paragraphs address parameters used for the simulations (BC,\sigma,Vm, BZ)
-               %Boundary conditions
-In this model, it was assumed that the heart was surrounded by a perfect insulator, leading to a 
-Neumann boundary condition on the epicardial surface.  The endocardium, in contrast, allowed for 
-extracellular, but not intracellular, current flow into the ventricular blood pool. Initial blood potentials 
-were defined by Cauchy boundary conditions along the endocardial surface as shown in Equation 
-\ref{eq:initial}. % possibly site MacLachlan 2005 % DOUBLECHECK: model may be Neumann conditions in the blood as well...follow up after the model is finalized.  Also, if we do use both Neumann and Dirichlet, these are Cauchy boundary conditions.
-\[   
-   \begin{cases} 
-      \nabla \cdot (\bar{\sigma}_e + \bar{\sigma}_i)\nabla \phi_e = - \nabla \cdot \bar{\sigma}_i V_m & x \in \Omega_H\\
-      \vec{n}_{epi} \cdot (\bar{\sigma}_e + \bar{\sigma}_i)\nabla \phi_e = 0 & x \in \partial\Omega_{H,epi} \\
-      %\vec{n}_{endo} \cdot (\bar{\sigma}_i \nabla \phi_i) = 0 & x \in \partial\Omega_{H,endo} \\      
-      \vec{n}_{endo} \cdot (\bar{\sigma}_e \nabla \phi_e) = -\vec{n}_{b} \cdot (\bar{\sigma}_b \nabla \phi_b) & x \in \partial\Omega_{H,endo} \\         
-      \phi_e = \phi_b & x \in \partial\Omega_{H,endo} \\
-      \phi_i = 0 & x \in \Omega_{b} 
-      \label{eq:initial}
-   \end{cases}
-   \numberthis
-\]  
-where $\Omega_H$ represents the cardiac volume; $\partial\Omega_{H,epi}$ and $\partial
-\Omega_{H,endo}$ the epicardial and endocardial surfaces, respectively;  $\phi_e$ and $\phi_b$ 
-correspond to potentials in the extracellular space and the blood, respectively. $\vec{n}$ represents 
-the normal, outward unit vector along the epicardial ($epi$), endocardial ($endo$), and blood ($b$) 
-surfaces.  The first equation specifies the relationship between transmembrane and extracellular 
-potentials within the cardiac domain. The following four equations define the handling of currents and 
-potentials along the cardiac surfaces.  The blood, in all studies, was completely enclosed within the cardiac 
-region  and considered to have isotropic conductivity (See Figure \ref{fig:heartschematic} and Table 
-\ref{tab:cond}).
-
-%               Conductivities
-\begin{figure}[!th]
-    \centering
-    \includegraphics[width=9cm]{Figures/HeartRegions.jpg}
-    \caption{Bidomain equations are defined within the cardiac tissue $\Omega_H$ and bounded by epicardial and endocardial boundaries $\Omega_{H,epi}$ and $\Omega_{H,endo}$. Extracellular currents were allowed to flow into the blood volume $\Omega_{B}$ along the endocardial boundary. }
-    \label{fig:heartschematic}
-\end{figure}
-
-Conductivity values within the tissue, as well as the blood pool, were normalized with respect to 
-extracellular longitudinal values and matched those used in previous studies.\cite{RSM:Hop2004,BMB:Swe2010a,SCI:Sti2003a} Table 
-\ref{tab:cond} shows the conductivity values used for this study.  These conductivity values were 
-chosen to be consistent with those previously defined by Johnston and Kilpatrick \cite{BMB:Joh2003}. % DOUBLECHECK...Bruce's thesis points to the Johnston study, but the actual paper does not seem to use these same values.
-Conductivities within the ischemic region were reduced with respect to healthy values corresponding 
-to the first 5 - 15 minutes after ischemic onset. %also cite Circulation, 60 (1979), pp. 397–403 && m J Cardiol 1984;53:307-312 On desktop, read and add to BMB DOUBLECHECK 10-15 minutes here
-
-\begin{table}[t]
-    \caption{\label{tab:cond}Ratio applied to tensor conductivity values
-      within healthy and ischemic regions. \cite{RSM:Hop2004}} 
-    \vspace{4 mm}
-    \centerline{\begin{tabular}{ccc} \hline\hline
-          \specialcell{Conductivity \\ Labels}   & \specialcell{Healthy \\ Conductivity Values} & \specialcell{Ischemic \\ Conductivity Values} \\ \hline
-          $\sigma_{el}$   & 1 & 1/2 \\
-          $\sigma_{il}$   & 1 & 1 \\
-          $\sigma_{et}$  & 1/3 & 1/4 \\
-          $\sigma_{it}$  & 1/20 & 1/20 \\ 
-          $\sigma_{b}$  & 3 & 3 \\ \hline\hline
-      \end{tabular}}
-\end{table}
-
-We defined a fixed transmembrane potential value ($V_m$) of 30mV as the potential source for our 
-forward simulations.  The reduced transmembrane potential mimics the delayed activation of diseased 
-tissue under ischemic conditions during the ST-segment.
-Healthy tissue was assigned a value of 0 mV, typical of the relatively quiescent state of healthy cardiac 
-activation during the ST segment.  Between healthy and ischemic tissue, a border zone was defined in 
-which potentials progressed from the diseased to healthy states.
-
-The border zone, the region between healthy and ischemic tissue, has been determined to be a necessary, 
-and problematic, region to include in simulation studies.\cite{BMB:Swe2010a,RSM:Hop2004,BMB:Kil2003} 
-In this study, we defined the border zone as a piecewise, continuous function represented by Equation \ref{eq:border} in which a Gaussian function defines the region from the ischemic zone boundary 
-to a specified transition point, $S_1$.  At $S_1$ the border transitions to a linear, decreasing function 
-that reduces to $0$ (the value assigned to healthy tissue) at $S_2$.   It is important to note that not all 
-models, found in the literature, have applied border zones.  For the sake of consistency and uniformity, 
-however, we have imposed border regions into all of the forward simulations constructed in this paper.  
-Table \ref{tab:BZvals} shows the values applied to Equation \ref{eq:border} for this study.
-
-\[    BZ = 
-   \begin{cases} 
-      V_m e^{\frac{-d^2}{2\sigma^2}} & d < S_1\\
-      \Gamma - \frac{\Gamma}{S_2 - S_1}(d-S_1) & S_1 \leq d < S_2 \\
-      0 & d \geq S_2
-   \end{cases}
-      \numberthis
-      \label{eq:border}
-\]
 \begin{center}
-where
-$\Gamma = V_m e^{\frac{-(S_1)^2}{2\sigma^2}} $
+\begin{tabular}{ |c|c|c| } 
+ \hline
+Tissue Type & Isotropic Conductivity $(S/m)$\\ 
+ \hline
+ \hline
+ White Matter & 0.1429\\ 
+ \hline
+ Grey Matter & 0.3333 \\ 
+ \hline
+ Cerebrospinal Fluid (CSF) & 1.79\\
+ \hline
+Skull & 0.001\\
+ \hline
+ Skin & 0.4346\\
+ \hline
+ Sinus & 1e-6\\
+ \hline
+ Eyes & 0.5051\\
+ \hline
+\end{tabular}
 \end{center}
 
-\begin{table}[h]
-    \caption{\label{tab:BZvals}Values Used In Border Zone Determination.} 
-    \vspace{4 mm}
-    \centerline{\begin{tabular}{ccc} \hline\hline
-          \specialcell{Label}   & \specialcell{Definition} & \specialcell{Value} \\ \hline
-          $V_m$   & Transmembrane Potential  & 30 mV \\
-          $\sigma$   & Gaussian RMS Width  & 5 mm \\ %double check
-          $S_1$  & First Transition Distance  & 8 mm \\
-          $S_2$  & Second Transition Distance  & 11 mm \\ 
-          $d$  & $distance$ & $variable$ \\ \hline\hline
-      \end{tabular}}
-\end{table}
+When DTI tensor data is added, there are two approaches to converting the tensor data to conductivities. The first is scaling the data (ref), and the second is giving the white matter a fixed ratio of conductivity. 
+
+\begin{equation}
+\sigma_{aniso} = \frac{\sigma_{iso}}{\sqrt[3]{d_1d_2d_3}}D
+\end{equation}
+where $D$ is the diffusion data, $d_i$ is the $i$th eigenvalue of $D$, and $\sigma_{iso}$ is the white matter isotropic conductivity.
+
+\begin{equation}
+\sigma_{aniso} = \begin{bmatrix}
+v_1\\
+v_2\\
+v_3\\
+W\\
+\end{bmatrix}, 
+W = \begin{bmatrix}
+\sigma_{iso}\\
+\frac{\sigma_{iso}}{10}\\
+\frac{\sigma_{iso}}{10}\\
+\end{bmatrix}
+\end{equation}
+where $v_i$ is the $i$th eigenvector of $D$ and $W$ is the white matter ratio vector and the ratio is $10:1$.
 
 \subsubsection{Numerical Methods}
-\label{ssec:FEM}
+\label{sec:numerical}
+
 %%% This paragraph addresses Finite Element Discretization
 
-Solutions to Equation \ref{eq:bidomain} were computed using finite element methods.  By applying 
-Green's divergence theorem to Equation \ref{eq:bidomain}, the following weak formulation is generated 
+Solutions to Equation \ref{eq:1} were computed using finite element methods.  By applying 
+Green's divergence theorem to Equation \ref{eq:1}, the following weak formulation is generated 
 \begin{equation}
 \int ((\bar{\sigma}_e + \bar{\sigma}_i)\nabla \phi_e) \cdot \nabla \psi(\bar{x})d\bar{x} = - \int (\bar{\sigma}
 _i \nabla V_m)\cdot \nabla \psi(\bar{x})d\bar{x}, \quad \quad \forall \ \psi \in \Omega
 \label{eq:galerkin}
 \end{equation}
-where, $\Omega$ (see Section Section \ref{ssec:geom}) is the linear, finite element mesh, $\psi$ 
-represents the finite element basis functions characterized by local hat functions associated with 
-mesh nodes.  By applying this formulation to the finite dimensional mesh, we can reduce Equation 
-\ref{eq:galerkin} to a system of linear equations 
+where, $\Omega$ is the linear, finite element mesh, $\psi$ represents the finite element basis functions characterized by local hat functions associated with mesh nodes. By applying this formulation to the finite dimensional mesh, we can reduce Equation \ref{eq:galerkin} to a system of linear equations 
 \begin{equation}
 A \phi_e = -RV_m
 \label{eq:ReducedFormula}
@@ -468,8 +270,8 @@ _e + \bar{\sigma}_i)\nabla \psi_k \rangle_\Omega$ and $R_{j,k} = \langle \nabla 
 while $\phi_e$ and $V_m$ represent extracellular and transmembrane potentials, respectively.\cite{BMB:Wan2013}
 
 %%% This paragraph addresses SCIRun as a solver
-We used the open-source, SCIRun problem solving environment\cite{BMB:Par95} to apply parameters and 
-to solve Equation  \ref{eq:ReducedFormula} numerically.  Within the SCIRun environment, fiber orientation 
-and conductivity tensors were applied to the  mesh, initial and boundary conditions were defined, and 
-border regions were generated in order to compute extracellular potentials by way of a conjugate gradient 
-method with a Jacobi preconditioner.
+We used SCIRun, the open-source problem solving environment, to apply parameters and to solve Equation  \ref{eq:ReducedFormula} numerically.  Within the SCIRun environment, isotropic and anisotropic conductivity tensors were applied to the mesh as well as inhomogeneous regions, initial and boundary conditions were defined, and border regions were generated in order to compute potentials by way of a conjugate gradient method with a Jacobi preconditioner.
+
+
+
+

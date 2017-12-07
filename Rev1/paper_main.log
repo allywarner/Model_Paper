@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  5 DEC 2017 19:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  6 DEC 2017 21:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -260,131 +260,55 @@ e
 ))
 \c@lstlisting=\count114
 
-(./Abstract.tex) (./Intro.tex) (./Methods.tex [1
+(./Abstract.tex) (./Intro.tex) (./Methods.tex
+<Figures/pipeline.pdf, id=1, 1158.89456pt x 251.46617pt>
+File: Figures/pipeline.pdf Graphic file (type pdf)
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<Figures/EEG_setup.png, id=13, 2350.7825pt x 2933.96124pt>
+<use Figures/pipeline.pdf>
+Package pdftex.def Info: Figures/pipeline.pdf used on input line 13.
+(pdftex.def)             Requested size: 483.69684pt x 104.9551pt.
+
+Overfull \hbox (13.94185pt too wide) in paragraph at lines 13--14
+ [][] 
+ []
+
+[1
+
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Figur
+es/pipeline.pdf>] <Figures/EEG_setup.png, id=34, 2350.7825pt x 2933.96124pt>
 File: Figures/EEG_setup.png Graphic file (type png)
 
 <use Figures/EEG_setup.png>
-Package pdftex.def Info: Figures/EEG_setup.png used on input line 34.
+Package pdftex.def Info: Figures/EEG_setup.png used on input line 40.
 (pdftex.def)             Requested size: 199.16928pt x 248.55519pt.
- [2 <./Figures/EEG_setup.png>]
-Overfull \hbox (14.75574pt too wide) in paragraph at lines 79--81
+ [2 <./Figures/EEG_setup.png>] [3]
+Overfull \hbox (14.75574pt too wide) in paragraph at lines 85--87
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-Missing character: There is no ß in font cmtt8!
 
-Overfull \hbox (509.46669pt too wide) in paragraph at lines 84--86
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (40.2563pt too wide) in paragraph at lines 91--93
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[3] [4] [5] [6]
+[4] [5] [6] [7]
 
-LaTeX Warning: Citation `RSM:Ara2014' on page 7 undefined on input line 225.
+LaTeX Warning: Citation `BMB:Wan2013' on page 8 undefined on input line 270.
 
-[7]
-
-LaTeX Warning: Citation `RSM:Ari92' on page 8 undefined on input line 236.
-
-
-LaTeX Warning: Citation `RSM:Rog2002' on page 8 undefined on input line 238.
-
-
-LaTeX Warning: Citation `RSM:Ara2009' on page 8 undefined on input line 261.
-
-<Figures/Simulation_Pipeline_Flat.pdf, id=40, 1589.04665pt x 544.34065pt>
-File: Figures/Simulation_Pipeline_Flat.pdf Graphic file (type pdf)
-
-<use Figures/Simulation_Pipeline_Flat.pdf>
-Package pdftex.def Info: Figures/Simulation_Pipeline_Flat.pdf used on input lin
-e 272.
-(pdftex.def)             Requested size: 469.75499pt x 160.91133pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 290.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 290.
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 290.
- [8]
-
-LaTeX Warning: Citation `SCI:Bro2014a' on page 9 undefined on input line 307.
-
-[9 <./Figures/Simulation_Pipeline_Flat.pdf>]
-
-LaTeX Warning: Citation `SCI:Swe2010a' on page 10 undefined on input line 325.
-
-Missing character: There is no Ê in font cmr10!
-Missing character: There is no Ê in font cmr10!
-Missing character: There is no Ê in font cmr10!
-Missing character: There is no Ê in font cmr10!
-Missing character: There is no Ê in font cmr10!
-Missing character: There is no Ê in font cmr10!
-Missing character: There is no Ê in font cmr10!
-Missing character: There is no Ê in font cmr10!
-<Figures/HeartRegions.jpg, id=1452, 881.2925pt x 687.56876pt>
-File: Figures/HeartRegions.jpg Graphic file (type jpg)
-
-<use Figures/HeartRegions.jpg>
-Package pdftex.def Info: Figures/HeartRegions.jpg used on input line 377.
-(pdftex.def)             Requested size: 256.0748pt x 199.77802pt.
-
-
-LaTeX Warning: Citation `RSM:Hop2004' on page 10 undefined on input line 383.
-
-
-LaTeX Warning: Citation `BMB:Swe2010a' on page 10 undefined on input line 383.
-
-
-LaTeX Warning: Citation `SCI:Sti2003a' on page 10 undefined on input line 383.
-
-
-LaTeX Warning: Citation `BMB:Joh2003' on page 10 undefined on input line 385.
-
-[10]
-
-LaTeX Warning: Citation `RSM:Hop2004' on page 11 undefined on input line 391.
-
-
-LaTeX Warning: Citation `BMB:Swe2010a' on page 11 undefined on input line 411.
-
-
-LaTeX Warning: Citation `RSM:Hop2004' on page 11 undefined on input line 411.
-
-
-LaTeX Warning: Citation `BMB:Kil2003' on page 11 undefined on input line 411.
-
-[11 <./Figures/HeartRegions.jpg>]
-
-LaTeX Warning: Citation `BMB:Wan2013' on page 12 undefined on input line 468.
-
-
-LaTeX Warning: Citation `BMB:Par95' on page 12 undefined on input line 471.
-
-) (./Results.tex) (./Conclusion.tex [12]) (./Acknowledgements.tex) [13]
-No file paper_main.bbl.
-(./paper_main.aux)
+[8]) (./Results.tex) (./Conclusion.tex) (./Acknowledgements.tex) [9]
+(./paper_main.bbl) [10] (./paper_main.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4146 strings out of 493089
- 56191 string characters out of 6134842
- 137139 words of memory out of 5000000
- 7554 multiletter control sequences out of 15000+600000
- 12825 words of font info for 46 fonts, out of 8000000 for 9000
+ 4088 strings out of 493089
+ 55264 string characters out of 6134842
+ 137034 words of memory out of 5000000
+ 7505 multiletter control sequences out of 15000+600000
+ 10844 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,14n,43p,2015b,900s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,8n,43p,2015b,900s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
@@ -397,16 +321,14 @@ l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/
 texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
 ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on paper_main.pdf (13 pages, 17254696 bytes).
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on paper_main.pdf (10 pages, 11129120 bytes).
 PDF statistics:
- 1527 PDF objects out of 1728 (max. 8388607)
- 230 compressed objects within 3 object streams
+ 125 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
