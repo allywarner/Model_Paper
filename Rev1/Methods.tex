@@ -94,23 +94,22 @@ These commands first obtain the b0 image, which is the baseline image used for c
 
 \subsubsection{Diffusion Tensor Images}
 
-After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT. Upon opening FSL choose "FDT Diffusion." Then choose "DTIFIT Reconstruct diffusion tensors" in the drop down menu, select to input files manually, and put in the following files. (reference and figure of DTIFIT) 
+After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT. Upon opening FSL choose "FDT Diffusion." Then choose "DTIFIT Reconstruct diffusion tensors" in the drop down menu, select to input files manually, and put in the files in Table \ref{dtifit}. (reference and figure of DTIFIT) 
 
-\begin{center}
-\begin{tabular}{ |c|c|c| } 
- \hline
- Diffusion weighted data: & eddy\_unwarped.nii \\ 
- \hline
- BET binary brain mask: & b0\_hifi\_brain\_mask.nii \\ 
- \hline
- Output basename: & desired output location \\ 
- \hline
- Gradient directions: & dwi.bvec\\
- \hline
- b values: & dwi.bval\\
- \hline
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{dtifit}
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{DTIFIT Input Files}             \\ \hline
+Diffusion weighted data: & eddy\_unwarmed.nii        \\ \hline
+BET binary brain mask:   & b0\_hifi\_brain\_mask.nii \\ \hline
+Output basename          & desired output location   \\ \hline
+Gradient directions:     & dwi.bvec                  \\ \hline
+b values:                & dwi.bval                  \\ \hline
 \end{tabular}
-\end{center}
+\end{table}
 
 DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (named V1, V2, and V3) for the diffusion tensor field. The files were converted from NiFTI format to nrrd format using ITK-SNAP (reference and figure) although there is a loss of precision. The files were then input into SCIRun to build the tensor field using the eigenvalue and eigenvectors. The SCIRun CalculateFieldData module only requires two eigenvectors as input because it calculates the third eigenvector automatically since it should be orthogonal to the first two. This process can be done in either SCIRun 4 or SCIRun 5 and the same results are produced. 
 
@@ -119,6 +118,7 @@ DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (
 The tensor field was built in SCIRun rather than in 3D Slicer (reference if haven't seen yet) or FSL DTIFIT because the output data would be "backwards" and couldn't be registered with the mesh. 
 
 \subsubsection{fMRI}
+\label{sec:fmripre}
 
 fMRI data was preprocessed using the 1000 Functional Connectomes Project pipeline scripts (reference) which do anatomical preprocessing, functional preprocessing, registration to the $T_1$ MRI, segmentation, and nuisance signal regress. The outline pipeline used on this fMRI dataset, specific to the University of Utah, can be found at https://bitbucket.org/UtahBrainNetworks/base\_prep and includes specific instructions for installation, compilation, and usage.  
 
@@ -151,23 +151,20 @@ The skull and the sinus layers are the most difficult to segment using only an M
 
 The eyes, skin, and air layers were simple, in comparison, to segment. The eyes were easily segmented by thresholding the $T_2$ MRI. (figure of T2 axially) The skin layer was segmented by thresholding the entire volume and removing all of the previous layers using a boolean remove mask filter. A quality check was performed on the skin layer to ensure that it was at least two pixels thick. The important places to check for this is at the bridge of the nose and the bottom of the chin. (sagittal figure) Last, the air was segmented by thresholding the entire image and removing the solid skin layer. (how much time?) There was a check to ensure that the segmentation did not contain any holes between layers after they were removed. (should I explain this procedure?) To create these three layers took roughly 8 hours of work, most of which was ensuring there were no holes in the segmentation. This is imperative to creating a quality mesh.
 
-\begin{center}
-\begin{tabular}{ |c|c|c| } 
- \hline
- Segmented Tissue & Amount of Work (hrs) \\ 
- \hline \hline
- White Matter & 40 \\ 
- \hline
-Grey Matter & 20 \\ 
- \hline
- CSF & 4\\
- \hline
- Skull \& Sinus & 35\\
- \hline
- Eyes, Scalp, \& Air & 8\\
- \hline
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|c|c|}
+\hline
+Segmented Tissue    & Amount of Work (hrs) \\ \hline
+White Matter:       & 40                   \\ \hline
+Grey Matter         & 20                   \\ \hline
+CSF                 & 4                    \\ \hline
+Skull and Sinus     & 35                   \\ \hline
+Eyes, Scalp, \& Air & 8                    \\ \hline
 \end{tabular}
-\end{center}
+\end{table}
 
 \subsection{Finite Element Mesh Generation}
 \label{sec:mesh}
@@ -175,29 +172,20 @@ Grey Matter & 20 \\
 %%% Settings for mesh generation, issues 
 
 Segmentations were used to generate realistic 3D geometries for use in subsequent finite element simulations. A smooth, linear, subject-specific, boundary-conforming, tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. Cleaver is a multimaterial meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources. To make a very high resolution mesh with no holes the following parameters were used: 
-\begin{center}
-\begin{tabular}{|c|}
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|c|c|}
 \hline
-Cleaver Settings (high resolution)\\
-\hline
+\multicolumn{2}{|c|}{Cleaver Settings (high resolution)} \\ \hline
+scaling factor:                    & 0.6                 \\ \hline
+size multiplier:                   & 1.0                 \\ \hline
+lipschitz:                         & 0.2                 \\ \hline
+padding:                           & 0                   \\ \hline
+element sizing method:             & adpative            \\ \hline
 \end{tabular}
-\end{center}
-
-\begin{center}
-\begin{tabular}{|c|c|c}
-\hline
-scaling factor: & 0.6\\
-\hline
-size multiplier: & 1.0\\
-\hline
-lipschitz: & 0.2\\
-\hline
-padding: &0\\ 
-\hline
-element sizing method: & apdative\\
- \hline
-\end{tabular}
-\end{center}
+\end{table}
 
  Along with these parameters, indicator functions must be input to Cleaver. These are made by creating distance maps in Seg3D. Ensure the map is inverted before making the distance map. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by changing how quickly the elements increase in size. This was done by multiplying the scaling by a factor of 27. The changed sizing field was then input into Cleaver with the same indicator functions and cleaved a new mesh.
 
@@ -295,6 +283,19 @@ while $\phi_e$ and $V_m$ represent extracellular and transmembrane potentials, r
 %%% This paragraph addresses SCIRun as a solver
 We used SCIRun, the open-source problem solving environment, to apply parameters and to solve Equation  \ref{eq:ReducedFormula} numerically.  Within the SCIRun environment, isotropic and anisotropic conductivity tensors were applied to the mesh as well as inhomogeneous regions, initial and boundary conditions were defined, and border regions were generated in order to compute potentials by way of a conjugate gradient method with a Jacobi preconditioner.
 
+\subsection{Simulations \& Visualization}
+\label{sec:sim}
 
+All simulations and visualization were done in the SCIRun problem solving environment.
+
+\subsubsection{Forward Problem}
+
+\subsubsection{fMRI}
+
+The fMRI data is visualized one step at a time using the 2D matrix described in Section \ref{sec:fmripre} as input and viewing one column at a time. Each column is set onto a lattice volume, which is then rotated 180 degrees, smoothed, thresholded and clipped for easier rigid registration. The fMRI is registered to the tetrahedral mesh using the bounding boxes and manual registration. After registration, the smoothed fMRI data is mapped onto the mesh using a mapping matrix with a linear interpolation basis. (figure)
+
+\subsubsection{EEG}
+
+To visualize the EEG data
 
 
