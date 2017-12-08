@@ -209,7 +209,8 @@ n} = 0\;\;\;\;\;\mbox{ on }\Gamma_{T},
 %
 which says that the normal component of the electric field is zero on the surface interfacing with air (here denoted by $\Gamma_{T}$). The brain and surrounding tissue and skull were discretized, and using dipoles for current source the electrical field was calculated within the brain and then projected onto the surface of the scalp.
 
-\subsubsection{Electrical Conductivity Preparation} 
+\subsubsection{Electrical Conductivity Preparation}
+\label{sec:cond}
 
 All electrical conductivities were homogeneous for each tissue with the exception of white matter when using tensor data. The isotropic conductivities are as follows (Rullman): 
 
@@ -290,12 +291,18 @@ All simulations and visualization were done in the SCIRun problem solving enviro
 
 \subsubsection{Forward Problem}
 
+When solving systems described in Section \ref {sec:math} from a known source to the EEG electrodes, it is called a forward problem. To solve the opposite is to solve an inverse problem and would usually be the case for finding sources for subjects with neurological disorders. In this project, we have set up SCIRun networks to solve forward problems with known sources and to write a lead field matrix for inverse problem networks made in the future. We solve the forward problem with an isotropic system and an anisotropic system, which includes DTI data. 
+
+For the isotropic case necessary inputs are the tetrahedral head mesh, isotropic conductivities, the head segmentation, the physical electrode locations, and dipole sources. The physical electrode locations and dipole sources were part of the EEG dataset. The electrodes have the fiducials removed and the only dipole sources that are used are those that the user chooses. There are 4800 dipoles in the data set and there should be 256 electrodes after the fiducials are removed. The head mesh was registered to the head segmentation with a rigid registration and after the flat tets are cut out the conductivities are mapped to their respective tissues. The electrodes and dipoles are registered to the head mesh with the same transform. The system is solved with the mapped data and the chosen dipole sources. The solution is then mapped onto the mesh and the electrodes for visualization. Streamlines and isolines are also included in the visualization.
+
+For the anisotropic case, the network is going to be largely the same with the exception of the diffusion tensor data set used as white matter conductivities after it was scaled as explained in Section \ref{sec:cond} and the DTI to mesh transform is needed as input. The head mesh, electrodes, and dipoles were registered to the DTI space with a rigid registration and the head segmentation wasn't needed. 
+
 \subsubsection{fMRI}
 
 The fMRI data is visualized one step at a time using the 2D matrix described in Section \ref{sec:fmripre} as input and viewing one column at a time. Each column is set onto a lattice volume, which is then rotated 180 degrees, smoothed, thresholded and clipped for easier rigid registration. The fMRI is registered to the tetrahedral mesh using the bounding boxes and manual registration. After registration, the smoothed fMRI data is mapped onto the mesh using a mapping matrix with a linear interpolation basis. (figure)
 
 \subsubsection{EEG}
 
-To visualize the EEG data
+We visualized the EEG data on the physical electrode locations. These were registered to the mesh space with a rigid registration after the fiducials were removed from the electrode data set. The filtered and cut EEG matrix was used as input and each time step was represented as a column. The electrodes were then placed onto the mesh, and EEG data mapped onto the electrodes one time step at a time. 
 
 
