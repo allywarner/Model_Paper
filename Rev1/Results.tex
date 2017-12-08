@@ -7,6 +7,8 @@
 \section{Results}
 \label{sec:results}
 
+All SCIRun networks used to generate results will be included in the open-source data set for future use and editing.
+
 \subsection{Segmentation}
 
 In this project a full, detailed head is segmented into different tissue layers to be able to make an inhomogeneous 3D mesh. Since there was no computed tomography (CT) scan with this data set, the task of segmenting the skull and especially the sinus layers seemed daunting. A basic skull and bone layer was created using FSL skull stripping feature in the brain extraction tool (ref?) and then concatenated it with a rough bone segmentation using thresholding in Seg3D of black pixels and manually correcting the segmentation. (figure of iso surface) Although a skull and bone segmentation was pieced together, the sinus segmentation seemed extremely difficult and time consuming. After obtaining the pseudo-CT scan, this did not seem like such a large feat anymore. The skull/bone and sinus segmentations made from it fit the brain segmentation extremely well and had no artifacts from combining two different layers together. (figure of isosurface - front and back) Although, the bone appears bumpy and the teeth are missing from the subject's permanent retainer.
@@ -23,38 +25,16 @@ The goal to make smaller meshes was made in order to be able to run simulations 
 
 \subsubsection{Isotropic}
 
-An isotropic, inhomogeneous 
+An isotropic, inhomogeneous head model would be expected to have fairly spherical results in propagation of signal. 3-dimensional streamlines were generated to show this. Isolines are another way to view this, but in each slice as to better show the differences between isotropic and anisotropic conductivity. Here we can see that the electrodes and dipoles are registered well to the mesh. (figures of each)
 
 \subsubsection{Anisotropic}
 
-\begin{itemize}
+An anisotropic, inhomogeneous head model would be expected to not have spherical results. This can be seen with streamlines, and better so with isolines. As discussed in \ref{sec:cond}, there are two methods of scaling diffusion tensor data. The network has the option to choose one or the other. We can see that the electrodes, the dipoles, and the mesh registered well to the diffusion tensor space. (figures)
 
-\item Images
-
-\item Compare different tensor conductivity calculations
-
-\end{itemize}
-ß
 \subsection{fMRI Visualization}
 
-\begin{itemize}
-
-\item  images
-
-\item First time!
-
-\end{itemize}
+With the rigid and manual registration of the fMRI data to the mesh space, fMRI data was mapped properly onto the mesh (for the first time). This allows for future use of fMRI using the SCIRun package. (figures of several time steps)
 
 \subsection{EEG Visualization}
 
-\begin{itemize}
-
-\item  images
-
-\item Talk about "bad" leads and how further specific processing will be required
-
-\end{itemize}
-
-
-
-
+When using EEG data, the particular application dictates what kind of additional processing, filtering, and cutting of the data needs to be done. In these visualizations it can be seen with this basic preprocessing there are bad leads, specifically around the eyes which could be due to blinking or eyes rolling, but will be improve with further specific processing. (figures)
