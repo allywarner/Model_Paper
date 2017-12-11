@@ -1,0 +1,29 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Methods}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Data Acquisition}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Preprocessing of Images}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.2.1}{MRI Correction}{subsection.2.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.2.2}{DWI Distortion Correction}{subsection.2.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Diffusion Tensor Images}{subsection.2.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.4}{fMRI}{subsection.2.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.5}{EEG}{subsection.2.2}% 9
+\BOOKMARK [3][-]{subsubsection.2.2.6}{Registration}{subsection.2.2}% 10
+\BOOKMARK [2][-]{subsection.2.3}{MRI Segmentation of Tissues}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.4}{Finite Element Mesh Generation}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.5}{Mathematical Modeling}{section.2}% 13
+\BOOKMARK [3][-]{subsubsection.2.5.1}{Electrical Conductivity Preparation}{subsection.2.5}% 14
+\BOOKMARK [3][-]{subsubsection.2.5.2}{Numerical Methods}{subsection.2.5}% 15
+\BOOKMARK [2][-]{subsection.2.6}{Simulations \046 Visualization}{section.2}% 16
+\BOOKMARK [3][-]{subsubsection.2.6.1}{Forward Problem}{subsection.2.6}% 17
+\BOOKMARK [3][-]{subsubsection.2.6.2}{fMRI}{subsection.2.6}% 18
+\BOOKMARK [3][-]{subsubsection.2.6.3}{EEG}{subsection.2.6}% 19
+\BOOKMARK [1][-]{section.3}{Results}{}% 20
+\BOOKMARK [2][-]{subsection.3.1}{Segmentation}{section.3}% 21
+\BOOKMARK [2][-]{subsection.3.2}{Finite Element Meshes}{section.3}% 22
+\BOOKMARK [2][-]{subsection.3.3}{Forward Problem}{section.3}% 23
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Isotropic}{subsection.3.3}% 24
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Anisotropic}{subsection.3.3}% 25
+\BOOKMARK [2][-]{subsection.3.4}{fMRI Visualization}{section.3}% 26
+\BOOKMARK [2][-]{subsection.3.5}{EEG Visualization}{section.3}% 27
+\BOOKMARK [1][-]{section.4}{Conclusion}{}% 28
+\BOOKMARK [1][-]{section.5}{Acknowledgements}{}% 29

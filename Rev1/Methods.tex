@@ -125,7 +125,7 @@ These commands first obtain the b0 image, which is the baseline image used for c
 
 \subsubsection{Diffusion Tensor Images}
 
-After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT. Upon opening FSL choose ``FDT Diffusion." Then choose ``DTIFIT Reconstruct diffusion tensors" in the drop down menu, select to input files manually, and put in the files in Table \ref{dtifit}. (reference)
+After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT \cite{ref:dtifit}. Upon opening FSL choose ``FDT Diffusion." Then choose ``DTIFIT Reconstruct diffusion tensors" in the drop down menu, select to input files manually, and put in the files in Table \ref{dtifit}. (reference)
 
 \begin{table}[H]
 \centering
@@ -165,7 +165,7 @@ The tensor field was built in SCIRun rather than in 3D Slicer \cite{ref:slicer} 
 \subsubsection{fMRI}
 \label{sec:fmripre}
 
-fMRI data was preprocessed using the 1000 Functional Connectomes Project pipeline scripts (reference) which do anatomical preprocessing, functional preprocessing, registration to the $T_1$ MRI, segmentation, and nuisance signal regress. The outline pipeline used on this fMRI dataset, specific to the University of Utah, can be found at https://bitbucket.org/UtahBrainNetworks/base\_prep and includes specific instructions for installation, compilation, and usage.  
+fMRI data was preprocessed using the 1000 Functional Connectomes Project pipeline scripts \cite{ref:fcon} which do anatomical preprocessing, functional preprocessing, registration to the $T_1$ MRI, segmentation, and nuisance signal regress. The outline pipeline used on this fMRI dataset, specific to the University of Utah, can be found at https://bitbucket.org/UtahBrainNetworks/base\_prep and includes specific instructions for installation, compilation, and usage.  
 
 After running fMRI data through the pipeline ``rest.nii", the preprocessed fMRI file, was opened in Matlab using the ``load\_nii(`rest.nii')" function within the NiFTI toolbox \cite{ref:nifti}. The 4D ``img" variable (x, y, z, t) is then resized to a 2D variable (x*y*z,t) and saved to use in SCIRun. 
 fre

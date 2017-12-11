@@ -24,6 +24,11 @@
 \usepackage{wrapfig}
 \usepackage{varwidth}
 
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{breaklinks=true}
+\urlstyle{same}
+
 \textheight 8.6in
 \textwidth 6.5in
 \topmargin -.5in
@@ -81,7 +86,7 @@ University of Utah, Salt Lake City UT}
 \input{Conclusion}
 \input{Acknowledgements}
 
-\newpage
+\Urlmuskip=0mu plus 1mu\relax
 \bibliographystyle{unsrt}
 \bibliography{aw}
 \end{document}
