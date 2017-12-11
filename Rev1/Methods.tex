@@ -178,6 +178,14 @@ The filetype of the EEG recordings in an .edf file after it had a 60Hz notch fil
 
 Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registration was necessary before segmentation and meshing. The tetrahedral mesh was generated in its own coordinate space from the segmentation, and was registered to the DTI coordinate space with a rigid registration using SCIRun. The fMRI data was registered to the mesh coordinate space with a rigid registration using SCIRun. The fMRI data can use same transform to register to DTI later if desired. The SCIRun networks for registration are included in Section \ref{sec:sim}.
 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=.75\textwidth]{Figures/DTI_reg}
+\caption{default}
+\label{default}
+\end{center}
+\end{figure}
+
 \subsection{MRI Segmentation of Tissues}
 \label{sec:Seg}
 
