@@ -18,13 +18,13 @@
 
 %%% Image and EEG Acquisitions 
 
-To construct a high-resolution, personalized, anisotropic volume conductor whole-head model, $T_1$-, $T_2$- weighted, diffusion weighted, and functional magnetic resonance (MRI) scans were acquired on a healthy, female volunteer who is 23 years of age on a Skyra 3T full-body scanner (Siemens Medical Solutions). 
+To construct a high-resolution, personalized, anisotropic volume conductor whole-head model, $T_1$-, $T_2$- weighted, diffusion weighted, and functional magnetic resonance (MRI) scans were acquired on a healthy, female volunteer who is 23 years of age on a Skyra 3T full-body scanner (Siemens Medical Solutions, Erlangen, Germany). 
 
-The $T_1$-weighted scan was performed with a 3D magnetization prepared rapid gradient echo (MPRAGE) sequence (Mugler and Brookman, 1990) -- get this reference. The parameters used were as follows: echo time: 3.41ms, repetition time: 2500ms, flip angle: 7 $^{\circ}$, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 10:42 minutes. 
+The $T_1$-weighted scan was performed with a 3D magnetization prepared rapid gradient echo (MPRAGE) sequence \cite{ref:mprage}. The parameters used were as follows: echo time: 3.41ms, repetition time: 2500ms, flip angle: 7 $^{\circ}$, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 10:42 minutes. 
 
-The $T_2$-weighted scan was performed with a sampling perfection with application-optimized contrast using different flip angle evolutions (check ref) (SPACE) sequence (Lichy et. al., 2005; Mugler et al., 2000). The parameters used were as follows: echo time: 406ms, repetition time: 3200ms, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 5:34 minutes. The subject did not move in between the two scans so the scans did not need to be registered. 
+The $T_2$-weighted scan was performed with a sampling prepared with application-optimized contrast using different flip angle evolutions (SPACE) sequence \cite{ref:space}. The parameters used were as follows: echo time: 406ms, repetition time: 3200ms, resolution matrix size: 256x256 pixels, field of view: 256mm, 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 5:34 minutes. The subject did not move in between the two scans so the scans did not need to be registered. 
 
-The diffusion weighted images (DWI) were acquired with multiband two-dimensional echo-planar imaging (EPI). Both phase encoding directions were performed (anterior to posterior and posterior to anterior) with 64 diffusion directions each. Further sequence parameters for each scan was as follows: echo time: 76.8ms, repetition time: 4070ms, flip angle: 90 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 208mm, 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes each. 
+The diffusion weighted images (DWI) were acquired with multiband two-dimensional echo-planar imaging (EPI) \cite{ref:epi}. Both phase encoding directions were performed (anterior to posterior and posterior to anterior) with 64 diffusion directions each. Further sequence parameters for each scan was as follows: echo time: 76.8ms, repetition time: 4070ms, flip angle: 90 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 208mm, 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes each. 
 
 The function MRI (fMRI) scans were acquired with blood oxygenation level dependent contrast (BOLD). The following parameters were used:  echo time: 76.8ms, repetition time: 780ms, flip angle: 55 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 210mm, 72 slices with 2mm slice thickness. Acquisition time was 10:32 minutes.
 
@@ -54,11 +54,11 @@ All acquisition reports will be included with the dataset.
 
 \subsubsection{MRI Correction}
 
-Bias field signal is a low-frequency, smooth signal that corrupts MRI images due to inhomogeneities in the magnetic fields of the MRI machine by blurring images reducing the high frequencies of the images such as edges and contours. It changes the intensity values of image pixels so that the same tissue has a different distribution of grayscale intensities across the image. (ref) An estimated bias field correction on the $T_1$ and $T_2$ MRI's was done using FMRIB Software Library (FSL) FAST, and will be further described in the Section \ref{sec:Seg}. Figure \ref{fig:fsl} shows FSL's basic user interface, which will be used multiple times throughout this pipeline. 
+Bias field signal is a low-frequency, smooth signal that corrupts MRI images due to inhomogeneities in the magnetic fields of the MRI machine by blurring images reducing the high frequencies of the images such as edges and contours. It changes the intensity values of image pixels so that the same tissue has a different distribution of grayscale intensities across the image. \cite{ref:bias} An estimated bias field correction on the $T_1$ and $T_2$ MRI's was done using FMRIB Software Library (FSL) FAST \cite{ref:fslfast}, and will be further described in the Section \ref{sec:Seg}. Figure \ref{fig:fsl} shows FSL's basic user interface, which will be used multiple times throughout this pipeline. 
 
 \subsubsection{DWI Distortion Correction}
 
-Diffusion weighted images performed with EPI sequences are prone to distortions from rapid switching of diffusion weighting gradients, movement from the scanning table, and movement from the subject. The diffusion data was collected with reversed phase-encode blips (anterior to posterior (AP) and posterior to anterior(PA)), resulting in pairs of images with distortions going in opposite directions. From these pairs the susceptibility-induced off-resonance field was estimated using a method similar to that described in [Andersson 2003] as implemented in FSL [Smith 2004] and the two images were combined into a single corrected one. This was accounted for using FSL's topup and eddy command line tools.
+Diffusion weighted images performed with EPI sequences are prone to distortions from rapid switching of diffusion weighting gradients, movement from the scanning table, and movement from the subject. The diffusion data was collected with reversed phase-encode blips (anterior to posterior (AP) and posterior to anterior(PA)), resulting in pairs of images with distortions going in opposite directions. From these pairs the susceptibility-induced off-resonance field was estimated using a method similar to that described in \cite{ref:fsltopup1} as implemented in FSL \cite{ref:fsltopup2} and the two images were combined into a single corrected one. This was accounted for using FSL's topup and eddy command line tools.
 
 Before running these tools, an acquisition parameters text file needs to be created with the FSL-defined total readout time. 
 
@@ -76,7 +76,7 @@ Before running these tools, an acquisition parameters text file needs to be crea
 \caption{Acquisition Parameters Text File}
 \end{figure}
 
-There are two parameters that are frequently needed when calculating and applying field maps: the effective echo spacing and the total readout time for an EPI sequence. "Effective" echo spacing was used, rather than the actual echo spacing, in order to include the effects of parallel imaging, phase oversampling, etc. Multiplying this by the size of the reconstructed image in the phase direction will give you the reciprocal of the effective echo spacing:
+There are two parameters that are frequently needed when calculating and applying field maps: the effective echo spacing and the total readout time for an EPI sequence. ``Effective" echo spacing was used, rather than the actual echo spacing, in order to include the effects of parallel imaging, phase oversampling, etc. Multiplying this by the size of the reconstructed image in the phase direction will give you the reciprocal of the effective echo spacing:
 \[
 \text{Effective Echo Spacing (s) = 1/(BandwidthPerPixelPhaseEncode * MatrixSizePhase)}
 \]
@@ -86,7 +86,7 @@ The total readout time (FSL definition) is:
 \text{Total readout time (FSL) = (MatrixSizePhase - 1) * EffectiveEchoSpacing}
 \]
 
-MRIConvert (ref) is a software package that provides all of the acquisition information about a dicom series, as well as converts to a NiFTI format, including effective echo spacing and total readout time. To obtain this information, first load in the dicom series for either DWI acquisition. Choose "Options" to ensure that the DWI will be saved as a NiFTI, and click "Convert All." This will save all the files into the output directory specified upon opening MRIConvert. The text file will include the FSL-defined total readout time which should be contained in the acquisition parameter file in seconds. MRIConvert also outputs the b-values and b-vectors files, and they should be the same for both the DWI AP and DWI PA scans. The last input file needed is an "index.txt" file. This text file contains one column with 65 rows (for 64 directions plus the b0 image) of 1's.
+MRIConvert is a software package that provides all of the acquisition information about a dicom series, as well as converts to a NiFTI format, including effective echo spacing and total readout time \cite{ref:mriconvert}. To obtain this information, first load in the dicom series for either DWI acquisition. Choose ``Options" to ensure that the DWI will be saved as a NiFTI, and click ``Convert All." This will save all the files into the output directory specified upon opening MRIConvert. The text file will include the FSL-defined total readout time which should be contained in the acquisition parameter file in seconds. MRIConvert also outputs the b-values and b-vectors files, and they should be the same for both the DWI AP and DWI PA scans. The last input file needed is an ``index.txt" file. This text file contains one column with 65 rows (for 64 directions plus the b0 image) of 1's.
 
 %MRIConvert
 \begin{figure}[H]
@@ -121,7 +121,7 @@ eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_p
 
 \end{lstlisting}
 
-These commands first obtain the b0 image, which is the baseline image used for calculating field maps, for both encoding directions. Then the two b0's are merged together into one file. Topup and eddy are applied for distortion correction. Bet is applied for brain extraction. The distortion corrected file is named "eddy\_unwarped.nii."
+These commands first obtain the b0 image, which is the baseline image used for calculating field maps, for both encoding directions. Then the two b0's are merged together into one file. Topup and eddy are applied for distortion correction. Bet is applied for brain extraction. The distortion corrected file is named ``eddy\_unwarped.nii."
 
 \subsubsection{Diffusion Tensor Images}
 
@@ -141,7 +141,7 @@ b values:                & dwi.bval                  \\ \hline
 \end{tabular}
 \end{table}
 
-DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (named V1, V2, and V3) for the diffusion tensor field. The files were converted from NiFTI format to nrrd format using ITK-SNAP (reference) although there is a loss of precision. The files were then input into SCIRun to build the tensor field using the eigenvalue and eigenvectors. The SCIRun CalculateFieldData module only requires two eigenvectors as input because it calculates the third eigenvector automatically since it should be orthogonal to the first two. This process can be done in either SCIRun 4 or SCIRun 5 and the same results are produced. 
+DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (named V1, V2, and V3) for the diffusion tensor field. The files were converted from NiFTI format to nrrd format using ITK-SNAP \cite{ref:itksnap} although there is a loss of precision. The files were then input into SCIRun to build the tensor field using the eigenvalue and eigenvectors. The SCIRun CalculateFieldData module only requires two eigenvectors as input because it calculates the third eigenvector automatically since it should be orthogonal to the first two. This process can be done in either SCIRun 4 or SCIRun 5 and the same results are produced. 
 
 \begin{figure}[p]
 \begin{center}
@@ -160,18 +160,18 @@ DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (
 \end{center}
 \end{figure}
 
-The tensor field was built in SCIRun rather than in 3D Slicer (reference) or FSL DTIFIT because the output data would be "backwards" and couldn't be registered with the mesh. 
+The tensor field was built in SCIRun rather than in 3D Slicer \cite{ref:slicer} or FSL DTIFIT because the output data would be ``backwards" and couldn't be registered with the mesh. 
 
 \subsubsection{fMRI}
 \label{sec:fmripre}
 
 fMRI data was preprocessed using the 1000 Functional Connectomes Project pipeline scripts (reference) which do anatomical preprocessing, functional preprocessing, registration to the $T_1$ MRI, segmentation, and nuisance signal regress. The outline pipeline used on this fMRI dataset, specific to the University of Utah, can be found at https://bitbucket.org/UtahBrainNetworks/base\_prep and includes specific instructions for installation, compilation, and usage.  
 
-After running fMRI data through the pipeline ``rest.nii", the preprocessed fMRI file, was opened in Matlab using the ``load\_nii(`rest.nii')" function within the NiFTI toolbox. The 4D "img" variable (x, y, z, t) is then resized to a 2D variable (x*y*z,t) and saved to use in SCIRun. (reference for NiFTI toolbox?)
-
+After running fMRI data through the pipeline ``rest.nii", the preprocessed fMRI file, was opened in Matlab using the ``load\_nii(`rest.nii')" function within the NiFTI toolbox \cite{ref:nifti}. The 4D ``img" variable (x, y, z, t) is then resized to a 2D variable (x*y*z,t) and saved to use in SCIRun. 
+fre
 \subsubsection{EEG}
 
-The filetype of the EEG recordings in an .edf file after it had a 60Hz notch filter and its harmonics. The EEG signal matrix was obtained using a Matlab script called ``edfRead.m." To run this script use the following command ``[hdr, record] = edfread(fname)." The variable `record' will contain the signals. The last two rows of the matrix were removed because they did not correspond to EEG electrodes. Also the beginning and end of the experiment were cut out of the matrix when the EEG net is being put on and taken off. 
+The filetype of the EEG recordings in an .edf file after it had a 60Hz notch filter and its harmonics \cite{ref:filter}. The EEG signal matrix was obtained using a Matlab script called ``edfRead.m" \cite{ref:edfread}. To run this script use the following command ``[hdr, record] = edfread(fname)." The variable `record' will contain the signals. The last two rows of the matrix were removed because they did not correspond to EEG electrodes. Also the beginning and end of the experiment were cut out of the matrix when the EEG net is being put on and taken off. 
 
 \subsubsection{Registration}
 
@@ -190,9 +190,9 @@ Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registrati
 
 %%% Preparation for segmentation, trials, manual work 
 
-Segmentation of the head tissues proved to be the most time consuming section of the pipeline. The head volume was segmented into air, cerebral spinal fluid (CSF), white matter, grey matter, skull, sinus, eyes, and scalp. Segmentation of the brain can be difficult due to the similar intensities of the different tissues, making merely applying a median filter and thresholding the image not enough.
+Segmentation of the head tissues proved to be the most time consuming section of the pipeline. The head volume was segmented into air, cerebral spinal fluid (CSF), white matter, grey matter, skull, sinus, eyes, and scalp. Segmentation of the brain can be difficult due to the similar intensities of the different tissues, making merely applying a median filter and thresholding the image not enough. The majority of the segmentation work was done using Seg3D, a free volume segmentation and processing tool \cite{ref:seg3d}.
 
-The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FSL FAST Segmentation. This outputs CSF, white matter, and grey matter layers as well as a bias-corrected $T_1$ MRI. This method, compared with Freesurfer, Statistical Parametric Mapping through Matlab (SPM), Atlas Based Classification through 3D Slicer, and Seg3D methods alone, produced the best initial brain segmentation results for this data due to how well it filled in each tissue. 
+The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FSL FAST Segmentation. This outputs CSF, white matter, and grey matter layers as well as a bias-corrected $T_1$ MRI. This method, compared with Freesurfer \cite{ref:freesurf}, Statistical Parametric Mapping through Matlab (SPM) \cite{ref:spm}, Atlas Based Classification through 3D Slicer \cite{ref:abc}, and Seg3D methods alone, produced the best initial brain segmentation results for this data due to how well it filled in each tissue. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{Figures/FSL_FAST}
@@ -210,7 +210,7 @@ The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FS
 \end{center}
 \end{figure}
 
-Although the FSL Fast results were a great improvement compared to the other segmentation trials, manual segmentation still needed to be done on those layers to add more detail and take out any cross over between the layers. Since white matter is the innermost layer, it was worked on first. All manual editing was done using Seg3D software. (ref) First a threshold layer was created from the FSL Fast output. Every slice in every direction was inspected and manually edited whether that was adding more detail that could be seen with the naked eye or cleaning up noise from FSL Fast. This manual editing of the white matter took roughly 40 hours of work.
+Although the FSL FAST results were a great improvement compared to the other segmentation trials, manual segmentation, completed with Seg3D, still needed to be done on those layers to add more detail and take out any cross over between the layers. Since white matter is the innermost layer, it was worked on first. First a threshold layer was created from the FSL FAST output. Every slice in every direction was inspected and manually edited whether that was adding more detail that could be seen with the naked eye or cleaning up noise from FSL FAST. This manual editing of the white matter took roughly 40 hours of work.
 
 \begin{figure}[H]
 \begin{center}
@@ -242,7 +242,7 @@ After the grey and white matter layers were completed, the CSF layer was made by
 \end{center}
 \end{figure}
 
-The skull and the sinus layers are the most difficult to segment using only an MRI because they both appear black in the image, and the volunteer did not have a CT scan. (define?) The first attempt to create a bone layer was first to use FSL's skull stripping using the BET2 tool to create a skull. Then to threshold the remainder of the bones in Seg3D from the $T_1$ MRI and connect it to the skull from FSL. Although this gave a decent skull for only having an MRI layer, the method to segment sinus layer was still to be determined. As a second method, the skull was estimated from an MR-based synthetic pseudo-CT. An improved iterative version of the patch-based method was used described by Torrado-Carvajal et al. [ref] that takes the $T_1$ and $T_2$ images as input, and synthesize the pseudo-CT based on both images providing more refined and accurate bone boundaries. 
+The skull and the sinus layers are the most difficult to segment using only an MRI because they both appear black in the image, and the volunteer did not have a computed tomography (CT) scan. The first attempt to create a bone layer was first to use FSL's skull stripping using the BET2 tool to create a skull. Then to threshold the remainder of the bones in Seg3D from the $T_1$ MRI and connect it to the skull from FSL. Although this gave a decent skull for only having an MRI layer, the method to segment sinus layer was still to be determined. As a second method, the skull was estimated from an MR-based synthetic pseudo-CT. An improved iterative version of the patch-based method was used described by Torrado-Carvajal et al. that takes the $T_1$ and $T_2$ images as input, and synthesize the pseudo-CT based on both images providing more refined and accurate bone boundaries \cite{ref:pseudoct}. 
 
 \begin{figure}[H]
 \begin{center}
@@ -276,7 +276,8 @@ Eyes, Scalp, \& Air & 8                    \\ \hline
 
 %%% Settings for mesh generation, issues 
 
-Segmentations were used to generate realistic 3D geometries for use in subsequent finite element simulations. A smooth, linear, subject-specific, boundary-conforming, tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. Cleaver is a multimaterial meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources. To make a very high resolution mesh with no holes the following parameters were used: 
+Segmentations were used to generate realistic three-dimensional geometries for use in subsequent finite element simulations. A smooth, linear, subject-specific, boundary-conforming, tetrahedral finite element mesh was generated using Cleaver software \cite{ref:cleaver} on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. Cleaver is a multimaterial meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources. To make a very high resolution mesh with no holes the following parameters were used: 
+
 \begin{table}[H]
 \centering
 \caption{Clever Settings (High Resolution)}
@@ -291,7 +292,7 @@ element sizing method:             & adpative            \\ \hline
 \end{tabular}
 \end{table}
 
- Along with these parameters, indicator functions must be input to Cleaver. These are made by creating distance maps in Seg3D. Ensure the map is inverted before making the distance map. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 (ref and figure of network) by changing how quickly the elements increase in size. This was done by multiplying the scaling by a factor of 27. The changed sizing field was then input into Cleaver with the same indicator functions and cleaved a new mesh.
+ Along with these parameters, indicator functions must be input to Cleaver. These are made by creating distance maps in Seg3D. Ensure the map is inverted before making the distance map. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 by changing how quickly the elements increase in size. This was done by multiplying the scaling by a factor of 27. The changed sizing field was then input into Cleaver with the same indicator functions and cleaved a new mesh.
 
 \subsection{Mathematical Modeling}
 \label{sec:math}
@@ -311,14 +312,14 @@ where $\Phi$ is the electrostatic potential, $\sigma$ is the electrical conducti
 n} = 0\;\;\;\;\;\mbox{ on }\Gamma_{T}, 
 \end{equation} 
 %
-which says that the normal component of the electric field is zero on the surface interfacing with air (here denoted by $\Gamma_{T}$). The brain and surrounding tissue and skull were discretized, and using dipoles for current source the electrical field was calculated within the brain and then projected onto the surface of the scalp.
+which says that the normal component of the electric field is zero on the surface interfacing with air (here denoted by $\Gamma_{T}$). The brain and surrounding tissue and skull were discretized, and using dipoles for current source the electrical field was calculated within the brain and then projected onto the surface of the scalp. \cite{ref:math}
 
 \subsubsection{Electrical Conductivity Preparation}
 \label{sec:cond}
 
-All electrical conductivities were homogeneous for each tissue with the exception of white matter when using tensor data. The isotropic conductivities are as follows (Rullman): 
+All electrical conductivities were homogeneous for each tissue with the exception of white matter when using tensor data. The isotropic conductivities are as follows \cite{ref:cond}: 
 
-\begin{table}[]
+\begin{table}[H]
 \centering
 \caption{Isotropic Tissue Conductivity}
 \label{tab:cond}
@@ -335,7 +336,7 @@ Eyes                      & 0.5051                         \\ \hline
 \end{tabular}
 \end{table}
 
-When DTI tensor data is added, there are two approaches to converting the tensor data to conductivities. The first is scaling the data (ref), and the second is giving the white matter a fixed ratio of conductivity. 
+When DTI tensor data is added, there are two approaches to converting the tensor data to conductivities. The first is scaling the data \cite{ref:scaling}, and the second is giving the white matter a fixed ratio of conductivity. 
 
 \begin{equation}
 \sigma_{aniso} = \frac{\sigma_{iso}}{\sqrt[3]{d_1d_2d_3}}D
@@ -377,7 +378,7 @@ A \phi_e = -RV_m
 where $A$ and $R$ represent stiffness matrices defined by $A_{j,k} = \langle \nabla \psi_j,(\bar{\sigma}
 _e + \bar{\sigma}_i)\nabla \psi_k \rangle_\Omega$ and $R_{j,k} = \langle \nabla \psi_j,\bar{\sigma}_i
 \nabla \psi_k \rangle_\Omega$,
-while $\phi_e$ and $V_m$ represent extracellular and transmembrane potentials, respectively.\cite{BMB:Wan2013}
+while $\phi_e$ and $V_m$ represent extracellular and transmembrane potentials, respectively.\cite{ref:fem}
 
 %%% This paragraph addresses SCIRun as a solver
 We used SCIRun, the open-source problem solving environment, to apply parameters and to solve Equation  \ref{eq:ReducedFormula} numerically.  Within the SCIRun environment, isotropic and anisotropic conductivity tensors were applied to the mesh as well as inhomogeneous regions, initial and boundary conditions were defined, and border regions were generated in order to compute potentials by way of a conjugate gradient method with a Jacobi preconditioner.

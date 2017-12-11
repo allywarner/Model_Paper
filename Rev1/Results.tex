@@ -23,7 +23,7 @@ In this project a full, detailed head is segmented into different tissue layers 
 \end{center}
 \end{figure}
 
-Since there was no computed tomography (CT) scan with this data set, the task of segmenting the skull and especially the sinus layers seemed daunting. A basic skull and bone layer was created using FSL skull stripping feature in the brain extraction tool (ref?) and then concatenated it with a rough bone segmentation using thresholding in Seg3D of black pixels and manually correcting the segmentation. Although a skull and bone segmentation was pieced together, the sinus segmentation seemed extremely difficult and time consuming. After obtaining the pseudo-CT scan, this did not seem like such a large feat anymore. The skull/bone and sinus segmentations made from it fit the brain segmentation extremely well and had no artifacts from combining two different layers together. Although the teeth are solid bone from the subject's permanent retainer.
+Since there wasn't a CT scan with this data set, the task of segmenting the skull and especially the sinus layers seemed daunting. A basic skull and bone layer was created using FSL skull stripping feature in the brain extraction tool (ref?) and then concatenated it with a rough bone segmentation using thresholding in Seg3D of black pixels and manually correcting the segmentation. Although a skull and bone segmentation was pieced together, the sinus segmentation seemed extremely difficult and time consuming. After obtaining the pseudo-CT scan, this did not seem like such a large feat anymore. The skull/bone and sinus segmentations made from it fit the brain segmentation extremely well and had no artifacts from combining two different layers together. Although the teeth are solid bone from the subject's permanent retainer.
 
 \begin{figure}[H]
 \begin{center}
@@ -83,7 +83,7 @@ The goal to make smaller meshes was made in order to be able to run simulations 
 
 \subsubsection{Isotropic}
 
-An isotropic, inhomogeneous head model would be expected to have fairly spherical results in propagation of signal. 3-dimensional streamlines were generated to show this. Isolines are another way to view this, but in each slice as to better show the differences between isotropic and anisotropic conductivity. Here we can see that the electrodes and dipoles are registered well to the mesh. 
+An isotropic, inhomogeneous head model would be expected to have fairly spherical results in propagation of signal. three-dimensional streamlines were generated to show this. Isolines are another way to view this, but in each slice as to better show the differences between isotropic and anisotropic conductivity. Here we can see that the electrodes and dipoles are registered well to the mesh. 
 
 \begin{figure}[H]
 \begin{center}

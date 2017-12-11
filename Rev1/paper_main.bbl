@@ -1,0 +1,148 @@
+\begin{thebibliography}{10}
+
+\bibitem{ref:Brette2012}
+A.~Destexhe R.~Brette.
+\newblock {\em Handbook of Neural Activity Measurement}.
+\newblock Cambridge University Press, 2012.
+
+\bibitem{ref:scirun}
+SCI Institute, 2016.
+\newblock SCIRun: A Scientific Computing Problem Solving Environment,
+  Scientific Computing and Imaging Institute (SCI), Download from:
+  http://www.scirun.org.
+
+\bibitem{ref:mprage}
+J.R.~Brookeman J.P.~Mugler.
+\newblock Three-dimensional magnetization-prepared rapid gradient-echo imaging
+  (3d mp rage).
+\newblock {\em Magn. Reson. Med.}, 15(1):152--157, July 1990.
+
+\bibitem{ref:space}
+J.P. Mugler W. Horger M.I. Menzel A. Anastasiadis K. Siegmann T. Niemeyer A.
+  Konigsrainer B. Kiefer F. Schink C.D. Claussen H.P.~Schlemmer M.P.~Lichy,
+  B.M.~Wietek.
+\newblock Magnetic resonance imaging of the body trunk using a single-slab,
+  three-dimensional, t2-weighted turbo-spin-echo sequence with high sampling
+  efficiency (space) for high spatial resolution imaing: initial clinical
+  experiences.
+\newblock {\em Invest. Radiol}, 40(12):754--760, December 2005.
+
+\bibitem{ref:epi}
+R.M. Weisskoff V.J.~Wedeen T.G.~Reese, O.~Heid.
+\newblock Reduction of eddy-current-induced distortion in diffusion mri using a
+  twice-refocused spin echo.
+\newblock {\em Magn. Reson. Med.}, 49(1):177--182, 2003.
+
+\bibitem{ref:bias}
+D.V. Dyck J.~Gielen J.~Juntu, J.~Sijbers.
+\newblock Bias field correction for mri images.
+\newblock {\em In: Kurzy{\'n}ski M., Pucha{\l}a E., Wo{\'z}niak M.,
+  {\.z}o{\l}nierek A. (eds) Computer Recognition Systems. Advances in Soft
+  Computing, vol 30. Springer, Berlin, Heidelberg}, (543-551), 2005.
+
+\bibitem{ref:fslfast}
+S.~Smith Y.~Zang, M.~Brady.
+\newblock Segmentation of brain mr images through a hidden markov random field
+  model and the expectation-maximization algorithm.
+\newblock {\em IEEE Trans Med Imag}, 20(1):45--57, 2001.
+
+\bibitem{ref:fsltopup1}
+J.~Ashburner J.L.R.~Anderson, S.~Skare.
+\newblock How to correct susceptibility distortions in spin-echo echo-planar
+  images; applications to diffusion tensor imaging.
+\newblock {\em NeuroImage}, 20(2):870--888, 2003.
+
+\bibitem{ref:fsltopup2}
+M.W. Woolrich C.F. Beckmann T.E.J. Behrens H. Johansen-Berg P.R. Bannister M.
+  De Luca I. Drobnjak D.E. Flitney R. Niazy J. Saunders J. Vickers Y. Zhang N.
+  De Stefano J.M. Brady P.M.~Matthews S.M.~Smith, M.~Jenkinson.
+\newblock Advances in functional and structural mr image analysis and
+  implementation as fsl.
+\newblock {\em NeuroImage}, 23(S1):208--219, 2004.
+
+\bibitem{ref:mriconvert}
+J.~Ashburner J.C. Smith C.~Rorden X.~Li, P.S.~Morgan.
+\newblock The first step for neuroimaging data analysis: Dicom to nifti
+  conversion.
+\newblock {\em Journal of Neuroscience Methods}, 264:47--56, 2016.
+
+\bibitem{ref:itksnap}
+H.C. Hazlett R.G. Smith S. Ho J.C. Gee-G.~Gerig P.A.~Yushkevich, J.~Piven.
+\newblock User-guided 3d active contour segmentation of anatomical structures:
+  Significantly improved efficiency and reliability.
+\newblock {\em NeuroImage}, 31(3):1116--28, July 2006.
+
+\bibitem{ref:slicer}
+J.~Kalpathy-Cramer J. Finet J-C. Fillion-Robin S. Pujol C. Bauer D. Jennings
+  F.M. Fennessy M. Sonka J. Buatti S.R. Aylward J.V. Miller S. Pieper
+  R.~Kikinis A.~Fedorov, R.~Beichel.
+\newblock 3d slicer as an image computing platform for the quantitative imaging
+  network.
+\newblock {\em Magn. Reson. Imaging}, 30(9):1323--31, November 2012.
+
+\bibitem{ref:nifti}
+Jan 2014.
+
+\bibitem{ref:filter}
+P.~Kupper-M. Heers H. Kugel-A. Galka-L. Hamid J. Wellmer C. Kellinghaus S.
+  Rampp C.H.~Wolter U.~Aydin, J.~Vorwerk.
+\newblock Combining eeg and meg for the reconstruction of epileptic activity
+  using a calibrated realistic volume conductor model.
+\newblock {\em PLOS ONE}, 9(3), March 2014.
+
+\bibitem{ref:edfread}
+September 2016.
+
+\bibitem{ref:seg3d}
+CIBC, 2016.
+\newblock Seg3D: Volumetric Image Segmentation and Visualization. Scientific
+  Computing and Imaging Institute (SCI), Download from: http://www.seg3d.org.
+
+\bibitem{ref:freesurf}
+M.I.~Sereno A.M.~Dale, B.~Fischl.
+\newblock Cortical surface-based analysis. i. segmentation and surface
+  reconstruction.
+\newblock {\em NeuroImage}, 9:179--194, 1999.
+
+\bibitem{ref:spm}
+May 2016.
+
+\bibitem{ref:pseudoct}
+E.~Alcain A.S. Montemayor L. Garcia-Ca{\~n}amaque-J.A. Hernandez-Tamames ... &
+  N.~Malpica A.~Torrado-Carvajal, J.L.~Herraiz.
+\newblock Fast patch-based pseudo-ct synthesis from t1-weighted mr images for
+  pet/mr attenuation correction in brain studies.
+\newblock {\em Journal of Nuclear Medicine}, 57(1):136--143, 2016.
+
+\bibitem{ref:cleaver}
+CIBC, 2016.
+\newblock Cleaver: A MultiMaterial Tetrahedral Meshing Library and Application.
+  Scientific Computing and Imaging Institute (SCI), Download from:
+  http://www.sci.utah.edu/cibc/software.html.
+
+\bibitem{ref:math}
+C.R. Johnson.
+\newblock {\em Computational Methods and Software for Bioelectric Field
+  Problems}, volume~1.
+\newblock CRC Press, 4th edition, 2015.
+
+\bibitem{ref:cond}
+M.~Dannhauer S.K. Warfield F.H. Duffy C.H.~Wolters M.~Rullmann, A.~Anwander.
+\newblock Eeg source analysis of epileptiform activity using a 1 mm anisotropic
+  hexahedra finite element head model.
+\newblock {\em NeuroImage}, 44:399--410, 2009.
+
+\bibitem{ref:scaling}
+J.~R.~Reichenbach D.~Gullmar, J.~Haueisen.
+\newblock Influence of anisotropic electrical conductivity in white matter
+  tissue on the eeg/meg forward and inverse solution. a high-resolution whole
+  head simulation study.
+\newblock {\em NeuroImage}, 51:145--163, 2010.
+
+\bibitem{ref:fem}
+R.S. MacLeod C.R.~Johnson D.~Wang, R.M.~Kirby.
+\newblock Inverse electrocardiographic source localization of ischemia: An
+  optimization framework and finite element soltuion.
+\newblock {\em Journal of Computational Science}, 2013.
+
+\end{thebibliography}

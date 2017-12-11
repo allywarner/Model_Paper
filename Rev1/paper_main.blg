@@ -1,0 +1,177 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper_main.aux
+The style file: unsrt.bst
+Database file #1: aw.bib
+Warning--entry type for "ref:spm" isn't style-file defined
+--line 85 of file aw.bib
+Warning--entry type for "ref:edfread" isn't style-file defined
+--line 92 of file aw.bib
+Warning--entry type for "ref:nifti" isn't style-file defined
+--line 99 of file aw.bib
+Warning--I didn't find a database entry for "ref:abc"
+Too many commas in name 1 of "M.P. Lichy, B.M. Wietek, J.P. Mugler, W. Horger, M.I. Menzel, A. Anastasiadis, K. Siegmann, T. Niemeyer, A. Konigsrainer, B. Kiefer, F. Schink, C.D. Claussen, H.P. Schlemmer" for entry ref:space
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M.P. Lichy, B.M. Wietek, J.P. Mugler, W. Horger, M.I. Menzel, A. Anastasiadis, K. Siegmann, T. Niemeyer, A. Konigsrainer, B. Kiefer, F. Schink, C.D. Claussen, H.P. Schlemmer" for entry ref:space
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M.P. Lichy, B.M. Wietek, J.P. Mugler, W. Horger, M.I. Menzel, A. Anastasiadis, K. Siegmann, T. Niemeyer, A. Konigsrainer, B. Kiefer, F. Schink, C.D. Claussen, H.P. Schlemmer" for entry ref:space
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M.P. Lichy, B.M. Wietek, J.P. Mugler, W. Horger, M.I. Menzel, A. Anastasiadis, K. Siegmann, T. Niemeyer, A. Konigsrainer, B. Kiefer, F. Schink, C.D. Claussen, H.P. Schlemmer" for entry ref:space
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M.P. Lichy, B.M. Wietek, J.P. Mugler, W. Horger, M.I. Menzel, A. Anastasiadis, K. Siegmann, T. Niemeyer, A. Konigsrainer, B. Kiefer, F. Schink, C.D. Claussen, H.P. Schlemmer" for entry ref:space
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M.P. Lichy, B.M. Wietek, J.P. Mugler, W. Horger, M.I. Menzel, A. Anastasiadis, K. Siegmann, T. Niemeyer, A. Konigsrainer, B. Kiefer, F. Schink, C.D. Claussen, H.P. Schlemmer" for entry ref:space
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M.P. Lichy, B.M. Wietek, J.P. Mugler, W. Horger, M.I. Menzel, A. Anastasiadis, K. Siegmann, T. Niemeyer, A. Konigsrainer, B. Kiefer, F. Schink, C.D. Claussen, H.P. Schlemmer" for entry ref:space
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M.P. Lichy, B.M. Wietek, J.P. Mugler, W. Horger, M.I. Menzel, A. Anastasiadis, K. Siegmann, T. Niemeyer, A. Konigsrainer, B. Kiefer, F. Schink, C.D. Claussen, H.P. Schlemmer" for entry ref:space
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M.P. Lichy, B.M. Wietek, J.P. Mugler, W. Horger, M.I. Menzel, A. Anastasiadis, K. Siegmann, T. Niemeyer, A. Konigsrainer, B. Kiefer, F. Schink, C.D. Claussen, H.P. Schlemmer" for entry ref:space
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M.P. Lichy, B.M. Wietek, J.P. Mugler, W. Horger, M.I. Menzel, A. Anastasiadis, K. Siegmann, T. Niemeyer, A. Konigsrainer, B. Kiefer, F. Schink, C.D. Claussen, H.P. Schlemmer" for entry ref:space
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "T.G. Reese, O. Heid, R.M. Weisskoff, V.J. Wedeen" for entry ref:epi
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "J. Juntu, J. Sijbers, D.V. Dyck, J. Gielen" for entry ref:bias
+while executing---line 944 of file unsrt.bst
+Warning--there's a number but no volume in ref:bias
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "S.M. Smith, M. Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens, H. Johansen-Berg, P.R. Bannister, M. De Luca, I. Drobnjak, D.E. Flitney, R. Niazy, J. Saunders, J. Vickers, Y. Zhang, N. De Stefano, J.M. Brady, P.M. Matthews" for entry ref:fsltopup2
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "X. Li, P.S. Morgan, J. Ashburner, J.C. Smith, C. Rorden" for entry ref:mriconvert
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "X. Li, P.S. Morgan, J. Ashburner, J.C. Smith, C. Rorden" for entry ref:mriconvert
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "P.A. Yushkevich, J. Piven, H.C. Hazlett, R.G. Smith, S. Ho, J.C. Gee, G. Gerig" for entry ref:itksnap
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "P.A. Yushkevich, J. Piven, H.C. Hazlett, R.G. Smith, S. Ho, J.C. Gee, G. Gerig" for entry ref:itksnap
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "P.A. Yushkevich, J. Piven, H.C. Hazlett, R.G. Smith, S. Ho, J.C. Gee, G. Gerig" for entry ref:itksnap
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "P.A. Yushkevich, J. Piven, H.C. Hazlett, R.G. Smith, S. Ho, J.C. Gee, G. Gerig" for entry ref:itksnap
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Fedorov, R. Beichel, J. Kalpathy-Cramer, J. Finet, J-C. Fillion-Robin, S. Pujol, C. Bauer, D. Jennings, F.M. Fennessy, M. Sonka, J. Buatti, S.R. Aylward, J.V. Miller, S. Pieper, R. Kikinis" for entry ref:slicer
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "U. Aydin, J. Vorwerk, P. Kupper, M. Heers, H. Kugel, A. Galka, L. Hamid, J. Wellmer, C. Kellinghaus, S. Rampp, C.H. Wolter" for entry ref:filter
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "U. Aydin, J. Vorwerk, P. Kupper, M. Heers, H. Kugel, A. Galka, L. Hamid, J. Wellmer, C. Kellinghaus, S. Rampp, C.H. Wolter" for entry ref:filter
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "U. Aydin, J. Vorwerk, P. Kupper, M. Heers, H. Kugel, A. Galka, L. Hamid, J. Wellmer, C. Kellinghaus, S. Rampp, C.H. Wolter" for entry ref:filter
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "U. Aydin, J. Vorwerk, P. Kupper, M. Heers, H. Kugel, A. Galka, L. Hamid, J. Wellmer, C. Kellinghaus, S. Rampp, C.H. Wolter" for entry ref:filter
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "U. Aydin, J. Vorwerk, P. Kupper, M. Heers, H. Kugel, A. Galka, L. Hamid, J. Wellmer, C. Kellinghaus, S. Rampp, C.H. Wolter" for entry ref:filter
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "U. Aydin, J. Vorwerk, P. Kupper, M. Heers, H. Kugel, A. Galka, L. Hamid, J. Wellmer, C. Kellinghaus, S. Rampp, C.H. Wolter" for entry ref:filter
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "U. Aydin, J. Vorwerk, P. Kupper, M. Heers, H. Kugel, A. Galka, L. Hamid, J. Wellmer, C. Kellinghaus, S. Rampp, C.H. Wolter" for entry ref:filter
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "U. Aydin, J. Vorwerk, P. Kupper, M. Heers, H. Kugel, A. Galka, L. Hamid, J. Wellmer, C. Kellinghaus, S. Rampp, C.H. Wolter" for entry ref:filter
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Torrado-Carvajal, J.L. Herraiz, E. Alcain, A.S. Montemayor, L. Garcia-Ca{\~n}amaque, J.A. Hernandez-Tamames, ... & N. Malpica" for entry ref:pseudoct
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Torrado-Carvajal, J.L. Herraiz, E. Alcain, A.S. Montemayor, L. Garcia-Ca{\~n}amaque, J.A. Hernandez-Tamames, ... & N. Malpica" for entry ref:pseudoct
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Torrado-Carvajal, J.L. Herraiz, E. Alcain, A.S. Montemayor, L. Garcia-Ca{\~n}amaque, J.A. Hernandez-Tamames, ... & N. Malpica" for entry ref:pseudoct
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "A. Torrado-Carvajal, J.L. Herraiz, E. Alcain, A.S. Montemayor, L. Garcia-Ca{\~n}amaque, J.A. Hernandez-Tamames, ... & N. Malpica" for entry ref:pseudoct
+while executing---line 944 of file unsrt.bst
+Warning--can't use both author and editor fields in ref:math
+Warning--can't use both volume and number fields in ref:math
+Too many commas in name 1 of "M. Rullmann, A. Anwander, M. Dannhauer, S.K. Warfield, F.H. Duffy, C.H. Wolters" for entry ref:cond
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M. Rullmann, A. Anwander, M. Dannhauer, S.K. Warfield, F.H. Duffy, C.H. Wolters" for entry ref:cond
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "M. Rullmann, A. Anwander, M. Dannhauer, S.K. Warfield, F.H. Duffy, C.H. Wolters" for entry ref:cond
+while executing---line 944 of file unsrt.bst
+Too many commas in name 1 of "D. Wang, R.M. Kirby, R.S. MacLeod, C.R. Johnson" for entry ref:fem
+while executing---line 944 of file unsrt.bst
+You've used 24 entries,
+            1791 wiz_defined-function locations,
+            571 strings with 8117 characters,
+and the built_in function-call counts, 4069 in all, are:
+= -- 351
+> -- 87
+< -- 1
++ -- 45
+- -- 21
+* -- 248
+:= -- 624
+add.period$ -- 63
+call.type$ -- 24
+change.case$ -- 17
+chr.to.int$ -- 0
+cite$ -- 27
+duplicate$ -- 191
+empty$ -- 495
+format.name$ -- 21
+if$ -- 925
+int.to.chr$ -- 0
+int.to.str$ -- 24
+missing$ -- 20
+newline$ -- 114
+num.names$ -- 21
+pop$ -- 74
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 85
+stack$ -- 0
+substring$ -- 261
+swap$ -- 27
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 34
+width$ -- 26
+write$ -- 238
+(There were 60 error messages)
