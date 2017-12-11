@@ -125,15 +125,14 @@ These commands first obtain the b0 image, which is the baseline image used for c
 
 \subsubsection{Diffusion Tensor Images}
 
-After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT. Upon opening FSL choose ``FDT Diffusion." Then choose ``DTIFIT Reconstruct diffusion tensors" in the drop down menu, select to input files manually, and put in the files in Table \ref{dtifit}. (reference and figure of DTIFIT) 
+After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT. Upon opening FSL choose ``FDT Diffusion." Then choose ``DTIFIT Reconstruct diffusion tensors" in the drop down menu, select to input files manually, and put in the files in Table \ref{dtifit}. (reference)
 
 \begin{table}[H]
 \centering
-\caption{My caption}
-\label{dtifit}
+\caption{DTIFIT Input Files}
+\label{ta:dtifit}
 \begin{tabular}{|c|c|}
 \hline
-\multicolumn{2}{|c|}{DTIFIT Input Files}             \\ \hline
 Diffusion weighted data: & eddy\_unwarmed.nii        \\ \hline
 BET binary brain mask:   & b0\_hifi\_brain\_mask.nii \\ \hline
 Output basename          & desired output location   \\ \hline
@@ -147,8 +146,8 @@ DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/make_DTI.png}\\
-\caption{default}
-\label{default}
+\caption{SCIRun Network to Build Diffusion Tensor Data}
+\label{fig:maketensornet}
 \end{center}
 \end{figure}
 
@@ -156,8 +155,8 @@ DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (
 \begin{center}
 \includegraphics[width=0.75\textwidth]{Figures/DTI_1.png}
 \includegraphics[width=0.75\textwidth]{Figures/DTI_2.png}
-\caption{default}
-\label{default}
+\caption{Diffusion Tensor Visualization}
+\label{fig:tensorvis}
 \end{center}
 \end{figure}
 
@@ -181,8 +180,8 @@ Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registrati
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.75\textwidth]{Figures/DTI_reg}
-\caption{default}
-\label{default}
+\caption{MRI to DTI Registration}
+\label{fig:dtireg}
 \end{center}
 \end{figure}
 
@@ -206,8 +205,8 @@ The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FS
 \includegraphics[width=.32\textwidth]{Figures/FSLFAST_csf}
 \includegraphics[width=.32\textwidth]{Figures/FSLFAST_wm}
 \includegraphics[width=.32\textwidth]{Figures/FSLFAST_gm}
-\caption{default}
-\label{default}
+\caption{FSL FAST Output: CSF \textit{(left)}, White Matter \textit{(center)}, Grey Matter \textit{(right)}}
+\label{fig:fastout}
 \end{center}
 \end{figure}
 
@@ -217,19 +216,19 @@ Although the FSL Fast results were a great improvement compared to the other seg
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/whitematter_before}
 \includegraphics[width=.49\textwidth]{Figures/whitematter_after}
-\caption{default}
-\label{default}
+\caption{White Matter Segmentation: Before \textit{left} and After \textit{right} Manual Segmentation}
+\label{fig:wm}
 \end{center}
 \end{figure}
 
-After the white matter was completed, a threshold layer for grey matter was created from the FSL Fast output. Each slice in every direction of the grey matter was inspected as well. The white matter layer was removed from the grey matter using a boolean remove mask filter. Any holes between the two layers were decided manually. More detail was added to the grey matter folds to add to the CSF layer as well. The last part of editing the grey matter was decided to add a grey matter nucleus to the layer. The thresholding algorithms generated a lot of noise around these nuclei so they were segmented by hand, using the paintbrush tool, and added to the grey matter layer with a boolean or mask filter. The nuclei were also removed from the white matter layer using a boolean remove mask filter. The manual editing of the grey matter took roughly 20 hours of work. (figures of grey matter and nuclei)
+After the white matter was completed, a threshold layer for grey matter was created from the FSL Fast output. Each slice in every direction of the grey matter was inspected as well. The white matter layer was removed from the grey matter using a boolean remove mask filter. Any holes between the two layers were decided manually. More detail was added to the grey matter folds to add to the CSF layer as well. The last part of editing the grey matter was decided to add a grey matter nucleus to the layer. The thresholding algorithms generated a lot of noise around these nuclei so they were segmented by hand, using the paintbrush tool, and added to the grey matter layer with a boolean or mask filter. The nuclei were also removed from the white matter layer using a boolean remove mask filter. The manual editing of the grey matter took roughly 20 hours of work.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/greymatter_before_nuclei}
 \includegraphics[width=.49\textwidth]{Figures/greymatter_added_nuclei}
-\caption{default}
-\label{default}
+\caption{Grey Matter Segmentation: Before \textit{left} and After \textit{right} Manual Segmentation. Grey matter nuclei were segmented manually.}
+\label{fig:gm}
 \end{center}
 \end{figure}
 
@@ -238,8 +237,8 @@ After the grey and white matter layers were completed, the CSF layer was made by
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/CSF_seg}
-\caption{default}
-\label{default}
+\caption{CSF Segmentation}
+\label{fig:csf}
 \end{center}
 \end{figure}
 
@@ -247,9 +246,9 @@ The skull and the sinus layers are the most difficult to segment using only an M
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=.49\textwidth]{Figures/pseudo_CT}
-\caption{default}
-\label{default}
+\includegraphics[width=.75\textwidth]{Figures/pseudo_CT}
+\caption{Pseudo-CT Scan}
+\label{fig:ct}
 \end{center}
 \end{figure}
 
@@ -259,8 +258,8 @@ The eyes, skin, and air layers were simple, in comparison, to segment. The eyes 
 
 \begin{table}[H]
 \centering
-\caption{My caption}
-\label{my-label}
+\caption{Segmentation Time}
+\label{tab:seg}
 \begin{tabular}{|c|c|}
 \hline
 Segmented Tissue    & Amount of Work (hrs) \\ \hline
@@ -280,11 +279,10 @@ Eyes, Scalp, \& Air & 8                    \\ \hline
 Segmentations were used to generate realistic 3D geometries for use in subsequent finite element simulations. A smooth, linear, subject-specific, boundary-conforming, tetrahedral finite element mesh was generated using Cleaver software (ref and figure) on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor, 64 GB of RAM, and an AMD FirePro graphics card. Cleaver is a multimaterial meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources. To make a very high resolution mesh with no holes the following parameters were used: 
 \begin{table}[H]
 \centering
-\caption{My caption}
+\caption{Clever Settings (High Resolution)}
 \label{my-label}
 \begin{tabular}{|c|c|}
 \hline
-\multicolumn{2}{|c|}{Cleaver Settings (high resolution)} \\ \hline
 scaling factor:                    & 0.6                 \\ \hline
 size multiplier:                   & 1.0                 \\ \hline
 lipschitz:                         & 0.2                 \\ \hline
@@ -322,8 +320,8 @@ All electrical conductivities were homogeneous for each tissue with the exceptio
 
 \begin{table}[]
 \centering
-\caption{My caption}
-\label{my-label}
+\caption{Isotropic Tissue Conductivity}
+\label{tab:cond}
 \begin{tabular}{|c|c|}
 \hline
 Tissue Type               & Isotropic Conductivity $(S/m)$ \\ \hline
@@ -400,32 +398,32 @@ For the anisotropic case, the network is going to be largely the same with the e
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/iso_network.png}\\
-\caption{default}
-\label{default}
+\caption{SCIRun Network for Isotropic Forward Problem}
+\label{fig:isofor}
 \end{center}
 \end{figure}
 
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/aniso_network.png}\\
-\caption{default}
-\label{default}
+\caption{SCIRun Network for Anisotropic Forward Problem}
+\label{fig:anisofor}
 \end{center}
 \end{figure}
 
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/fmri_network.png}\\
-\caption{default}
-\label{default}
+\caption{SCIRun Network for fMRI Visualization}
+\label{fig:fmrivis}
 \end{center}
 \end{figure}
 
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/EEG_network.png}\\
-\caption{default}
-\label{default}
+\caption{SCIRun Network for EEG Visualization}
+\label{fig:eegvis}
 \end{center}
 \end{figure} 
 
@@ -436,5 +434,3 @@ The fMRI data is visualized one step at a time using the 2D matrix described in 
 \subsubsection{EEG}
 
 We visualized the EEG data on the physical electrode locations. These were registered to the mesh space with a rigid registration after the fiducials were removed from the electrode data set. The filtered and cut EEG matrix was used as input and each time step was represented as a column. The electrodes were then placed onto the mesh, and EEG data mapped onto the electrodes one time step at a time. 
-
-\newpage
