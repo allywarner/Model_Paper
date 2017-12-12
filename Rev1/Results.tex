@@ -23,7 +23,7 @@ In this project a full, detailed head is segmented into different tissue layers 
 \end{center}
 \end{figure}
 
-Since there wasn't a CT scan with this data set, the task of segmenting the skull and especially the sinus layers seemed daunting. A basic skull and bone layer was created using FSL skull stripping feature  \cite{ref:bet2} in the brain extraction tool \cite{ref:bet1} and then concatenated it with a rough bone segmentation using thresholding in Seg3D of black pixels and manually correcting the segmentation. Although a skull and bone segmentation was pieced together, the sinus segmentation seemed extremely difficult and time consuming. After obtaining the pseudo-CT scan, this did not seem like such a large feat anymore. The skull/bone and sinus segmentations made from it fit the brain segmentation extremely well and had no artifacts from combining two different layers together. Although the teeth are solid bone from the subject's permanent retainer.
+Since there wasn't a CT scan with this data set, the task of segmenting the skull and especially the sinus layers seemed daunting. A basic skull and bone layer was created using FSL skull stripping feature  \cite{ref:bet2} in the brain extraction tool and then concatenated it with a rough bone segmentation using thresholding in Seg3D of black pixels and manually correcting the segmentation. Although a skull and bone segmentation was pieced together, the sinus segmentation seemed extremely difficult and time consuming. After obtaining the pseudo-CT scan, this did not seem like such a large feat anymore. The skull/bone and sinus segmentations made from it fit the brain segmentation extremely well and had no artifacts from combining two different layers together. Although the teeth are solid bone from the subject's permanent retainer.
 
 \begin{figure}[H]
 \begin{center}
@@ -140,8 +140,7 @@ With the rigid and manual registration of the fMRI data to the mesh space, fMRI 
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=.49\textwidth]{Figures/fmri_reg}
-\includegraphics[width=.49\textwidth]{Figures/fmri_1}
+\includegraphics[width=.75\textwidth]{Figures/fmri_1}
 \caption{fMRI data visualization in SCIRun: fMRI manual registration \textit{(left)} and fMRI data mapped onto cortical surface mesh \textit{(right)}}
 \label{fig:fmrivis}
 \end{center}

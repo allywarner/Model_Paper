@@ -13,48 +13,49 @@ Warning--entry type for "ref:edfread" isn't style-file defined
 --line 146 of file aw.bib
 Warning--entry type for "ref:nifti" isn't style-file defined
 --line 157 of file aw.bib
+Warning--I didn't find a database entry for "ref:fsltopup1]"
 Warning--there's a number but no volume in ref:bias
 Warning--can't use both author and editor fields in ref:math
 Warning--can't use both volume and number fields in ref:math
-You've used 29 entries,
+You've used 28 entries,
             1791 wiz_defined-function locations,
-            606 strings with 9439 characters,
-and the built_in function-call counts, 6359 in all, are:
-= -- 460
-> -- 426
+            603 strings with 9273 characters,
+and the built_in function-call counts, 6116 in all, are:
+= -- 439
+> -- 415
 < -- 1
-+ -- 155
-- -- 126
-* -- 500
-:= -- 1081
-add.period$ -- 84
-call.type$ -- 29
-change.case$ -- 25
++ -- 151
+- -- 123
+* -- 479
+:= -- 1042
+add.period$ -- 81
+call.type$ -- 28
+change.case$ -- 24
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 227
-empty$ -- 593
-format.name$ -- 126
-if$ -- 1360
+cite$ -- 31
+duplicate$ -- 218
+empty$ -- 569
+format.name$ -- 123
+if$ -- 1306
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 23
-newline$ -- 145
-num.names$ -- 29
-pop$ -- 92
+int.to.str$ -- 28
+missing$ -- 22
+newline$ -- 140
+num.names$ -- 28
+pop$ -- 91
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 93
+skip$ -- 90
 stack$ -- 0
-substring$ -- 307
-swap$ -- 32
+substring$ -- 286
+swap$ -- 31
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 45
-width$ -- 31
-write$ -- 303
-(There were 8 warnings)
+while$ -- 43
+width$ -- 30
+write$ -- 292
+(There were 9 warnings)

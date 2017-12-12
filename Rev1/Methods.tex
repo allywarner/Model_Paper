@@ -26,7 +26,7 @@ The $T_2$-weighted scan was performed with a sampling prepared with application-
 
 The diffusion weighted images (DWI) were acquired with multiband two-dimensional echo-planar imaging (EPI) \cite{ref:epi}. Both phase encoding directions were performed (anterior to posterior and posterior to anterior) with 64 diffusion directions each. Further sequence parameters for each scan was as follows: echo time: 76.8ms, repetition time: 4070ms, flip angle: 90 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 208mm, 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes each. 
 
-The function MRI (fMRI) scans were acquired with blood oxygenation level dependent contrast (BOLD). The following parameters were used:  echo time: 76.8ms, repetition time: 780ms, flip angle: 55 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 210mm, 72 slices with 2mm slice thickness. Acquisition time was 10:32 minutes.
+The functional MRI (fMRI) scans were acquired with blood oxygenation level dependent contrast (BOLD). The following parameters were used:  echo time: 76.8ms, repetition time: 780ms, flip angle: 55 $^{\circ}$, resolution matrix size: 104x104 pixels, field of view: 210mm, 72 slices with 2mm slice thickness. Acquisition time was 10:32 minutes.
 
 A continuous electroencephalogram (EEG) was recorded using a 256-channel HydroCel Geodesic Sensor Net that was connected to a NetAmps 400 amplifier and referenced online to a single vertex electrode shown in Figure \ref{fig:eegsetup}. Channel impedances were kept at or below 50 kOhms and signals were sampled at 250Hz. The EEG was recorded while the subject sat quietly in a chair, alternating two minute epochs of eyes open and eyes closed for a total of 12 minutes. 
 
@@ -58,25 +58,9 @@ Bias field signal is a low-frequency, smooth signal that corrupts MRI images due
 
 \subsubsection{DWI Distortion Correction}
 
-Diffusion weighted images performed with EPI sequences are prone to distortions from rapid switching of diffusion weighting gradients, movement from the scanning table, and movement from the subject. The diffusion data was collected with reversed phase-encode blips (anterior to posterior (AP) and posterior to anterior(PA)), resulting in pairs of images with distortions going in opposite directions. From these pairs the susceptibility-induced off-resonance field was estimated using a method similar to that described in \cite{ref:fsltopup1} as implemented in FSL \cite{ref:fsltopup2} and the two images were combined into a single corrected one. This was accounted for using FSL's topup and eddy command line tools.
+Diffusion weighted images performed with EPI sequences are prone to distortions from rapid switching of diffusion weighting gradients, movement from the scanning table, and movement from the subject. The diffusion data was collected with reversed phase-encode blips (anterior to posterior (AP) and posterior to anterior(PA)), resulting in pairs of images with distortions going in opposite directions. From these pairs the susceptibility-induced off-resonance field was estimated using a method \cite{ref:fsltopup1]} similar as to what is implemented in FSL \cite{ref:fsltopup2} and the two images were combined into a single corrected one. This was accounted for using FSL's topup and eddy command line tools.
 
-Before running these tools, an acquisition parameters text file needs to be created with the FSL-defined total readout time. 
-
-\begin{figure}[H]
-\centering
-{\tt
-\begin{varwidth}{\linewidth}
-\begin{verbatim}
-0  -1 0 0.0345
-0   1 0 0.0345
-\end{verbatim}
-\end{varwidth}
-}
-\label{fig:acq}
-\caption{Acquisition parameters text file}
-\end{figure}
-
-There are two parameters that are frequently needed when calculating and applying field maps: the effective echo spacing and the total readout time for an EPI sequence. ``Effective" echo spacing was used, rather than the actual echo spacing, in order to include the effects of parallel imaging, phase oversampling, etc. Multiplying this by the size of the reconstructed image in the phase direction will give you the reciprocal of the effective echo spacing:
+Before running these tools, an acquisition parameters text file needs to be created with the FSL-defined total readout time. There are two parameters that are frequently needed when calculating and applying field maps: the effective echo spacing and the total readout time for an EPI sequence. ``Effective" echo spacing was used, rather than the actual echo spacing, in order to include the effects of parallel imaging, phase oversampling, etc. Multiplying this by the size of the reconstructed image in the phase direction will give you the reciprocal of the effective echo spacing:
 \[
 \text{Effective Echo Spacing (s) = 1/(BandwidthPerPixelPhaseEncode * MatrixSizePhase)}
 \]
@@ -94,6 +78,20 @@ MRIConvert is a software package that provides all of the acquisition informatio
     \includegraphics[width=\textwidth]{Figures/combined}
     \caption{MRIConvert \textit{(left)} with options \textit{(middle)} \& output \textit{(right)} }
     \label{fig:mri_convert}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+{\tt
+\begin{varwidth}{\linewidth}
+\begin{verbatim}
+0  -1 0 0.0345
+0   1 0 0.0345
+\end{verbatim}
+\end{varwidth}
+}
+\label{fig:acq}
+\caption{Acquisition parameters text file}
 \end{figure}
 
 Create a separate folder for topup results and include the following files: the acquisition parameters file, the index file, b-values, b-vectors, and the DWI AP and DWI PA files. In the following instructions, DWI AP was renamed as DWI\_up and DWIAP was renamed to DWI\_down. The b-values and b-vectors were renamed to dwi.bval and dwi.bvec, respectively. After all of these files are in place, run the following command line commands.
@@ -121,7 +119,7 @@ eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_p
 
 \end{lstlisting}
 
-These commands first obtain the b0 image, which is the baseline image used for calculating field maps, for both encoding directions. Then the two b0's are merged together into one file. Topup and eddy are applied for distortion correction. Bet is applied for brain extraction. The distortion corrected file is named ``eddy\_unwarped.nii."
+These commands first obtain the b0 image, which is the baseline image used for calculating field maps, for both encoding directions. Then the two b0's are merged together into one file, topup and eddy are applied for distortion correction, and bet is applied for brain extraction. The distortion corrected file is named ``eddy\_unwarped.nii."
 
 \subsubsection{Diffusion Tensor Images}
 
@@ -141,15 +139,7 @@ b values:                & dwi.bval                  \\ \hline
 \end{tabular}
 \end{table}
 
-DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (named V1, V2, and V3) for the diffusion tensor field. The files were converted from NiFTI format to nrrd format using ITK-SNAP \cite{ref:itksnap} although there is a loss of precision. The files were then input into SCIRun to build the tensor field using the eigenvalue and eigenvectors. The SCIRun CalculateFieldData module only requires two eigenvectors as input because it calculates the third eigenvector automatically since it should be orthogonal to the first two. This process can be done in either SCIRun 4 or SCIRun 5 and the same results are produced. 
-
-\begin{figure}[p]
-\begin{center}
-\includegraphics[width=\textwidth]{Figures/make_DTI.png}\\
-\caption{SCIRun network to build diffusion tensor dataset}
-\label{fig:maketensornet}
-\end{center}
-\end{figure}
+DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (named V1, V2, and V3) for the diffusion tensor field. The files were converted from NiFTI format to nrrd format using ITK-SNAP \cite{ref:itksnap} although there was a loss of precision. The files were then input into SCIRun to build the tensor field using the eigenvalue and eigenvectors using the network shown in Figure \ref{fig:maketensornet}. The SCIRun ``CalculateFieldData" module only requires two eigenvectors as input because it calculates the third eigenvector automatically since it should be orthogonal to the first two. 
 
 \begin{figure}[p]
 \begin{center}
@@ -160,7 +150,9 @@ DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (
 \end{center}
 \end{figure}
 
-The tensor field was built in SCIRun rather than in 3D Slicer \cite{ref:slicer} or FSL DTIFIT because the output data would be ``backwards" and couldn't be registered with the mesh. 
+The tensor field was built in SCIRun rather than in 3D Slicer \cite{ref:slicer} or FSL DTIFIT because the output data would be ``backwards" and couldn't be registered with the mesh in SCIRun.
+
+\newpage
 
 \subsubsection{fMRI}
 \label{sec:fmripre}
@@ -168,10 +160,10 @@ The tensor field was built in SCIRun rather than in 3D Slicer \cite{ref:slicer} 
 fMRI data was preprocessed using the 1000 Functional Connectomes Project pipeline scripts \cite{ref:fcon} which do anatomical preprocessing, functional preprocessing, registration to the $T_1$ MRI, segmentation, and nuisance signal regress. The outline pipeline used on this fMRI dataset, specific to the University of Utah, can be found at https://bitbucket.org/UtahBrainNetworks/base\_prep and includes specific instructions for installation, compilation, and usage.  
 
 After running fMRI data through the pipeline ``rest.nii", the preprocessed fMRI file, was opened in Matlab using the ``load\_nii(`rest.nii')" function within the NiFTI toolbox \cite{ref:nifti}. The 4D ``img" variable (x, y, z, t) is then resized to a 2D variable (x*y*z,t) and saved to use in SCIRun. 
-fre
+
 \subsubsection{EEG}
 
-The filetype of the EEG recordings in an .edf file after it had a 60Hz notch filter and its harmonics \cite{ref:filter}. The EEG signal matrix was obtained using a Matlab script called ``edfRead.m" \cite{ref:edfread}. To run this script use the following command ``[hdr, record] = edfread(fname)." The variable `record' will contain the signals. The last two rows of the matrix were removed because they did not correspond to EEG electrodes. Also the beginning and end of the experiment were cut out of the matrix when the EEG net is being put on and taken off. 
+The filetype of the EEG recordings in an .edf file after a 60Hz notch filter and its harmonics \cite{ref:filter}. The EEG signal matrix was obtained using a Matlab script called ``edfRead.m" \cite{ref:edfread}. To run this script use the following command ``[hdr, record] = edfread(fname)." The variable `record' will contain the signals. The last two rows of the matrix were removed because they did not correspond to EEG electrodes. Also the beginning and end of the experiment were cut out of the matrix when the EEG net is being put on and taken off. 
 
 \subsubsection{Registration}
 
@@ -179,8 +171,9 @@ Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registrati
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=.58\textwidth]{Figures/DTI_reg}
-\caption{MRI to DTI registration visualization using SCIRun}
+\includegraphics[height = 2.5in]{Figures/DTI_reg}
+\includegraphics[height = 2.5in]{Figures/fmri_reg}
+\caption{SCIRun manual registrations: mesh to DTI registration \textit{(left)}, fMRI to mesh registration \textit{(right)}}
 \label{fig:dtireg}
 \end{center}
 \end{figure}
@@ -192,7 +185,7 @@ Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registrati
 
 Segmentation of the head tissues proved to be the most time consuming section of the pipeline. The head volume was segmented into air, cerebral spinal fluid (CSF), white matter, grey matter, skull, sinus, eyes, and scalp. Segmentation of the brain can be difficult due to the similar intensities of the different tissues, making merely applying a median filter and thresholding the image not enough. The majority of the segmentation work was done using Seg3D, a free volume segmentation and processing tool \cite{ref:seg3d}.
 
-The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FSL FAST Segmentation. This outputs CSF, white matter, and grey matter layers as well as a bias-corrected $T_1$ MRI. This method, compared with Freesurfer \cite{ref:freesurf}, Statistical Parametric Mapping through Matlab (SPM) \cite{ref:spm}, Atlas Based Classification through 3D Slicer \cite{ref:abc}, and Seg3D methods alone, produced the best initial brain segmentation results for this data due to how well it filled in each tissue. 
+The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FSL FAST Segmentation. The $T_1$ MRI was skull stripped using FSL's brain extraction tool (BET) \cite{ref:bet1}. FAST outputs CSF, white matter, and grey matter layers as well as a bias-corrected $T_1$ MRI. This method, compared with Freesurfer \cite{ref:freesurf}, Statistical Parametric Mapping through Matlab (SPM) \cite{ref:spm}, Atlas Based Classification through 3D Slicer \cite{ref:abc}, and Seg3D methods alone, produced the best initial brain segmentation results for this data. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{Figures/FSL_FAST}
@@ -205,29 +198,29 @@ The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FS
 \includegraphics[width=.32\textwidth]{Figures/FSLFAST_csf}
 \includegraphics[width=.32\textwidth]{Figures/FSLFAST_wm}
 \includegraphics[width=.32\textwidth]{Figures/FSLFAST_gm}
-\caption{FSL FAST output: CSF \textit{(left)}, White Matter \textit{(center)}, Grey Matter \textit{(right)}}
+\caption{FSL FAST output: CSF \textit{(left)}, white matter \textit{(center)}, grey matter \textit{(right)}}
 \label{fig:fastout}
 \end{center}
 \end{figure}
 
-Although the FSL FAST results were a great improvement compared to the other segmentation trials, manual segmentation, completed with Seg3D, still needed to be done on those layers to add more detail and take out any cross over between the layers. Since white matter is the innermost layer, it was worked on first. First a threshold layer was created from the FSL FAST output. Every slice in every direction was inspected and manually edited whether that was adding more detail that could be seen with the naked eye or cleaning up noise from FSL FAST. This manual editing of the white matter took roughly 40 hours of work.
+Although the FSL FAST results were a great improvement compared to the other segmentation software trials, manual segmentation still needed to be done on those layers to add more detail and take out any cross over between the layers. White matter was the first since it is the innermost layer. First a threshold layer was created from the FSL FAST output. Every slice in every direction was inspected and manually edited whether that was adding more detail that could be seen with the naked eye or cleaning up noise from FSL FAST. This manual editing of the white matter took roughly 40 hours of work.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/whitematter_before}
 \includegraphics[width=.49\textwidth]{Figures/whitematter_after}
-\caption{White matter segmentation: Before \textit{(left)} and after \textit{(right)} manual segmentation}
+\caption{White matter segmentation: Before \textit{(left)} and after \textit{(right)} manual segmentation. The hook feature in the upper, right-hand corner is the most notable change between the two layers. The layer is more full and has less noise.}
 \label{fig:wm}
 \end{center}
 \end{figure}
 
-After the white matter was completed, a threshold layer for grey matter was created from the FSL Fast output. Each slice in every direction of the grey matter was inspected as well. The white matter layer was removed from the grey matter using a boolean remove mask filter. Any holes between the two layers were decided manually. More detail was added to the grey matter folds to add to the CSF layer as well. The last part of editing the grey matter was decided to add a grey matter nucleus to the layer. The thresholding algorithms generated a lot of noise around these nuclei so they were segmented by hand, using the paintbrush tool, and added to the grey matter layer with a boolean or mask filter. The nuclei were also removed from the white matter layer using a boolean remove mask filter. The manual editing of the grey matter took roughly 20 hours of work.
+After the white matter was completed, a threshold layer for grey matter was created from the FSL Fast output. Each slice in every direction of the grey matter was inspected as well. The white matter layer was removed from the grey matter using a boolean remove mask filter. Any holes between the two layers were decided manually. More detail was added to the grey matter folds to add to the CSF layer as well. The last part of editing the grey matter was to add a grey matter nucleus to the layer. The thresholding algorithms generated a lot of noise around these nuclei so they were segmented by hand, using the paintbrush tool, and added to the grey matter layer with a boolean or mask filter. The nuclei were also removed from the white matter layer using a boolean remove mask filter. The manual editing of the grey matter took roughly 20 hours of work.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/greymatter_before_nuclei}
 \includegraphics[width=.49\textwidth]{Figures/greymatter_added_nuclei}
-\caption{Grey matter segmentation: Before \textit{(left)} and after \textit{(right)} manual segmentation. Grey matter nuclei were segmented manually.}
+\caption{Grey matter segmentation: Before \textit{(left)} and after \textit{(right)} manual segmentation. Grey matter nuclei located in the center of the brain were segmented manually.}
 \label{fig:gm}
 \end{center}
 \end{figure}
@@ -242,7 +235,7 @@ After the grey and white matter layers were completed, the CSF layer was made by
 \end{center}
 \end{figure}
 
-The skull and the sinus layers are the most difficult to segment using only an MRI because they both appear black in the image, and the volunteer did not have a computed tomography (CT) scan. The first attempt to create a bone layer was first to use FSL's skull stripping using the BET2 tool to create a skull. Then to threshold the remainder of the bones in Seg3D from the $T_1$ MRI and connect it to the skull from FSL. Although this gave a decent skull for only having an MRI layer, the method to segment sinus layer was still to be determined. As a second method, the skull was estimated from an MR-based synthetic pseudo-CT. An improved iterative version of the patch-based method was used described by Torrado-Carvajal et al. that takes the $T_1$ and $T_2$ images as input, and synthesize the pseudo-CT based on both images providing more refined and accurate bone boundaries \cite{ref:pseudoct}. 
+The skull and the sinus layers were the most difficult to segment using only an MRI because they both appear black in the image, and the subject did not have a computed tomography (CT) scan. The first attempt to create a bone layer was first to use FSL's skull stripping using the BET2 tool to create a skull. Then to threshold the remainder of the bones in Seg3D from the $T_1$ MRI and connect it to the skull from FSL. Although this gave a decent skull for only having an MRI layer, the method to segment sinus layer was still to be determined. As a second method, the skull was estimated from an MR-based synthetic pseudo-CT. An improved iterative version of the patch-based method was used described by Torrado-Carvajal et al. that takes the $T_1$ and $T_2$ images as input, and synthesize the pseudo-CT based on both images providing more refined and accurate bone boundaries \cite{ref:pseudoct}. 
 
 \begin{figure}[H]
 \begin{center}
@@ -252,7 +245,7 @@ The skull and the sinus layers are the most difficult to segment using only an M
 \end{center}
 \end{figure}
 
-This method gave a good starting place for skull segmentation, but still needed manual editing. After using a median filter with one pixel radius and thresholding, each slice in each direction was manually edited by hand. Since the volunteer has a permanent retainer in their mouth, the mouth was segmented as solid bone for now. This is not concerning because the EEG cap used did not cover the volunteer's mouth. The pseduo-CT image also provided a segmentation of the sinuses and esophagus by thresholding the black pixels. After the thresholding, the sinus layer was also manually edited. Quality checks were done on both layers to ensure that there were no holes and that the layers were at least two pixels thick. Manually editing the second skull and the sinuses took roughly 30-40 hours of work. 
+This method gave a good starting place for skull segmentation, but still needed manual editing. After using a median filter with one pixel radius and thresholding, each slice in each direction was manually edited by hand. Since the subject has a permanent retainer in their mouth, the mouth was segmented as solid bone for now. This is not concerning because the EEG cap used did not cover the subject's mouth. The pseduo-CT image also provided a segmentation of the sinuses and esophagus by thresholding the black pixels. After the thresholding, the sinus layer was also manually edited. Quality checks were done on both layers to ensure that there were no holes and that the layers were at least two pixels thick. Manually editing the second skull and the sinuses took roughly 30-40 hours of work. 
 
 The eyes, skin, and air layers were simple, in comparison, to segment. The eyes were easily segmented by thresholding the $T_2$ MRI. The skin layer was segmented by thresholding the entire volume and removing all of the previous layers using a boolean remove mask filter. A quality check was performed on the skin layer to ensure that it was at least two pixels thick. The important places to check for this is at the bridge of the nose and the bottom of the chin. Last, the air was segmented by thresholding the entire image and removing the solid skin layer. There was a check to ensure that the segmentation did not contain any holes between layers after they were removed. To create these three layers took roughly 8 hours of work, most of which was ensuring there were no holes in the segmentation. This is imperative to creating a quality mesh.
 
@@ -292,7 +285,7 @@ element sizing method:             & adpative            \\ \hline
 \end{tabular}
 \end{table}
 
- Along with these parameters, indicator functions must be input to Cleaver. These are made by creating distance maps in Seg3D. Ensure the map is inverted before making the distance map. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 by changing how quickly the elements increase in size. This was done by multiplying the scaling by a factor of 27. The changed sizing field was then input into Cleaver with the same indicator functions and cleaved a new mesh.
+ Along with these parameters, indicator functions must be input to Cleaver. These are made by creating distance maps of each layer in Seg3D. Ensure the map is inverted before making the distance map. To reduce the size of the mesh, a mesh was made with a scaling factor of 1.0 with the remainder of the parameters as described before. The computing sizing field was exported from Cleaver and manipulated using SCIRun4 by changing how quickly the elements increase in size. This was done by multiplying the scaling by a factor of 27. The changed sizing field was then input into Cleaver with the same indicator functions and cleaved a new mesh.
 
 \subsection{Mathematical Modeling}
 \label{sec:math}

@@ -46,12 +46,6 @@ Y.~Zang, M.~Brady, and S.~Smith.
   model and the expectation-maximization algorithm.
 \newblock {\em IEEE Trans Med Imag}, 20(1):45--57, 2001.
 
-\bibitem{ref:fsltopup1}
-J.L.R. Anderson, S.~Skare, and J.~Ashburner.
-\newblock How to correct susceptibility distortions in spin-echo echo-planar
-  images; applications to diffusion tensor imaging.
-\newblock {\em NeuroImage}, 20(2):870--888, 2003.
-
 \bibitem{ref:fsltopup2}
 S.M. Smith, M.~Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens,
   H.~Johansen-Berg, P.R. Bannister, M.~De Luca, I.~Drobnjak, D.E. Flitney,
@@ -117,6 +111,11 @@ CIBC, 2016.
 \newblock Seg3D: Volumetric Image Segmentation and Visualization. Scientific
   Computing and Imaging Institute (SCI), Download from: http://www.seg3d.org.
 
+\bibitem{ref:bet1}
+S.M. Smith.
+\newblock Fast robust automated brain extraction.
+\newblock {\em Human Brain Mapping}, 17(3):143--155, November 2002.
+
 \bibitem{ref:freesurf}
 A.M. Dale, B.~Fischl, and M.I. Sereno.
 \newblock Cortical surface-based analysis. i. segmentation and surface
@@ -173,11 +172,6 @@ D.~Wang, R.M. Kirby, R.S. MacLeod, and C.R. Johnson.
 \newblock Inverse electrocardiographic source localization of ischemia: An
   optimization framework and finite element soltuion.
 \newblock {\em Journal of Computational Science}, 2013.
-
-\bibitem{ref:bet1}
-S.M. Smith.
-\newblock Fast robust automated brain extraction.
-\newblock {\em Human Brain Mapping}, 17(3):143--155, November 2002.
 
 \bibitem{ref:bet2}
 M.~Jenkinson, M.~Pechaud, and S.~Smith.
