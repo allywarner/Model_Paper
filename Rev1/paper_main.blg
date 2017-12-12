@@ -4,57 +4,57 @@ The top-level auxiliary file: paper_main.aux
 The style file: unsrt.bst
 Database file #1: aw.bib
 Warning--entry type for "ref:fcon" isn't style-file defined
---line 12 of file aw.bib
+--line 32 of file aw.bib
 Warning--entry type for "ref:dtifit" isn't style-file defined
---line 21 of file aw.bib
+--line 41 of file aw.bib
 Warning--entry type for "ref:spm" isn't style-file defined
---line 114 of file aw.bib
+--line 134 of file aw.bib
 Warning--entry type for "ref:edfread" isn't style-file defined
---line 126 of file aw.bib
+--line 146 of file aw.bib
 Warning--entry type for "ref:nifti" isn't style-file defined
---line 137 of file aw.bib
+--line 157 of file aw.bib
 Warning--there's a number but no volume in ref:bias
 Warning--can't use both author and editor fields in ref:math
 Warning--can't use both volume and number fields in ref:math
-You've used 27 entries,
+You've used 29 entries,
             1791 wiz_defined-function locations,
-            595 strings with 9174 characters,
-and the built_in function-call counts, 5985 in all, are:
-= -- 428
-> -- 411
+            606 strings with 9439 characters,
+and the built_in function-call counts, 6359 in all, are:
+= -- 460
+> -- 426
 < -- 1
-+ -- 149
-- -- 122
-* -- 474
-:= -- 1018
-add.period$ -- 78
-call.type$ -- 27
-change.case$ -- 23
++ -- 155
+- -- 126
+* -- 500
+:= -- 1081
+add.period$ -- 84
+call.type$ -- 29
+change.case$ -- 25
 chr.to.int$ -- 0
-cite$ -- 30
-duplicate$ -- 210
-empty$ -- 555
-format.name$ -- 122
-if$ -- 1278
+cite$ -- 32
+duplicate$ -- 227
+empty$ -- 593
+format.name$ -- 126
+if$ -- 1360
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 21
-newline$ -- 135
-num.names$ -- 27
-pop$ -- 88
+int.to.str$ -- 29
+missing$ -- 23
+newline$ -- 145
+num.names$ -- 29
+pop$ -- 92
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 87
+skip$ -- 93
 stack$ -- 0
-substring$ -- 286
-swap$ -- 30
+substring$ -- 307
+swap$ -- 32
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 42
-width$ -- 29
-write$ -- 282
+while$ -- 45
+width$ -- 31
+write$ -- 303
 (There were 8 warnings)

@@ -174,4 +174,15 @@ D.~Wang, R.M. Kirby, R.S. MacLeod, and C.R. Johnson.
   optimization framework and finite element soltuion.
 \newblock {\em Journal of Computational Science}, 2013.
 
+\bibitem{ref:bet1}
+S.M. Smith.
+\newblock Fast robust automated brain extraction.
+\newblock {\em Human Brain Mapping}, 17(3):143--155, November 2002.
+
+\bibitem{ref:bet2}
+M.~Jenkinson, M.~Pechaud, and S.~Smith.
+\newblock Bet2: Mr-based estimation of brain, skull and scalp surfaces.
+\newblock {\em n Eleventh Annual Meeting of the Organization for Human Brain
+  Mapping}, 2005.
+
 \end{thebibliography}

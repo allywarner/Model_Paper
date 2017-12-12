@@ -9,7 +9,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/pipeline}
-    \caption{Head/Brain Model Pipeline}
+    \caption{Comprehensive head/brain model pipeline}
     \label{fig:pipeline}
 \end{figure}
 
@@ -36,7 +36,7 @@ All acquisition reports will be included with the dataset.
 \begin{figure}[!th]
     \centering
     \includegraphics[width=7cm]{Figures/EEG_setup}
-    \caption{256-channel HydroCel Geodesic Sensor Net on Subject}
+    \caption{256-channel HydroCel Geodesic sensor net on subject}
     \label{fig:eegsetup}
 \end{figure}
 
@@ -46,9 +46,9 @@ All acquisition reports will be included with the dataset.
 %FSL
 \begin{wrapfigure}[16]{hr}{3cm}
     \centering
-    \vspace{-35pt}
+    \vspace{-63pt}
     \includegraphics[width=3cm]{Figures/FSL}
-    \caption{FMRIB Software Library User Interface}
+    \caption{FMRIB software library user interface}
     \label{fig:fsl}
 \end{wrapfigure}
 
@@ -73,7 +73,7 @@ Before running these tools, an acquisition parameters text file needs to be crea
 \end{varwidth}
 }
 \label{fig:acq}
-\caption{Acquisition Parameters Text File}
+\caption{Acquisition parameters text file}
 \end{figure}
 
 There are two parameters that are frequently needed when calculating and applying field maps: the effective echo spacing and the total readout time for an EPI sequence. ``Effective" echo spacing was used, rather than the actual echo spacing, in order to include the effects of parallel imaging, phase oversampling, etc. Multiplying this by the size of the reconstructed image in the phase direction will give you the reciprocal of the effective echo spacing:
@@ -92,7 +92,7 @@ MRIConvert is a software package that provides all of the acquisition informatio
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/combined}
-    \caption{MRIConvert \textit{(left)} with Options \textit{(middle)} \& Output \textit{(right)} }
+    \caption{MRIConvert \textit{(left)} with options \textit{(middle)} \& output \textit{(right)} }
     \label{fig:mri_convert}
 \end{figure}
 
@@ -125,12 +125,12 @@ These commands first obtain the b0 image, which is the baseline image used for c
 
 \subsubsection{Diffusion Tensor Images}
 
-After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT \cite{ref:dtifit}. Upon opening FSL choose ``FDT Diffusion." Then choose ``DTIFIT Reconstruct diffusion tensors" in the drop down menu, select to input files manually, and put in the files in Table \ref{dtifit}. (reference)
+After the DWI images have been corrected, diffusion tensor images (DTI) are calculated using FSL's DTIFIT \cite{ref:dtifit}. Upon opening FSL choose ``FDT Diffusion." Then choose ``DTIFIT Reconstruct diffusion tensors" in the drop down menu, select to input files manually, and put in the files in Table \ref{tab:dtifit}.
 
 \begin{table}[H]
 \centering
-\caption{DTIFIT Input Files}
-\label{ta:dtifit}
+\caption{DTIFIT input files}
+\label{tab:dtifit}
 \begin{tabular}{|c|c|}
 \hline
 Diffusion weighted data: & eddy\_unwarmed.nii        \\ \hline
@@ -146,7 +146,7 @@ DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/make_DTI.png}\\
-\caption{SCIRun Network to Build Diffusion Tensor Data}
+\caption{SCIRun network to build diffusion tensor dataset}
 \label{fig:maketensornet}
 \end{center}
 \end{figure}
@@ -155,7 +155,7 @@ DTIFIT will output the eigenvalues (named L1, L2, and L3) and the eigenvectors (
 \begin{center}
 \includegraphics[width=0.75\textwidth]{Figures/DTI_1.png}
 \includegraphics[width=0.75\textwidth]{Figures/DTI_2.png}
-\caption{Diffusion Tensor Visualization}
+\caption{Diffusion tensor visualization using SCIRun}
 \label{fig:tensorvis}
 \end{center}
 \end{figure}
@@ -179,8 +179,8 @@ Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registrati
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=.75\textwidth]{Figures/DTI_reg}
-\caption{MRI to DTI Registration}
+\includegraphics[width=.58\textwidth]{Figures/DTI_reg}
+\caption{MRI to DTI registration visualization using SCIRun}
 \label{fig:dtireg}
 \end{center}
 \end{figure}
@@ -196,7 +196,7 @@ The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FS
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{Figures/FSL_FAST}
-    \caption{FSL FAST User Interface }
+    \caption{FSL FAST user interface}
     \label{fig:fslfast}
 \end{figure}
 
@@ -205,7 +205,7 @@ The brain was initially segmented by inputing a skull stripped $T_1$ MRI into FS
 \includegraphics[width=.32\textwidth]{Figures/FSLFAST_csf}
 \includegraphics[width=.32\textwidth]{Figures/FSLFAST_wm}
 \includegraphics[width=.32\textwidth]{Figures/FSLFAST_gm}
-\caption{FSL FAST Output: CSF \textit{(left)}, White Matter \textit{(center)}, Grey Matter \textit{(right)}}
+\caption{FSL FAST output: CSF \textit{(left)}, White Matter \textit{(center)}, Grey Matter \textit{(right)}}
 \label{fig:fastout}
 \end{center}
 \end{figure}
@@ -216,7 +216,7 @@ Although the FSL FAST results were a great improvement compared to the other seg
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/whitematter_before}
 \includegraphics[width=.49\textwidth]{Figures/whitematter_after}
-\caption{White Matter Segmentation: Before \textit{left} and After \textit{right} Manual Segmentation}
+\caption{White matter segmentation: Before \textit{(left)} and after \textit{(right)} manual segmentation}
 \label{fig:wm}
 \end{center}
 \end{figure}
@@ -227,7 +227,7 @@ After the white matter was completed, a threshold layer for grey matter was crea
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/greymatter_before_nuclei}
 \includegraphics[width=.49\textwidth]{Figures/greymatter_added_nuclei}
-\caption{Grey Matter Segmentation: Before \textit{left} and After \textit{right} Manual Segmentation. Grey matter nuclei were segmented manually.}
+\caption{Grey matter segmentation: Before \textit{(left)} and after \textit{(right)} manual segmentation. Grey matter nuclei were segmented manually.}
 \label{fig:gm}
 \end{center}
 \end{figure}
@@ -237,7 +237,7 @@ After the grey and white matter layers were completed, the CSF layer was made by
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/CSF_seg}
-\caption{CSF Segmentation}
+\caption{CSF segmentation}
 \label{fig:csf}
 \end{center}
 \end{figure}
@@ -247,7 +247,7 @@ The skull and the sinus layers are the most difficult to segment using only an M
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.75\textwidth]{Figures/pseudo_CT}
-\caption{Pseudo-CT Scan}
+\caption{Pseudo-CT scan}
 \label{fig:ct}
 \end{center}
 \end{figure}
@@ -317,7 +317,7 @@ which says that the normal component of the electric field is zero on the surfac
 \subsubsection{Electrical Conductivity Preparation}
 \label{sec:cond}
 
-All electrical conductivities were homogeneous for each tissue with the exception of white matter when using tensor data. The isotropic conductivities are as follows \cite{ref:cond}: 
+All electrical conductivities were homogeneous for each tissue with the exception of white matter when using tensor data. The isotropic conductivities \cite{ref:cond} are as follows: 
 
 \begin{table}[H]
 \centering
@@ -386,7 +386,7 @@ We used SCIRun, the open-source problem solving environment, to apply parameters
 \subsection{Simulations \& Visualization}
 \label{sec:sim}
 
-All simulations and visualization were done in the SCIRun problem solving environment.
+All simulations and visualization were done in the SCIRun problem solving environment. All networks are shown in Figures \ref{fig:isofornet} - \ref{fig:eegvisnet}.
 
 \subsubsection{Forward Problem}
 
@@ -395,38 +395,6 @@ When solving systems described in Section \ref {sec:math} from a known source to
 For the isotropic case necessary inputs are the tetrahedral head mesh, isotropic conductivities, the head segmentation, the physical electrode locations, and dipole sources. The physical electrode locations and dipole sources were part of the EEG dataset. The electrodes have the fiducials removed and the only dipole sources that are used are those that the user chooses. There are 4800 dipoles in the data set and there should be 256 electrodes after the fiducials are removed. The head mesh was registered to the head segmentation with a rigid registration and after the flat tets are cut out the conductivities are mapped to their respective tissues. The electrodes and dipoles are registered to the head mesh with the same transform. The system is solved with the mapped data and the chosen dipole sources. The solution is then mapped onto the mesh and the electrodes for visualization. Streamlines and isolines are also included in the visualization.
 
 For the anisotropic case, the network is going to be largely the same with the exception of the diffusion tensor data set used as white matter conductivities after it was scaled as explained in Section \ref{sec:cond} and the DTI to mesh transform is needed as input. The head mesh, electrodes, and dipoles were registered to the DTI space with a rigid registration and the head segmentation wasn't needed.
-
-\begin{figure}[p]
-\begin{center}
-\includegraphics[width=\textwidth]{Figures/iso_network.png}\\
-\caption{SCIRun Network for Isotropic Forward Problem}
-\label{fig:isofor}
-\end{center}
-\end{figure}
-
-\begin{figure}[p]
-\begin{center}
-\includegraphics[width=\textwidth]{Figures/aniso_network.png}\\
-\caption{SCIRun Network for Anisotropic Forward Problem}
-\label{fig:anisofor}
-\end{center}
-\end{figure}
-
-\begin{figure}[p]
-\begin{center}
-\includegraphics[width=\textwidth]{Figures/fmri_network.png}\\
-\caption{SCIRun Network for fMRI Visualization}
-\label{fig:fmrivis}
-\end{center}
-\end{figure}
-
-\begin{figure}[p]
-\begin{center}
-\includegraphics[width=\textwidth]{Figures/EEG_network.png}\\
-\caption{SCIRun Network for EEG Visualization}
-\label{fig:eegvis}
-\end{center}
-\end{figure} 
 
 \subsubsection{fMRI}
 
