@@ -46,6 +46,12 @@ Y.~Zang, M.~Brady, and S.~Smith.
   model and the expectation-maximization algorithm.
 \newblock {\em IEEE Trans Med Imag}, 20(1):45--57, 2001.
 
+\bibitem{ref:fsltopup1}
+J.L.R. Anderson, S.~Skare, and J.~Ashburner.
+\newblock How to correct susceptibility distortions in spin-echo echo-planar
+  images; applications to diffusion tensor imaging.
+\newblock {\em NeuroImage}, 20(2):870--888, 2003.
+
 \bibitem{ref:fsltopup2}
 S.M. Smith, M.~Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens,
   H.~Johansen-Berg, P.R. Bannister, M.~De Luca, I.~Drobnjak, D.E. Flitney,
