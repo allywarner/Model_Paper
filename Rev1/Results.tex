@@ -11,27 +11,27 @@ All SCIRun networks used to generate results will be included in an open-source 
 
 \subsection{Segmentation}
 
-For this project, we segmented an entire head into eight detailed layers which are listed in Section \ref{sec:Seg}. We used this mesh to create an inhomogeneous three-dimensional tetrahedral mesh. 
+For this project, we segmented an entire head into the eight detailed layers listed in Section \ref{sec:Seg}. We used this mesh to create an inhomogeneous three-dimensional tetrahedral mesh. 
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[height=2.35in]{Figures/seg_1}
 \includegraphics[height=2.35in]{Figures/seg_2}
 \includegraphics[height=2.35in]{Figures/seg_3}
-\caption{A high-resolution, eight-layer full head segmentation made with Seg3D }
+\caption{A high-resolution, eight-layer, full head segmentation made with Seg3D }
 \label{fig:fullseg}
 \end{center}
 \end{figure}
 
-As the dataset didn't include a CT scan, the task of segmenting the skull and the sinus layers seemed daunting. As described in Section \ref{sec:Seg}, our first attempt at a bone segmentation was to combine a skull made from FSL \cite{ref:bet2} with bones thresholded using Seg3D. Although we had a bone segmentation, the sinus segmentation would have to be created manually. 
+Since the dataset did not include a CT scan, the task of segmenting the skull and the sinus layers seemed daunting. As described in Section \ref{sec:Seg}, our first attempt at a bone segmentation was to combine a skull made from FSL \cite{ref:bet2} with bones thresholded using Seg3D. Although we had a bone segmentation, the sinus segmentation wasn't completed from this segmentation since it would have to be created manually.
 
-The skull/bone and sinus segmentations we made from the pseudo-CT scan were smooth and connected segmentations and fit well into the entire head segmentation. However the teeth and mouth are solid bone due to the subject's permanent retainer, but this is not concerning as the EEG electrodes didn't include subject's mouth.
+The skull/bone and sinus segmentations we made from the pseudo-CT scan were smooth, connected segmentations that fit well into the entire head segmentation.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/skull_before}
 \includegraphics[width=.49\textwidth]{Figures/skull_after}
-\caption{Skull segmentation comparison: Created with BET \textit{(left)} and thresholding and created with pseudo-CT \textit{(right)}. Both segmentations were made using Seg3D.}
+\caption{Skull segmentation comparison: Created with BET and thresholding \textit{(left)} and with pseudo-CT \textit{(right)}. Both segmentations were made using Seg3D.}
 \label{fig:skull}
 \end{center}
 \end{figure}
@@ -45,7 +45,7 @@ The skull/bone and sinus segmentations we made from the pseudo-CT scan were smoo
 \end{center}
 \end{figure}
 
-During MRI imaging, the subject was on her back and this caused the brain to shift to the back of the head which resulted in thin segmented sections on the back of the head. There were also thin sections on the side of the subject's head, the bridge of the nose, and the bottom of the chin. We made these sections at least two pixels thick to ensure a mesh without holes.
+During MRI imaging, the subject was on her back, which caused the brain to shift to the back of the head, resulting in thin segmented sections on the back of the head. There were also thin sections on the side of the subject's head, the bridge of the nose, and the bottom of the chin. We made these sections at least two pixels thick to ensure a mesh without holes.
 
 \begin{figure}[H]
 \begin{center}
@@ -59,7 +59,7 @@ During MRI imaging, the subject was on her back and this caused the brain to shi
 
 \subsection{Finite Element Meshes}
 
-The highest resolution mesh we generated with the settings listed in Section \ref{sec:mesh} had 60.2 million elements and 10.3 million nodes. This mesh was so large due to the complexity of the segmentation including small features, thin sections, and several layers touching at once. The simulations performed slowly when using this mesh due to its size, and required at least 32GB of RAM.
+The highest resolution mesh we generated with the settings listed in Section \ref{sec:mesh} had 60.2 million elements and 10.3 million nodes. This mesh was large because of the complexity of the segmentation, including small features, thin sections, and several layers touching at once. The simulations performed slowly when using this mesh due to its size and required at least 32GB of RAM.
 
 \begin{figure}[H]
 \begin{center}
@@ -70,7 +70,7 @@ The highest resolution mesh we generated with the settings listed in Section \re
 \end{center}
 \end{figure}
 
-We attempted to generated smaller sized meshes to be able to run simulations more efficiently, but many of the meshes contained holes. After we manually changed the sizing field described in Section \ref{sec:mesh}, we generated a mesh with 15.7 million elements and 2.7 million nodes that contained no holes. However this mesh contained one flat tetrahedra, which we later removed in a SCIRun network, and is currently being investigated by Cleaver software developers.
+We attempted to generate smaller meshes to be able to run simulations more efficiently, but many of the meshes contained holes. After we manually changed the sizing field described in Section \ref{sec:mesh}, we generated a mesh with 15.7 million elements and 2.7 million nodes that contained no holes. However, this mesh contained one flat tetrahedra, which we later removed in a SCIRun network. This issue is currently being investigated by Cleaver software developers.
 
 \begin{figure}[H]
 \begin{center}
@@ -85,7 +85,7 @@ We attempted to generated smaller sized meshes to be able to run simulations mor
 
 \subsubsection{Isotropic}
 
-An isotropic, inhomogeneous head model is expected to have fairly spherical propagation of electrical signal. We generated three-dimensional streamlines as well as isolines to visualize this propagation and to compare between isotropic and anisotropic conductivity. The simulations showed spherical propagation and acceptable registration of electrodes and dipoles to the mesh space.
+An isotropic, inhomogeneous head model is expected to have spherical propagation of electrical signals. We generated three-dimensional streamlines as well as isolines to visualize this propagation and to compare isotropic and anisotropic conductivity. The simulations showed spherical propagation and acceptable registration of electrodes and dipoles to the mesh space.
 
 \begin{figure}[H]
 \begin{center}
@@ -107,7 +107,7 @@ An isotropic, inhomogeneous head model is expected to have fairly spherical prop
 
 \subsubsection{Anisotropic}
 
-An anisotropic, inhomogeneous head model is expected to not have spherical propagation. This can be seen with the streamlines visualization, and even more so with isolines. As discussed in \ref{sec:cond}, there are two methods of scaling diffusion tensor data. We built the SCIRun network with the option to choose either scaling method. The simulations showed non-spherical propagation and acceptable registration of the electrodes, dipoles, and mesh into the diffusion tensor space.
+The expectation for an anisotropic, inhomogeneous head model is to have nonspherical propagation, which can be seen with the streamlines and isolines visualizations. As discussed in Section \ref{sec:cond}, two methods are used for scaling diffusion tensor data. We built the SCIRun network with the option to choose either scaling method. The simulations showed nonspherical propagation and acceptable registration of the electrodes, dipoles, and mesh into the diffusion tensor space.
 
 \begin{figure}[H]
 \begin{center}
@@ -138,7 +138,7 @@ An anisotropic, inhomogeneous head model is expected to not have spherical propa
 
 \subsection{fMRI Visualization}
 
-fMRI data was a novel datatype for SCIRun. We successfully mapped and visualized the fMRI data onto the cortical surface with a rigid and manual registration to the mesh coordinate space. This allows for future use of fMRI data in simulations using the SCIRun software package.
+fMRI data was a novel datatype for SCIRun. We successfully mapped and visualized the fMRI data onto the cortical surface with a rigid and manual registration to the mesh coordinate space. This mapping network allows for future use of fMRI data in simulations using the SCIRun software package.
 
 \begin{figure}[H]
 \begin{center}
@@ -150,7 +150,7 @@ fMRI data was a novel datatype for SCIRun. We successfully mapped and visualized
 
 \subsection{EEG Visualization}
 
-When using EEG data, the particular application dictates if further processing, filtering, and/or cutting of the data is necessary. This dataset contained ``bad" electrodes, specifically around the eyes which was possibly due to blinking or eyes rolling. The bad leads will be fixed with further specific processing or trilinear interpolation.
+When using EEG data, the particular application dictates if further processing, filtering, or cutting of the data is necessary. This EEG dataset contained ``bad" electrodes, specifically around the eyes, which was possibly due to the blinking or rolling of the subject's eyes. The bad leads will be fixed with further specific processing or trilinear interpolation.
 
 \begin{figure}[H]
 \begin{center}
