@@ -1,37 +1,36 @@
 % Filename: Results
-% Last update: 
-%    - created%
+% Last update: Monday, 11/5/2018 by Ally Warner
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Results}
 \label{sec:results}
 
-All SCIRun networks used to generate results will be included in an open-source dataset for future use and editing.
+All SCIRun networks used to generate results are included in an open-source dataset for research use at \url{www.sci.utah.edu/SCI-Headmodel}.
 
 \subsection{Segmentation}
 
-For this project, we segmented an entire head into the eight detailed layers listed in Section \ref{sec:Seg}. We used this mesh to create an inhomogeneous three-dimensional tetrahedral mesh. 
+For this project, we segmented the head into eight detailed layers listed in Section \ref{sec:Seg}. We used this mesh to create an inhomogeneous three-dimensional tetrahedral mesh.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[height=2.35in]{Figures/seg_1}
 \includegraphics[height=2.35in]{Figures/seg_2}
 \includegraphics[height=2.35in]{Figures/seg_3}
-\caption{A high-resolution, eight-layer, full head segmentation made with Seg3D }
+\caption{A high-resolution, eight-layer, full head segmentation made with Seg3D}
 \label{fig:fullseg}
 \end{center}
 \end{figure}
 
-Since the dataset did not include a CT scan, the task of segmenting the skull and the sinus layers seemed daunting. As described in Section \ref{sec:Seg}, our first attempt at a bone segmentation was to combine a skull made from FSL \cite{ref:bet2} with bones thresholded using Seg3D. Although we had a bone segmentation, the sinus segmentation wasn't completed from this segmentation since it would have to be created manually.
+Since the dataset did not include a CT scan, the task of segmenting the skull and the sinus layers were the most challenging. As described in Section \ref{sec:Seg}, our first attempt at a bone segmentation was to combine a skull made from FSL \cite{ref:bet2} with bones thresholded using Seg3D. Although we had a bone segmentation, the sinus segmentation was not completed from this segmentation since it would have to be created manually.
 
-The skull/bone and sinus segmentations we made from the pseudo-CT scan were smooth, connected segmentations that fit well into the entire head segmentation.
+The skull/bone and sinus segmentations we made from the pseudo-CT scan were smooth and connected segmentations and fit well into the entire head segmentation.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/skull_before}
 \includegraphics[width=.49\textwidth]{Figures/skull_after}
-\caption{Skull segmentation comparison: Created with BET and thresholding \textit{(left)} and with pseudo-CT \textit{(right)}. Both segmentations were made using Seg3D.}
+\caption{Skull segmentation comparison: Created with BET and thresholding \textit{(left)} and with pseudo-CT \textit{(right)}. Both segmentations were made using Seg3D}
 \label{fig:skull}
 \end{center}
 \end{figure}
@@ -45,7 +44,7 @@ The skull/bone and sinus segmentations we made from the pseudo-CT scan were smoo
 \end{center}
 \end{figure}
 
-During MRI imaging, the subject was on her back, which caused the brain to shift to the back of the head, resulting in thin segmented sections on the back of the head. There were also thin sections on the side of the subject's head, the bridge of the nose, and the bottom of the chin. We made these sections at least two pixels thick to ensure a mesh without holes.
+During MRI imaging, the subject was on her back, which caused the brain to shift to the back of the head, resulting in thin segmented sections on the back of the head as well as on the side of the subject's head, the bridge of the nose, and the bottom of the chin. We made these sections at least two pixels thick to ensure a mesh without holes.
 
 \begin{figure}[H]
 \begin{center}
@@ -70,7 +69,7 @@ The highest resolution mesh we generated with the settings listed in Section \re
 \end{center}
 \end{figure}
 
-We attempted to generate smaller meshes to be able to run simulations more efficiently, but many of the meshes contained holes. After we manually changed the sizing field described in Section \ref{sec:mesh}, we generated a mesh with 15.7 million elements and 2.7 million nodes that contained no holes. However, this mesh contained one flat tetrahedra, which we later removed in a SCIRun network. This issue is currently being investigated by Cleaver software developers.
+We attempted to generate smaller meshes to be able to run quicker simulations, but many of the meshes contained holes. After we manually changed the sizing field described in Section \ref{sec:mesh}, we generated a mesh with 15.7 million elements and 2.7 million nodes without holes. However, this mesh contained one flat tetrahedra, which we later removed in a SCIRun network. This issue is currently being investigated by Cleaver software developers.
 
 \begin{figure}[H]
 \begin{center}
@@ -85,7 +84,7 @@ We attempted to generate smaller meshes to be able to run simulations more effic
 
 \subsubsection{Isotropic}
 
-An isotropic, inhomogeneous head model is expected to have spherical propagation of electrical signals. We generated three-dimensional streamlines as well as isolines to visualize this propagation and to compare isotropic and anisotropic conductivity. The simulations showed spherical propagation and acceptable registration of electrodes and dipoles to the mesh space.
+An isotropic, inhomogeneous head model is expected to have largely spherical propagation of electrical signals. We generated three-dimensional streamlines, as well as, isolines to visualize this propagation and to compare isotropic and anisotropic conductivity. The simulations showed spherical propagation and acceptable registration of electrodes and dipoles to the mesh space.
 
 \begin{figure}[H]
 \begin{center}
@@ -138,7 +137,7 @@ The expectation for an anisotropic, inhomogeneous head model is to have nonspher
 
 \subsection{fMRI Visualization}
 
-fMRI data was a novel datatype for SCIRun. We successfully mapped and visualized the fMRI data onto the cortical surface with a rigid and manual registration to the mesh coordinate space. This mapping network allows for future use of fMRI data in simulations using the SCIRun software package.
+fMRI data was a novel imaging datatype for SCIRun. We successfully mapped and visualized the fMRI data onto the cortical surface with a rigid and manual registration to the mesh coordinate space. This mapping network allows for future use of fMRI data in simulations using the SCIRun software package.
 
 \begin{figure}[H]
 \begin{center}
@@ -160,3 +159,5 @@ When using EEG data, the particular application dictates if further processing, 
 \label{fig:eegvis}
 \end{center}
 \end{figure}
+
+\textbf{ADD 128 RESULTS AS WELL!}
