@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 NOV 2018 21:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 NOV 2018 12:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -401,17 +401,17 @@ LaTeX Warning: Citation `SCI:Joh2006a' on page 1 undefined on input line 8.
 
 LaTeX Warning: Citation `SCI:Joh2004b' on page 1 undefined on input line 8.
 
-) (./Methods.tex [1
+[1
 
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] <Figure
-s/pipeline.pdf, id=133, 1203.19643pt x 343.93355pt>
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+(./Methods.tex <Figures/pipeline.pdf, id=133, 1203.19643pt x 343.93355pt>
 File: Figures/pipeline.pdf Graphic file (type pdf)
 
 <use Figures/pipeline.pdf>
 Package pdftex.def Info: Figures/pipeline.pdf used on input line 11.
 (pdftex.def)             Requested size: 469.75499pt x 134.27524pt.
  [2 <./Figures/pipeline.pdf>]
-<Figures/FSL.png, id=160, 188.705pt x 485.815pt>
+<Figures/FSL.png, id=159, 188.705pt x 485.815pt>
 File: Figures/FSL.png Graphic file (type png)
  <use Figures/FSL.png>
 Package pdftex.def Info: Figures/FSL.png used on input line 44.
@@ -426,7 +426,7 @@ Package wrapfig Warning: Stationary wrapfigure forced to float on input line 49
 .
 
 [3 <./Figures/FSL.png>]
-<Figures/combined.png, id=181, 3367.58125pt x 1298.8525pt>
+<Figures/combined.png, id=179, 3367.58125pt x 1298.8525pt>
 File: Figures/combined.png Graphic file (type png)
 
 <use Figures/combined.png>
@@ -808,7 +808,7 @@ Here is how much of TeX's memory you used:
  11432 multiletter control sequences out of 15000+600000
  11012 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,9n,43p,1082b,1680s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,9n,43p,1356b,950s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
@@ -826,7 +826,7 @@ ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on paper_main.pdf (35 pages, 12084270 bytes).
+Output written on paper_main.pdf (35 pages, 12084658 bytes).
 PDF statistics:
  616 PDF objects out of 1000 (max. 8388607)
  473 compressed objects within 5 object streams
