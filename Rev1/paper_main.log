@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 NOV 2018 12:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 NOV 2018 16:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -785,21 +785,21 @@ File: Figures/EEG_network.png Graphic file (type png)
 Package pdftex.def Info: Figures/EEG_network.png used on input line 35.
 (pdftex.def)             Requested size: 469.75499pt x 458.06725pt.
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 90.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 89.
  [30] [31 <./Figures/make_DTI.png>] [32 <./Figures/iso_network.png>] [33 <./Fig
 ures/aniso_network.png>] [34 <./Figures/fmri_network.png>] [35 <./Figures/EEG_n
 etwork.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 90.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 89.
  (./paper_main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 90.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 90.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 89.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 89.
 Package rerunfilecheck Info: File `paper_main.out' has not changed.
 (rerunfilecheck)             Checksum: 7D13FE00E7C4D5D37B35555647C6AD0F;1958.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 90.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 89.
  ) 
 Here is how much of TeX's memory you used:
  8251 strings out of 493089
@@ -808,7 +808,7 @@ Here is how much of TeX's memory you used:
  11432 multiletter control sequences out of 15000+600000
  11012 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,9n,43p,1354b,950s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,9n,43p,1328b,950s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
@@ -826,7 +826,7 @@ ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2015/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on paper_main.pdf (35 pages, 12084646 bytes).
+Output written on paper_main.pdf (35 pages, 12084622 bytes).
 PDF statistics:
  616 PDF objects out of 1000 (max. 8388607)
  473 compressed objects within 5 object streams
