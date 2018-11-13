@@ -1,0 +1,70 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper_main.aux
+The style file: unsrt.bst
+Database file #1: aw.bib
+Warning--entry type for "ref:fcon" isn't style-file defined
+--line 32 of file aw.bib
+Warning--entry type for "ref:dtifit" isn't style-file defined
+--line 41 of file aw.bib
+Warning--entry type for "ref:spm" isn't style-file defined
+--line 134 of file aw.bib
+Warning--entry type for "ref:edfread" isn't style-file defined
+--line 146 of file aw.bib
+Warning--entry type for "ref:nifti" isn't style-file defined
+--line 157 of file aw.bib
+You're missing a field name---line 280 of file aw.bib
+ :  
+ :  %Author = {R. Brette and A. Destexhe},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Database file #2: /Users/ally_warner/Documents/SCI/bibtex/sci-bibtex/sci.bib
+Warning--string name "j-acm-com" is undefined
+--line 12779 of file /Users/ally_warner/Documents/SCI/bibtex/sci-bibtex/sci.bib
+Warning--can't use both author and editor fields in SCI:Joh2015c
+Warning--empty journal in SCI:Joh2004b
+Warning--there's a number but no volume in ref:bias
+Warning--can't use both author and editor fields in ref:math
+Warning--can't use both volume and number fields in ref:math
+You've used 32 entries,
+            1791 wiz_defined-function locations,
+            635 strings with 10279 characters,
+and the built_in function-call counts, 7522 in all, are:
+= -- 565
+> -- 481
+< -- 6
++ -- 174
+- -- 142
+* -- 612
+:= -- 1257
+add.period$ -- 94
+call.type$ -- 32
+change.case$ -- 30
+chr.to.int$ -- 0
+cite$ -- 37
+duplicate$ -- 273
+empty$ -- 692
+format.name$ -- 142
+if$ -- 1615
+int.to.chr$ -- 0
+int.to.str$ -- 32
+missing$ -- 27
+newline$ -- 161
+num.names$ -- 34
+pop$ -- 91
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 117
+stack$ -- 0
+substring$ -- 410
+swap$ -- 49
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 5
+while$ -- 60
+width$ -- 34
+write$ -- 343
+(There was 1 error message)

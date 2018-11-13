@@ -1,15 +1,37 @@
 \begin{thebibliography}{10}
 
-\bibitem{ref:Brette2012}
-R.~Brette and A.~Destexhe.
-\newblock {\em Handbook of Neural Activity Measurement}.
-\newblock Cambridge University Press, 2012.
+\bibitem{SCI:Mac2009a}
+R.S. MacLeod, J.G. Stinstra, S.~Lew, R.T. Whitaker, D.J. Swenson, M.J. Cole,
+  J.~Kr{\"u}ger, D.H. Brooks, and C.R. Johnson.
+\newblock Subject-specific, multiscale simulation of electrophysiology: a
+  software pipeline for image-based models and application examples.
+\newblock {\em Philosophical Transactions of The Royal Society A, Mathematical,
+  Physical \& Engineering Sciences}, 367(1896):2293--2310, 2009.
 
-\bibitem{ref:scirun}
-SCI Institute, 2016.
-\newblock SCIRun: A Scientific Computing Problem Solving Environment,
-  Scientific Computing and Imaging Institute (SCI), Download from:
-  http://www.scirun.org.
+\bibitem{SCI:Joh2015c}
+C.R. Johnson.
+\newblock {\em Computational Methods and Software for Bioelectric Field
+  Problems}, volume~1, chapter~43, pages 1--28.
+\newblock CRC Press, Boca Raton, FL, USA, 4 edition, 2015.
+
+\bibitem{SCI:Joh2012a}
+C.R. Johnson.
+\newblock Biomedical visual computing: Case studies and challenges.
+\newblock {\em {IEEE} Computing in Science and Engineering}, 14(1):12--21,
+  2012.
+
+\bibitem{SCI:Joh2006a}
+C.R. Johnson and D.M. Weinstein.
+\newblock Biomedical computing and visualization.
+\newblock In Vladimir Estivill-Castro and Gill Dobbie, editors, {\em
+  Proceedings of the Twenty-Ninth Australasian Computer Science Conference
+  (ACSC2006): Conferences in Research and Practice in Information Technology
+  (CRPIT)}, volume~48, pages 3--10, 2006.
+
+\bibitem{SCI:Joh2004b}
+C.R. Johnson, R.S. MacLeod, S.G. Parker, and D.M. Weinstein.
+\newblock Biomedical computing and visualization software environments.
+\newblock 47(11):64--71, 2004.
 
 \bibitem{ref:mprage}
 J.P. Mugler and J.R. Brookeman.
