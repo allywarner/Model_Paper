@@ -135,9 +135,8 @@ Brett Shoelson.
   \url{https://www.mathworks.com/matlabcentral/fileexchange/31900-edfread}.
 
 \bibitem{ref:seg3d}
-CIBC, 2016.
-\newblock Seg3D: Volumetric Image Segmentation and Visualization. Scientific
-  Computing and Imaging Institute (SCI), Download from: http://www.seg3d.org.
+{Seg3D}: Volumetric Image Segmentation and Visualization. Scientific Computing
+  and Imaging Institute ({SCI}), Download from: http://www.seg3d.org.
 
 \bibitem{ref:bet1}
 S.M. Smith.
@@ -170,8 +169,7 @@ A.~Torrado-Carvajal, J.L. Herraiz, E.~Alcain, A.S. Montemayor,
 \newblock {\em Journal of Nuclear Medicine}, 57(1):136--143, 2016.
 
 \bibitem{ref:cleaver}
-CIBC, 2016.
-\newblock Cleaver: A MultiMaterial Tetrahedral Meshing Library and Application.
+Cleaver: A MultiMaterial Tetrahedral Meshing Library and Application.
   Scientific Computing and Imaging Institute (SCI), Download from:
   http://www.sci.utah.edu/cibc/software.html.
 

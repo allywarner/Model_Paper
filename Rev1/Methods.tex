@@ -30,8 +30,6 @@ The functional MRI (fMRI) scans were acquired with a blood oxygenation level dep
 
 Multiple continuous electroencephalograms (EEGs) was recorded using both a 128-channel and 256 channel HydroCel Geodesic Sensor Net that was connected to a NetAmps 400 amplifier and referenced online to a single vertex electrode. Channel impedances were kept at or below 50 kOhms and signals were sampled at 250Hz. The EEGs were recorded while the subject sat quietly in a chair, alternating two-minute epochs of eyes open and eyes closed, for a total of 12 minutes.
 
-\textbf{ARE WE INCLUDING NICOLE'S DATASET? DOUBLE CHECK WESTMINSTER'S DATASET}N
-
 All acquisition reports will be included with the dataset.
 
 \subsection{Preprocessing of Images}
@@ -405,7 +403,7 @@ We ran all simulations and visualizations in the SCIRun problem-solving environm
 
 Solving systems from a known source to the EEG electrodes, described in Section 2.5, is known as a forward problem. The opposite action, solving systems from the EEG data to a unknown source, is an inverse problem.  In this project, we built SCIRun networks to solve forward problems with known sources and to write a lead field matrix for inverse problem networks in the future. We solved forward problems with an isotropic and anisotropic conductivities, using iDTI data for the direction for anisotropic conductivities.
 
-The necessary network inputs for the isotropic case were the tetrahedral head mesh, isotropic conductivities, the head segmentation, the physical electrode locations, and dipole sources. The physical electrode locations and the dipole sources were results from the EEG recording dataset, and contained 4800 dipoles and 256 electrodes. The network removed the fiducials from the electrode locations, and allows the user to choose a dipole source from the dataset. We registered the mesh to the head segmentation using a rigid registration. After we cut the flat tetrahedra out of the mesh, we mapped the conductivities to their respective tissues. We registered the electrodes and dipoles to the head mesh using the same transform. We solved the system with the mapped data and the chosen dipole sources. We then mapped the solution onto the mesh and the electrodes for visualization. We also included streamlines and isolines in the visualization.
+The necessary network inputs for the isotropic case were the tetrahedral head mesh, isotropic conductivities, the head segmentation, the physical electrode locations, and dipole sources. The physical electrode locations and the dipole sources were results from the EEG recording dataset, and contained 4800 dipoles and the choice of 128 electrodes or 256 electrodes. The network removed the fiducials from the electrode locations, and allows the user to choose a dipole source from the dataset. We registered the mesh to the head segmentation using a rigid registration. After we cut the flat tetrahedra out of the mesh, we mapped the conductivities to their respective tissues. We registered the electrodes and dipoles to the head mesh using the same transform. We solved the system with the mapped data and the chosen dipole sources. We then mapped the solution onto the mesh and the electrodes for visualization. We also included streamlines and isolines in the visualization.
 
 For the anisotropic case, the network was largely the same with the exception of the scaled diffusion tensor dataset used as white matter conductivities. In addition, the DTI to mesh transform was needed as input. We registered the head mesh, electrodes, and dipoles to the DTI space with a rigid registration; the head segmentation was not needed.
 
@@ -415,4 +413,4 @@ We visualized the fMRI data one step at a time using the two-dimensional matrix 
 
 \subsubsection{EEG}
 
-We visualized the EEG data on the physical electrode locations, which we registered to the mesh space with a rigid registration after removing the fiducials from the electrode dataset. We used the filtered and cut EEG matrix as input and represented each time step as a column. We then placed the electrodes onto the mesh and mapped the EEG data onto the electrodes one time step at a time.
+We visualized EEG data on the physical electrode locations, which we registered to the mesh space with a rigid registration after removing the fiducials from the electrode dataset. We used the filtered and cut n matrix as input and represented each time step as a column. We then placed the electrodes onto the mesh and mapped the EEG data onto the electrodes one time step at a time. The same network was used for both EEG data visualizations.
