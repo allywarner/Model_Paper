@@ -374,25 +374,20 @@ where $v_i$ is the $i$th eigenvector of $D$, $W$ is the white matter ratio vecto
 
 %%% This paragraph addresses Finite Element Discretization
 
-We computed solutions to Equation \ref{eq:1} using finite element methods.  By applying 
-Green's divergence theorem to Equation \ref{eq:1}, we generated the following weak formulation:
+We computed solutions to Equation \ref{eq:1} using finite element methods. By applying Green's theorem to Equation \ref{eq:1}, we generated the following weak formulation,
 \begin{equation}
-\int ((\bar{\sigma}_e + \bar{\sigma}_i)\nabla \phi_e) \cdot \nabla \psi(\bar{x})d\bar{x} = - \int (\bar{\sigma}
-_i \nabla V_m)\cdot \nabla \psi(\bar{x})d\bar{x}, \quad \quad \forall \ \psi \in \Omega
+\label{eq:weakGreens}
+(\sigma \nabla \phi, \nabla \bar{\phi}) = -(I_v, \bar{\phi})
+\end{equation}
+where $ \bar{\phi}$ is an arbitrary test function, which can be thought of physically as a virtual potential field. By applying the Galerkin approximation, Equation \ref{eq:weakGreens}, to Equation \ref{eq:1} we can represent the finite element approximation as such:
+\begin{equation}
 \label{eq:galerkin}
+\sum_{i = 0}^{N} \varepsilon_i (\sigma_{ij} \nabla \psi_{i}, \nabla \psi_{j}) = -(I_v, \psi_i) \quad j = 0, \dots, N,
 \end{equation}
-where $\Omega$ is the linear, finite element mesh, and $\psi$ represents the finite element basis functions characterized by local hat functions associated with mesh nodes. By applying this formulation to the finite-dimensional mesh, we reduced Equation \ref{eq:galerkin} to a system of linear equations:
-\begin{equation}
-A \phi_e = -RV_m,
-\label{eq:ReducedFormula}
-\end{equation}
-where $A$ and $R$ represent stiffness matrices defined by $A_{j,k} = \langle \nabla \psi_j,(\bar{\sigma}
-_e + \bar{\sigma}_i)\nabla \psi_k \rangle_\Omega$ and $R_{j,k} = \langle \nabla \psi_j,\bar{\sigma}_i
-\nabla \psi_k \rangle_\Omega$,
-and $\phi_e$ and $V_m$ represent extracellular and transmembrane potentials, respectively.\cite{ref:fem}
+subject to the Dirichlet boundary condition. Then the finite element approximation of Equation \ref{eq:1} can equivalently be expressed as a system of $N$ equations with $N$ unknowns $\varepsilon_i \dots \varepsilon_N$ (e.g., the electrostatic potentials). In matrix form, the above system can be written as $A \varepsilon = b$,  where $A=(a_{ij})$ is called the global stiffness matrix and has elements $(a_{ij} = (\sigma_{ij} \nabla \psi_{i}, \nabla \psi_{j})$, while $b_i = -(I_v, \psi_i)$ is usually termed the load vector. For volume conductor problems, $A$ contains all the geometry and conductivity information of the model. \cite{ref:math}
 
 %%% This paragraph addresses SCIRun as a solver
-We used SCIRun, the open-source problem-solving environment, to apply parameters and to solve Equation \ref{eq:ReducedFormula} numerically.  Within the SCIRun environment, we applied isotropic and anisotropic conductivity tensors to the tetrahedral mesh as well as to inhomogeneous regions. We defined initial and boundary conditions and generated border regions in order to compute potentials by way of a conjugate gradient method with a Jacobi preconditioner.
+We used SCIRun, the open-source problem-solving environment, to apply parameters and to solve Equation \ref{eq:galerkin} numerically.  Within the SCIRun environment, we applied isotropic and anisotropic conductivity tensors to the tetrahedral mesh as well as to inhomogeneous regions. We defined initial and boundary conditions and generated border regions in order to compute potentials by way of a conjugate gradient method with a Jacobi preconditioner.
 
 \subsection{Simulations and Visualizations}
 \label{sec:sim}

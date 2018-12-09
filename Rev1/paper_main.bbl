@@ -193,12 +193,6 @@ D.~Gullmar, J.~Haueisen, and J.~R. Reichenbach.
   head simulation study.
 \newblock {\em NeuroImage}, 51:145--163, 2010.
 
-\bibitem{ref:fem}
-D.~Wang, R.M. Kirby, R.S. MacLeod, and C.R. Johnson.
-\newblock Inverse electrocardiographic source localization of ischemia: An
-  optimization framework and finite element soltuion.
-\newblock {\em Journal of Computational Science}, 2013.
-
 \bibitem{ref:bet2}
 M.~Jenkinson, M.~Pechaud, and S.~Smith.
 \newblock Bet2: Mr-based estimation of brain, skull and scalp surfaces.
