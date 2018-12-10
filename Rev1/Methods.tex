@@ -40,108 +40,21 @@ All acquisition reports will be included with the dataset.
     \centering
     \vspace{-63pt}
     \includegraphics[width=3cm]{Figures/FSL}
-    \caption{FMRIB software library user interface}
+    \caption{FMRIB software library user interface.}
     \label{fig:fsl}
 \end{wrapfigure}
 
 \subsubsection{MRI Correction}
 
-Bias field signal is a low-frequency, smooth signal that corrupts MRI
-images due to inhomogeneities in the magnetic fields of the MRI
-machine by blurring images, thereby reducing the high frequencies of
-the images, such as edges and contours. The signal changes the
-intensity values of image pixels so that the same tissue has a
-different distribution of grayscale intensities across the
-image. \cite{ref:bias} We applied an estimated bias field correction
-on the $T_1$ and $T_2$ MRIs using FMRIB Software Library (FSL) FAST
-\cite{ref:fslfast}, which will be further described in Section
-\ref{sec:Seg}. FSL's basic user interface, which was used throughout
-this pipeline, is shown in Figure \ref{fig:fsl}.
+Bias field signal is a low-frequency, smooth signal that corrupts MRI images due to inhomogeneities in the magnetic fields of the MRI machine by blurring images, thereby reducing the high frequencies of the images, such as edges and contours. The signal changes the intensity values of image pixels so that the same tissue has a different distribution of grayscale intensities across the image. \cite{ref:bias} We applied an estimated bias field correction on the $T_1$ and $T_2$ MRIs using FMRIB Software Library (FSL) FAST \cite{ref:fslfast}, which will be further described in Section \ref{sec:Seg}.
 
 \subsubsection{DWI Distortion Correction}
 
-DWIs performed with EPI sequences are prone to distortions from rapid switching of diffusion weighting gradients, movement from the scanning table, and movement from the subject. The diffusion data was collected with reversed phase-encode blips (anterior to posterior (AP) and posterior to anterior (PA)), resulting in pairs of images with distortions in opposite directions. From these pairs, we estimated the susceptibility-induced off-resonance field using a method \cite{ref:fsltopup1} similar to what is currently implemented in FSL.\cite{ref:fsltopup2} We then combined the two images into a single corrected one using FSL's topup and eddy command line tools.
-
-Before running these tools, we created an acquisition parameters text file with the FSL-defined total readout time. Two parameters are frequently required to calculate and apply field maps: the effective echo spacing and the total readout time for an EPI sequence.  We used ``effective'' echo spacing, rather than the actual echo spacing, in order to include the effects of parallel imaging, phase oversampling, etc. We defined ``effective'' echo spacing as:
-\[
-\text{Effective Echo Spacing (s) = 1/(BandwidthPerPixelPhaseEncode * MatrixSizePhase)}
-\]
-
-The total readout time (FSL definition) was:
-\[
-\text{Total readout time (FSL) = (MatrixSizePhase - 1) * EffectiveEchoSpacing}
-\]
-
-The software package MRIConvert provided the acquisition information about a dicom series, as well as converted the MRI to a NiFTI format, including effective echo spacing and total readout time \cite{ref:mriconvert}. To obtain this information, we loaded the dicom series for either DWI acquisition. We selected ``Options'' to ensure the DWI was saved in NiFTI format. We then selected ``Convert All'' to save all the files into the output directory specified upon opening MRIConvert. The text file included the FSL-defined total readout time, which was contained in the acquisition parameter file in seconds. MRIConvert also output the b-values and b-vectors files, which were the same for both the DWI AP and DWI PA scans. The last input file required was an ``index.txt'' file, which contained one column with 65 rows (for 64 directions plus the b0 image) of 1's.
-
-%MRIConvert
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{Figures/combined}
-    \caption{MRIConvert \textit{(left)} with options \textit{(middle)} \& output \textit{(right)} }
-    \label{fig:mri_convert}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-{\tt
-\begin{varwidth}{\linewidth}
-\begin{verbatim}
-0  -1 0 0.0345
-0   1 0 0.0345
-\end{verbatim}
-\end{varwidth}
-}
-\label{fig:acq}
-\caption{Acquisition parameters text file}
-\end{figure}
-
-We made a separate folder for topup results that included the following files: the acquisition parameters file, the index file, b-values, b-vectors, and the DWI AP and DWI PA files. To run topup, we renamed the DWI AP image DWI\_up and the DWI PA image DWI\_down. We renamed the b-values and b-vectors dwi.bval and dwi.bvec, respectively. After all files were in place, we executed the following command line commands:
-
-
-\lstdefinestyle{DOS}
-{
-    backgroundcolor=\color{white},
-    basicstyle=\scriptsize\color{black}\ttfamily
-}
-
-\begin{lstlisting}[style=DOS]
-fslroi DWI\_up b0\_up 0 1
-fslroi DWI\_down b0\_down 0 1
-
-fslmerge -t both\_b0 b0\_up b0\_down
-
-topup --imain=both\_b0 --datain=acq_params.txt --config=mine.cnf --out=topup\_results
-applytopup --imain=b0\_up,b0\_down --inindex=1,2 --datain=acq_params.txt
-           --topup=topup\_results  --out=b0\_hifi
-
-bet b0\_hifi b0\_hifi\_brain -m -f 0.2
-eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_params.txt
-     --bvecs=dwi.bvec --bvals=dwi.bval --fwhm=0 --topup=topup\_results --flm=quadratic
-     --out=eddy\_unwarped
-
-\end{lstlisting}
-
-By running these commands, we first obtained the b0 image, which is the baseline image used for calculating field maps, for both encoding directions. Then the two b0's were merged together into one file, topup and eddy were applied for distortion correction, and `bet' was applied for brain extraction. The distortion corrected file was named ``eddy\_unwarped.nii.''
+DWIs performed with EPI sequences are prone to distortions from rapid switching of diffusion weighting gradients, movement from the scanning table, and movement from the subject. The diffusion data was collected with reversed phase-encode blips (anterior to posterior (AP) and posterior to anterior (PA)), resulting in pairs of images with distortions in opposite directions. From these pairs, we estimated the susceptibility-induced off-resonance field using a method \cite{ref:fsltopup1} similar to what is currently implemented in FSL.\cite{ref:fsltopup2} We then combined the two images into a single corrected one using FSL's topup and eddy command line tools. Details on this process are described in the Appendix in Section \ref{sec:distortion}.
 
 \subsubsection{Diffusion Tensor Images}
 
-After we corrected the DWI images, we calculated diffusion tensor images (DTI) using FSL's DTIFIT toolbox \cite{ref:dtifit}. Upon opening FSL, we chose ``FDT Diffusion,'' followed by ``DTIFIT Reconstruct diffusion tensors'' in the drop-down menu and input files manually; Table \ref{tab:dtifit} lists the files selected.
-
-\begin{table}[H]
-\centering
-\caption{DTIFIT Input Files}
-\label{tab:dtifit}
-\begin{tabular}{|c|c|}
-\hline
-Diffusion weighted data & eddy\_unwarmed.nii        \\ \hline
-BET binary brain mask   & b0\_hifi\_brain\_mask.nii \\ \hline
-Output basename          & desired output location   \\ \hline
-Gradient directions     & dwi.bvec                  \\ \hline
-b values                & dwi.bval                  \\ \hline
-\end{tabular}
-\end{table}
-DTIFIT output the eigenvalues (named L1, L2, and L3) and the eigenvectors (named V1, V2, and V3) for the diffusion tensor field. We converted the files from NiFTI format to nrrd format using ITK-SNAP \cite{ref:itksnap}, although there was a loss of precision. We then input the files into SCIRun to build the tensor field using the eigenvalue and eigenvectors. The SCIRun ``CalculateFieldData'' module requires only two eigenvectors as input because it calculates the third eigenvector automatically since it is orthogonal.
+After we corrected the DWI images, we calculated diffusion tensor images (DTI) using FSL's DTIFIT toolbox \cite{ref:dtifit}. DTIFIT output the eigenvalues (named L1, L2, and L3) and the eigenvectors (named V1, V2, and V3) for the diffusion tensor field. We converted the files from NiFTI format to nrrd format using ITK-SNAP \cite{ref:itksnap}, although there was a loss of precision. We then input the files into SCIRun to build the tensor field using the eigenvalue and eigenvectors. The SCIRun ``CalculateFieldData'' module requires only two eigenvectors as input because it calculates the third eigenvector automatically since it is orthogonal. Details on using DTIFIT are described in the Appendix in Section \ref{sec:dtifit}.
 
 \begin{figure}[H]
 \begin{center}
@@ -173,17 +86,15 @@ We built the tensor field in SCIRun rather than in 3D Slicer \cite{ref:slicer} o
 \subsubsection{fMRI}
 \label{sec:fmripre}
 
-We preprocessed the fMRI data using the 1000 Functional Connectomes (fcon) Project pipeline scripts \cite{ref:fcon}, which performed anatomical preprocessing, functional preprocessing, registration to the $T_1$ MRI, segmentation, and nuisance signal regress. The outline pipeline used on this fMRI dataset, specific to the University of Utah, can be found at \url{https://bitbucket.org/UtahBrainNetworks base_prep}, which includes instructions for installation, compilation, and usage.
-
-We opened ``rest.nii,'' the preprocessed fMRI file, in Matlab using the ``load\_nii(`rest.nii')'' function within the NiFTI toolbox \cite{ref:nifti} after running the fMRI data through the fcon pipeline. We then resized the four-dimensional ``img'' variable into a two-dimensional variable for use in SCIRun.
+We preprocessed the fMRI data using the 1000 Functional Connectomes (fcon) Project pipeline scripts \cite{ref:fcon}, which performed anatomical preprocessing, functional preprocessing, registration to the $T_1$ MRI, segmentation, and nuisance signal regress. The outline pipeline used on this fMRI dataset, specific to the University of Utah, can be found at \url{https://bitbucket.org/UtahBrainNetworks base_prep}, which includes instructions for installation, compilation, and usage. The preprocessed fMRI data was then converted from a four-dimensional dataset to a two-dimensional dataset to be visualized in SCIRun. Details on the data conversion is described in the Appendix in Section \ref{sec:nifti}. 
 
 \subsubsection{EEG}
 
-A 60Hz notch filter and its harmonics \cite{ref:filter} were applied to the EEG data and output in .edf file format. We calculated the EEG signals matrix using a Matlab script called ``edfRead.m.'' \cite{ref:edfread} To run this script, we used ``[hdr, record] = edfread(fname).'' The variable 'record' contained the EEG signals. We removed the last two rows of the EEG signals matrix as these were control rows for the experiment. We also removed several columns at the beginning and the end of the matrix because these columns corresponded to taking the EEG net on and off the subject's head.
+A 60Hz notch filter and its harmonics \cite{ref:filter} were applied to the EEG data, and we created an EEG data matrix. We removed the last two rows of the EEG signals matrix as these were control rows for the experiment. We also removed several columns at the beginning and the end of the matrix because these columns corresponded to taking the EEG net on and off the subject's head. Details of the EEG data matrix is described in the Appendix in Section \ref{ref:eegmatlab}. 
 
 \subsubsection{Registration}
 
-Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registration was necessary before segmentation and meshing. We generated the tetrahedral mesh in its own coordinate space from the segmentation, and registered the mesh to the DTI coordinate space with a rigid registration using SCIRun. We registered the fMRI data to the mesh coordinate space with a rigid registration, using SCIRun as well. To register the fMRI data to the DTI coordinate space, the same transformation matrix used to register the mesh can be applied later, if desired. The SCIRun networks for registration are included in Section \ref{sec:sim}.
+Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registration was necessary before segmentation and meshing. We generated the tetrahedral mesh in its own coordinate space from the segmentation, and registered the mesh to the DTI coordinate space with a rigid registration using SCIRun. We registered the fMRI data to the mesh coordinate space with a rigid registration, using SCIRun as well. To register the fMRI data to the DTI coordinate space, the same transformation matrix used to register the mesh can be applied later, if desired. The SCIRun networks for registration are included in the Appendix in Section \ref{sec:networks}
 
 \begin{figure}[H]
 \begin{center}
@@ -392,7 +303,7 @@ We used SCIRun, the open-source problem-solving environment, to apply parameters
 \subsection{Simulations and Visualizations}
 \label{sec:sim}
 
-We ran all simulations and visualizations in the SCIRun problem-solving environment. All networks are shown in Figures \ref{fig:maketensornet} - \ref{fig:eegvisnet}.
+We ran all simulations and visualizations in the SCIRun problem-solving environment. All networks are shown in the Appendix in Section \ref{sec:networks} - Figures \ref{fig:maketensornet} - \ref{fig:eegvisnet}.
 
 \subsubsection{Forward Problem}
 
