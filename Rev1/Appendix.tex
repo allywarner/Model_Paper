@@ -20,11 +20,13 @@ The total readout time (FSL definition) was:
 \text{Total readout time (FSL) = (MatrixSizePhase - 1) * EffectiveEchoSpacing}
 \]
 
+Total readout time is a necessary input for using FSL's topup and eddy tools for DWI image correction, and can be obtained by using MRIConvert. 
+
 \subsubsection{MRIConvert}
 
 The software package MRIConvert provided acquisition information about the dicom series, as well as converted the MRI to a NiFTI format, including effective echo spacing and total readout time \cite{ref:mriconvert}. 
 
-To obtain this information, we loaded the dicom series for either DWI acquisition. We selected ``Options'' to ensure the DWI was saved in NiFTI format. We then selected ``Convert All'' to save all the files into the output directory specified upon opening MRIConvert. The text file included the FSL-defined total readout time, which was contained in the acquisition parameter file in seconds. MRIConvert also output the b-values and b-vectors files, which were the same for both the DWI AP and DWI PA scans. The last input file required was an ``index.txt'' file, which contained one column with 65 rows (for 64 directions plus the b0 image) of 1's.
+To obtain this information, we loaded the dicom series for either DWI acquisition. We selected ``Options'' to ensure the DWI was saved in NiFTI format. We then selected ``Convert All'' to save all the files into the output directory specified upon opening MRIConvert. The text file included the FSL-defined total readout time, which was contained in the acquisition parameter file in seconds as a unit. MRIConvert also output the b-values and b-vectors files, which were the same for both the DWI AP and DWI PA scans. The last input file required was an ``index.txt'' file, which contained one column with 65 rows (for 64 directions plus the b0 image) of 1's.
 
 %MRIConvert
 \begin{figure}[H]
@@ -81,7 +83,7 @@ By running these commands, we first obtained the b0 image, which is the baseline
 \subsection{DTIFIT}
 \label{sec:dtifit}
 
-Upon opening FSL, we chose ``FDT Diffusion,'' followed by ``DTIFIT Reconstruct diffusion tensors'' in the drop-down menu and input files manually; Table \ref{tab:dtifit} lists the files selected.
+To use DTIFIT we first opened FSL, then we chose ``FDT Diffusion,'' followed by ``DTIFIT Reconstruct diffusion tensors'' in the drop-down menu and input files manually; Table \ref{tab:dtifit} lists the files selected.
 
 \begin{table}[H]
 \centering
@@ -100,12 +102,12 @@ b values                & dwi.bval                  \\ \hline
 \subsection{NiFTI toolbox for fMRI Preprocessing}
 \label{sec:nifti}
 
-We opened ``rest.nii,'' the preprocessed fMRI file, in Matlab using the ``load\_nii(`rest.nii')'' function within the NiFTI toolbox \cite{ref:nifti} after running the fMRI data through the fcon pipeline. We then resized the four-dimensional ``img'' variable into a two-dimensional variable for use in SCIRun.
+After running the fMRI data through the fcon pipeline, we converted the preprocessed fMRI data from four-dimensional data to two-dimensional data. We opened ``rest.nii'' in Matlab using the ``load\_nii(`rest.nii')'' function within the NiFTI toolbox \cite{ref:nifti}. We then resized the four-dimensional ``img'' variable into a two-dimensional variable for use in SCIRun using Matlab's ``resize" function.
 
 \subsection{EEG Data Matrix in MATLAB}
 \label{ref:eegmatlab}
 
-and output in .edf file format. We calculated the EEG signals matrix using a Matlab script called ``edfRead.m.'' \cite{ref:edfread} To run this script, we used ``[hdr, record] = edfread(fname).'' The variable 'record' contained the EEG signals. 
+The EEG data was output in an .edf file format. We calculated the EEG signals matrix using a Matlab script called ``edfRead.m.'' \cite{ref:edfread} To run this script, we used ``[hdr, record] = edfread(fname).'' The variable 'record' contained the EEG signals. 
 
 \subsection{Networks}
 \label{sec:networks}

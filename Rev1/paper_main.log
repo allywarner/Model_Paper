@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 DEC 2018 19:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 DEC 2018 19:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -734,46 +734,46 @@ Package pdftex.def Info: Figures/128_eeg_2.png used on input line 167.
 ) (./Conclusion.tex [25 <./Figures/eeg_1.png (PNG copy)> <./Figures/eeg_2.png (
 PNG copy)> <./Figures/128_eeg_1.png (PNG copy)> <./Figures/128_eeg_2.png (PNG c
 opy)>]) (./Acknowledgements.tex) (./Appendix.tex
-[26] <Figures/combined.png, id=486, 3367.58125pt x 1298.8525pt>
+[26] <Figures/combined.png, id=485, 3367.58125pt x 1298.8525pt>
 File: Figures/combined.png Graphic file (type png)
 
 <use Figures/combined.png>
-Package pdftex.def Info: Figures/combined.png used on input line 32.
+Package pdftex.def Info: Figures/combined.png used on input line 34.
 (pdftex.def)             Requested size: 469.75499pt x 181.16426pt.
  [27 <./Figures/combined.png>]
-<Figures/make_DTI.png, id=514, 1670.24pt x 1626.075pt>
+<Figures/make_DTI.png, id=508, 1670.24pt x 1626.075pt>
 File: Figures/make_DTI.png Graphic file (type png)
 
 <use Figures/make_DTI.png>
-Package pdftex.def Info: Figures/make_DTI.png used on input line 115.
+Package pdftex.def Info: Figures/make_DTI.png used on input line 117.
 (pdftex.def)             Requested size: 469.75499pt x 457.33247pt.
 
-<Figures/iso_network.png, id=515, 1661.20625pt x 1911.14pt>
+<Figures/iso_network.png, id=509, 1661.20625pt x 1911.14pt>
 File: Figures/iso_network.png Graphic file (type png)
 
 <use Figures/iso_network.png>
-Package pdftex.def Info: Figures/iso_network.png used on input line 123.
+Package pdftex.def Info: Figures/iso_network.png used on input line 125.
 (pdftex.def)             Requested size: 469.75499pt x 540.42297pt.
 
-<Figures/aniso_network.png, id=516, 1996.45876pt x 1976.38374pt>
+<Figures/aniso_network.png, id=510, 1996.45876pt x 1976.38374pt>
 File: Figures/aniso_network.png Graphic file (type png)
 
 <use Figures/aniso_network.png>
-Package pdftex.def Info: Figures/aniso_network.png used on input line 131.
+Package pdftex.def Info: Figures/aniso_network.png used on input line 133.
 (pdftex.def)             Requested size: 469.75499pt x 465.02324pt.
 
-<Figures/fmri_network.png, id=517, 1199.48125pt x 1437.37pt>
+<Figures/fmri_network.png, id=511, 1199.48125pt x 1437.37pt>
 File: Figures/fmri_network.png Graphic file (type png)
 
 <use Figures/fmri_network.png>
-Package pdftex.def Info: Figures/fmri_network.png used on input line 139.
+Package pdftex.def Info: Figures/fmri_network.png used on input line 141.
 (pdftex.def)             Requested size: 469.75499pt x 562.91882pt.
 
-<Figures/EEG_network.png, id=518, 1088.065pt x 1060.96375pt>
+<Figures/EEG_network.png, id=512, 1088.065pt x 1060.96375pt>
 File: Figures/EEG_network.png Graphic file (type png)
 
 <use Figures/EEG_network.png>
-Package pdftex.def Info: Figures/EEG_network.png used on input line 147.
+Package pdftex.def Info: Figures/EEG_network.png used on input line 149.
 (pdftex.def)             Requested size: 469.75499pt x 458.06725pt.
 ) [28] [29 <./Figures/make_DTI.png>] [30 <./Figures/iso_network.png>] [31 <./Fi
 gures/aniso_network.png>] [32 <./Figures/fmri_network.png>] [33 <./Figures/EEG_
@@ -796,11 +796,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 91.
 Here is how much of TeX's memory you used:
  8287 strings out of 493089
  120764 string characters out of 6134842
- 224228 words of memory out of 5000000
+ 220228 words of memory out of 5000000
  11453 multiletter control sequences out of 15000+600000
  11012 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,9n,43p,1294b,950s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,9n,43p,1294b,1680s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -817,7 +817,7 @@ e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/201
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on paper_main.pdf (36 pages, 12510348 bytes).
+Output written on paper_main.pdf (36 pages, 12510692 bytes).
 PDF statistics:
  668 PDF objects out of 1000 (max. 8388607)
  522 compressed objects within 6 object streams
