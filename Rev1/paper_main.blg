@@ -8,59 +8,56 @@ Warning--entry type for "ref:fcon" isn't style-file defined
 Warning--entry type for "ref:dtifit" isn't style-file defined
 --line 41 of file aw.bib
 Warning--entry type for "ref:spm" isn't style-file defined
---line 126 of file aw.bib
+--line 113 of file aw.bib
 Warning--entry type for "ref:edfread" isn't style-file defined
---line 138 of file aw.bib
+--line 125 of file aw.bib
 Warning--entry type for "ref:nifti" isn't style-file defined
---line 149 of file aw.bib
+--line 136 of file aw.bib
 Database file #2: /Users/ally_warner/Documents/SCI/bibtex/sci-bibtex/sci.bib
 Warning--string name "j-acm-com" is undefined
 --line 12779 of file /Users/ally_warner/Documents/SCI/bibtex/sci-bibtex/sci.bib
-Warning--I didn't find a database entry for "math"
 Warning--can't use both author and editor fields in SCI:Joh2015c
 Warning--empty journal in SCI:Joh2004b
 Warning--there's a number but no volume in ref:bias
-Warning--can't use both author and editor fields in ref:math
-Warning--can't use both volume and number fields in ref:math
-You've used 31 entries,
+You've used 30 entries,
             1791 wiz_defined-function locations,
-            630 strings with 10069 characters,
-and the built_in function-call counts, 7291 in all, are:
-= -- 547
-> -- 461
-< -- 6
-+ -- 167
-- -- 136
-* -- 600
-:= -- 1202
-add.period$ -- 89
-call.type$ -- 31
-change.case$ -- 29
+            625 strings with 10010 characters,
+and the built_in function-call counts, 7116 in all, are:
+= -- 532
+> -- 457
+< -- 5
++ -- 165
+- -- 135
+* -- 586
+:= -- 1177
+add.period$ -- 86
+call.type$ -- 30
+change.case$ -- 28
 chr.to.int$ -- 0
-cite$ -- 36
-duplicate$ -- 265
-empty$ -- 678
-format.name$ -- 136
-if$ -- 1571
+cite$ -- 33
+duplicate$ -- 255
+empty$ -- 659
+format.name$ -- 135
+if$ -- 1532
 int.to.chr$ -- 0
-int.to.str$ -- 31
-missing$ -- 26
-newline$ -- 154
-num.names$ -- 31
-pop$ -- 92
+int.to.str$ -- 30
+missing$ -- 24
+newline$ -- 149
+num.names$ -- 30
+pop$ -- 89
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 116
+skip$ -- 113
 stack$ -- 0
 substring$ -- 410
-swap$ -- 48
-text.length$ -- 6
+swap$ -- 44
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 5
-while$ -- 57
-width$ -- 33
-write$ -- 327
-(There were 12 warnings)
+warning$ -- 3
+while$ -- 56
+width$ -- 32
+write$ -- 315
+(There were 9 warnings)

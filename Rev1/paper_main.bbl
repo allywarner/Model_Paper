@@ -83,12 +83,6 @@ S.M. Smith, M.~Jenkinson, M.W. Woolrich, C.F. Beckmann, T.E.J. Behrens,
   implementation as fsl.
 \newblock {\em NeuroImage}, 23(S1):208--219, 2004.
 
-\bibitem{ref:mriconvert}
-X.~Li, P.S. Morgan, J.~Ashburner, J.C. Smith, and C.~Rorden.
-\newblock The first step for neuroimaging data analysis: Dicom to nifti
-  conversion.
-\newblock {\em Journal of Neuroscience Methods}, 264:47--56, 2016.
-
 \bibitem{ref:dtifit}
 FSL.
 \newblock Fsl dtifit.
@@ -115,24 +109,12 @@ NITRC.
 \newblock 1000 functional connectomes project.
 \newblock \url{http://fcon\_1000.projects.nitrc.org/}.
 
-\bibitem{ref:nifti}
-Jimmy Shen.
-\newblock Tools for nifti and analyze image, Jan 2014.
-\newblock
-  \url{https://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image}.
-
 \bibitem{ref:filter}
 U.~Aydin, J.~Vorwerk, P.~Kupper, M.~Heers, H.~Kugel, A.~Galka, L.~Hamid,
   J.~Wellmer, C.~Kellinghaus, S.~Rampp, and C.H. Wolter.
 \newblock Combining eeg and meg for the reconstruction of epileptic activity
   using a calibrated realistic volume conductor model.
 \newblock {\em PLOS ONE}, 9(3), March 2014.
-
-\bibitem{ref:edfread}
-Brett Shoelson.
-\newblock edfread, September 2016.
-\newblock
-  \url{https://www.mathworks.com/matlabcentral/fileexchange/31900-edfread}.
 
 \bibitem{ref:seg3d}
 {Seg3D}: Volumetric Image Segmentation and Visualization. Scientific Computing
@@ -173,12 +155,6 @@ Cleaver: A MultiMaterial Tetrahedral Meshing Library and Application.
   Scientific Computing and Imaging Institute (SCI), Download from:
   http://www.sci.utah.edu/cibc/software.html.
 
-\bibitem{ref:math}
-C.R. Johnson.
-\newblock {\em Computational Methods and Software for Bioelectric Field
-  Problems}, volume~1.
-\newblock CRC Press, 4th edition, 2015.
-
 \bibitem{ref:cond}
 M.~Rullmann, A.~Anwander, M.~Dannhauer, S.K. Warfield, F.H. Duffy, and C.H.
   Wolters.
@@ -198,5 +174,23 @@ M.~Jenkinson, M.~Pechaud, and S.~Smith.
 \newblock Bet2: Mr-based estimation of brain, skull and scalp surfaces.
 \newblock {\em n Eleventh Annual Meeting of the Organization for Human Brain
   Mapping}, 2005.
+
+\bibitem{ref:mriconvert}
+X.~Li, P.S. Morgan, J.~Ashburner, J.C. Smith, and C.~Rorden.
+\newblock The first step for neuroimaging data analysis: Dicom to nifti
+  conversion.
+\newblock {\em Journal of Neuroscience Methods}, 264:47--56, 2016.
+
+\bibitem{ref:nifti}
+Jimmy Shen.
+\newblock Tools for nifti and analyze image, Jan 2014.
+\newblock
+  \url{https://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image}.
+
+\bibitem{ref:edfread}
+Brett Shoelson.
+\newblock edfread, September 2016.
+\newblock
+  \url{https://www.mathworks.com/matlabcentral/fileexchange/31900-edfread}.
 
 \end{thebibliography}

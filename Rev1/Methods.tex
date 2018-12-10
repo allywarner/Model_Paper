@@ -231,7 +231,7 @@ where $\Phi$ is the electrostatic potential, $\sigma$ is the electrical conducti
 n} = 0\;\;\;\;\;\mbox{ on }\Gamma_{T}, 
 \end{equation} 
 %
-which says that the normal component of the electric field is zero on the surface interfacing with air (here denoted by $\Gamma_{T}$). The brain and surrounding tissue and skull were discretized using dipoles for the current source. We calculated the electrical field within the brain and then projected the field onto the surface of the scalp. \cite{ref:math}
+which says that the normal component of the electric field is zero on the surface interfacing with air (here denoted by $\Gamma_{T}$). The brain and surrounding tissue and skull were discretized using dipoles for the current source. We calculated the electrical field within the brain and then projected the field onto the surface of the scalp. \cite{SCI:Joh2015c}
 
 \subsubsection{Electrical Conductivity Preparation}
 \label{sec:cond}
@@ -295,7 +295,7 @@ where $ \bar{\phi}$ is an arbitrary test function, which can be thought of physi
 \label{eq:galerkin}
 \sum_{i = 0}^{N} \varepsilon_i (\sigma_{ij} \nabla \psi_{i}, \nabla \psi_{j}) = -(I_v, \psi_i) \quad j = 0, \dots, N,
 \end{equation}
-subject to the Dirichlet boundary condition. Then the finite element approximation of Equation \ref{eq:1} can equivalently be expressed as a system of $N$ equations with $N$ unknowns $\varepsilon_i \dots \varepsilon_N$ (e.g., the electrostatic potentials). In matrix form, the above system can be written as $A \varepsilon = b$,  where $A=(a_{ij})$ is called the global stiffness matrix and has elements $(a_{ij} = (\sigma_{ij} \nabla \psi_{i}, \nabla \psi_{j})$, while $b_i = -(I_v, \psi_i)$ is usually termed the load vector. For volume conductor problems, $A$ contains all the geometry and conductivity information of the model. \cite{ref:math}
+subject to the Dirichlet boundary condition. Then the finite element approximation of Equation \ref{eq:1} can equivalently be expressed as a system of $N$ equations with $N$ unknowns $\varepsilon_i \dots \varepsilon_N$ (e.g., the electrostatic potentials). In matrix form, the above system can be written as $A \varepsilon = b$,  where $A=(a_{ij})$ is called the global stiffness matrix and has elements $(a_{ij} = (\sigma_{ij} \nabla \psi_{i}, \nabla \psi_{j})$, while $b_i = -(I_v, \psi_i)$ is usually termed the load vector. For volume conductor problems, $A$ contains all the geometry and conductivity information of the model. \cite{SCI:Joh2015c}
 
 %%% This paragraph addresses SCIRun as a solver
 We used SCIRun, the open-source problem-solving environment, to apply parameters and to solve Equation \ref{eq:galerkin} numerically.  Within the SCIRun environment, we applied isotropic and anisotropic conductivity tensors to the tetrahedral mesh as well as to inhomogeneous regions. We defined initial and boundary conditions and generated border regions in order to compute potentials by way of a conjugate gradient method with a Jacobi preconditioner.
