@@ -1,5 +1,5 @@
 % Filename: Results
-% Last update: Monday, 12/9/2018 by Ally Warner
+% Last update: Monday, 12/17/2018 by Ally Warner
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -10,19 +10,19 @@ All SCIRun networks used to generate results are included in an open-source data
 
 \subsection{Segmentation}
 
-For this project, we segmented the head into eight detailed layers listed in Section \ref{sec:Seg}. We used this mesh to create an inhomogeneous three-dimensional tetrahedral mesh.
+For this project, we segmented the head into eight detailed layers, listed in Section \ref{sec:Seg}. We used this mesh to create an inhomogeneous three-dimensional tetrahedral mesh.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[height=2.35in]{Figures/seg_1}
 \includegraphics[height=2.35in]{Figures/seg_2}
 \includegraphics[height=2.35in]{Figures/seg_3}
-\caption{A high-resolution, eight-layer, full head segmentation made with Seg3D}
+\caption{A high-resolution, eight-layer, full head segmentation made with Seg3D.}
 \label{fig:fullseg}
 \end{center}
 \end{figure}
 
-Since the dataset did not include a CT scan, the task of segmenting the skull and the sinus layers were the most challenging. As described in Section \ref{sec:Seg}, our first attempt at a bone segmentation was to combine a skull made from FSL \cite{ref:bet2} with bones thresholded using Seg3D. Although we had a bone segmentation, the sinus segmentation was not completed from this segmentation since it would have to be created manually.
+Since the dataset did not include a CT scan, the task of segmenting the skull and the sinus layers was the most challenging. As described in Section \ref{sec:Seg}, our first attempt at a bone segmentation was to combine a skull made from FSL \cite{ref:bet2} with bones thresholded using Seg3D. Although we had a bone segmentation, the sinus segmentation was not completed from this segmentation since it would have to be created manually.
 
 The skull/bone and sinus segmentations we made from the pseudo-CT scan were smooth and connected segmentations and fit well into the entire head segmentation.
 
@@ -30,7 +30,7 @@ The skull/bone and sinus segmentations we made from the pseudo-CT scan were smoo
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/skull_before}
 \includegraphics[width=.49\textwidth]{Figures/skull_after}
-\caption{Skull segmentation comparison: Created with BET and thresholding \textit{(left)} and with pseudo-CT \textit{(right)}. Both segmentations were made using Seg3D}
+\caption{Skull segmentation comparison: Created with BET and thresholding \textit{(left)} and with pseudo-CT \textit{(right)}. Both segmentations were made using Seg3D.}
 \label{fig:skull}
 \end{center}
 \end{figure}
@@ -39,7 +39,7 @@ The skull/bone and sinus segmentations we made from the pseudo-CT scan were smoo
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/sinus_sag}
 \includegraphics[width=.49\textwidth]{Figures/sinus_iso}
-\caption{Sinus segmentation}
+\caption{Sinus segmentation.}
 \label{fig:sinus}
 \end{center}
 \end{figure}
@@ -51,7 +51,7 @@ During MRI imaging, the subject was on her back, which caused the brain to shift
 \includegraphics[width=.32\textwidth]{Figures/thin_layer_side}
 \includegraphics[width=.32\textwidth]{Figures/thin_layer_nose}
 \includegraphics[width=.32\textwidth]{Figures/thin_layer_chin}
-\caption{Thin segmentation sections: side of the head \textit{(left)}, bridge of the nose \textit{(middle)}, bottom of the chin \textit{(right)}}
+\caption{Thin segmentation sections: side of the head \textit{(left)}, bridge of the nose \textit{(middle)}, bottom of the chin \textit{(right)}.}
 \label{fig:thinseg}
 \end{center}
 \end{figure}
@@ -64,7 +64,7 @@ The highest resolution mesh we generated with the settings listed in Section \re
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/bigmesh_1}
 \includegraphics[width=.49\textwidth]{Figures/bigmesh_surface}
-\caption{60.2 M element mesh: tetrahedral mesh \textit{(left)}, surface mesh \textit{(right)}}
+\caption{60.2 M element mesh: tetrahedral mesh \textit{(left)}, surface mesh \textit{(right)}.}
 \label{fig:bigmesh}
 \end{center}
 \end{figure}
@@ -75,7 +75,7 @@ We attempted to generate smaller meshes to be able to run quicker simulations, b
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/smallmesh_2}
 \includegraphics[width=.49\textwidth]{Figures/smallmesh_surface}
-\caption{15.7 M element mesh: tetrahedral mesh \textit{(left)}, surface mesh \textit{(right)}}
+\caption{15.7 M element mesh: tetrahedral mesh \textit{(left)}, surface mesh \textit{(right)}.}
 \label{fig:smallmesh}
 \end{center}
 \end{figure}
@@ -84,13 +84,13 @@ We attempted to generate smaller meshes to be able to run quicker simulations, b
 
 \subsubsection{Isotropic}
 
-An isotropic, inhomogeneous head model is expected to have largely spherical propagation of electrical signals. We generated three-dimensional streamlines, as well as, isolines to visualize this propagation and to compare isotropic and anisotropic conductivity. The simulations showed spherical propagation and acceptable registration of electrodes and dipoles to the mesh space.
+An isotropic, inhomogeneous head model is expected to have largely spherical propagation of electrical signals. We generated three-dimensional streamlines as well as isolines to visualize this propagation and to compare isotropic and anisotropic conductivity. The simulations showed spherical propagation and acceptable registration of electrodes and dipoles to the mesh space.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/iso_dipole}
 \includegraphics[width=.49\textwidth]{Figures/iso_dipole_2}
-\caption{Isotropic forward problem solution with dipole source and data mapped onto the head surface and electrodes}
+\caption{Isotropic forward problem solution with dipole source and data mapped onto the head surface and electrodes.}
 \label{fig:isodip}
 \end{center}
 \end{figure}
@@ -99,20 +99,20 @@ An isotropic, inhomogeneous head model is expected to have largely spherical pro
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/iso_streamlines}
 \includegraphics[width=.49\textwidth]{Figures/iso_streamlines_top}
-\caption{Isotropic streamlines with dipole source}
+\caption{Isotropic streamlines with dipole source.}
 \label{fig:isostream}
 \end{center}
 \end{figure}
 
 \subsubsection{Anisotropic}
 
-The expectation for an anisotropic, inhomogeneous head model is to have nonspherical propagation, which can be seen with the streamlines and isolines visualizations. As discussed in Section \ref{sec:cond}, two methods are used for scaling diffusion tensor data. We built the SCIRun network with the option to choose either scaling method. The simulations showed nonspherical propagation and acceptable registration of the electrodes, dipoles, and mesh into the diffusion tensor space.
+The expectation for an anisotropic, inhomogeneous head model is to have nonspherical propagation, which can be seen with the streamline and isoline visualizations. As discussed in Section \ref{sec:cond}, two methods are used for scaling diffusion tensor data. We built the SCIRun network with the option to choose either scaling method. The simulations showed nonspherical propagation and acceptable registration of the electrodes, dipoles, and mesh into the diffusion tensor space.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/aniso_dipole}
 \includegraphics[width=.49\textwidth]{Figures/aniso_dipole_2}
-\caption{Anisotropic forward problem solution with dipole source and data mapped onto the head surface and electrodes}
+\caption{Anisotropic forward problem solution with dipole source and data mapped onto the head surface and electrodes.}
 \label{fig:anisodip}
 \end{center}
 \end{figure}
@@ -121,7 +121,7 @@ The expectation for an anisotropic, inhomogeneous head model is to have nonspher
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/aniso_streamlines}
 \includegraphics[width=.49\textwidth]{Figures/aniso_streamlines_top}
-\caption{Anisotropic streamlines visualization with dipole source}
+\caption{Anisotropic streamlines visualization with dipole source.}
 \label{fig:anisostream}
 \end{center}
 \end{figure}
@@ -130,7 +130,7 @@ The expectation for an anisotropic, inhomogeneous head model is to have nonspher
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/iso_isolines}
 \includegraphics[width = .49\textwidth]{Figures/aniso_isolines}
-\caption{Isolines comparison: isotropic white matter conductivity \textit{(left)}, anisotropic white matter conductivity \textit{(right)}}
+\caption{Isolines comparison: isotropic white matter conductivity \textit{(left)}, anisotropic white matter conductivity \textit{(right)}.}
 \label{fig:isolines}
 \end{center}
 \end{figure}
@@ -142,7 +142,7 @@ fMRI data was a novel imaging datatype for SCIRun. We successfully mapped and vi
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=.75\textwidth]{Figures/fmri_1}
-\caption{fMRI data mapped onto cortical surface mesh}
+\caption{fMRI data mapped onto cortical surface mesh.}
 \label{fig:fmrivis}
 \end{center}
 \end{figure}
@@ -159,7 +159,7 @@ When using EEG data, the particular application dictates if further processing, 
 \label{fig:eegvis}
 \end{center}
 \end{figure}
-The second EEG dataset, taken with 128 electrodes, still has electrodes that require further processing around the eyes. Since they electrodes don't go as far down the cheeks as the other dataset, we don't see as many electrodes that would need further processing. Although, there were time steps that did not register the data as well as others. 
+The second EEG dataset, taken with 128 electrodes, still has electrodes that require further processing around the eyes. Since the electrodes don't go as far down the cheeks as the other dataset, we do not see as many electrodes that would need further processing. However, some time steps did not register the data as well as others. 
 
 \begin{figure}[H]
 \begin{center}

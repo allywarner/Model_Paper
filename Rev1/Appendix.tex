@@ -32,7 +32,7 @@ To obtain this information, we loaded the dicom series for either DWI acquisitio
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Figures/combined}
-    \caption{MRIConvert \textit{(left)} with options \textit{(middle)} \& output \textit{(right)} }
+    \caption{MRIConvert \textit{(left)} with options \textit{(middle)} \& output \textit{(right)}.}
     \label{fig:mri_convert}
 \end{figure}
 
@@ -47,7 +47,7 @@ To obtain this information, we loaded the dicom series for either DWI acquisitio
 \end{varwidth}
 }
 \label{fig:acq}
-\caption{Acquisition parameters text file}
+\caption{Acquisition parameters text file.}
 \end{figure}
 
 \subsubsection{FSL's Topup and Eddy Command Line Tools}
@@ -78,12 +78,12 @@ eddy --imain=DWI\_up --mask=b0\_hifi\_brain\_mask --index=index.txt --acqp=acq_p
 
 \end{lstlisting}
 
-By running these commands, we first obtained the b0 image, which is the baseline image used for calculating field maps, for both encoding directions. Then the two b0's were merged together into one file, topup and eddy were applied for distortion correction, and `bet' was applied for brain extraction. The distortion corrected file was named ``eddy\_unwarped.nii.''
+By running these commands, we first obtained the b0 image, which is the baseline image used for calculating field maps for both encoding directions. Then the two b0's were merged together into one file, topup and eddy were applied for distortion correction, and `bet' was applied for brain extraction. The distortion corrected file was named ``eddy\_unwarped.nii.''
 
 \subsection{DTIFIT}
 \label{sec:dtifit}
 
-To use DTIFIT we first opened FSL, then we chose ``FDT Diffusion,'' followed by ``DTIFIT Reconstruct diffusion tensors'' in the drop-down menu and input files manually; Table \ref{tab:dtifit} lists the files selected.
+To use DTIFIT we first opened FSL, and then we chose ``FDT Diffusion,'' followed by ``DTIFIT Reconstruct diffusion tensors'' in the drop-down menu and input files manually; Table \ref{tab:dtifit} lists the files selected.
 
 \begin{table}[H]
 \centering
@@ -99,7 +99,7 @@ b values                & dwi.bval                  \\ \hline
 \end{tabular}
 \end{table}
 
-\subsection{NiFTI toolbox for fMRI Preprocessing}
+\subsection{NiFTI Toolbox for fMRI Preprocessing}
 \label{sec:nifti}
 
 After running the fMRI data through the fcon pipeline, we converted the preprocessed fMRI data from four-dimensional data to two-dimensional data. We opened ``rest.nii'' in Matlab using the ``load\_nii(`rest.nii')'' function within the NiFTI toolbox \cite{ref:nifti}. We then resized the four-dimensional ``img'' variable into a two-dimensional variable for use in SCIRun using Matlab's ``resize" function.
@@ -115,7 +115,7 @@ The EEG data was output in an .edf file format. We calculated the EEG signals ma
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/make_DTI.png}\\
-\caption{SCIRun network to build diffusion tensor dataset}
+\caption{SCIRun network to build diffusion tensor dataset.}
 \label{fig:maketensornet}
 \end{center}
 \end{figure}
@@ -123,7 +123,7 @@ The EEG data was output in an .edf file format. We calculated the EEG signals ma
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/iso_network.png}\\
-\caption{SCIRun network for isotropic forward problem}
+\caption{SCIRun network for isotropic forward problem.}
 \label{fig:isofornet}
 \end{center}
 \end{figure}
@@ -131,7 +131,7 @@ The EEG data was output in an .edf file format. We calculated the EEG signals ma
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/aniso_network.png}\\
-\caption{SCIRun network for anisotropic forward problem}
+\caption{SCIRun network for anisotropic forward problem.}
 \label{fig:anisofornet}
 \end{center}
 \end{figure}
@@ -139,7 +139,7 @@ The EEG data was output in an .edf file format. We calculated the EEG signals ma
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/fmri_network.png}\\
-\caption{SCIRun network for fMRI visualization}
+\caption{SCIRun network for fMRI visualization.}
 \label{fig:fmrivisnet}
 \end{center}
 \end{figure}
@@ -147,7 +147,7 @@ The EEG data was output in an .edf file format. We calculated the EEG signals ma
 \begin{figure}[p]
 \begin{center}
 \includegraphics[width=\textwidth]{Figures/EEG_network.png}\\
-\caption{SCIRun network for EEG visualization}
+\caption{SCIRun network for EEG visualization.}
 \label{fig:eegvisnet}
 \end{center}
 \end{figure} 
