@@ -191,12 +191,12 @@ Eyes, Scalp, \& Air & 8                    \\ \hline
 \end{tabular}
 \end{table}
 
-\subsection{Finite Element Mesh Generation}
+\subsection{Mesh Generation}
 \label{sec:mesh}
 
 %%% Settings for mesh generation, issues 
 
-We used our full-head segmentation to generate realistic three-dimensional geometries for use in subsequent finite element simulations. We generated a smooth, linear, subject-specific, boundary-conforming, tetrahedral finite element mesh using the Cleaver software \cite{ref:cleaver} on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor with 64 GB of RAM and an AMD FirePro graphics card. Cleaver is a multi material meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources. We made a high-resolution mesh without holes using the parameters listed in Table \ref{tab:cleaver}.
+We used our full-head segmentation to generate realistic three-dimensional geometries for use in subsequent finite element simulations. We generated a smooth, linear, subject-specific, boundary-conforming, tetrahedral mesh using the Cleaver software \cite{ref:cleaver} on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor with 64 GB of RAM and an AMD FirePro graphics card. Cleaver is a multi material meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources. We made a high-resolution mesh without holes using the parameters listed in Table \ref{tab:cleaver}.
 \begin{table}[H]
 \centering
 \caption{Clever Settings (High Resolution)}
@@ -207,7 +207,7 @@ scaling factor                    & 0.6                 \\ \hline
 size multiplier                   & 1.0                 \\ \hline
 lipschitz                         & 0.2                 \\ \hline
 padding                           & 0                   \\ \hline
-element sizing method             & adpative            \\ \hline
+element sizing method             & adaptive            \\ \hline
 \end{tabular}
 \end{table}
 
@@ -218,25 +218,25 @@ Along with these parameters, indicator functions had to be input into Cleaver. W
 
 %%%MATH
 
-We used the head mesh, with associated inhomogeneous and anisotropic regions, as a volume conductor to solve the following boundary value problem:
+The forward and inverse EEG problems are governed by a generalized Poison equation (\ref{eq:1}). We used the head mesh, with associated inhomogeneous and anisotropic conductivity regions, as a volume conductor to solve the following boundary value problem:
 %
 \begin{equation}
 \label{eq:1} \nabla\cdot\sigma\nabla\Phi = -I_{V} \;\;\;\;\mbox{ in
 }\Omega,
 \end{equation} 
 %
-where $\Phi$ is the electrostatic potential, $\sigma$ is the electrical conductivity tensor, and $I_{V}$ is the current per unit volume defined within the solution domain, $\Omega$. Equation \ref{eq:1} was solved for $\Phi$ with a known description of $I_{V}$ and the Neumann boundary condition:
+where $\Phi$ is the electrostatic potential, $\sigma$ is the electrical conductivity tensor, and $I_{V}$ is the current per unit volume defined within the solution domain, $\Omega$. For the forward EEG problem, equation \ref{eq:1} was solved for $\Phi$ with a known description of $I_{V}$ and the Neumann boundary condition:
 %
 \begin{equation} \sigma\nabla\Phi\cdot{\bf
-n} = 0\;\;\;\;\;\mbox{ on }\Gamma_{T}, 
+n} = 0\;\;\;\;\;\mbox{ on }\Gamma_{H}, 
 \end{equation} 
 %
-which says that the normal component of the electric field is zero on the surface interfacing with air (here denoted by $\Gamma_{T}$). The brain and surrounding tissue and skull were discretized using dipoles for the current source. We calculated the electrical field within the brain and then projected the field onto the surface of the scalp. \cite{SCI:Joh2015c}
+which says that the normal component of the electric field is zero on the surface interfacing with air (here denoted by $\Gamma_{H}$). For testing purposes, we used dipoles for the current source. We calculated the electrical and potential fields everywhere within the head model. \cite{SCI:Joh2015c}
 
 \subsubsection{Electrical Conductivity Preparation}
 \label{sec:cond}
 
-All electrical conductivities were homogeneous for each tissue with the exception of the white matter when using tensor data. The isotropic conductivities \cite{ref:cond} we used are shown in Table \ref{tab:cond}.
+All electrical conductivities were homogeneous for each tissue with the exception of the white matter when using DTI data. The isotropic conductivities \cite{ref:cond} we used are shown in Table \ref{tab:cond}.
 
 \begin{table}[H]
 \centering
@@ -280,25 +280,27 @@ W = \begin{bmatrix}
 \end{equation}
 where $v_i$ is the $i$th eigenvector of $D$, $W$ is the white matter ratio vector, and the ratio is $10:1$.
 
+We implemented both methods into the SCIRun networks for anisotropic forward problems (\ref{fig:anisofornet}).
+
 \subsubsection{Numerical Methods}
 \label{sec:numerical}
 
 %%% This paragraph addresses Finite Element Discretization
 
-We computed solutions to Equation \ref{eq:1} using finite element methods. By applying Green's theorem to Equation \ref{eq:1}, we generated the following weak formulation,
+We computed solutions to Equation \ref{eq:1} using the finite element method. By applying Green's theorem to Equation \ref{eq:1}, we generated the following weak formulation,
 \begin{equation}
 \label{eq:weakGreens}
-(\sigma \nabla \phi, \nabla \bar{\phi}) = -(I_v, \bar{\phi})
+\langle \sigma \nabla \phi, \nabla \bar{\phi} \rangle = -\langle I_v, \bar{\phi} \rangle
 \end{equation}
-where $ \bar{\phi}$ is an arbitrary test function, which can be thought of physically as a virtual potential field. By applying the Galerkin approximation, Equation \ref{eq:weakGreens}, to Equation \ref{eq:1} we can represent the finite element approximation as such:
+where $ \bar{\phi}$ is an arbitrary test function, which can be thought of physically as a virtual potential field. By applying the Galerkin approximation to Equation \ref{eq:weakGreens} we can represent the finite element approximation as:
 \begin{equation}
 \label{eq:galerkin}
-\sum_{i = 0}^{N} \varepsilon_i (\sigma_{ij} \nabla \psi_{i}, \nabla \psi_{j}) = -(I_v, \psi_i) \quad j = 0, \dots, N,
+\sum_{i = 0}^{N} \varepsilon_i \langle \sigma_{ij} \nabla \psi_{i}, \nabla \psi_{j} \rangle = -\langle I_v, \psi_i \rangle \quad j = 0, \dots, N,
 \end{equation}
-subject to the Dirichlet boundary condition. Then the finite element approximation of Equation \ref{eq:1} can equivalently be expressed as a system of $N$ equations with $N$ unknowns $\varepsilon_i \dots \varepsilon_N$ (e.g., the electrostatic potentials). In matrix form, the above system can be written as $A \varepsilon = b$,  where $A=(a_{ij})$ is called the global stiffness matrix and has elements $(a_{ij} = (\sigma_{ij} \nabla \psi_{i}, \nabla \psi_{j})$, while $b_i = -(I_v, \psi_i)$ is usually termed the load vector. For volume conductor problems, $A$ contains all the geometry and conductivity information of the model. \cite{SCI:Joh2015c}
+subject to the Dirichlet boundary condition. Then the finite element approximation of Equation \ref{eq:1} can equivalently be expressed as a system of $N$ equations with $N$ unknowns $\varepsilon_i \dots \varepsilon_N$ (e.g., the electrostatic potentials). In matrix form, the above system can be written as $A \varepsilon = b$,  where $A=(a_{ij})$ is called the global stiffness matrix and has elements $(a_{ij}) = (\sigma_{ij} \nabla \psi_{i}, \nabla \psi_{j})$, while $b_i = -(I_v, \psi_i)$ is usually termed the load vector. For volume conductor problems, $A$ contains all the geometry and conductivity information of the model. \cite{SCI:Joh2015c}
 
 %%% This paragraph addresses SCIRun as a solver
-We used SCIRun, the open-source problem-solving environment, to apply parameters and to solve Equation \ref{eq:galerkin} numerically.  Within the SCIRun environment, we applied isotropic and anisotropic conductivity tensors to the tetrahedral mesh as well as to inhomogeneous regions. We defined initial and boundary conditions and generated border regions in order to compute potentials by way of a conjugate gradient method with a Jacobi preconditioner.
+We used SCIRun, the open-source problem-solving environment, to apply parameters and to solve Equation \ref{eq:galerkin} numerically using linear basis functions for tetrahedral elements. Within the SCIRun environment, we applied isotropic and anisotropic conductivity tensors to the tetrahedral mesh as well as to inhomogeneous regions. We applied Dirichlet and Neumann boundary conditions to compute potentials using a conjugate gradient method with a Jacobi preconditioner.
 
 \subsection{Simulations and Visualizations}
 \label{sec:sim}
