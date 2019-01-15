@@ -10,7 +10,7 @@ All SCIRun networks used to generate results are included in an open-source data
 
 \subsection{Segmentation}
 
-For this project, we segmented the head into eight detailed layers, listed in Section \ref{sec:Seg}. We used this mesh to create an inhomogeneous three-dimensional tetrahedral mesh.
+For this project, we segmented the head into eight detailed layers, listed in Section \ref{sec:Seg}. We used this segmentation to create an inhomogeneous three-dimensional tetrahedral mesh.
 
 \begin{figure}[H]
 \begin{center}
@@ -149,7 +149,7 @@ fMRI data was a novel imaging datatype for SCIRun. We successfully mapped and vi
 
 \subsection{EEG Visualization}
 
-When using EEG data, the particular application dictates if further processing, filtering, or cutting of the data is necessary. This EEG dataset, taken with 256 electrodes, contained electrodes that require further processing, specifically around the eyes, which was possibly due to the blinking or rolling of the subject's eyes. The bad leads will be fixed with further specific processing or trilinear interpolation.
+When using EEG data, the particular application dictates if further processing, filtering, or cutting of the data is necessary. This EEG dataset, taken with 256 electrodes, contained electrodes that require further processing, specifically around the eyes, which was possibly due to the blinking or rolling of the subject's eyes. The bad leads can be corrected or removed with further specific processing or trilinear interpolation.
 
 \begin{figure}[H]
 \begin{center}
