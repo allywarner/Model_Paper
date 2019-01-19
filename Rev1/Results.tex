@@ -22,9 +22,7 @@ For this project, we segmented the head into eight detailed layers, listed in Se
 \end{center}
 \end{figure}
 
-Since the dataset did not include a CT scan, the task of segmenting the skull and the sinus layers was the most challenging. As described in Section \ref{sec:Seg}, our first attempt at a bone segmentation was to combine a skull made from FSL \cite{ref:bet2} with bones thresholded using Seg3D. Although we had a bone segmentation, the sinus segmentation was not completed from this segmentation since it would have to be created manually.
-
-The skull/bone and sinus segmentations we made from the pseudo-CT scan were smooth and connected segmentations and fit well into the entire head segmentation.
+The two bone segmentation methods, discussed in Section \ref{sec:Seg}, produced geometries that were similar in some areas, but different in others. The segmentation created using FSL and Seg3D was rough and had a clear line of where the two segmentations were connected. It also didn't include a chin or a sinus layer. The segmentation created from the pseudo-CT scan was smooth and included a chin and a sinus layer. This segmentation did include the inside of the mouth as bone, but as mentioned before this wasn't concerning for simulations results.
 
 \begin{figure}[H]
 \begin{center}
@@ -84,7 +82,7 @@ We attempted to generate smaller meshes to be able to run quicker simulations, b
 
 \subsubsection{Isotropic}
 
-An isotropic, inhomogeneous head model is expected to have largely spherical propagation of electrical signals. We generated three-dimensional streamlines as well as isolines to visualize this propagation and to compare isotropic and anisotropic conductivity. The simulations showed spherical propagation and acceptable registration of electrodes and dipoles to the mesh space.
+An isotropic, inhomogeneous head model is expected to have largely spherical propagation of electrical signals. We generated three-dimensional streamlines as well as isopotential lines to visualize this propagation and to compare isotropic and anisotropic conductivity. The simulations showed spherical propagation and acceptable registration of electrodes and dipoles to the mesh space.
 
 \begin{figure}[H]
 \begin{center}
@@ -106,7 +104,7 @@ An isotropic, inhomogeneous head model is expected to have largely spherical pro
 
 \subsubsection{Anisotropic}
 
-The expectation for an anisotropic, inhomogeneous head model is to have nonspherical propagation, which can be seen with the streamline and isoline visualizations. As discussed in Section \ref{sec:cond}, two methods are used for scaling diffusion tensor data. We built the SCIRun network with the option to choose either scaling method. The simulations showed nonspherical propagation and acceptable registration of the electrodes, dipoles, and mesh into the diffusion tensor space.
+The expectation for an anisotropic, inhomogeneous head model is to have nonspherical propagation, which can be seen with the streamline and isoline visualizations. As discussed in Section \ref{sec:cond}, two methods are used for implementing diffusion tensor data, both being available in the SCIRun network shown in Figure \ref{fig:anisofornet}. For Figures \ref{fig:anisodip} - \ref{fig:isolines}, we used the scaling method (equation \ref{eq:scaling}). The simulations showed nonspherical propagation and acceptable registration of the electrodes, dipoles, and mesh into the diffusion tensor space.
 
 \begin{figure}[H]
 \begin{center}
@@ -130,7 +128,7 @@ The expectation for an anisotropic, inhomogeneous head model is to have nonspher
 \begin{center}
 \includegraphics[width=.49\textwidth]{Figures/iso_isolines}
 \includegraphics[width = .49\textwidth]{Figures/aniso_isolines}
-\caption{Isolines comparison: isotropic white matter conductivity \textit{(left)}, anisotropic white matter conductivity \textit{(right)}.}
+\caption{Isopotential lines comparison: isotropic white matter conductivity \textit{(left)}, anisotropic white matter conductivity \textit{(right)}.}
 \label{fig:isolines}
 \end{center}
 \end{figure}
@@ -159,7 +157,7 @@ When using EEG data, the particular application dictates if further processing, 
 \label{fig:eegvis}
 \end{center}
 \end{figure}
-The second EEG dataset, taken with 128 electrodes, still has electrodes that require further processing around the eyes. Since the electrodes don't go as far down the cheeks as the other dataset, we do not see as many electrodes that would need further processing. However, some time steps did not register the data as well as others. 
+The second EEG dataset, taken with 128 electrodes, still has electrodes that require further processing around the eyes. Since the electrodes don't go as far down the cheeks as the other dataset, we do not see as many electrodes that would need further processing. However, the quality of some time steps were too poor for practical use. 
 
 \begin{figure}[H]
 \begin{center}
@@ -169,3 +167,7 @@ The second EEG dataset, taken with 128 electrodes, still has electrodes that req
 \label{fig:eegvis}
 \end{center}
 \end{figure}
+
+
+%Table of what's included in the dataset or itemized list 
+%a complete, high-resolution brain segmentation that can be used to create three-dimensional tetrahedral volume and surface meshes. We provide two three-dimensional tetrahedral finite element meshes made from the segmentation of different resolutions that serve as volume conductors to solve forward and inverse EEG problems. We also provide simulation examples of the EEG forward problem, with isotropic and anisotropic systems; functional image data mapped onto a tetrahedral mesh; electroencephalography (EEG) signals mapped onto net electrodes; and diffusion tensor data.
