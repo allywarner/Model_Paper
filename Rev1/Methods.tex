@@ -5,7 +5,7 @@
 \section{Methods}
 \label{sec:Methods}
 
-
+In this section, we describe in detail all of the steps of the modeling pipeline (Figure \ref{fig:pipeline}). We begin with data acquisition of $T_1$ and $T_2$ MRIs, DWI, fMRI, and EEG followed by image pre-processing. After the images have been pre-processed, the MRIs are segmented into eight tissue layers to create a three-dimensional tetrahedral mesh. All of the image modalities are registered to a common coordinate space and used for forward problem simulations with the processed EEG data.
 
 %%Pipeline figure
 \begin{figure}[H]
@@ -97,7 +97,7 @@ A 60Hz notch filter and its harmonics \cite{ref:filter} were applied to the EEG 
 \subsubsection{Registration}
 \label{sec:reg}
 
-Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registration was necessary before segmentation and meshing. We generated the tetrahedral mesh from the segmentation and registered the mesh to the DTI coordinate space with a manual, rigid registration using SCIRun. We registered the fMRI data to the mesh coordinate space with a manual, rigid registration, using SCIRun as well. To register the fMRI data to the DTI coordinate space, the same transformation matrix used to register the mesh can be applied later, if desired. The SCIRun networks for registration are included in the Appendix in Section \ref{sec:networks}
+Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registration was necessary before segmentation and meshing. We generated the tetrahedral mesh from the segmentation and registered the mesh to the DTI coordinate space with a manual, rigid registration using SCIRun. We registered the fMRI data to the mesh coordinate space with a manual, rigid registration, using SCIRun as well. We included the registration transformation matrix to the DTI coordinate space in the dataset. The SCIRun networks for registration are included in the Appendix in Section \ref{sec:networks}
 
 \begin{figure}[H]
 \begin{center}
@@ -115,7 +115,7 @@ Since the subject did not move in between the $T_1$ and $T_2$ MRI, no registrati
 
 Segmentation of the head tissues proved to be the most time-consuming portion of the pipeline. We segmented the head volume using FSL and Seg3D, a free volume segmentation and processing tool, \cite{ref:seg3d} into air, cerebral spinal fluid (CSF), white matter, gray matter, skull, sinus, eyes, and scalp. Segmentation of the brain was difficult due to the similar grayscale intensities across different tissues; thresholding the image produced noisy and incomplete layers. Segmentation of the sinuses and skull was also difficult because they are represented by only black pixels, with no clear tissue boundaries.
 
-We generated the initial segmentation with FSL from the $T_1$ MRI by stripping the skull with the brain extraction tool (BET) \cite{ref:bet1}, and then with FAST segmentation. FSL FAST outputs segmented CSF, white matter, and gray matter layers as well as a bias-corrected $T_1$ MRI. This method, compared with Freesurfer \cite{ref:freesurf}, Statistical Parametric Mapping through Matlab (SPM) \cite{ref:spm}, Atlas Based Classification through 3D Slicer \cite{ref:abc}, and Seg3D methods alone, produced the most qualitatively accurate initial brain segmentation results for this data.
+We generated the initial segmentation with FSL from the $T_1$ MRI by stripping the skull with the brain extraction tool (BET) \cite{ref:bet1}, and then with FAST segmentation. FSL FAST outputs grayscale probability images of CSF, white matter, and gray matter layers as well as a bias-corrected $T_1$ MRI. This method, compared with Freesurfer \cite{ref:freesurf}, Statistical Parametric Mapping through Matlab (SPM) \cite{ref:spm}, Atlas Based Classification through 3D Slicer \cite{ref:abc}, and Seg3D methods alone, produced the most qualitatively accurate initial brain segmentation results for this data.
 
 \begin{figure}[H]
     \centering
@@ -188,7 +188,7 @@ The pseudo-CT method provided an image that was an easier starting place for sku
 
 The eyes, skin, and air layers were the least time consuming to segment. We segmented the eyes by thresholding the $T_2$ MRI. We segmented the skin layer by thresholding the entire head volume and removing all previous layers using a Boolean remove mask filter. We performed a quality check on the skin layer to ensure that it was at least two pixels thick. The areas that required significant correction were the bridge of the nose, the bottom of the chin, and the sides of the head. Lastly, we included pixels not previously assigned as the air layer. We checked through the entire segmentation to ensure that there weren't any holes between layers to assure a quality mesh and accurate simulation results. 
 
-%Along with outlining the pipeline, we have made the results of this project available as open-source datasets to aid other scientists in their EEG forward and inverse simulation studies and to help them build new head models more efficiently. The complete head model presented here took approximately one year to complete, in part due to the many options in software and techniques, as well as the complexity of the multimodal imaging data. The segmentation of the image data took approximately 100 hours, mostly dedicated to manual editing. Because the segmentation was high resolution, the resulting tetrahedral meshes became extremely large, which made for very slow simulations. Further simplification methods were developed to achieve moderately sized geometric models.  The head model also includes registration of diffusion tensor data, functional MR data, and high-resolution EEG recordings from 128 and 256 electrodes dense array Philips/EGI sensor nets.
+The complete head model presented here took approximately one year to complete, in part due to the many options in software and techniques, as well as the complexity of the multimodal imaging data. The segmentation of the image data took approximately 100 hours, mostly dedicated to manual editing.
 
 \begin{table}[H]
 \centering
