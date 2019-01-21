@@ -331,7 +331,7 @@ For the anisotropic case, the network was largely the same with the exception of
 
 \subsubsection{fMRI}
 
-We visualized the fMRI data one time step at a time using the two-dimensional matrix described in Section \ref{sec:fmripre} as input by extracting one column at a time. We set each column onto a lattice volume, rotated it 180 degrees, smoothed, thresholded, and clipped the volume for easier rigid registration. We registered the fMRI to the tetrahedral mesh using the bounding boxes and manual registration. After registration, we mapped the smoothed fMRI data onto the mesh using a mapping matrix with a linear interpolation basis.
+We visualized the fMRI data one time step at a time using the two-dimensional matrix described in Section \ref{sec:fmripre} as input by extracting one column at a time. We set each column onto a lattice volume, rotated it 180 degrees, smoothed, thresholded, and clipped the volume for easier rigid registration. We registered the fMRI to the tetrahedral mesh as described in Section \ref{sec:reg}. After registration, we mapped the smoothed fMRI data onto the mesh using a mapping matrix with a linear interpolation basis.
 
 \subsubsection{EEG}
 
