@@ -5,7 +5,7 @@
 \section{Methods}
 \label{sec:Methods}
 
-In this section, we describe in detail all of the steps of the modeling pipeline (Figure \ref{fig:pipeline}). We begin with data acquisition of $T_1$ and $T_2$ MRIs, DWI, fMRI, and EEG followed by image pre-processing. After the images have been pre-processed, the MRIs are segmented into eight tissue layers to create a three-dimensional tetrahedral mesh. All of the image modalities are registered to a common coordinate space and used for forward problem simulations with the processed EEG data.
+In this section, we describe in detail all of the steps of the modeling pipeline (Figure \ref{fig:pipeline}). We begin with data acquisition of $T_1$ and $T_2$ MRIs, DWI, fMRI, and EEG followed by image pre-processing. After the images have been pre-processed, the MRIs are segmented into eight tissue layers to create a three-dimensional tetrahedral mesh. All of the image modalities are registered to a common coordinate space and used for forward problem simulations with the processed EEG data. We describe the pipeline as we applied it to a female subject. 
 
 %%Pipeline figure
 \begin{figure}[H]
@@ -187,6 +187,9 @@ The skull and the sinus layers were the most difficult to segment using only an 
 The pseudo-CT method provided an image that was an easier starting place for skull segmentation, but we still manually edited the layer to add detail. After we applied a median filter with a one-pixel radius and thresholded the skull segmentation, we manually edited each slice in every direction to add detail and to smooth noisy sections of the layer. Since the subject had a permanent retainer in her mouth that created all black pixels, we segmented the mouth as solid bone, which we deemed acceptable because the EEG cap used did not cover the subject's mouth. We were able to provide a segmentation of the internal air, including the sinuses, esophagus, and ear canals, from the pseudo-CT image by thresholding the black pixels and then manually editing each slice. We also performed a quality check on both layers to ensure they had no holes or layer overlap and that they were at least two pixels thick.
 
 The eyes, skin, and air layers were the least time consuming to segment. We segmented the eyes by thresholding the $T_2$ MRI. We segmented the skin layer by thresholding the entire head volume and removing all previous layers using a Boolean remove mask filter. We performed a quality check on the skin layer to ensure that it was at least two pixels thick. The areas that required significant correction were the bridge of the nose, the bottom of the chin, and the sides of the head. Lastly, we included pixels not previously assigned as the air layer. We checked through the entire segmentation to ensure that there weren't any holes between layers to assure a quality mesh and accurate simulation results. 
+
+%tried a lot of software - lots of different areas of imaging
+%We estimate somebody following these instructions would take 100 hours of segmentation, but the rest of the pipeline could be completed in (some estimate)
 
 The complete head model presented here took approximately one year to complete, in part due to the many options in software and techniques, as well as the complexity of the multimodal imaging data. The segmentation of the image data took approximately 100 hours, mostly dedicated to manual editing.
 
