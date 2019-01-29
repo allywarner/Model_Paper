@@ -57,6 +57,12 @@ During MRI imaging, the subject was on her back, which caused the brain to shift
 \end{center}
 \end{figure}
 
+
+%%EXTRAS TO PUT IN
+ Segmentation of the brain was difficult because of the similar grayscale intensities across different tissues; thresholding the image produced noisy and incomplete layers. Segmentation of the sinuses and skull was also difficult because they are represented by only black pixels, with no clear tissue boundaries.
+
+This method, compared with Freesurfer \cite{ref:freesurf}, Statistical Parametric Mapping through Matlab (SPM) \cite{ref:spm}, Atlas Based Classification through 3D Slicer \cite{ref:abc}, and Seg3D methods alone, produced the most qualitatively accurate initial brain segmentation results for this data.
+
 \subsection{Finite Element Meshes}
 
 The highest resolution mesh we generated with the settings listed in Section \ref{sec:mesh} had 60.2 million elements and 10.3 million nodes. This mesh was large because of the complexity of the segmentation, including small features, thin sections, and several layers touching at once. The simulations performed slowly when using this mesh due to its size and required at least 32GB of RAM.
@@ -78,6 +84,34 @@ We attempted to generate smaller meshes to be able to run quicker simulations, b
 \includegraphics[width=.49\textwidth]{Figures/smallmesh_surface}
 \caption{15.7 M element mesh: tetrahedral mesh \textit{(left)}, surface mesh \textit{(right)}.}
 \label{fig:smallmesh}
+\end{center}
+\end{figure}
+
+\subsection{Diffusion Tensor Images}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Figures/DTI_1.png}
+\caption{Diffusion tensor visualization using SCIRun.}
+\label{fig:tensorvis}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Figures/DTI_2.png}
+\caption{Diffusion tensor visualization using SCIRun.}
+\label{fig:tensorvis2}
+\end{center}
+\end{figure}
+
+We built the tensor field in SCIRun rather than in 3D Slicer \cite{ref:slicer} or FSL DTIFIT because the output data had a different orientation and could not be easily registered with the mesh in SCIRun.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Figures/backwards.png}
+\caption{Example of difference in orientation between SCIRun and 3D
+  Slicer data.}
+\label{fig:backwards}
 \end{center}
 \end{figure}
 

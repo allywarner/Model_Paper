@@ -89,12 +89,9 @@ FSL.
 \newblock \url{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide} Section
   2.4.
 
-\bibitem{ref:itksnap}
-P.A. Yushkevich, J.~Piven, H.C. Hazlett, R.G. Smith, S.~Ho, J.C. Gee, and
-  G.~Gerig.
-\newblock User-guided 3d active contour segmentation of anatomical structures:
-  Significantly improved efficiency and reliability.
-\newblock {\em NeuroImage}, 31(3):1116--28, July 2006.
+\bibitem{ref:scirun}
+SCIRun: A Scientific Computing Problem Solving Environment, Scientific
+  Computing and Imaging Institute (SCI), Download from: http://www.scirun.org.
 
 \bibitem{ref:slicer}
 A.~Fedorov, R.~Beichel, J.~Kalpathy-Cramer, J.~Finet, J-C. Fillion-Robin,
@@ -169,17 +166,18 @@ D.~Gullmar, J.~Haueisen, and J.~R. Reichenbach.
   head simulation study.
 \newblock {\em NeuroImage}, 51:145--163, 2010.
 
-\bibitem{ref:bet2}
-M.~Jenkinson, M.~Pechaud, and S.~Smith.
-\newblock Bet2: Mr-based estimation of brain, skull and scalp surfaces.
-\newblock {\em n Eleventh Annual Meeting of the Organization for Human Brain
-  Mapping}, 2005.
-
 \bibitem{ref:mriconvert}
 X.~Li, P.S. Morgan, J.~Ashburner, J.C. Smith, and C.~Rorden.
 \newblock The first step for neuroimaging data analysis: Dicom to nifti
   conversion.
 \newblock {\em Journal of Neuroscience Methods}, 264:47--56, 2016.
+
+\bibitem{ref:itksnap}
+P.A. Yushkevich, J.~Piven, H.C. Hazlett, R.G. Smith, S.~Ho, J.C. Gee, and
+  G.~Gerig.
+\newblock User-guided 3d active contour segmentation of anatomical structures:
+  Significantly improved efficiency and reliability.
+\newblock {\em NeuroImage}, 31(3):1116--28, July 2006.
 
 \bibitem{ref:nifti}
 Jimmy Shen.

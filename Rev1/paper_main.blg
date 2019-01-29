@@ -21,34 +21,34 @@ Warning--empty journal in SCI:Joh2004b
 Warning--there's a number but no volume in ref:bias
 You've used 30 entries,
             1791 wiz_defined-function locations,
-            625 strings with 10010 characters,
-and the built_in function-call counts, 7116 in all, are:
-= -- 532
-> -- 457
+            623 strings with 9989 characters,
+and the built_in function-call counts, 7042 in all, are:
+= -- 524
+> -- 447
 < -- 5
-+ -- 165
-- -- 135
-* -- 586
-:= -- 1177
-add.period$ -- 86
++ -- 162
+- -- 132
+* -- 578
+:= -- 1152
+add.period$ -- 84
 call.type$ -- 30
-change.case$ -- 28
+change.case$ -- 27
 chr.to.int$ -- 0
 cite$ -- 33
-duplicate$ -- 255
-empty$ -- 659
-format.name$ -- 135
-if$ -- 1532
+duplicate$ -- 252
+empty$ -- 663
+format.name$ -- 132
+if$ -- 1521
 int.to.chr$ -- 0
 int.to.str$ -- 30
-missing$ -- 24
-newline$ -- 149
-num.names$ -- 30
-pop$ -- 89
+missing$ -- 23
+newline$ -- 147
+num.names$ -- 29
+pop$ -- 95
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 113
+skip$ -- 116
 stack$ -- 0
 substring$ -- 410
 swap$ -- 44
@@ -57,7 +57,7 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 56
+while$ -- 55
 width$ -- 32
-write$ -- 315
+write$ -- 310
 (There were 9 warnings)
