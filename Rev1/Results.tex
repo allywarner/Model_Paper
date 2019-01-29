@@ -120,7 +120,7 @@ We built the tensor field in SCIRun rather than in 3D Slicer \cite{ref:slicer} o
 
 \subsubsection{Isotropic}
 
-An isotropic, inhomogeneous head model is expected to have largely spherical propagation of electrical signals. We generated three-dimensional streamlines as well as isopotential lines to visualize this propagation and to compare isotropic and anisotropic conductivity. The simulations showed spherical propagation and acceptable registration of electrodes and dipoles to the mesh space.
+An isotropic, inhomogeneous head model is expected to have mostly spherical propagation of electrical signals. The simulations showed spherical propagation and acceptable registration of electrodes and dipoles to the mesh space (Figure \ref{fig:isodip}). We generated three-dimensional streamlines (Figure \ref{fig:isostream}) as well as isopotential lines to visualize this propagation and to compare isotropic and anisotropic conductivity (Figure \ref{fig:isolines}). 
 
 \begin{figure}[H]
 \begin{center}
@@ -142,7 +142,7 @@ An isotropic, inhomogeneous head model is expected to have largely spherical pro
 
 \subsubsection{Anisotropic}
 
-The expectation for an anisotropic, inhomogeneous head model is to have nonspherical propagation, which can be seen with the streamline and isoline visualizations. As discussed in Section \ref{sec:cond}, two methods are used for implementing diffusion tensor data, both being available in the SCIRun network shown in Figure \ref{fig:anisofornet}. For Figures \ref{fig:anisodip} - \ref{fig:isolines}, we used the scaling method (equation \ref{eq:scaling}). The simulations showed nonspherical propagation and acceptable registration of the electrodes, dipoles, and mesh into the diffusion tensor space.
+The expectation for an anisotropic, inhomogeneous head model is to have nonspherical propagation, which can be seen with the streamline (Figure \ref{fig:anisostream}) and isopotential line (Figure \ref{fig:isolines}) visualizations. As discussed in Section \ref{sec:cond}, two methods are used for implementing diffusion tensor data, both being available in the SCIRun network shown in Figure \ref{fig:anisofornet}. For Figures \ref{fig:anisodip} - \ref{fig:isolines}, we used the scaling method (equation \ref{eq:scaling}). The simulations showed nonspherical propagation and acceptable registration of the electrodes, dipoles, and mesh into the diffusion tensor space (Figure \ref{fig:anisodip}).
 
 \begin{figure}[H]
 \begin{center}
@@ -173,7 +173,7 @@ The expectation for an anisotropic, inhomogeneous head model is to have nonspher
 
 \subsection{fMRI Visualization}
 
-fMRI data was a novel imaging datatype for SCIRun. We successfully mapped and visualized the fMRI data onto the cortical surface with a rigid and manual registration to the mesh coordinate space. This mapping network allows for future use of fMRI data in simulations using the SCIRun software package.
+fMRI data was a novel imaging datatype for SCIRun. We successfully mapped and visualized the fMRI data onto the cortical surface with a rigid and manual registration, as discussed in Section \ref{sec:reg}, to the mesh coordinate space (Figure \ref{fig:fmrivis}). This mapping network allows for future use of fMRI data in simulations using SCIRun (Figure \ref{fig:fmrivisnet}).
 
 \begin{figure}[H]
 \begin{center}
@@ -185,7 +185,7 @@ fMRI data was a novel imaging datatype for SCIRun. We successfully mapped and vi
 
 \subsection{EEG Visualization}
 
-When using EEG data, the particular application dictates if further processing, filtering, or cutting of the data is necessary. This EEG dataset, taken with 256 electrodes, contained electrodes that require further processing, specifically around the eyes, which was possibly due to the blinking or rolling of the subject's eyes. The bad leads can be corrected or removed with further specific processing or trilinear interpolation.
+When using EEG data, the particular application dictates if further processing, filtering, or cutting of the data is necessary. This EEG dataset, taken with 256 electrodes, contained electrodes that require further processing, specifically around the eyes, which was possibly due to the blinking or rolling of the subject's eyes. These electrodes can be corrected or removed with further specific processing such as trilinear interpolation. %talk about registration 
 
 \begin{figure}[H]
 \begin{center}
@@ -195,7 +195,8 @@ When using EEG data, the particular application dictates if further processing, 
 \label{fig:eegvis}
 \end{center}
 \end{figure}
-The second EEG dataset, taken with 128 electrodes, still has electrodes that require further processing around the eyes. Since the electrodes don't go as far down the cheeks as the other dataset, we do not see as many electrodes that would need further processing. However, the quality of some time steps were too poor for practical use. 
+
+The second EEG dataset, taken with 128 electrodes, also contains electrodes that require further processing around the eyes (Figure \ref{fig:eegvis}). Since the electrodes don't go as far down the cheeks as the other dataset, we do not see as many electrodes that would need further processing. However, the quality of some time steps were too poor for practical use and can be removed. %talk about registration
 
 \begin{figure}[H]
 \begin{center}
@@ -206,5 +207,8 @@ The second EEG dataset, taken with 128 electrodes, still has electrodes that req
 \end{center}
 \end{figure}
 
+\subsection{Future Work}
 
 Future investigations based on this pipeline include finding more appropriate decimation algorithms for three-dimensional tetrahedral finite element meshes to further reduce the mesh size; more exact sinus and skull segmentation methods to improve the appearance and accuracy of these layers; and more robust registration techniques, which will provide a better transformation matrix for moving images to DTI coordinate space, especially for fMRI data. Additions to this dataset could include more methods to incorporate functional MRI data into source localization simulations and more specific processing of EEG data for different applications, resulting in more accurate and realistic visualizations. 
+
+
