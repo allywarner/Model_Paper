@@ -57,11 +57,12 @@ During MRI imaging, the subject was on her back, which caused the brain to shift
 \end{center}
 \end{figure}
 
-
 %%EXTRAS TO PUT IN
  Segmentation of the brain was difficult because of the similar grayscale intensities across different tissues; thresholding the image produced noisy and incomplete layers. Segmentation of the sinuses and skull was also difficult because they are represented by only black pixels, with no clear tissue boundaries.
 
 This method, compared with Freesurfer \cite{ref:freesurf}, Statistical Parametric Mapping through Matlab (SPM) \cite{ref:spm}, Atlas Based Classification through 3D Slicer \cite{ref:abc}, and Seg3D methods alone, produced the most qualitatively accurate initial brain segmentation results for this data.
+
+The skull and the sinus layers were the most difficult to segment using only an MRI, because they both appear black in the MR image, and the subject's data did not include a computed tomography (CT) scan. For our first attempt to create a bone layer, we used FSL's BET2 tool (Figure \ref{fig:bet2}) to extract a skull surface. We then thresholded the $T_1$ MRI to create the remainder of the bones in Seg3D, and connected the bones to the skull made from FSL using a Boolean OR mask filter. Although this approach gave an adequate segmentation for the skull, it did not include important tissues, such as the sinus layer. 
 
 \subsection{Finite Element Meshes}
 
@@ -204,3 +205,6 @@ The second EEG dataset, taken with 128 electrodes, still has electrodes that req
 \label{fig:eegvis}
 \end{center}
 \end{figure}
+
+
+Future investigations based on this pipeline include finding more appropriate decimation algorithms for three-dimensional tetrahedral finite element meshes to further reduce the mesh size; more exact sinus and skull segmentation methods to improve the appearance and accuracy of these layers; and more robust registration techniques, which will provide a better transformation matrix for moving images to DTI coordinate space, especially for fMRI data. Additions to this dataset could include more methods to incorporate functional MRI data into source localization simulations and more specific processing of EEG data for different applications, resulting in more accurate and realistic visualizations. 

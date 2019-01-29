@@ -5,7 +5,7 @@
 \section{Methods}
 \label{sec:Methods}
 
-The complete head model presented here took approximately one year to complete, in part due to the many options in software and techniques, as well as the complexity of the multimodal imaging data which all required specific processing techniques. In this section, we describe in detail all of the steps of the modeling pipeline (Figure \ref{fig:pipeline}). We begin with data acquisition of four different images modalities followed by image pre-processing. After the images have been pre-processed, they are segmented into eight tissue layers to create a three-dimensional tetrahedral mesh. All of the image modalities are registered to a common coordinate space and used for forward problem simulations with processed EEG data. We describe the pipeline as we applied it to a female subject. 
+The complete head model presented here took approximately one year to complete, in part due to the many options in software and techniques, as well as the complexity of the multimodal imaging data which all required specific processing techniques. In this section, we describe in detail all of the steps of the modeling pipeline (Figure \ref{fig:pipeline}). We begin with data acquisition of four different image modalities followed by image pre-processing. After the images have been pre-processed, they are segmented into eight tissue layers to create a three-dimensional tetrahedral mesh. All of the image modalities are registered to a common coordinate space and used for forward problem simulations with processed EEG data. We describe the pipeline as we applied it to a female subject. 
 
 %%Pipeline figure
 \begin{figure}[H]
@@ -24,13 +24,13 @@ To construct a high-resolution, personalized, anisotropic volume conductor whole
 
 The $T_1$-weighted scan was performed with a three-dimensional magnetization-prepared, rapid gradient echo (MPRAGE) sequence \cite{ref:mprage}. The parameters used were as follows: echo time: 3.41ms; repetition time: 2500ms; flip angle: 7 $^{\circ}$; resolution matrix size: 256x256 pixels; field of view: 256mm; 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 10:42 minutes.
 
-The $T_2$-weighted scan was performed with a SPACE (sampling perfection with application)-optimized contrast using different flip angle evolutions - sequence \cite{ref:space}. The parameters used were as follows: echo time: 406ms; repetition time: 3200ms; resolution matrix size: 256x256 pixels; field of view: 256mm; 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 5:34 minutes. The subject did not move in between the two scans so the scans did not need to be registered.
+The $T_2$-weighted scan was performed with a SPACE (sampling perfection with application)-optimized contrast using different flip angle evolutions - sequence \cite{ref:space}. The parameters used were as follows: echo time: 406ms; repetition time: 3200ms; resolution matrix size: 256x256 pixels; field of view: 256mm; 208 sagittal slices with a slice thickness of 1mm. Acquisition time was 5:34 minutes.
 
-The diffusion weighted images (DWI) were acquired with multiband, two-dimensional, echo-planar imaging (EPI) \cite{ref:epi}. Both phase-encoding directions were performed (anterior to posterior and posterior to anterior) with 64 diffusion directions each. Further sequence parameters for each scan were as follows: echo time: 76.8ms; repetition time: 4070ms; flip angle: 90 $^{\circ}$; resolution matrix size: 104x104 pixels; field of view: 208mm; 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes each.
+The diffusion weighted images (DWI) were acquired with multiband, two-dimensional, echo-planar imaging (EPI) \cite{ref:epi}. Both phase-encoding directions were performed (anterior to posterior (AP) and posterior to anterior (PA)) with 64 diffusion directions each. Further sequence parameters for each scan were as follows: echo time: 76.8ms; repetition time: 4070ms; flip angle: 90 $^{\circ}$; resolution matrix size: 104x104 pixels; field of view: 208mm; 60 slices with 2.5mm slice thickness. Acquisition time was 5:05 minutes each.
 
 The functional MRI (fMRI) scans were acquired with a blood oxygenation level dependent contrast (BOLD) sequence. The following parameters were used: echo time: 76.8ms; repetition time: 780ms; flip angle: 55 $^{\circ}$; resolution matrix size: 104x104 pixels; field of view: 210mm; 72 slices with 2mm slice thickness. Acquisition time was 10:32 minutes.
 
-Continuous electroencephalograms (EEGs) were recorded using a 128-channel and 256 channel HydroCel Geodesic Sensor Net that was connected to a NetAmps 400 amplifier and referenced online to a single vertex electrode. Channel impedances were kept at or below 50 kOhms and signals were sampled at 250Hz. The EEGs were recorded while the subject sat quietly in a chair, alternating two-minute epochs of eyes open and eyes closed, for a total of twelve minutes.
+Continuous electroencephalograms (EEGs) were recorded using a 128-channel and 256-channel HydroCel Geodesic Sensor Net that was connected to a NetAmps 400 amplifier and referenced online to a single vertex electrode. Channel impedances were kept at or below 50 kOhms and signals were sampled at 250Hz. The EEGs were recorded while the subject sat quietly in a chair, alternating two-minute epochs of eyes open and eyes closed, for a total of twelve minutes.
 
 All acquisition reports are included with the dataset.
 
@@ -38,7 +38,7 @@ All acquisition reports are included with the dataset.
 \label{sec:preprocess}
 
 %FSL
-\begin{wrapfigure}[16]{hr}{3cm}
+\begin{wrapfigure}[14]{hr}{3cm}
     \centering
     \vspace{-63pt}
     \includegraphics[width=3cm]{Figures/FSL}
@@ -52,44 +52,51 @@ Bias field signal is a low-frequency, smooth signal that corrupts MRI images due
 
 \subsubsection{DWI Distortion Correction}
 
-DWIs performed with EPI sequences are prone to distortions from rapid switching of diffusion weighting gradients, movement from the scanning table, and movement from the subject. The diffusion data was collected with reversed phase-encoded blips (anterior to posterior (AP) and posterior to anterior (PA)), resulting in pairs of images with distortions in opposite directions. From these pairs, we estimated the susceptibility-induced off-resonance field using a method \cite{ref:fsltopup1} similar to what is currently implemented in FSL.\cite{ref:fsltopup2} We then combined the two images into a single corrected one using FSL's topup and eddy command line tools. Details on this process are described in the Appendix in Section \ref{sec:distortion}.
+DWIs performed with EPI sequences are prone to distortions from rapid switching of diffusion weighting gradients, movement from the scanning table, and movement from the subject. The diffusion data was collected with reversed phase-encoded blips (AP and PA), resulting in pairs of images with distortions in opposite directions. From these pairs, we estimated the susceptibility-induced off-resonance field using a method \cite{ref:fsltopup1} similar to what is currently implemented in FSL.\cite{ref:fsltopup2} We then combined the two images into a single corrected image using FSL's topup and eddy command line tools. Details on this process are described in the Appendix in Section \ref{sec:distortion}.
 
 \subsubsection{Diffusion Tensor Images}
 
-After we preprocessed the DWI images, we calculated diffusion tensor images (DTI) using FSL's DTIFIT toolbox \cite{ref:dtifit} and SCIRun \cite{ref:scirun}, a problem solving environment for modeling, simulation, and visualization of scientific problems. We used the output from DTIFIT, the eigenvalues and eigenvectors of the DTI data, as inputs in a SCIRun network (Figure \ref{fig:maketensornet}) to build and visualize the conductivity tensor field. Details on using DTIFIT are described in the Appendix in Section \ref{sec:dtifit}.
+After we preprocessed the DWI images, we calculated diffusion tensor images (DTI) using FSL's DTIFIT toolbox \cite{ref:dtifit} (Figure \ref{fig:dtifit}) and SCIRun \cite{ref:scirun}, a problem solving environment for modeling, simulation, and visualization of scientific problems. We used the output from DTIFIT, the eigenvalues and eigenvectors of the DTI data, as inputs for a SCIRun network (Figure \ref{fig:maketensornet}) to build and visualize the conductivity tensor field. Details on using DTIFIT are described in the Appendix in Section \ref{sec:dtifit}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{Figures/DTIFIT}
+    \caption{FSL DTIFIT user interface.}
+    \label{fig:dtifit}
+\end{figure}
 
 \subsubsection{fMRI}
 \label{sec:fmripre}
 
-We preprocessed the fMRI data using the 1000 Functional Connectomes (fcon) Project pipeline scripts \cite{ref:fcon}, which performed anatomical preprocessing, functional preprocessing, registration to the $T_1$ MRI, segmentation, and nuisance signal regress. The outline pipeline used on this fMRI dataset, specific to the University of Utah, can be found at \url{https://bitbucket.org/UtahBrainNetworks base_prep}, which includes instructions for installation, compilation, and usage. We then converted the preprocessed fMRI data from a four-dimensional dataset to a two-dimensional dataset to be visualized in SCIRun. Details on this data conversion is described in the Appendix in Section \ref{sec:nifti}. 
+We preprocessed the fMRI data using the 1000 Functional Connectomes (fcon) Project pipeline scripts \cite{ref:fcon}, which performed anatomical preprocessing, functional preprocessing, registration to the $T_1$ MRI, segmentation, and nuisance signal regress. The outline pipeline used on this fMRI dataset, specific to the University of Utah, can be found at \url{https://bitbucket.org/UtahBrainNetworks base_prep}, which includes instructions for installation, compilation, and usage. We then converted the preprocessed fMRI data from a four-dimensional dataset to a two-dimensional dataset to be visualized in SCIRun (Figure \ref{fig:fmrivisnet}). Details on this data conversion is described in the Appendix in Section \ref{sec:nifti}. 
 
 \subsubsection{EEG}
 
-A 60Hz notch filter and its harmonics \cite{ref:filter} were applied to the EEG data, and we created an EEG data matrix. The rows of the matrix corresponded to the channels of the EEG and the columns corresponded to the time step. We removed the last two rows of the EEG signals matrix as these were control rows for the experiment. We also removed several columns at the beginning and the end of the matrix, because these columns corresponded to taking the EEG net on and off the subject's head. Details on building the EEG data matrix is described in the Appendix in Section \ref{ref:eegmatlab}. 
+We applied a 60Hz notch filter and its harmonics \cite{ref:filter} to the EEG data, and created an EEG data matrix. The rows of the matrix corresponded to the channels (electrodes) of the EEG net and the columns corresponded to the time step. We removed the last two rows of the EEG data matrix as these were controls for the experiment, and several columns at the beginning and end of the matrix, because they corresponded to taking the EEG net on and off the subject's head. Details on building the EEG data matrix is described in the Appendix in Section \ref{ref:eegmatlab}. 
 
 \subsubsection{Registration}
 \label{sec:reg}
 
-Since the subject did not move in between the $T_1$ and $T_2$ MRI, registration was not necessary before segmentation and mesh generation. We generated the tetrahedral mesh from the segmentation and registered the cortical surface mesh to the DTI coordinate space with a manual, rigid registration,(Figure \ref{fig:dtireg} - \textit{(left)}). We included the registration transformation matrix to the DTI coordinate space in the dataset. 
+Since the subject did not move in between the $T_1$ and $T_2$ MRI, registration was not necessary before segmentation and mesh generation. We generated the tetrahedral mesh from the segmentation and registered the cortical surface mesh to the DTI coordinate space with a manual, rigid registration (Figure \ref{fig:dtireg} - \textit{(left)}). We included the registration transformation matrix to the DTI coordinate space in the dataset. 
 
-Registration of the fMRI dataset required spatial preparation to ensure a more accurate rigid registration. For each fMRI time step, we mapped the vector of fMRI data onto a lattice volume, rotated it 180 degrees abut the $z$-axis, smoothed with a median filter, thresholded to remove noise, and clipped any excess. After we applied this rigid registration to the cortical surface mesh, we continued the registration manually to ensure the most accurate registration. (Figure \ref{fig:dtireg} - \textit{(right)}). 
+Registration of the fMRI dataset required spatial preparation to ensure a more accurate rigid registration. For each fMRI time step, we mapped the vector of fMRI data onto a lattice volume, rotated it 180 degrees abut the $z$-axis, smoothed with a median filter, thresholded to remove noise, and clipped the brainstem. After we applied the rigid registration to the cortical surface mesh, we continued the registration manually to ensure the most accurate registration (Figure \ref{fig:dtireg} - \textit{(right)}). 
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[height = 2.5in]{Figures/DTI_reg}
 \includegraphics[height = 2.5in]{Figures/fmri_reg}
-\caption{SCIRun manual registrations: mesh to DTI registration \textit{(left)}, fMRI to mesh registration \textit{(right)}.}
+\caption{SCIRun manual registrations: cortical surface mesh to DTI registration \textit{(left)}, fMRI to cortical surface mesh registration \textit{(right)}.}
 \label{fig:dtireg}
 \end{center}
 \end{figure}
 
-The EEG geometry data from the ESI system consisted of dipole source location (4800) and electrode locations (128 or 256). To register the electrode positions to the head mesh, we rotated them 180 degrees about the $z$-axis, applied a rigid registration, and projected the points onto the mesh (Figure \ref{fig:eegreg}). To register the dipoles to cortical mesh, we simply applied a rigid registration.
+The EEG geometry data from the ESI system consisted of dipole source locations (4800) and electrode locations (128 or 256). To register the electrode positions to the head mesh, we rotated them 180 degrees about the $z$-axis, applied a rigid registration, and projected the points onto the head surface mesh (Figure \ref{fig:eegreg}). To register the dipoles to cortical surface mesh, we applied a rigid registration.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[height = 2.84in]{Figures/128_eeg_reg}
 \includegraphics[height = 2.84in]{Figures/256_eeg_reg}
-\caption{SCIRun manual registration of physical electrodes to mesh: 128 electrodes \textit{(left)}, 256 electrodes \textit{(right)}.}
+\caption{SCIRun manual registration of physical electrodes to head surface mesh: 128 electrodes \textit{(left)}, 256 electrodes \textit{(right)}.}
 \label{fig:eegreg}
 \end{center}
 \end{figure}
@@ -101,9 +108,17 @@ The SCIRun networks for registration are included in the Appendix in Section \re
 
 %%% Preparation for segmentation, trials, manual work 
 
-Segmentation of the head tissues proved to be the most time-consuming portion of the pipeline. We segmented the head volume using FSL and Seg3D, a free volume segmentation and processing tool, \cite{ref:seg3d} into external air, cerebral spinal fluid (CSF), white matter, gray matter, skull, sinus, eyes, and scalp. We used FSL for initial segmentation and Seg3D for all further segmentation including thresholding and manual editing.
+We segmented the head volume using FSL and Seg3D, a free volume segmentation and processing tool, \cite{ref:seg3d} into air, cerebral spinal fluid (CSF), white matter, gray matter, skull, sinus, eyes, and scalp. We used FSL for initial segmentation and Seg3D for all further segmentation including thresholding and manual editing.
 
-We generated the brain initial segmentation with FSL from the $T_1$ MRI by stripping the skull with the brain extraction tool (BET) \cite{ref:bet1} (Figure \ref{fig:bet2}), and then segmenting with FAST segmentation (Figure \ref{fig:fslfast}). FSL FAST outputs grayscale probability images of CSF, white matter, and gray matter layers (Figure \ref{fig:fastout}) as well as a bias-corrected $T_1$ MRI (Figure \ref{fig:fastoutbias}). 
+We generated the initial brain segmentation with FSL from the $T_1$ MRI by stripping the skull with the brain extraction tool (BET) \cite{ref:bet1} (Figure \ref{fig:bet2}), and then segmenting with FAST segmentation (Figure \ref{fig:fslfast}). FSL FAST outputs grayscale probability images of CSF, white matter, and gray matter layers (Figure \ref{fig:fastout}) as well as a bias-corrected $T_1$ MRI (Figure \ref{fig:fastoutbias}). 
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=.8\textwidth]{Figures/BET2}
+\caption{FSL's BET2 tool.}
+\label{fig:bet2}
+\end{center}
+\end{figure}
 
 \begin{figure}[H]
     \centering
@@ -132,7 +147,7 @@ We generated the brain initial segmentation with FSL from the $T_1$ MRI by strip
 \end{figure}
 
 
-We created a segmentation from the FSL FAST output by thresholding the probability images, then inspecting and manually editing each slice to remove any crossover between the layers, to add more detail, and smooth out noisy areas. We started with the white matter layer because it is the innermost layer. First, we created a threshold layer of the FSL FAST output. We then inspected and manually edited each slice in every direction to add more detail or to clean up noise (Figure \ref{fig:wm}).
+We created segmentations from the FSL FAST output by thresholding the probability images and by inspecting and manually editing each slice to remove any crossover between the layers, to add more detail, and to smooth out noisy areas. We started with the white matter layer because it is the innermost layer (Figure \ref{fig:wm}).
 
 \begin{figure}[H]
 \begin{center}
@@ -143,7 +158,7 @@ We created a segmentation from the FSL FAST output by thresholding the probabili
 \end{center}
 \end{figure}
 
-After we segmented the white matter, we created a threshold layer from the FSL FAST output for the gray matter. We inspected and manually edited each slice in every direction of the gray matter. We then removed the white matter layer from the gray matter using a Boolean remove mask filter to ensure no overlap between the layers. Lastly, we added a gray matter nuclei segmentation to the gray matter layer. The thresholding algorithms in Seg3D produced noise around these nuclei because of the similarities of the grayscale values. To fix this noise, we segmented the nuclei area manually using the paintbrush tool in Seg3D. Then, we added the nuclei to the gray matter layer using a Boolean OR mask filter, and removed any overlap from the white matter layer using a Boolean remove mask filter. We manually filled any holes between the two layers that could be assigned to white or gray matter layers (Figure \ref{fig:gm}).
+After we segmented the white matter, we created a threshold layer from the FSL FAST output for the gray matter. We then inspected and manually edited each slice in every direction. After manual editing, we removed the white matter layer from the gray matter using a Boolean remove mask filter to ensure no overlap between the layers. Lastly, we added a gray matter nuclei segmentation to the gray matter layer. The thresholding algorithms in Seg3D produced noise around these nuclei because of the similarities in grayscale value. To fix this noise, we segmented the nuclei area manually using the paintbrush tool in Seg3D. We added the nuclei to the gray matter layer using a Boolean OR mask filter, and removed any overlap from the white matter layer using a Boolean remove mask filter. We manually filled any holes between the two layers that could be assigned to either white or gray matter layers (Figure \ref{fig:gm}).
 
 \begin{figure}[H]
 \begin{center}
@@ -152,9 +167,9 @@ After we segmented the white matter, we created a threshold layer from the FSL F
 \caption{Gray matter segmentation: Before \textit{(left)} and after \textit{(right)} manual segmentation. Gray matter nuclei located in the center of the brain were segmented manually.}
 \label{fig:gm}
 \end{center}
-\end{figure}an
+\end{figure}
 
-After we completed the segmentation of the gray and white matter layers, we made the CSF layer by creating a solid threshold layer for the entire brain and removing the white and gray matter layers using a Boolean remove mask filter (Figure \ref{fig:csf}). We then checked the white matter, gray matter, and CSF layers for holes, both on the surface and inside the segmentation between layers. We also performed a manual quality check on the layers to ensure that they were at least two pixels wide throughout. This thickness criteria helped to ensure a tetrahedral mesh without holes.
+After we completed the segmentation of gray and white matter, we segmented CSF by creating a solid threshold layer for the entire brain and removing the white and gray matter layers using a Boolean remove mask filter (Figure \ref{fig:csf}). We then checked the white matter, gray matter, and CSF layers for holes, both on the surface and inside the segmentation between layers. We also performed a manual quality check on the layers to ensure that they were at least two pixels wide throughout. This thickness criteria helped to ensure a quality tetrahedral mesh.
 
 \begin{figure}[H]
 \begin{center}
@@ -164,27 +179,33 @@ After we completed the segmentation of the gray and white matter layers, we made
 \end{center}
 \end{figure}
 
-The skull and the sinus layers were the most difficult to segment using only an MRI, because they both appear black in the MR image, and the subject's data did not include a computed tomography (CT) scan. For our first attempt to create a bone layer, we used FSL's BET2 tool (Figure \ref{fig:bet2}) to extract a skull surface. We then thresholded the $T_1$ MRI to create the remainder of the bones in Seg3D, and connected the bones to the skull made from FSL using a Boolean OR mask filter. Although this approach gave an adequate segmentation for the skull, it did not include important tissues, such as the sinus layer. As a second method, we estimated the skull segmentation from an MR-based synthetic pseudo-CT image (Figure \ref{fig:ct}). We used an improved iterative version of the patch-based method as described by Torrado-Carvajal et al. \cite{ref:pseudoct} that takes the $T_1$ and $T_2$ images as input and synthesizes the pseudo-CT based on both images, providing more refined and accurate bone boundaries.
+We segmented the skull and sinus from an MR-based synthetic pseudo-CT image (Figure \ref{fig:skull}-\textit{(left)}). We used an improved iterative version of the patch-based method as described by Torrado-Carvajal et al. \cite{ref:pseudoct} that takes the $T_1$ and $T_2$ images as input and synthesizes the pseudo-CT based on both images, providing more refined and accurate bone boundaries.
+
+For the skull segmentation, we applied a median filter with a one-pixel radius to the pseudo-CT image, and thresholded the white pixels. We then manually edited each slice in every direction to add detail and to smooth noise (Figure \ref{fig:skull}-\textit{(center)}). Since the subject had a permanent retainer in her mouth that created all white pixels, we segmented the mouth as solid bone, which we deemed acceptable because the EEG cap used did not cover the subject's mouth. 
+
+For the internal air segmentation, including the sinuses, esophagus, and ear canals, we thresholded the black pixels of the pseudo-CT image, and manually edited each slice in every direction (Figure \ref{fig:skull}-\textit{(right)}). We also performed a quality check on both layers to ensure they did not contain holes, have any layer overlap, and were at least two pixels thick.
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=.75\textwidth]{Figures/BET2}
-\caption{FSL's BET2 tool.}
-\label{fig:bet2}
+\includegraphics[width=.32\textwidth]{Figures/pseudo_CT}
+\includegraphics[width=.32\textwidth]{Figures/skull_seg}
+\includegraphics[width=.32\textwidth]{Figures/sinus_seg}
+\caption{Skull segmentation: Pseudo-CT image \textit{(left)}, skull layer \textit{(center)}, and sinus layer \textit{(right)}.}
+\label{fig:skull}
 \end{center}
 \end{figure}
+
+Last, we segmented the eyes, skin, and external air. We segmented the eyes by thresholding the $T_2$ MRI. We segmented the skin layer by thresholding the entire head volume and removing all previous segmentation layers using a Boolean remove mask filter. We performed a quality check on the skin layer to ensure that it was at least two pixels thick. The areas that required significant correction were the bridge of the nose, the bottom of the chin, and the sides of the head. Lastly, we included pixels not previously assigned as the external air layer. We checked through the entire segmentation to ensure that there weren't any holes between layers to assure a quality mesh and accurate simulation results. 
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=.64\textwidth]{Figures/pseudo_CT}
-\caption{Pseudo-CT image.}
-\label{fig:ct}
+\includegraphics[width=.32\textwidth]{Figures/eyes_seg}
+\includegraphics[width=.32\textwidth]{Figures/skin_seg}
+\includegraphics[width=.32\textwidth]{Figures/air_seg}
+\caption{Eye segmentation with $T_2$ MRI \textit{(left)}, skin segmentation \textit{(center)}, and air segmentation \textit{(right)}.}
+\label{fig:skull}
 \end{center}
 \end{figure}
-
-The pseudo-CT method provided an image that was a more straight forward starting point for skull segmentation, but we still manually edited the layer to add detail. After we applied a median filter with a one-pixel radius and thresholded the pseudo-CT image, we manually edited each slice in every direction to add detail and to smooth noise. Since the subject had a permanent retainer in her mouth that created all black pixels, we segmented the mouth as solid bone, which we deemed acceptable because the EEG cap used did not cover the subject's mouth. We were able to provide a segmentation of the internal air, including the sinuses, esophagus, and ear canals, from the pseudo-CT image by thresholding the black pixels and then manually editing each slice in every direction. We also performed a quality check on both layers to ensure they did not contain holes, have any layer overlap, and were at least two pixels thick.
-
-The eyes, skin, and air layers were the least time consuming to segment. We segmented the eyes by thresholding the $T_2$ MRI. We segmented the skin layer by thresholding the entire head volume and removing all previous segmentation layers using a Boolean remove mask filter. We performed a quality check on the skin layer to ensure that it was at least two pixels thick. The areas that required significant correction were the bridge of the nose, the bottom of the chin, and the sides of the head. Lastly, we included pixels not previously assigned as the external air layer. We checked through the entire segmentation to ensure that there weren't any holes between layers to assure a quality mesh and accurate simulation results. 
 
 The segmentation of the image data took approximately 100 hours which was mostly dedicated to manual editing. A breakdown of time per segmentation layer is shown in Table \ref{tab:seg}.
 
@@ -208,7 +229,7 @@ Eyes, Scalp, \& Air & 8                    \\ \hline
 
 %%% Settings for mesh generation, issues 
 
-We used our full-head segmentation to generate realistic three-dimensional geometries for use in subsequent finite element simulations. We generated a smooth, linear, subject-specific, boundary-conforming, tetrahedral mesh using the Cleaver software \cite{ref:cleaver} on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor with 64 GB of RAM and an AMD FirePro graphics card. Cleaver is a multimaterial meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources. We generated a high-resolution mesh without holes using the parameters listed in Table \ref{tab:cleaver}.
+We used our full-head segmentation to generate realistic three-dimensional geometries for use in subsequent finite element simulations. We generated a smooth, linear, subject-specific, boundary-conforming, tetrahedral mesh using the Cleaver software \cite{ref:cleaver} on a Late 2013 Mac Pro with a 2.7 Ghz 12 Core Intel Xeon E5 processor with 64 GB of RAM and an AMD FirePro graphics card. Cleaver is a multimaterial meshing package that produces structured meshes of tetrahedral elements with guaranteed minimum element angles, resulting in quality meshes that require fewer computational resources. We generated a quality high-resolution mesh using the parameters listed in Table \ref{tab:cleaver}.
 
 \begin{table}[H]
 \centering
@@ -224,7 +245,7 @@ element sizing method             & adaptive            \\ \hline
 \end{tabular}
 \end{table}
 
-We created indicator functions, functions describing the location of the surface with sub grid accuracy, by calculating inverted distance maps of each layer in the full-head segmentation in Seg3D using the distance map filter. To reduce the size of the mesh, we first generated a new mesh, changing only the scaling factor parameter to 1.0 from the parameters in Table \ref{tab:cleaver}. We exported the computing sizing field from Cleaver and manipulated it in SCIRun by changing how quickly the elements increased in size. We input the changed sizing field into Cleaver with the same indicator functions and successfully cleaved a new, smaller mesh without holes. Both of these sizing fields are included in the dataset.
+We created indicator functions, functions describing the location of the surface with sub grid accuracy, by calculating inverted distance maps of each layer in the full-head segmentation in Seg3D using the distance map filter. To reduce the size of the mesh, we generated a new mesh, changing only the scaling factor parameter to 1.0 from the parameters in Table \ref{tab:cleaver}. We exported the computing sizing field from Cleaver and manipulated it in SCIRun by changing how quickly the elements increased in size. We input the changed sizing field into Cleaver with the same indicator functions and successfully cleaved a new, smaller quality mesh. Both of these sizing fields are included in the dataset.
 
 \subsection{Mathematical Modeling}
 \label{sec:math}
@@ -313,20 +334,20 @@ where $ \bar{\phi}$ is an arbitrary test function, which can be thought of physi
 subject to the Dirichlet boundary condition. Then the finite element approximation of equation \ref{eq:1} can equivalently be expressed as a system of $N$ equations with $N$ unknowns $\varepsilon_i \dots \varepsilon_N$ (e.g., the electrostatic potentials). In matrix form, the above system can be written as $A \varepsilon = b$,  where $A=(a_{ij})$ is called the global stiffness matrix and has elements $(a_{ij}) = (\sigma_{ij} \nabla \psi_{i}, \nabla \psi_{j})$, and $b_i = -(I_v, \psi_i)$ is usually termed the load vector. For volume conductor problems, $A$ contains all the geometry and conductivity information of the model. \cite{SCI:Joh2015c}
 
 %%% This paragraph addresses SCIRun as a solver
-We used SCIRun to apply parameters and to solve equation \ref{eq:galerkin} numerically using linear basis functions for tetrahedral elements. Within the SCIRun environment, we applied isotropic and anisotropic conductivity tensors to the tetrahedral mesh as well as to inhomogeneous regions. We applied Dirichlet and Neumann boundary conditions to compute potentials using a conjugate gradient method with a Jacobi preconditioner.
+We used SCIRun to apply parameters and to solve equation \ref{eq:galerkin} numerically using linear basis functions for tetrahedral elements. Within the SCIRun environment, we applied isotropic and anisotropic conductivity tensors to the tetrahedral mesh as well as to inhomogeneous regions. We applied Dirichlet and Neumann boundary conditions to compute potentials using a conjugate gradient method with a Jacobi preconditioner (Figures \ref{fig:isofornet} - \ref{fig:anisofornet}).
 
 \subsection{Simulations and Visualizations}
 \label{sec:sim}
 
-We ran all simulations and visualizations in SCIRun. All networks are shown in the Appendix in Section \ref{sec:networks} - Figures \ref{fig:maketensornet} - \ref{fig:eegvisnet}.
+We performed all simulations and visualizations in SCIRun. All networks are shown in the Appendix in Section \ref{sec:networks} - Figures \ref{fig:maketensornet} - \ref{fig:eegvisnet}.
 
 \subsubsection{Forward Problem}
 
 Solving systems from a known source to the EEG electrodes, described in Section 2.5, is known as a forward problem. The opposite action, solving systems from the EEG data to a unknown source, is an inverse problem.  In this project, we built SCIRun example networks to solve forward problems with known sources and to write a lead field matrix for use in future inverse problems. We solved forward problems with isotropic and anisotropic conductivities, using DTI data for the direction of anisotropic conductivities.
 
-The required inputs for the isotropic example network were the tetrahedral head mesh, isotropic conductivities, the head segmentation, the physical electrode locations, and dipole sources. The SCIRun network allowed the user to choose a dipole as a current source from the dataset for a forward simulation. The network also removed fiducial electrodes from the dataset. We registered the mesh to the head segmentation using a rigid registration previously described in Section \ref{sec:reg}. We then register the electrodes and the dipoles to the mesh coordinate space, as described in Section \ref{sec:reg}. After we removed any flat tetrahedra from the mesh, we mapped the conductivities to their respective tissues. We registered the electrodes and dipoles to the head mesh using the same transform. We solved the system with the mapped data and the chosen dipole sources. We then extracted the solution onto the head surface and the electrode locations for visualization. We also used streamlines and isopotential lines for visualization.
+The required inputs for the isotropic example network were the tetrahedral head mesh, isotropic conductivities, the head segmentation, the physical electrode locations, and dipole sources. The SCIRun network allowed the user to choose a dipole as a current source from the set for a forward simulation. The network also removed fiducial electrodes from the dataset. We registered the mesh to the head segmentation using a rigid registration previously described in Section \ref{sec:reg}. We then register the electrodes and the dipoles to the mesh coordinate space, as described in Section \ref{sec:reg}. After we removed any flat tetrahedra from the mesh, we mapped the conductivities to their respective tissues. We solved the system with the mapped data and the chosen dipole sources. We then extracted the solution onto the head surface and the electrode locations for visualization. We also used streamlines and isopotential lines for visualization.
 
-For the anisotropic example, the network was similar with the exception of the scaled diffusion tensor dataset used as conductivities for white matter, and the DTI to mesh transform was necessary as input. We registered the head mesh, electrodes, and dipoles to the DTI space with a rigid registration, as described in Section \ref{sec:reg}; the head segmentation was not needed.
+For the anisotropic example, the network was similar with the exception of the scaled diffusion tensor dataset used as conductivities for white matter, and the DTI to mesh transform as additional input. We registered the head mesh, electrodes, and dipoles to the DTI space with a rigid registration, as described in Section \ref{sec:reg}; the head segmentation was not needed.
 
 \subsubsection{fMRI}
 
@@ -334,5 +355,5 @@ We visualized the fMRI data one time step at a time using the two-dimensional ma
 
 \subsubsection{EEG}
 
-We visualized EEG data on the physical electrode locations, which we registered to the mesh space with a rigid registration, as described in Section \ref{sec:reg}, after removing the fiducials from the electrode dataset. We displayed the filtered EEG signals one time step at a time by extracting the column of the matrix. We then placed the electrodes onto the mesh and mapped the EEG data onto the electrodes one time step at a time. An example EEG network is shown in Figure \ref{fig:eegvisnet}. Each EEG dataset has their own SCIRun network.
+We visualized EEG data on the physical electrode locations, which we registered to the head mesh with a rigid registration, as described in Section \ref{sec:reg}, after removing the fiducials from the electrode dataset. We obtained the filtered EEG data one time step at a time by extracting the column of the matrix. We then placed the electrodes onto the mesh and mapped the EEG data onto the electrodes. An example EEG network is shown in Figure \ref{fig:eegvisnet}. Each EEG electrode configuration has their own SCIRun network.
 
