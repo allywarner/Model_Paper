@@ -3,13 +3,49 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Results}
+\section{Results \& Discussion}
 \label{sec:results}
 
-All SCIRun networks used to generate results are included in an open-source dataset for research use at \url{www.sci.utah.edu/SCI_headmodel}. Details of this dataset are described in Table \ref{tab:res}.
+The open-source dataset
+All SCIRun networks used to generate results are included in the open-source dataset for research use at \url{www.sci.utah.edu/SCI_headmodel}. TALK ABOUT DATASET IN SOME DETAIL!
 
 %Table of what's included in the dataset or itemized list 
 %a complete, high-resolution brain segmentation that can be used to create three-dimensional tetrahedral volume and surface meshes. We provide two three-dimensional tetrahedral finite element meshes made from the segmentation of different resolutions that serve as volume conductors to solve forward and inverse EEG problems. We also provide simulation examples of the EEG forward problem, with isotropic and anisotropic systems; functional image data mapped onto a tetrahedral mesh; electroencephalography (EEG) signals mapped onto net electrodes; and diffusion tensor data.
+
+\subsection{Diffusion Tensor Images}
+
+FIGURE OUT THIS MESS!
+
+Figure \ref{fig:tensorvis} and Figure show the anisotropy of the white matter tracts in a typical cross section slice calculated from the DWIs using equation blah. Anisotropy is rep by ellipsoids the direction and radius of the ellip correspond to the eigenvector and eigenvalue of the anisotropy tensor for each voxel, respectively. Direction is encoded to match the real coordinate space axes and shown with the orientation glyph. 
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Figures/DTI_1.png}
+\caption{Diffusion tensor visualization using SCIRun.}
+\label{fig:tensorvis}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Figures/DTI_2.png}
+\caption{Diffusion tensor visualization using SCIRun.}
+\label{fig:tensorvis2}
+\end{center}
+\end{figure}
+
+--remember to stay politically correct--
+ 
+We built the tensor field in SCIRun rather than in 3D Slicer \cite{ref:slicer} or FSL DTIFIT because the output data had a different orientation and could not be easily registered with the mesh in SCIRun.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.75\textwidth]{Figures/backwards.png}
+\caption{Example of difference in orientation between SCIRun and 3D
+  Slicer data.}
+\label{fig:backwards}
+\end{center}
+\end{figure}
 
 \subsection{Segmentation}
 
@@ -85,34 +121,6 @@ We attempted to generate smaller meshes to be able to run quicker simulations, b
 \includegraphics[width=.49\textwidth]{Figures/smallmesh_surface}
 \caption{15.7 M element mesh: tetrahedral mesh \textit{(left)}, surface mesh \textit{(right)}.}
 \label{fig:smallmesh}
-\end{center}
-\end{figure}
-
-\subsection{Diffusion Tensor Images}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.75\textwidth]{Figures/DTI_1.png}
-\caption{Diffusion tensor visualization using SCIRun.}
-\label{fig:tensorvis}
-\end{center}
-\end{figure}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.75\textwidth]{Figures/DTI_2.png}
-\caption{Diffusion tensor visualization using SCIRun.}
-\label{fig:tensorvis2}
-\end{center}
-\end{figure}
-
-We built the tensor field in SCIRun rather than in 3D Slicer \cite{ref:slicer} or FSL DTIFIT because the output data had a different orientation and could not be easily registered with the mesh in SCIRun.
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.75\textwidth]{Figures/backwards.png}
-\caption{Example of difference in orientation between SCIRun and 3D
-  Slicer data.}
-\label{fig:backwards}
 \end{center}
 \end{figure}
 

@@ -17,10 +17,10 @@
 \BOOKMARK [3][-]{subsubsection.2.6.1}{Forward Problem}{subsection.2.6}% 17
 \BOOKMARK [3][-]{subsubsection.2.6.2}{fMRI}{subsection.2.6}% 18
 \BOOKMARK [3][-]{subsubsection.2.6.3}{EEG}{subsection.2.6}% 19
-\BOOKMARK [1][-]{section.3}{Results}{}% 20
-\BOOKMARK [2][-]{subsection.3.1}{Segmentation}{section.3}% 21
-\BOOKMARK [2][-]{subsection.3.2}{Finite Element Meshes}{section.3}% 22
-\BOOKMARK [2][-]{subsection.3.3}{Diffusion Tensor Images}{section.3}% 23
+\BOOKMARK [1][-]{section.3}{Results \046 Discussion}{}% 20
+\BOOKMARK [2][-]{subsection.3.1}{Diffusion Tensor Images}{section.3}% 21
+\BOOKMARK [2][-]{subsection.3.2}{Segmentation}{section.3}% 22
+\BOOKMARK [2][-]{subsection.3.3}{Finite Element Meshes}{section.3}% 23
 \BOOKMARK [2][-]{subsection.3.4}{Forward Problem}{section.3}% 24
 \BOOKMARK [3][-]{subsubsection.3.4.1}{Isotropic}{subsection.3.4}% 25
 \BOOKMARK [3][-]{subsubsection.3.4.2}{Anisotropic}{subsection.3.4}% 26

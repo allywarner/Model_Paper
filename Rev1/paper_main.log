@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  29 JAN 2019 14:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  31 JAN 2019 22:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -405,7 +405,7 @@ File: Figures/pipeline.pdf Graphic file (type pdf)
 Package pdftex.def Info: Figures/pipeline.pdf used on input line 13.
 (pdftex.def)             Requested size: 469.75499pt x 134.27524pt.
  [2 <./Figures/pipeline.pdf>]
-<Figures/FSL.png, id=206, 188.705pt x 485.815pt>
+<Figures/FSL.png, id=207, 188.705pt x 485.815pt>
 File: Figures/FSL.png Graphic file (type png)
  <use Figures/FSL.png>
 Package pdftex.def Info: Figures/FSL.png used on input line 44.
@@ -420,7 +420,7 @@ Package wrapfig Warning: Stationary wrapfigure forced to float on input line 49
 .
 
 [3 <./Figures/FSL.png>]
-<Figures/DTIFIT.png, id=233, 543.53062pt x 386.44376pt>
+<Figures/DTIFIT.png, id=235, 543.53062pt x 386.44376pt>
 File: Figures/DTIFIT.png Graphic file (type png)
 
 <use Figures/DTIFIT.png>
@@ -589,276 +589,273 @@ Package pdftex.def Info: Figures/air_seg.png used on input line 204.
 [12 <./Figures/pseudo_CT.png> <./Figures/skull_seg.png> <./Figures/sinus_seg.pn
 g> <./Figures/eyes_seg.png> <./Figures/skin_seg.png> <./Figures/air_seg.png>]
 [13] [14] [15]) (./Results.tex
-
-LaTeX Warning: Reference `tab:res' on page 16 undefined on input line 9.
-
-<Figures/seg_1.png, id=431, 483.8075pt x 483.8075pt>
-File: Figures/seg_1.png Graphic file (type png)
- <use Figures/seg_1.png>
-Package pdftex.def Info: Figures/seg_1.png used on input line 20.
-(pdftex.def)             Requested size: 169.83716pt x 169.83493pt.
-
-<Figures/seg_2.png, id=432, 422.57875pt x 508.90125pt>
-File: Figures/seg_2.png Graphic file (type png)
- <use Figures/seg_2.png>
-Package pdftex.def Info: Figures/seg_2.png used on input line 21.
-(pdftex.def)             Requested size: 141.02473pt x 169.83493pt.
-
-<Figures/seg_3.png, id=433, 485.815pt x 597.23125pt>
-File: Figures/seg_3.png Graphic file (type png)
- <use Figures/seg_3.png>
-Package pdftex.def Info: Figures/seg_3.png used on input line 22.
-(pdftex.def)             Requested size: 138.14737pt x 169.83493pt.
-
-[16 <./Figures/seg_1.png> <./Figures/seg_2.png> <./Figures/seg_3.png>]
-<Figures/skull_before.png, id=443, 485.815pt x 662.475pt>
-File: Figures/skull_before.png Graphic file (type png)
-
-<use Figures/skull_before.png>
-Package pdftex.def Info: Figures/skull_before.png used on input line 32.
-(pdftex.def)             Requested size: 230.18251pt x 313.88033pt.
-
-<Figures/skull_after.png, id=444, 485.815pt x 662.475pt>
-File: Figures/skull_after.png Graphic file (type png)
-
-<use Figures/skull_after.png>
-Package pdftex.def Info: Figures/skull_after.png used on input line 33.
-(pdftex.def)             Requested size: 230.18251pt x 313.88033pt.
-
-<Figures/sinus_sag.png, id=445, 484.81125pt x 445.665pt>
-File: Figures/sinus_sag.png Graphic file (type png)
-
-<use Figures/sinus_sag.png>
-Package pdftex.def Info: Figures/sinus_sag.png used on input line 41.
-(pdftex.def)             Requested size: 230.18251pt x 211.59787pt.
-
-<Figures/sinus_iso.png, id=446, 484.81125pt x 445.665pt>
-File: Figures/sinus_iso.png Graphic file (type png)
-
-<use Figures/sinus_iso.png>
-Package pdftex.def Info: Figures/sinus_iso.png used on input line 42.
-(pdftex.def)             Requested size: 230.18251pt x 211.59787pt.
- [17 <./Figures/skull_before.png> <./Figures/skull_after.png>] <Figures/thin_la
-yer_side.png, id=453, 485.815pt x 658.46pt>
-File: Figures/thin_layer_side.png Graphic file (type png)
-
-<use Figures/thin_layer_side.png>
-Package pdftex.def Info: Figures/thin_layer_side.png used on input line 52.
-(pdftex.def)             Requested size: 150.32503pt x 203.7387pt.
-
-<Figures/thin_layer_nose.png, id=454, 485.815pt x 658.46pt>
-File: Figures/thin_layer_nose.png Graphic file (type png)
-
-<use Figures/thin_layer_nose.png>
-Package pdftex.def Info: Figures/thin_layer_nose.png used on input line 53.
-(pdftex.def)             Requested size: 150.32503pt x 203.7387pt.
-
-<Figures/thin_layer_chin.png, id=455, 485.815pt x 658.46pt>
-File: Figures/thin_layer_chin.png Graphic file (type png)
-
-<use Figures/thin_layer_chin.png>
-Package pdftex.def Info: Figures/thin_layer_chin.png used on input line 54.
-(pdftex.def)             Requested size: 150.32503pt x 203.7387pt.
- [18 <./Figures/sinus_sag.png> <./Figures/sinus_iso.png> <./Figures/thin_layer_
-side.png> <./Figures/thin_layer_nose.png> <./Figures/thin_layer_chin.png>]
-<Figures/bigmesh_1.png, id=472, 1052.93375pt x 998.73125pt>
-File: Figures/bigmesh_1.png Graphic file (type png)
-
-<use Figures/bigmesh_1.png>
-Package pdftex.def Info: Figures/bigmesh_1.png used on input line 73.
-(pdftex.def)             Requested size: 230.18251pt x 218.33476pt.
-
-<Figures/bigmesh_surface.png, id=473, 1052.93375pt x 998.73125pt>
-File: Figures/bigmesh_surface.png Graphic file (type png)
-
-<use Figures/bigmesh_surface.png>
-Package pdftex.def Info: Figures/bigmesh_surface.png used on input line 74.
-(pdftex.def)             Requested size: 230.18251pt x 218.33476pt.
-
-<Figures/smallmesh_2.png, id=475, 1052.93375pt x 998.73125pt>
-File: Figures/smallmesh_2.png Graphic file (type png)
-
-<use Figures/smallmesh_2.png>
-Package pdftex.def Info: Figures/smallmesh_2.png used on input line 84.
-(pdftex.def)             Requested size: 230.18251pt x 218.33476pt.
-
-<Figures/smallmesh_surface.png, id=476, 1052.93375pt x 998.73125pt>
-File: Figures/smallmesh_surface.png Graphic file (type png)
-
-<use Figures/smallmesh_surface.png>
-Package pdftex.def Info: Figures/smallmesh_surface.png used on input line 85.
-(pdftex.def)             Requested size: 230.18251pt x 218.33476pt.
- [19 <./Figures/bigmesh_1.png (PNG copy)> <./Figures/bigmesh_surface.png (PNG c
-opy)>]
-<Figures/DTI_1.png, id=486, 698.61pt x 650.43pt>
+<Figures/DTI_1.png, id=431, 698.61pt x 650.43pt>
 File: Figures/DTI_1.png Graphic file (type png)
  <use Figures/DTI_1.png>
-Package pdftex.def Info: Figures/DTI_1.png used on input line 94.
+Package pdftex.def Info: Figures/DTI_1.png used on input line 21.
 (pdftex.def)             Requested size: 352.31624pt x 328.0229pt.
 
-[20 <./Figures/smallmesh_2.png (PNG copy)> <./Figures/smallmesh_surface.png (PN
-G copy)>] <Figures/DTI_2.png, id=492, 698.61pt x 650.43pt>
+[16] <Figures/DTI_2.png, id=437, 698.61pt x 650.43pt>
 File: Figures/DTI_2.png Graphic file (type png)
-
-<use Figures/DTI_2.png>
-Package pdftex.def Info: Figures/DTI_2.png used on input line 102.
+ <use Figures/DTI_2.png>
+Package pdftex.def Info: Figures/DTI_2.png used on input line 29.
 (pdftex.def)             Requested size: 352.31624pt x 328.0229pt.
- [21 <./Figures/DTI_1.png (PNG copy)>]
-<Figures/backwards.png, id=499, 805.0075pt x 302.12875pt>
+
+[17 <./Figures/DTI_1.png (PNG copy)>]
+<Figures/backwards.png, id=443, 805.0075pt x 302.12875pt>
 File: Figures/backwards.png Graphic file (type png)
 
 <use Figures/backwards.png>
-Package pdftex.def Info: Figures/backwards.png used on input line 112.
+Package pdftex.def Info: Figures/backwards.png used on input line 39.
 (pdftex.def)             Requested size: 352.31624pt x 132.2271pt.
- [22 <./Figures/DTI_2.png (PNG copy)> <./Figures/backwards.png>] <Figures/iso_d
-ipole.png, id=511, 960.58875pt x 998.73125pt>
+
+<Figures/seg_1.png, id=445, 483.8075pt x 483.8075pt>
+File: Figures/seg_1.png Graphic file (type png)
+ <use Figures/seg_1.png>
+Package pdftex.def Info: Figures/seg_1.png used on input line 52.
+(pdftex.def)             Requested size: 169.83716pt x 169.83493pt.
+
+<Figures/seg_2.png, id=446, 422.57875pt x 508.90125pt>
+File: Figures/seg_2.png Graphic file (type png)
+ <use Figures/seg_2.png>
+Package pdftex.def Info: Figures/seg_2.png used on input line 53.
+(pdftex.def)             Requested size: 141.02473pt x 169.83493pt.
+
+<Figures/seg_3.png, id=447, 485.815pt x 597.23125pt>
+File: Figures/seg_3.png Graphic file (type png)
+ <use Figures/seg_3.png>
+Package pdftex.def Info: Figures/seg_3.png used on input line 54.
+(pdftex.def)             Requested size: 138.14737pt x 169.83493pt.
+
+[18 <./Figures/DTI_2.png (PNG copy)> <./Figures/backwards.png>]
+<Figures/skull_before.png, id=457, 485.815pt x 662.475pt>
+File: Figures/skull_before.png Graphic file (type png)
+
+<use Figures/skull_before.png>
+Package pdftex.def Info: Figures/skull_before.png used on input line 64.
+(pdftex.def)             Requested size: 230.18251pt x 313.88033pt.
+
+<Figures/skull_after.png, id=458, 485.815pt x 662.475pt>
+File: Figures/skull_after.png Graphic file (type png)
+
+<use Figures/skull_after.png>
+Package pdftex.def Info: Figures/skull_after.png used on input line 65.
+(pdftex.def)             Requested size: 230.18251pt x 313.88033pt.
+ [19 <./Figures/seg_1.png> <./Figures/seg_2.png> <./Figures/seg_3.png>] <Figure
+s/sinus_sag.png, id=468, 484.81125pt x 445.665pt>
+File: Figures/sinus_sag.png Graphic file (type png)
+
+<use Figures/sinus_sag.png>
+Package pdftex.def Info: Figures/sinus_sag.png used on input line 73.
+(pdftex.def)             Requested size: 230.18251pt x 211.59787pt.
+
+<Figures/sinus_iso.png, id=469, 484.81125pt x 445.665pt>
+File: Figures/sinus_iso.png Graphic file (type png)
+
+<use Figures/sinus_iso.png>
+Package pdftex.def Info: Figures/sinus_iso.png used on input line 74.
+(pdftex.def)             Requested size: 230.18251pt x 211.59787pt.
+ [20 <./Figures/skull_before.png> <./Figures/skull_after.png>] <Figures/thin_la
+yer_side.png, id=476, 485.815pt x 658.46pt>
+File: Figures/thin_layer_side.png Graphic file (type png)
+
+<use Figures/thin_layer_side.png>
+Package pdftex.def Info: Figures/thin_layer_side.png used on input line 84.
+(pdftex.def)             Requested size: 150.32503pt x 203.7387pt.
+
+<Figures/thin_layer_nose.png, id=477, 485.815pt x 658.46pt>
+File: Figures/thin_layer_nose.png Graphic file (type png)
+
+<use Figures/thin_layer_nose.png>
+Package pdftex.def Info: Figures/thin_layer_nose.png used on input line 85.
+(pdftex.def)             Requested size: 150.32503pt x 203.7387pt.
+
+<Figures/thin_layer_chin.png, id=478, 485.815pt x 658.46pt>
+File: Figures/thin_layer_chin.png Graphic file (type png)
+
+<use Figures/thin_layer_chin.png>
+Package pdftex.def Info: Figures/thin_layer_chin.png used on input line 86.
+(pdftex.def)             Requested size: 150.32503pt x 203.7387pt.
+ [21 <./Figures/sinus_sag.png> <./Figures/sinus_iso.png> <./Figures/thin_layer_
+side.png> <./Figures/thin_layer_nose.png> <./Figures/thin_layer_chin.png>]
+<Figures/bigmesh_1.png, id=495, 1052.93375pt x 998.73125pt>
+File: Figures/bigmesh_1.png Graphic file (type png)
+
+<use Figures/bigmesh_1.png>
+Package pdftex.def Info: Figures/bigmesh_1.png used on input line 105.
+(pdftex.def)             Requested size: 230.18251pt x 218.33476pt.
+
+<Figures/bigmesh_surface.png, id=496, 1052.93375pt x 998.73125pt>
+File: Figures/bigmesh_surface.png Graphic file (type png)
+
+<use Figures/bigmesh_surface.png>
+Package pdftex.def Info: Figures/bigmesh_surface.png used on input line 106.
+(pdftex.def)             Requested size: 230.18251pt x 218.33476pt.
+
+<Figures/smallmesh_2.png, id=498, 1052.93375pt x 998.73125pt>
+File: Figures/smallmesh_2.png Graphic file (type png)
+
+<use Figures/smallmesh_2.png>
+Package pdftex.def Info: Figures/smallmesh_2.png used on input line 116.
+(pdftex.def)             Requested size: 230.18251pt x 218.33476pt.
+
+<Figures/smallmesh_surface.png, id=499, 1052.93375pt x 998.73125pt>
+File: Figures/smallmesh_surface.png Graphic file (type png)
+
+<use Figures/smallmesh_surface.png>
+Package pdftex.def Info: Figures/smallmesh_surface.png used on input line 117.
+(pdftex.def)             Requested size: 230.18251pt x 218.33476pt.
+ [22 <./Figures/bigmesh_1.png (PNG copy)> <./Figures/bigmesh_surface.png (PNG c
+opy)>]
+<Figures/iso_dipole.png, id=511, 960.58875pt x 998.73125pt>
 File: Figures/iso_dipole.png Graphic file (type png)
 
 <use Figures/iso_dipole.png>
-Package pdftex.def Info: Figures/iso_dipole.png used on input line 127.
+Package pdftex.def Info: Figures/iso_dipole.png used on input line 131.
 (pdftex.def)             Requested size: 230.18251pt x 239.31941pt.
 
 <Figures/iso_dipole_2.png, id=512, 960.58875pt x 998.73125pt>
 File: Figures/iso_dipole_2.png Graphic file (type png)
 
 <use Figures/iso_dipole_2.png>
-Package pdftex.def Info: Figures/iso_dipole_2.png used on input line 128.
+Package pdftex.def Info: Figures/iso_dipole_2.png used on input line 132.
 (pdftex.def)             Requested size: 230.18251pt x 239.31941pt.
-
-<Figures/iso_streamlines.png, id=513, 960.58875pt x 998.73125pt>
+ [23 <./Figures/smallmesh_2.png (PNG copy)> <./Figures/smallmesh_surface.png (P
+NG copy)>]
+<Figures/iso_streamlines.png, id=522, 960.58875pt x 998.73125pt>
 File: Figures/iso_streamlines.png Graphic file (type png)
 
 <use Figures/iso_streamlines.png>
-Package pdftex.def Info: Figures/iso_streamlines.png used on input line 136.
+Package pdftex.def Info: Figures/iso_streamlines.png used on input line 140.
 (pdftex.def)             Requested size: 230.18251pt x 239.31941pt.
 
-<Figures/iso_streamlines_top.png, id=514, 960.58875pt x 998.73125pt>
+<Figures/iso_streamlines_top.png, id=523, 960.58875pt x 998.73125pt>
 File: Figures/iso_streamlines_top.png Graphic file (type png)
 
 <use Figures/iso_streamlines_top.png>
-Package pdftex.def Info: Figures/iso_streamlines_top.png used on input line 137
+Package pdftex.def Info: Figures/iso_streamlines_top.png used on input line 141
 .
 (pdftex.def)             Requested size: 230.18251pt x 239.31941pt.
- [23 <./Figures/iso_dipole.png (PNG copy)> <./Figures/iso_dipole_2.png (PNG cop
-y)>]
-<Figures/aniso_dipole.png, id=531, 927.465pt x 848.16875pt>
+ [24 <./Figures/iso_dipole.png (PNG copy)> <./Figures/iso_dipole_2.png (PNG cop
+y)> <./Figures/iso_streamlines.png (PNG copy)> <./Figures/iso_streamlines_top.p
+ng (PNG copy)>]
+<Figures/aniso_dipole.png, id=536, 927.465pt x 848.16875pt>
 File: Figures/aniso_dipole.png Graphic file (type png)
 
 <use Figures/aniso_dipole.png>
-Package pdftex.def Info: Figures/aniso_dipole.png used on input line 149.
+Package pdftex.def Info: Figures/aniso_dipole.png used on input line 153.
 (pdftex.def)             Requested size: 230.18251pt x 210.50156pt.
 
-<Figures/aniso_dipole_2.png, id=532, 927.465pt x 848.16875pt>
+<Figures/aniso_dipole_2.png, id=537, 927.465pt x 848.16875pt>
 File: Figures/aniso_dipole_2.png Graphic file (type png)
 
 <use Figures/aniso_dipole_2.png>
-Package pdftex.def Info: Figures/aniso_dipole_2.png used on input line 150.
+Package pdftex.def Info: Figures/aniso_dipole_2.png used on input line 154.
 (pdftex.def)             Requested size: 230.18251pt x 210.50156pt.
- [24 <./Figures/iso_streamlines.png (PNG copy)> <./Figures/iso_streamlines_top.
-png (PNG copy)>]
-<Figures/aniso_streamlines.png, id=539, 927.465pt x 848.16875pt>
+
+<Figures/aniso_streamlines.png, id=538, 927.465pt x 848.16875pt>
 File: Figures/aniso_streamlines.png Graphic file (type png)
 
 <use Figures/aniso_streamlines.png>
-Package pdftex.def Info: Figures/aniso_streamlines.png used on input line 158.
+Package pdftex.def Info: Figures/aniso_streamlines.png used on input line 162.
 (pdftex.def)             Requested size: 230.18251pt x 210.50156pt.
 
-<Figures/aniso_streamlines_top.png, id=540, 927.465pt x 848.16875pt>
+<Figures/aniso_streamlines_top.png, id=539, 927.465pt x 848.16875pt>
 File: Figures/aniso_streamlines_top.png Graphic file (type png)
 
 <use Figures/aniso_streamlines_top.png>
 Package pdftex.def Info: Figures/aniso_streamlines_top.png used on input line 1
-59.
+63.
 (pdftex.def)             Requested size: 230.18251pt x 210.50156pt.
-
-<Figures/iso_isolines.png, id=541, 1019.81pt x 953.5625pt>
+ [25 <./Figures/aniso_dipole.png (PNG copy)> <./Figures/aniso_dipole_2.png (PNG
+ copy)>]
+<Figures/iso_isolines.png, id=547, 1019.81pt x 953.5625pt>
 File: Figures/iso_isolines.png Graphic file (type png)
 
 <use Figures/iso_isolines.png>
-Package pdftex.def Info: Figures/iso_isolines.png used on input line 167.
+Package pdftex.def Info: Figures/iso_isolines.png used on input line 171.
 (pdftex.def)             Requested size: 230.18251pt x 215.22617pt.
 
-<Figures/aniso_isolines.png, id=542, 1019.81pt x 953.5625pt>
+<Figures/aniso_isolines.png, id=548, 1019.81pt x 953.5625pt>
 File: Figures/aniso_isolines.png Graphic file (type png)
 
 <use Figures/aniso_isolines.png>
-Package pdftex.def Info: Figures/aniso_isolines.png used on input line 168.
+Package pdftex.def Info: Figures/aniso_isolines.png used on input line 172.
 (pdftex.def)             Requested size: 230.18251pt x 215.22617pt.
- [25 <./Figures/aniso_dipole.png (PNG copy)> <./Figures/aniso_dipole_2.png (PNG
- copy)> <./Figures/aniso_streamlines.png (PNG copy)> <./Figures/aniso_streamlin
-es_top.png (PNG copy)>]
-<Figures/fmri_1.png, id=551, 698.61pt x 650.43pt>
+
+<Figures/fmri_1.png, id=552, 698.61pt x 650.43pt>
 File: Figures/fmri_1.png Graphic file (type png)
  <use Figures/fmri_1.png>
-Package pdftex.def Info: Figures/fmri_1.png used on input line 180.
+Package pdftex.def Info: Figures/fmri_1.png used on input line 184.
 (pdftex.def)             Requested size: 352.31624pt x 328.0229pt.
 
-[26 <./Figures/iso_isolines.png (PNG copy)> <./Figures/aniso_isolines.png (PNG 
-copy)>] <Figures/eeg_1.png, id=557, 698.61pt x 650.43pt>
+[26 <./Figures/aniso_streamlines.png (PNG copy)> <./Figures/aniso_streamlines_t
+op.png (PNG copy)> <./Figures/iso_isolines.png (PNG copy)> <./Figures/aniso_iso
+lines.png (PNG copy)>] <Figures/eeg_1.png, id=557, 698.61pt x 650.43pt>
 File: Figures/eeg_1.png Graphic file (type png)
 
 <use Figures/eeg_1.png>
-Package pdftex.def Info: Figures/eeg_1.png used on input line 192.
+Package pdftex.def Info: Figures/eeg_1.png used on input line 196.
 (pdftex.def)             Requested size: 230.18251pt x 214.30511pt.
  <Figures/eeg_2.png, id=558, 698.61pt x 650.43pt>
 File: Figures/eeg_2.png Graphic file (type png)
 
 <use Figures/eeg_2.png>
-Package pdftex.def Info: Figures/eeg_2.png used on input line 193.
+Package pdftex.def Info: Figures/eeg_2.png used on input line 197.
 (pdftex.def)             Requested size: 230.18251pt x 214.30511pt.
  [27 <./Figures/fmri_1.png (PNG copy)>]
-<Figures/128_eeg_1.png, id=564, 698.61pt x 653.44125pt>
+<Figures/128_eeg_1.png, id=565, 698.61pt x 653.44125pt>
 File: Figures/128_eeg_1.png Graphic file (type png)
 
 <use Figures/128_eeg_1.png>
-Package pdftex.def Info: Figures/128_eeg_1.png used on input line 203.
+Package pdftex.def Info: Figures/128_eeg_1.png used on input line 207.
 (pdftex.def)             Requested size: 230.18251pt x 215.29727pt.
 
-<Figures/128_eeg_2.png, id=565, 698.61pt x 653.44125pt>
+<Figures/128_eeg_2.png, id=566, 698.61pt x 653.44125pt>
 File: Figures/128_eeg_2.png Graphic file (type png)
 
 <use Figures/128_eeg_2.png>
-Package pdftex.def Info: Figures/128_eeg_2.png used on input line 204.
+Package pdftex.def Info: Figures/128_eeg_2.png used on input line 208.
 (pdftex.def)             Requested size: 230.18251pt x 215.29727pt.
  [28 <./Figures/eeg_1.png (PNG copy)> <./Figures/eeg_2.png (PNG copy)> <./Figur
 es/128_eeg_1.png (PNG copy)> <./Figures/128_eeg_2.png (PNG copy)>]) (./Conclusi
 on.tex) (./Acknowledgements.tex) (./Appendix.tex
-[29] <Figures/combined.png, id=577, 3367.58125pt x 1298.8525pt>
+[29] <Figures/combined.png, id=578, 3367.58125pt x 1298.8525pt>
 File: Figures/combined.png Graphic file (type png)
 
 <use Figures/combined.png>
 Package pdftex.def Info: Figures/combined.png used on input line 34.
 (pdftex.def)             Requested size: 469.75499pt x 181.16426pt.
  [30 <./Figures/combined.png>]
-<Figures/make_DTI.png, id=601, 1670.24pt x 1626.075pt>
+<Figures/make_DTI.png, id=602, 1670.24pt x 1626.075pt>
 File: Figures/make_DTI.png Graphic file (type png)
 
 <use Figures/make_DTI.png>
 Package pdftex.def Info: Figures/make_DTI.png used on input line 119.
 (pdftex.def)             Requested size: 469.75499pt x 457.33247pt.
 
-<Figures/iso_network.png, id=602, 1661.20625pt x 1911.14pt>
+<Figures/iso_network.png, id=603, 1661.20625pt x 1911.14pt>
 File: Figures/iso_network.png Graphic file (type png)
 
 <use Figures/iso_network.png>
 Package pdftex.def Info: Figures/iso_network.png used on input line 127.
 (pdftex.def)             Requested size: 469.75499pt x 540.42297pt.
 
-<Figures/aniso_network.png, id=603, 1996.45876pt x 1976.38374pt>
+<Figures/aniso_network.png, id=604, 1996.45876pt x 1976.38374pt>
 File: Figures/aniso_network.png Graphic file (type png)
 
 <use Figures/aniso_network.png>
 Package pdftex.def Info: Figures/aniso_network.png used on input line 135.
 (pdftex.def)             Requested size: 469.75499pt x 465.02324pt.
 
-<Figures/fmri_network.png, id=604, 1199.48125pt x 1437.37pt>
+<Figures/fmri_network.png, id=605, 1199.48125pt x 1437.37pt>
 File: Figures/fmri_network.png Graphic file (type png)
 
 <use Figures/fmri_network.png>
 Package pdftex.def Info: Figures/fmri_network.png used on input line 143.
 (pdftex.def)             Requested size: 469.75499pt x 562.91882pt.
 
-<Figures/EEG_network.png, id=605, 1088.065pt x 1060.96375pt>
+<Figures/EEG_network.png, id=606, 1088.065pt x 1060.96375pt>
 File: Figures/EEG_network.png Graphic file (type png)
 
 <use Figures/EEG_network.png>
@@ -875,10 +872,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 91.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 91.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 91.
 Package rerunfilecheck Info: File `paper_main.out' has not changed.
-(rerunfilecheck)             Checksum: 18666703FD3E81F4448C7B56DA6404A5;2728.
-
-
-LaTeX Warning: There were undefined references.
+(rerunfilecheck)             Checksum: B31AE524D0FA7FBE048FC20DFE8B8D89;2744.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -886,13 +880,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 91.
  ) 
 Here is how much of TeX's memory you used:
- 8357 strings out of 493089
- 122193 string characters out of 6134842
- 221603 words of memory out of 5000000
- 11503 multiletter control sequences out of 15000+600000
+ 8356 strings out of 493089
+ 122184 string characters out of 6134842
+ 221615 words of memory out of 5000000
+ 11502 multiletter control sequences out of 15000+600000
  11012 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,9n,43p,1273b,1680s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,9n,43p,1255b,1680s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -909,10 +903,10 @@ e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/201
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on paper_main.pdf (39 pages, 13593754 bytes).
+Output written on paper_main.pdf (39 pages, 13595033 bytes).
 PDF statistics:
- 762 PDF objects out of 1000 (max. 8388607)
- 593 compressed objects within 6 object streams
+ 763 PDF objects out of 1000 (max. 8388607)
+ 594 compressed objects within 6 object streams
  174 named destinations out of 1000 (max. 500000)
  636 words of extra memory for PDF output out of 10000 (max. 10000000)
 
