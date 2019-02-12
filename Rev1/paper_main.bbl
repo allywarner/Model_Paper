@@ -93,14 +93,6 @@ FSL.
 SCIRun: A Scientific Computing Problem Solving Environment, Scientific
   Computing and Imaging Institute (SCI), Download from: http://www.scirun.org.
 
-\bibitem{ref:slicer}
-A.~Fedorov, R.~Beichel, J.~Kalpathy-Cramer, J.~Finet, J-C. Fillion-Robin,
-  S.~Pujol, C.~Bauer, D.~Jennings, F.M. Fennessy, M.~Sonka, J.~Buatti, S.R.
-  Aylward, J.V. Miller, S.~Pieper, and R.~Kikinis.
-\newblock 3d slicer as an image computing platform for the quantitative imaging
-  network.
-\newblock {\em Magn. Reson. Imaging}, 30(9):1323--31, November 2012.
-
 \bibitem{ref:fcon}
 NITRC.
 \newblock 1000 functional connectomes project.
@@ -121,24 +113,6 @@ U.~Aydin, J.~Vorwerk, P.~Kupper, M.~Heers, H.~Kugel, A.~Galka, L.~Hamid,
 S.M. Smith.
 \newblock Fast robust automated brain extraction.
 \newblock {\em Human Brain Mapping}, 17(3):143--155, November 2002.
-
-\bibitem{ref:freesurf}
-A.M. Dale, B.~Fischl, and M.I. Sereno.
-\newblock Cortical surface-based analysis. i. segmentation and surface
-  reconstruction.
-\newblock {\em NeuroImage}, 9:179--194, 1999.
-
-\bibitem{ref:spm}
-Wellcome Trust~Centre for Neuroimaging.
-\newblock Statistical parametric mapping, May 2016.
-\newblock
-  \url{https://www.mathworks.com/matlabcentral/fileexchange/56963-statistical-parametric-mapping}.
-
-\bibitem{ref:abc}
-Koen Van~Leemput, Frederik Maes, Dirk Vandermeulen, and Paul Suetens.
-\newblock Automated model-based tissue classification of mr images of the
-  brain.
-\newblock {\em IEEE transactions on medical imaging}, 18(10):897--908, 1999.
 
 \bibitem{ref:pseudoct}
 A.~Torrado-Carvajal, J.L. Herraiz, E.~Alcain, A.S. Montemayor,
@@ -165,6 +139,32 @@ D.~Gullmar, J.~Haueisen, and J.~R. Reichenbach.
   tissue on the eeg/meg forward and inverse solution. a high-resolution whole
   head simulation study.
 \newblock {\em NeuroImage}, 51:145--163, 2010.
+
+\bibitem{ref:slicer}
+A.~Fedorov, R.~Beichel, J.~Kalpathy-Cramer, J.~Finet, J-C. Fillion-Robin,
+  S.~Pujol, C.~Bauer, D.~Jennings, F.M. Fennessy, M.~Sonka, J.~Buatti, S.R.
+  Aylward, J.V. Miller, S.~Pieper, and R.~Kikinis.
+\newblock 3d slicer as an image computing platform for the quantitative imaging
+  network.
+\newblock {\em Magn. Reson. Imaging}, 30(9):1323--31, November 2012.
+
+\bibitem{ref:freesurf}
+A.M. Dale, B.~Fischl, and M.I. Sereno.
+\newblock Cortical surface-based analysis. i. segmentation and surface
+  reconstruction.
+\newblock {\em NeuroImage}, 9:179--194, 1999.
+
+\bibitem{ref:spm}
+Wellcome Trust~Centre for Neuroimaging.
+\newblock Statistical parametric mapping, May 2016.
+\newblock
+  \url{https://www.mathworks.com/matlabcentral/fileexchange/56963-statistical-parametric-mapping}.
+
+\bibitem{ref:abc}
+Koen Van~Leemput, Frederik Maes, Dirk Vandermeulen, and Paul Suetens.
+\newblock Automated model-based tissue classification of mr images of the
+  brain.
+\newblock {\em IEEE transactions on medical imaging}, 18(10):897--908, 1999.
 
 \bibitem{ref:mriconvert}
 X.~Li, P.S. Morgan, J.~Ashburner, J.C. Smith, and C.~Rorden.
