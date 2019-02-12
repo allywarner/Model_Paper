@@ -56,7 +56,7 @@ DWIs performed with EPI sequences are prone to distortions from rapid switching 
 
 \subsubsection{Diffusion Tensor Images}
 
-After we preprocessed the DWI images, we calculated diffusion tensor images (DTI) using FSL's DTIFIT toolbox \cite{ref:dtifit} (Figure \ref{fig:dtifit}) and SCIRun \cite{ref:scirun}, a problem-solving environment for modeling, simulation, and visualization of scientific problems. We used the output from DTIFIT, the eigenvalues and eigenvectors of the DTI data, as input for a SCIRun network (Figure \ref{fig:maketensornet}) to build and visualize the conductivity tensor field. Details on using DTIFIT are included in the Appendix in Section \ref{sec:dtifit}.
+After we preprocessed the DWI images, we calculated diffusion tensor images (DTI) using FSL's DTIFIT toolbox \cite{ref:dtifit} (Figure \ref{fig:dtifit}) and SCIRun v4.7 \cite{ref:scirun}, a problem-solving environment for modeling, simulation, and visualization of scientific problems. We used the output from DTIFIT, the eigenvalues and eigenvectors of the DTI data, as input for a SCIRun network (Figure \ref{fig:maketensornet}) to build and visualize the conductivity tensor field. Details on using DTIFIT are included in the Appendix in Section \ref{sec:dtifit}.
 
 \begin{figure}[H]
     \centering
