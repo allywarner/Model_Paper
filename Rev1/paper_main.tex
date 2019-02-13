@@ -18,7 +18,7 @@
 \usepackage{float}
 \usepackage{wrapfig}
 \usepackage{varwidth}
-
+\usepackage[title]{appendix}
 \usepackage[hyphens]{url}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{breaklinks=true}
@@ -81,8 +81,9 @@ email: headmodel@sci.utah.edu,\\
 \input{Results}
 \input{Conclusion}
 \input{Acknowledgements}
-\appendix
-\input{Appendix}
+\begin{appendices}
+\include{Appendix}
+\end{appendices}
 
 \newpage
 \Urlmuskip=0mu plus 1mu\relax
